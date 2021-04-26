@@ -1,0 +1,18 @@
+@use 'reset';
+@use 'vars'as v;
+
+body {
+  font-family: 'Roboto Condensed', sans-serif;
+  background-color: v.$base-color;
+  color: v.$base-color;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: normal;
+}
+
+img {
+  max-width: 100%;
+}

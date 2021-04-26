@@ -1,0 +1,25 @@
+@use 'src/styles/vars'as v;
+
+.exoinlist {
+  width: 100%;
+  border: 1px solid adjust-color(v.$base-color, $lightness: 50%);
+  padding: 0 5px;
+  margin-bottom: 10px;
+  border-radius: v.$border-radius;
+
+  &__row {
+    display: flex;
+    flex: 1;
+    justify-content: space-between;
+  }
+
+  &__data {
+    width: 50%;
+    padding: 8px 0;
+
+  }
+
+  &__toggle {
+    padding: 8px;
+  }
+}
