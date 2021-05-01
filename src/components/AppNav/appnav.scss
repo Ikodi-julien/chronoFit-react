@@ -6,8 +6,15 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
-    padding: 5px 8px;
+    padding: 10px;
     // border: 1px dashed blue;
+  }
+
+  &__logo,
+  &__toggle {
+    font-size: 1.5em;
+    border: none;
+    background-color: transparent;
   }
 
   &__links {
@@ -16,13 +23,32 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    top: 70vh;
+    top: -100vh;
     left: 0px;
     border: 1px dashed green;
+    background-color: lightblue;
+    font-size: 2em;
+    color: v.$base-color;
 
     &__link {
       padding: 10px;
-      margin: 10px;
+      margin: 20px;
+    }
+
+    &.--visible {
+      top: -(v.$padding-top);
+      opacity: .9;
+      z-index: 100;
+    }
+
+    &__close {
+      display: block;
+      width: 100%;
+      border: none;
+      padding: 15px 20px;
+      background-color: transparent;
+      text-align: right;
+      font-size: 1em;
     }
   }
 }

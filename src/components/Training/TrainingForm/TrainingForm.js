@@ -1,47 +1,71 @@
+import Field from '../../Field/Field';
 import './trainingform.scss';
 
-const TrainingForm = (props) => {
+const TrainingForm = ({
+  exoForm,
+  setInputValue,
+  addExo
+  }) => {
   
+    const handleSubmit = (evt) => {
+      evt.preventDefault();
+      addExo()
+    }
+    
   return (
     <div className="trainingform__container">
-      <form className="trainingform__form">
-        <input
-          className="trainingform__input"
-          type="text"
-          value=""
-          placeholder="Nom"
-        />
-        <textarea
-          className="trainingform__textarea"
-          type="text"
-          value=""
-          placeholder="Description"
+      <form 
+        className="trainingform__form"
+        onSubmit={handleSubmit}
         >
-        </textarea>
-        <input
+        <Field
+          name="nameInput"
+          type="text"
+          className="trainingform__input"
+          placeholder="Nom de l'exo"
+          value={exoForm.nameInput.value}
+          onChange={setInputValue}
+          />
+
+        <Field
+          name="descInput"
+          type="text"
+          className="trainingform__textarea"
+          placeholder="Description"
+          value={exoForm.descInput.value}
+          onChange={setInputValue}
+        >
+        </Field>
+        <Field 
+          name="durationInput"
           className="trainingform__input"
           type="number"
-          value=""
           placeholder="Durée"
+          value={exoForm.durationInput.value}
+          onChange={setInputValue}
         />
-        <input
+        <Field
+          name="repsInput"
           className="trainingform__input"
           type="number"
-          value=""
           placeholder="Reps"
+          value={exoForm.repsInput.value}
+          onChange={setInputValue}
         />
-        <input
+        <Field
+          name="weightInput"
           className="trainingform__input"
           type="number"
-          value=""
           placeholder="Poids"
+          onChange={setInputValue}
+          value={exoForm.weightInput.value}
         />
         
         <div className="trainingform__row">
-          <button type="button" className="trainingform__row__button  training__button">
+          <button type="submit" className="trainingform__row__button  training__button">
             Add exo
           </button>
-          <button type="submit" className="trainingform__row__button  training__button">
+          <button type="button" className="trainingform__row__button  training__button">
             GO
           </button>
         </div>

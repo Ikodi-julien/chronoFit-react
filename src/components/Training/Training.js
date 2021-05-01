@@ -1,7 +1,7 @@
 import TrainingManager from './TrainingManager/TrainingManager';
-import TrainingForm from './TrainingForm/TrainingForm';
-import TrainingExoList from './TrainingExoList/TrainingExoList';
-import AppNav from '../AppNav/AppNav';
+import TrainingForm from '../../containers/TrainingFormContainer';
+import TrainingExoList from '../../containers/TrainingExoListContainer';
+import AppNav from '../../containers/AppNavContainer';
 
 import './training.scss';
 

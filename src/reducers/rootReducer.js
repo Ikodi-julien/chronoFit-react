@@ -1,9 +1,11 @@
 import {combineReducers} from 'redux';
 
-import timelineReducer from './trainingReducer';
+import trainingReducer from './trainingReducer';
+import appReducer from './appReducer';
 
 const rootReducer = combineReducers({
-  timeline: timelineReducer
+  app: appReducer,
+  training: trainingReducer
 })
 
 export default rootReducer;

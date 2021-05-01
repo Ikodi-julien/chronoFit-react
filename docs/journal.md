@@ -1,5 +1,32 @@
 # JOURNAL CHRONOFIT-REACT
 
+### Le 30/04/2021
+
+Tel la tortue qui avance lentement mais sans faillir vers son objectif...
+1h30 devant moi : 
+  * Fait tous les champs contrôlés du composant 'TrainingForm', création d'un composant 'Field', actions / actionMaker et reducer ok !
+  
+Next => Gérer la soumission de ce formulaire, doit ajouter un objet dans le state 'training.exoList' => ok + vérif du type et non vide
+Next => Revoir l'organisation du composant 'ExerciceInList' + faire le composant 'ExerciceInListMenu'.
+
+### Le 29/04/2021
+
+Après une journée bien remplie sur le projet Oclock "TeaCup".
+1h pour une action :
+- Afficher les composants ExerciceInList (hydratés) d'après un fake state => ok en pile 30mn !
+
+Next : Essayer d'ajouter un exo dans le state à l'aide du formulaire et donc l'afficher ?
+
+### Le 27/04/2021.
+
+Le matin 1h avant le début d'Oclock.
+actions : 
+* HIDE_MENU affiche / cache le menu de navigation principal => ok.
+
+Perte de temps à cause de l'oubli de l'import du container à la place du component dans le parent... un classique, juste perdu 20mn cette fois-ci...
+
+Next : Une autre action
+
 ### Le 26/04/2021 (t=2h).
 
 Poursuite du css des composants de base de la vue "/training".
