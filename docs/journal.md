@@ -1,23 +1,103 @@
 # JOURNAL CHRONOFIT-REACT
 
-### Le 30/04/2021
+### Le 02/05/2021
+
+Gérer le toggle du ExoInListMenu => ok.
+Moins facile à gérer que je ne pensais, il a fallut ajouter une prop index à chaque exo dans la prop exoList du state.
+
+Voir comment gérer le D&D, à l'ancienne en codant les events et récup du contenu du composant "TrainingExoList" au "onDrop()" ? Ou alors un package qui va bien avec React ?
+
+Voir [react-dnd](https://react-dnd.github.io/react-dnd/about) il semblerait que ce soit une librairie qui laisse pas mal d'autonomie.
+A commencer à mettre en place quand les fonctionnalités update et delete d'un exo via son menu déplié seront ok.
+
+A garder à l'esprit les fonctionnalités à venir :
+* Possibilité d'ajouter un ou plusieurs composants "Round" au training. Ce composant est une liste qui contiendra des exos.
+* Il doit être possible de répéter la lecture des exos dans le "Round" un nombre de fois donné.
+* On doit pouvoir faire un drag d'exo d'un parent vers un enfant et vice-versa, c'est à dire remplir ou vider un round avec les "ExoInList" déjà créés.
+* On doit pouvoir modifier l'ordre des exos dans "TrainingExoList" et dans "Round".
+
+```javascript
+// exemple de state à re-réfléchir
+state.training = {
+  // Le state 'training' contient un training à la fois dans sa prop 'currentTraining'.
+  currentTraining: {
+    // Le currentTraining est un objet récupéré dans l'API, il doit représenter tous les paramètres d'un training.
+    id: 1,
+    name: 'training test',
+    // Un training contient des 'rounds', chacun contenant une liste d'exercices et le nb de fois qu'il doit être répété.
+    roundList: [
+      {
+        // Un même round peut être répété plusieurs fois.
+        roundRepeat: 1,
+        roundMenuIsVisible: false,
+        // Un round contient un ou plusieurs exos
+        roundExoList: [
+          {
+            // Un exo a des caractéristiques permettant de déclencher un chrono et/ou d'enregistrer ces infos en fin de training
+            name: 'Tractions strictes',
+            description: 'pas de description',
+            duration: 60,
+            reps: 10,
+            weight: 0,
+            menuIsVisible: false
+          },{
+            name: 'Pompes diamant',
+            description: 'pas de description',
+            duration: 60,
+            reps: 10,
+            weight: 0,
+            menuIsVisible: false
+          }
+        ]
+      }, {
+        roundRepeat: 5,
+        roundMenuIsVisible: false,
+        roundExosList: [
+          {
+            name: 'Tractions strictes',
+            description: 'pas de description',
+            duration: 60,
+            reps: 10,
+            weight: 0,
+            menuIsVisible: false
+          },{
+            name: 'Pompes diamant',
+            description: 'pas de description',
+            duration: 60,
+            reps: 10,
+            weight: 0,
+            menuIsVisible: false
+          }
+        ]
+      }
+    ]
+  },
+  exoForm: { ... }
+}
+```
+
+Et quand ça c'est ok, on passe à la lecture de la liste d'exos...
+
+Next => update et delete depuis "ExerciceInListMenu".
+
+### Le 01/05/2021 t= 3h
 
 Tel la tortue qui avance lentement mais sans faillir vers son objectif...
-1h30 devant moi : 
   * Fait tous les champs contrôlés du composant 'TrainingForm', création d'un composant 'Field', actions / actionMaker et reducer ok !
+  * Gérer la soumission de ce formulaire, doit ajouter un objet dans le state 'training.exoList' => ok + vérif du type et non vide
+  * Revoir l'organisation du composant 'ExerciceInList' + faire le composant 'ExerciceInListMenu' => ok.
   
-Next => Gérer la soumission de ce formulaire, doit ajouter un objet dans le state 'training.exoList' => ok + vérif du type et non vide
-Next => Revoir l'organisation du composant 'ExerciceInList' + faire le composant 'ExerciceInListMenu'.
+Next: Gérer le toggle du ExoInListMenu
 
-### Le 29/04/2021
+### Le 29/04/2021 t= 1h
 
 Après une journée bien remplie sur le projet Oclock "TeaCup".
 1h pour une action :
-- Afficher les composants ExerciceInList (hydratés) d'après un fake state => ok en pile 30mn !
+* Afficher les composants ExerciceInList (hydratés) d'après un fake state => ok en pile 30mn !
 
 Next : Essayer d'ajouter un exo dans le state à l'aide du formulaire et donc l'afficher ?
 
-### Le 27/04/2021.
+### Le 27/04/2021 t= 1h
 
 Le matin 1h avant le début d'Oclock.
 actions : 

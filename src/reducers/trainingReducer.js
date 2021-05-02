@@ -1,4 +1,8 @@
-import {ADD_EXO, EXO_INPUT_CHANGE} from '../actions/trainingActions';
+import {
+  ADD_EXO, 
+  EXO_INPUT_CHANGE,
+  SHOW_EXOINLISTMENU
+} from '../actions/trainingActions';
 
 const initialState = {
   exoList: [
@@ -7,21 +11,26 @@ const initialState = {
       description: 'pas de description',
       duration: 60,
       reps: 10,
-      weight: 0
+      weight: 0,
+      menuIsVisible: false
     },
     {
       name: 'Pompes diamant',
       description: 'pas de description',
       duration: 60,
       reps: 10,
-      weight: 0
+      weight: 0,
+      menuIsVisible: false
+      
     },
     {
       name: 'Air squats',
       description: 'pas de description',
       duration: 60,
       reps: 10,
-      weight: 0
+      weight: 0,
+      menuIsVisible: false
+      
     }
   ],
   exoForm: {
@@ -61,7 +70,8 @@ const reducer = (state=initialState, action={}) => {
       // Vérification du contenu des inputs et du type de value
       if (!nameInput.value || !descInput.value ) {
         console.log('1er');
-        return state};
+        return state
+      };
 
       if (
         (nameInput.value && typeof nameInput.value !== 'string') ||
@@ -71,7 +81,8 @@ const reducer = (state=initialState, action={}) => {
         (weightInput.value && typeof weightInput.value !== 'string')
       ) {
         console.log('2em')
-        return state}
+        return state
+      }
       
       return {
         ...state,
@@ -85,6 +96,19 @@ const reducer = (state=initialState, action={}) => {
             weight: +weightInput.value
           }
         ]
+      }
+    
+    case SHOW_EXOINLISTMENU:
+      // When there's a click on a burger button wich is on an exo in the list.
+      const newExoList = state.exoList.map((exo, index) => {
+        if (index === action.index) exo.menuIsVisible = !exo.menuIsVisible;
+        if (index !== action.index) exo.menuIsVisible = false;
+        return exo;
+      })
+      
+      return {
+        ...state,
+        exoList: newExoList
       }
       
     default:

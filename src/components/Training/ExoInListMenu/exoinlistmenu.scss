@@ -1,0 +1,64 @@
+@use 'src/styles/vars'as v;
+
+.exoinlistmenu {
+  &__container {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    right: 0;
+    background-color: adjust-color(v.$base-color, $lightness: 80%);
+    border: 1px solid v.$base-color;
+    border-radius: v.$border-radius;
+    z-index: 10;
+
+    &.--hidden {
+      display: none;
+    }
+  }
+
+  &__toggle {
+    padding: 8px;
+    border: none;
+    background-color: transparent;
+    font-size: 1.3em;
+  }
+
+  &__input {
+    border: none;
+    // border-bottom: 1px solid adjust-color(v.$base-color, $lightness: 50%);
+    width: 100%;
+    background-color: transparent;
+
+    &__name {
+      width: 70%;
+      font-size: 1.1em;
+    }
+
+    &__number {
+      width: 25%;
+    }
+
+    &__row {
+      display: flex;
+      justify-content: flex-start;
+      padding: 5px;
+      font-size: 0.9em;
+
+      & label {
+        padding-right: 10px;
+      }
+    }
+  }
+
+  &__row,
+  &__textarea {
+    padding-bottom: 10px;
+    font-size: 0.9em;
+  }
+
+  &__row {
+    display: flex;
+    justify-content: space-between;
+  }
+
+}

@@ -1,4 +1,4 @@
-import ExerciceInList from '../ExerciceInList/ExerciceInList.js';
+import ExoInListContainer from '../../../containers/ExoInListContainer';
 
 import './trainingexolist.scss';
 
@@ -8,13 +8,15 @@ const TrainingExoList = ({exoList}) => {
     <section className="trainingexolist__container">
       {
         exoList.map((exo, index) => (
-          <ExerciceInList 
+          <ExoInListContainer 
             key={index}
+            index={index}
             name={exo.name}
             description={exo.description}
             duration={exo.duration}
             reps={exo.reps}
             weight={exo.weight}
+            menuIsVisible={exo.menuIsVisible}
           />
         ))
       }

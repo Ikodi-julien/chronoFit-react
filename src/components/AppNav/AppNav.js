@@ -11,7 +11,7 @@ const AppNav = ({toggleMenu, menuIsVisible}) => {
       <button 
         className="appnav__toggle"
         onClick={() => toggleMenu()}
-        ><i className="fas fa-ellipsis-v"></i></button>
+        ><i className="fas fa-bars"></i></button>
       
       <ul className={menuIsVisible ? "appnav__links --visible" : "appnav__links"}>
         <button 

@@ -1,5 +1,4 @@
 export const EXO_INPUT_CHANGE = "Changement dans un des inputs du formulaire de saisie d'un exercice";
-
 export const setInputValue = (inputObject) => ({
   type: EXO_INPUT_CHANGE,
   name: inputObject.name,
@@ -7,7 +6,12 @@ export const setInputValue = (inputObject) => ({
 })
 
 export const ADD_EXO = "Au clic, ajoute un exercice dans la training.exoList lors de la soumission du formulaire";
-
 export const addExo = () => ({
   type: ADD_EXO
+})
+
+export const SHOW_EXOINLISTMENU = "Au clic, affiche le menu lié au composant ExoInList";
+export const toggleExoInListMenu = (index) => ({
+  type: SHOW_EXOINLISTMENU,
+  index
 })
