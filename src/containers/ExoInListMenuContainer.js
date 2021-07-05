@@ -1,7 +1,7 @@
 import {connect} from 'react-redux';
 import ExoInListMenu from '../components/Training/ExoInListMenu/ExoInListMenu';
 import {
-  setInputValue,
+  setExoInListInputValue,
   toggleExoInListMenu
 } from '../actions/trainingActions';
 
@@ -19,8 +19,13 @@ const mapDispatchToProps = (dispatch) => ({
   toggleMenu: (index) => {
     console.log('ici ok');
     dispatch(toggleExoInListMenu(index))},
-  setInputValue: () => dispatch(setInputValue())
+    
+  setExoInListInputValue: (inputObject, index) => {
+    const finalObject = {...inputObject, index: index};
+    console.log('dans ExoMenuContainer', finalObject);
+    
+    dispatch(setExoInListInputValue(finalObject));
   }
-);
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(ExoInListMenu);

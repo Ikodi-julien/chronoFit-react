@@ -1,7 +1,8 @@
 import {
   ADD_EXO, 
   EXO_INPUT_CHANGE,
-  SHOW_EXOINLISTMENU
+  SHOW_EXOINLISTMENU,
+  EXO_IN_LIST_INPUT_CHANGE
 } from '../actions/trainingActions';
 
 const initialState = {
@@ -98,6 +99,8 @@ const reducer = (state=initialState, action={}) => {
         ]
       }
     
+      /* EXO_IN_LIST */
+      
     case SHOW_EXOINLISTMENU:
       // When there's a click on a burger button wich is on an exo in the list.
       const newExoList = state.exoList.map((exo, index) => {
@@ -109,6 +112,12 @@ const reducer = (state=initialState, action={}) => {
       return {
         ...state,
         exoList: newExoList
+      }
+    
+    case EXO_IN_LIST_INPUT_CHANGE:
+      console.log('un input change dans exo in list');
+      return {
+        ...state
       }
       
     default:

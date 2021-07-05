@@ -8,7 +8,7 @@ const ExoInListMenu = ({
   duration, 
   reps, 
   weight,
-  setInputValue,
+  setExoInListInputValue,
   updateExo,
   toggleMenu,
   menuIsVisible
@@ -31,12 +31,13 @@ const ExoInListMenu = ({
         
         <div className="exoinlistmenu__row">
         <Field
+          index={index}
           name="nameInput"
           type="text"
           className="exoinlistmenu__input exoinlistmenu__input__name"
           placeholder="Nom de l'exo"
           value={name}
-          onChange={setInputValue}
+          onChange={setExoInListInputValue}
           />
         <button 
           className="exoinlistmenu__toggle"
@@ -52,7 +53,7 @@ const ExoInListMenu = ({
           className="exoinlistmenu__input exoinlistmenu__textarea"
           placeholder="Description"
           value={description}
-          onChange={setInputValue}
+          onChange={setExoInListInputValue}
         >
         </Field>
         
@@ -64,7 +65,7 @@ const ExoInListMenu = ({
             type="number"
             placeholder="Durée"
             value={duration}
-            onChange={setInputValue}
+            onChange={setExoInListInputValue}
           />
         </div>
         <div className="exoinlistmenu__input__row">
@@ -75,7 +76,7 @@ const ExoInListMenu = ({
           type="number"
           placeholder="Reps"
           value={reps}
-          onChange={setInputValue}
+          onChange={setExoInListInputValue}
         />
         </div>
         <div className="exoinlistmenu__input__row">
@@ -85,7 +86,7 @@ const ExoInListMenu = ({
           className="exoinlistmenu__input exoinlistmenu__input__number"
           type="number"
           placeholder="Poids"
-          onChange={setInputValue}
+          onChange={setExoInListInputValue}
           value={weight}
         />
         </div>

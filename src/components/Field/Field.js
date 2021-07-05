@@ -1,4 +1,5 @@
 const Field = ({
+  index,
   className,
   type,
   value,
@@ -12,8 +13,12 @@ const Field = ({
     onChange({
     name,
     value: evt.target.value
-    }
-  )}
+    }, index)
+    console.log('inputchange', {
+      name,
+      value: evt.target.value
+      } )
+  }
   
   return (
     <input

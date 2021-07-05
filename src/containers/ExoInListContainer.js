@@ -1,7 +1,8 @@
 import {connect} from 'react-redux';
 import ExerciceInList from '../components/Training/ExerciceInList/ExerciceInList';
 import {
-  toggleExoInListMenu
+  toggleExoInListMenu,
+  setInputValue
 } from '../actions/trainingActions';
 
 const mapStateToProps = ({training}, {index, name, description, duration, reps, weight, menuIsVisible}) => ({
@@ -17,6 +18,9 @@ const mapStateToProps = ({training}, {index, name, description, duration, reps, 
 const mapDispatchToProps = (dispatch) => ({
   toggleMenu: (index) => {
     dispatch(toggleExoInListMenu(index));
+  },
+  setInputValue: (inputObject) => {
+    dispatch(setInputValue(inputObject))
   }
   }
 );

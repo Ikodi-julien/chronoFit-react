@@ -29,7 +29,7 @@ const TrainingForm = ({
 
         <Field
           name="descInput"
-          type="text"
+          type="textarea"
           className="trainingform__textarea"
           placeholder="Description"
           value={exoForm.descInput.value}

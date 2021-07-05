@@ -1,5 +1,9 @@
 # JOURNAL CHRONOFIT-REACT
 
+### Le 03/05/2021, 1h avant la réunion de projet TeacCup
+
+Faire des inputs controlés dans le ExoInListMenu
+
 ### Le 02/05/2021
 
 Gérer le toggle du ExoInListMenu => ok.

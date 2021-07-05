@@ -10,8 +10,17 @@ export const addExo = () => ({
   type: ADD_EXO
 })
 
+
+
 export const SHOW_EXOINLISTMENU = "Au clic, affiche le menu lié au composant ExoInList";
 export const toggleExoInListMenu = (index) => ({
   type: SHOW_EXOINLISTMENU,
   index
+})
+export const EXO_IN_LIST_INPUT_CHANGE = "Changement dans un input d'un exo de la liste";
+export const setExoInListInputValue = (inputObject) => ({
+  type: EXO_IN_LIST_INPUT_CHANGE,
+  index: inputObject.index,
+  name: inputObject.name,
+  value: inputObject.value
 })
