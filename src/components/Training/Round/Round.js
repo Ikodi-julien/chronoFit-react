@@ -1,11 +1,22 @@
 import ExoInListContainer from '../../../containers/ExoInListContainer';
 
-import './trainingexolist.scss';
+import './round.scss';
 
-const TrainingExoList = ({exoList}) => {
-  console.log('exoList: ', exoList)
+const Round = ({
+  index,
+  duration,
+  iteration,
+  shrunken,
+  exoList,
+}) => {
+  // console.log('exoList: ', exoList)
   return (
     <section className="trainingexolist__container">
+      <div className="trainingrounds__header">
+        <i className="fas fa-ellipsis-v"></i>
+        <span>Round n°{index} - durée : {duration} - {iteration} rounds of :</span>
+        <i className="fas fa-caret-right"></i>
+      </div>
       {
         exoList.map((exo, index) => (
           <ExoInListContainer 
@@ -25,4 +36,4 @@ const TrainingExoList = ({exoList}) => {
   )
 }
 
-export default TrainingExoList;
+export default Round;

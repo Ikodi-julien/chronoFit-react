@@ -3,7 +3,7 @@ import TrainingRounds from '../components/Training/TrainingRounds/TrainingRounds
 // import {toggleMenuVisibility} from '../actions/trainingAction';
 
 const mapStateToProps = ({training}, ownProps) => ({
-  exoList: training.exoList
+  training: training.rounds
 })
 
 const mapDispatchToProps = (dispatch) => ({

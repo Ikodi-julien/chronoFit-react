@@ -5,53 +5,7 @@ import {
   EXO_IN_LIST_INPUT_CHANGE
 } from '../actions/trainingActions';
 
-const initialState = {
-  exoList: [
-    {
-      name: 'Tractions strictes',
-      description: 'pas de description',
-      duration: 60,
-      reps: 10,
-      weight: 0,
-      menuIsVisible: false
-    },
-    {
-      name: 'Pompes diamant',
-      description: 'pas de description',
-      duration: 60,
-      reps: 10,
-      weight: 0,
-      menuIsVisible: false
-      
-    },
-    {
-      name: 'Air squats',
-      description: 'pas de description',
-      duration: 60,
-      reps: 10,
-      weight: 0,
-      menuIsVisible: false
-      
-    }
-  ],
-  exoForm: {
-    nameInput: {
-      value: '',
-    },
-    descInput: {
-      value: '',
-    },
-    durationInput: {
-      value: '',
-    },
-    repsInput: {
-      value: '',
-    },
-    weightInput: {
-      value: ''
-    }
-  }
-}
+import { initialState } from './trainingInitialState';
 
 const reducer = (state=initialState, action={}) => {
   

@@ -1,24 +1,24 @@
-import ExoInListContainer from '../../../containers/ExoInListContainer';
+import Round from '../../../containers/RoundContainer';
 
-const TrainingRounds = ({exoList}) => {
-  console.log('exoList: ', exoList)
+import './trainingrounds.scss';
+
+const TrainingRounds = ({training}) => {
+  // console.log('exoList: ', exoList)
   return (
-    <section className="trainingexolist__container">
+    <section className="trainingrounds__container">
+
       {
-        exoList.map((exo, index) => (
-          <ExoInListContainer 
+        training.map((round, index) => (
+          <Round 
             key={index}
             index={index}
-            name={exo.name}
-            description={exo.description}
-            duration={exo.duration}
-            reps={exo.reps}
-            weight={exo.weight}
-            menuIsVisible={exo.menuIsVisible}
+            duration={round.duration}
+            iteration={round.iteration}
+            shrunken={round.isShrunken}
+            exoList={round.exoList}
           />
         ))
       }
-
     </section>
   )
 }

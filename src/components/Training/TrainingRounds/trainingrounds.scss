@@ -1,12 +1,17 @@
 @use 'src/styles/vars'as v;
 
-.trainingexolist {
+.trainingrounds {
+  &__header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+  }
+
   &__container {
     width: 100%;
     padding: 5px;
-    padding-right: 42%;
-    // border: 1px dashed green;
-    min-height: 500px;
+    border: 1px dashed green;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
