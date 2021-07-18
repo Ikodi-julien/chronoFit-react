@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import ExerciceInList from '../components/Training/ExerciceInList/ExerciceInList';
+import ExoInList from '../components/Training/ExoInList/ExoInList';
 import {
   toggleExoInListMenu,
   setInputValue
@@ -25,4 +25,4 @@ const mapDispatchToProps = (dispatch) => ({
   }
 );
 
-export default connect(mapStateToProps, mapDispatchToProps)(ExerciceInList);
+export default connect(mapStateToProps, mapDispatchToProps)(ExoInList);

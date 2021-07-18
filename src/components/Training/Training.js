@@ -1,7 +1,6 @@
-import TrainingManager from './TrainingManager/TrainingManager';
-import TrainingForm from '../../containers/TrainingFormContainer';
-import TrainingExoList from '../../containers/TrainingExoListContainer';
 import AppNav from '../../containers/AppNavContainer';
+import TrainingManager from './TrainingManager/TrainingManager';
+import TrainingRounds from '../../containers/TrainingRoundsContainer';
 
 import './training.scss';
 
@@ -9,14 +8,9 @@ const Training = () => {
   
   return (
   <section className="training__container">
-    {/* Ici le component AppHeader */}
     <AppNav />
-    {/* Ici le component TrainingManager */}
     <TrainingManager />
-    {/* Ici le component TrainingExoList */}
-    <TrainingExoList />
-    {/* Ici le component TrainingForm */}
-    <TrainingForm />
+    <TrainingRounds />
   </section>
 )};
 

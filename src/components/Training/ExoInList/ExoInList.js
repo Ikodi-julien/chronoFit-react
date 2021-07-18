@@ -1,6 +1,4 @@
 import Proptypes from 'prop-types';
-import ExoInListMenuContainer from '../../../containers/ExoInListMenuContainer';
-import './exerciceinlist.scss';
 
 const ExerciceInList = ({
   index, 
@@ -21,15 +19,7 @@ const ExerciceInList = ({
           className="exoinlist__toggle"
           onClick={() => toggleMenu(index)}
           ><i className="fas fa-bars"></i></button>
-        <ExoInListMenuContainer 
-          index={index}
-          name={name}
-          description={description}
-          duration={duration}
-          reps={reps}
-          weight={weight}
-          menuIsVisible={menuIsVisible}
-        />
+
       </div>
         
       <div className="exoinlist__row">

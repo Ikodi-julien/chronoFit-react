@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import TrainingExoList from '../components/Training/TrainingExoList/TrainingExoList';
+import TrainingRounds from '../components/Training/TrainingRounds/TrainingRounds';
 // import {toggleMenuVisibility} from '../actions/trainingAction';
 
 const mapStateToProps = ({training}, ownProps) => ({
@@ -14,4 +14,4 @@ const mapDispatchToProps = (dispatch) => ({
   // }
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(TrainingExoList);
+export default connect(mapStateToProps, mapDispatchToProps)(TrainingRounds);
