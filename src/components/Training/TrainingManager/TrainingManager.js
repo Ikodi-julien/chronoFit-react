@@ -1,6 +1,11 @@
+import {useEffect} from 'react';
 import './trainingmanager.scss';
 
-const TrainingManager = (props) => {
+const TrainingManager = ({list, getTrainings, setTrainingId}) => {
+  
+  const handleSelectChange = (evt) => setTrainingId(evt.target.value);
+  
+  useEffect(() => {getTrainings()}, []);
   
   return (
     <div className="trainingmanager__container">
@@ -10,10 +15,15 @@ const TrainingManager = (props) => {
             
             <select
               name="trainings"
+              onChange={handleSelectChange}
               className="trainingmanager__col__select"
             >
-              <option value="">Choisir un entrainement</option>
-              <option value="test">Test</option>
+              <option value="">Choisir un entrainement </option>
+            {
+              list.map((name, index) => (
+                <option key={name.id} value={name.id}>{name.name}</option>
+              ))
+            }
             </select>
             <input
               type="text"

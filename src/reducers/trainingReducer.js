@@ -2,10 +2,22 @@ import {
   ADD_EXO, 
   EXO_INPUT_CHANGE,
   SHOW_EXOINLISTMENU,
-  EXO_IN_LIST_INPUT_CHANGE
-} from '../actions/trainingActions';
-
-import { initialState } from './trainingInitialState';
+  EXO_IN_LIST_INPUT_CHANGE,
+  SET_TRAINING_ID
+} from '../actions/trainingViewActions';
+import {
+  GET_TRAININGS_SUCCESS,
+  GET_CURRENT_TRAINING_SUCCESS,
+} from '../actions/trainingAjaxActions';
+/*----------------------------------*/
+import {currentTraining} from '../data/currentTraining';
+import {allTrainings} from '../data/allTrainings';
+/*----------------------------------*/
+const initialState = {
+  currentTrainingId: 0,
+  currentTraining: {},
+  allTrainings: [],
+}
 
 const reducer = (state=initialState, action={}) => {
   
@@ -69,9 +81,28 @@ const reducer = (state=initialState, action={}) => {
       }
     
     case EXO_IN_LIST_INPUT_CHANGE:
-      console.log('un input change dans exo in list');
+      // console.log('un input change dans exo in list');
       return {
         ...state
+      }
+      
+    case GET_TRAININGS_SUCCESS:
+      // console.log(action);
+      return {
+        ...state,
+        allTrainings: action.data,
+      }
+    
+    case SET_TRAINING_ID:
+      return {
+        ...state,
+        currentTrainingId: action.value,
+      }
+      
+    case GET_CURRENT_TRAINING_SUCCESS:
+      return {
+        ...state,
+        currentTraining: action.data,
       }
       
     default:

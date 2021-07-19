@@ -1,17 +1,17 @@
 import {
   createStore, 
   compose, 
-  // applyMiddleware
+  applyMiddleware
 } from 'redux';
 import rootReducer from '../reducers/rootReducer';
+import ajaxMW from '../MW/ajaxMW';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-// A prévoir avec la création de mon premier middleware
-// const enhancers = composeEnhancers(
-//   applyMiddleware(authMW, ajaxMiddleware),
-// );
+const enhancers = composeEnhancers(
+  applyMiddleware(ajaxMW),
+);
 
-const store = createStore(rootReducer, composeEnhancers());
+const store = createStore(rootReducer, enhancers);
 
 export default store;

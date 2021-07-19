@@ -1,5 +1,5 @@
 import Landing from '../Landing/Landing';
-import Training from '../Training/Training';
+import TrainingView from '../../containers/TrainingViewContainer';
 import {
   BrowserRouter as Router,
   Switch,
@@ -14,7 +14,7 @@ function App() {
     <div className="app">
       <Switch>
         <Route path="/training">
-          <Training />
+          <TrainingView />
         </Route>
         {/* /trainingDone pour voir les stats des entrainements réalisés */}
         {/* /exercices pour voir les exos benchmarks proposés */}

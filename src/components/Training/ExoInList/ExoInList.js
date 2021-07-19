@@ -1,4 +1,5 @@
 import Proptypes from 'prop-types';
+import './exoinlist.scss';
 
 const ExerciceInList = ({
   index, 

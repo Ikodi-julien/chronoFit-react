@@ -1,4 +1,4 @@
-import ExoInListContainer from '../../../containers/ExoInListContainer';
+import ExoInListContainer from '../ExoInList/ExoInList';
 
 import './round.scss';
 
@@ -14,7 +14,7 @@ const Round = ({
     <section className="trainingexolist__container">
       <div className="trainingrounds__header">
         <i className="fas fa-ellipsis-v"></i>
-        <span>Round n°{index} - durée : {duration} - {iteration} rounds of :</span>
+        <span>n°{index + 1} - durée : {duration} - {iteration} rounds:</span>
         <i className="fas fa-caret-right"></i>
       </div>
       {
