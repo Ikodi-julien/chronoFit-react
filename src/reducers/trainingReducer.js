@@ -10,8 +10,8 @@ import {
   GET_CURRENT_TRAINING_SUCCESS,
 } from '../actions/trainingAjaxActions';
 /*----------------------------------*/
-import {currentTraining} from '../data/currentTraining';
-import {allTrainings} from '../data/allTrainings';
+// import {currentTraining} from '../data/currentTraining';
+// import {allTrainings} from '../data/allTrainings';
 /*----------------------------------*/
 const initialState = {
   currentTrainingId: 0,

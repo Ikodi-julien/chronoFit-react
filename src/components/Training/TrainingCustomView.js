@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 /*-------------------------------------------*/
 import AppNav from '../../containers/AppNavContainer';
 import TrainingManager from './TrainingManager/TrainingManager';
@@ -6,12 +5,13 @@ import Training from './Training/Training';
 
 import './trainingview.scss';
 
-const TrainingView = ({allTrainings, setTrainingId, currentTrainingId, getTrainings, currentTraining, getCurrentTraining }) => {
+const TrainingCustomView = ({path, allTrainings, setTrainingId, currentTrainingId, getTrainings, currentTraining, getCurrentTraining }) => {
 
   return (
   <section className="training__container">
     <AppNav />
     <TrainingManager 
+      path={path}
       list={allTrainings} 
       getTrainings={getTrainings}
       setTrainingId={setTrainingId}
@@ -24,4 +24,4 @@ const TrainingView = ({allTrainings, setTrainingId, currentTrainingId, getTraini
   </section>
 )};
 
-export default TrainingView;
+export default TrainingCustomView;

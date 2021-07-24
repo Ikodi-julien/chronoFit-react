@@ -7,12 +7,13 @@ import {
 } from '../actions/trainingAjaxActions';
 import {setTrainingId} from '../actions/trainingViewActions';
 /*---------------------------------*/
-import TrainingView from '../components/Training/TrainingView';
+import TrainingBenchmarkView from '../components/Training/TrainingBenchmarkView';
 
-const mapStateToProps = ({training}, ownProps) => ({
+const mapStateToProps = ({training}, {path}) => ({
   allTrainings: training.allTrainings,
   currentTrainingId: training.currentTrainingId,
   currentTraining: training.currentTraining,
+  path: path,
 })
 
 const mapDispatchToProps = (dispatch) => ({
@@ -21,4 +22,4 @@ const mapDispatchToProps = (dispatch) => ({
   getCurrentTraining: (id) => dispatch(getCurrentTraining(id)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(TrainingView);
+export default connect(mapStateToProps, mapDispatchToProps)(TrainingBenchmarkView);

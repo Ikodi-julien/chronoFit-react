@@ -8,9 +8,15 @@ const Landing = (props) => (
     <h1 className="landing__title">CHRONOFIT</h1>
     <Link 
       className="landing__button"
-      to="training"
+      to="benchmark_training"
     >
-      Training
+      Benchmark Trainings
+    </Link>
+    <Link 
+      className="landing__button"
+      to="custom_training"
+    >
+      Custom Trainings
     </Link>
   </section>
 )

@@ -7,9 +7,9 @@ const Round = ({
   duration,
   iteration,
   shrunken,
-  exoList,
+  exercices,
 }) => {
-  // console.log('exoList: ', exoList)
+
   return (
     <section className="trainingexolist__container">
       <div className="trainingrounds__header">
@@ -18,15 +18,15 @@ const Round = ({
         <i className="fas fa-caret-right"></i>
       </div>
       {
-        exoList.map((exo, index) => (
+        exercices.map((exo, index) => (
           <ExoInListContainer 
             key={index}
             index={index}
             name={exo.name}
             description={exo.description}
-            duration={exo.duration}
-            reps={exo.reps}
-            weight={exo.weight}
+            duration={exo.options[0].duration}
+            reps={exo.options[0].reps}
+            weight={exo.options[0].weight}
             menuIsVisible={exo.menuIsVisible}
           />
         ))

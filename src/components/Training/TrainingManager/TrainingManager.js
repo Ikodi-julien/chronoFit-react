@@ -1,14 +1,17 @@
 import {useEffect} from 'react';
 import './trainingmanager.scss';
 
-const TrainingManager = ({list, getTrainings, setTrainingId}) => {
+const TrainingManager = ({path, list, getTrainings, setTrainingId}) => {
   
   const handleSelectChange = (evt) => setTrainingId(evt.target.value);
   
-  useEffect(() => {getTrainings()}, []);
-  
+  useEffect(() => {getTrainings()}, [getTrainings]);
+
   return (
     <div className="trainingmanager__container">
+        <h1 className="trainingmanager__title">
+          {path === "/benchmark_training" ? "Benchmarks Trainings" : "Custom Trainings"}
+        </h1>
         <form>
         
           <div className="trainingmanager__col">
@@ -25,21 +28,29 @@ const TrainingManager = ({list, getTrainings, setTrainingId}) => {
               ))
             }
             </select>
+            {
+            path === "/custom_training" ?
             <input
               type="text"
               className="trainingmanager__col__input"
               placeholder="Nom de l'entrainement"
-              />
+              /> : null
+            }
           </div>
           
-          <div className="trainingmanager__row">
-            <button type="submit" className="trainingmanager__row__button training__button">
-              Save
-            </button>
-            <button type="submit" className="trainingmanager__row__button training__button">
-              Delete
-            </button>
-          </div>
+          {
+            path === "/custom_training" ?
+            <div className="trainingmanager__row">
+              <button type="submit" className="trainingmanager__row__button training__button">
+                Save
+              </button>
+              <button type="submit" className="trainingmanager__row__button training__button">
+                Delete
+              </button>
+            </div>
+            : null
+          }
+
           
         </form>
     </div>

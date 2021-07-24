@@ -20,6 +20,8 @@ export default (store) => (next) => (action) => {
     
     case GET_CURRENT_TRAINING:
       next(action);
+      if (action.value === '') return store.dispatch(getCurrentTrainingSuccess({}))
+      
       axios.get(`${URL}/training/${action.value}`)
         .then(res => store.dispatch(getCurrentTrainingSuccess(res.data)))
         .catch(err => console.error(err))

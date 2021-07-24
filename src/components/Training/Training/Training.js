@@ -8,7 +8,7 @@ const Training = ({id, rounds, getCurrentTraining}) => {
 
   useEffect(() => {
     if (id !== 0) getCurrentTraining(id);
-  }, [id]);
+  }, [getCurrentTraining, id]);
   
   return (
     <section className="trainingrounds__container">
@@ -22,7 +22,7 @@ const Training = ({id, rounds, getCurrentTraining}) => {
               duration={round.duration}
               iteration={round.iteration}
               shrunken={round.isShrunken}
-              exoList={round.exoList}
+              exercices={round.exercices}
             />
           )) : null)
         : null

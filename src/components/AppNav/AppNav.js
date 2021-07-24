@@ -20,9 +20,10 @@ const AppNav = ({toggleMenu, menuIsVisible}) => {
           >
           <i className="fas fa-times"></i>
         </button>
-        <NavLink to="/" className="appnav__links__link">Accueil</NavLink>
-        <NavLink to="/training" className="appnav__links__link">Trainings</NavLink>
-        <NavLink to="/connexion" className="appnav__links__link">Connexion</NavLink>
+        <NavLink to="/" className="appnav__links__link" onClick={() => toggleMenu()} >Accueil</NavLink>
+        <NavLink to="/benchmark_training" className="appnav__links__link" onClick={() => toggleMenu()} >Benchmark Trainings</NavLink>
+        <NavLink to="/custom_training" className="appnav__links__link" onClick={() => toggleMenu()} >Custom Trainings</NavLink>
+        <NavLink to="/connexion" className="appnav__links__link" onClick={() => toggleMenu()} >Connexion</NavLink>
       </ul>
       
     </section>
