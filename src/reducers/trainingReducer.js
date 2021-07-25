@@ -9,14 +9,32 @@ import {
   GET_TRAININGS_SUCCESS,
   GET_CURRENT_TRAINING_SUCCESS,
 } from '../actions/trainingAjaxActions';
+import {
+  SET_LOCAL_TRAINING,
+  SET_LOCAL_TRAINING_NAME,
+  GET_LOCAL_TRAININGS_SUCCESS,
+} from '../actions/trainingLocalActions';
 /*----------------------------------*/
-// import {currentTraining} from '../data/currentTraining';
-// import {allTrainings} from '../data/allTrainings';
+import {currentTraining} from '../data/currentTraining';
+import {allTrainings} from '../data/allTrainings';
 /*----------------------------------*/
 const initialState = {
   currentTrainingId: 0,
-  currentTraining: {},
   allTrainings: [],
+  currentTraining: {},
+  
+  allLocalTrainings: [],
+  localTraining: {
+    rounds: [
+      {
+        id: 4,
+        iteration: 1,
+        duration: 0,
+        exercices: []
+      }
+    ]
+  },
+  localTrainingName: '',
 }
 
 const reducer = (state=initialState, action={}) => {
@@ -103,6 +121,31 @@ const reducer = (state=initialState, action={}) => {
       return {
         ...state,
         currentTraining: action.data,
+      }
+    
+    case SET_LOCAL_TRAINING:
+      if (action.value === 'default') {
+        return {
+          ...state,
+          localTraining: {},
+        }
+      }
+      
+      return {
+        ...state,
+        localTraining: state.allLocalTrainings.find(training =>  training.name === action.value),
+      }
+      
+    case SET_LOCAL_TRAINING_NAME:
+      return {
+        ...state,
+        localTrainingName: action.value
+      }
+      
+    case GET_LOCAL_TRAININGS_SUCCESS:
+      return {
+        ...state,
+        allLocalTrainings: action.data,
       }
       
     default:

@@ -6,9 +6,9 @@ import './training.scss';
 
 const Training = ({id, rounds, getCurrentTraining}) => {
 
-  useEffect(() => {
-    if (id !== 0) getCurrentTraining(id);
-  }, [getCurrentTraining, id]);
+  // useEffect(() => {
+  //   if (id !== 0) getCurrentTraining(id);
+  // }, [getCurrentTraining, id]);
   
   return (
     <section className="trainingrounds__container">

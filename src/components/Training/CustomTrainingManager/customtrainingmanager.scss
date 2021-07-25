@@ -1,0 +1,52 @@
+@use 'src/styles/vars'as v;
+
+.trainingmanager {
+  &__container {
+    // border: 1px dashed orange;
+    width: 100%;
+
+    & form {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
+  &__title {
+    padding: 8px;
+    text-align: center;
+    background-color: v.$base-color;
+    color: v.$color-very-light;
+  }
+
+  &__col {
+    // width: 65%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 0px 8px;
+
+    &__select,
+    &__input {
+      margin: 2px 0px;
+      height: 25px;
+      border: none;
+      border-bottom: 1px solid adjust-color(v.$base-color, $lightness: 60%);
+    }
+
+    &__select {
+      background-color: adjust-color(v.$base-color, $lightness: 68%);
+    }
+  }
+
+  &__row {
+    width: 35%;
+    padding: 0px 8px;
+    display: flex;
+
+    &__button {
+      width: 45%;
+      height: 85%;
+      margin: 5px;
+    }
+  }
+}

@@ -5,7 +5,7 @@ import Training from './Training/Training';
 
 import './trainingview.scss';
 
-const TrainingCustomView = ({path, allTrainings, setTrainingId, currentTrainingId, getTrainings, currentTraining, getCurrentTraining }) => {
+const BenchmarkTrainingView = ({path, allTrainings, setTrainingId, currentTrainingId, getTrainings, currentTraining, getCurrentTraining }) => {
 
   return (
   <section className="training__container">
@@ -24,4 +24,4 @@ const TrainingCustomView = ({path, allTrainings, setTrainingId, currentTrainingI
   </section>
 )};
 
-export default TrainingCustomView;
+export default BenchmarkTrainingView;
