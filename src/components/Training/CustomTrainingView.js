@@ -5,16 +5,18 @@ import Training from './Training/Training';
 
 import './trainingview.scss';
 
-const CustomTrainingView = ({ localTraining, getCurrentTraining }) => {
+const CustomTrainingView = ({ localTraining, addRoundToLocalTraining, deleteRoundFromLocalTraining, setRoundMenuIsVisible }) => {
 
   return (
   <section className="training__container">
     <AppNav />
     <CustomTrainingManagerContainer />
     <Training
-      id={localTraining.id} 
+      name={localTraining.name} 
       rounds={localTraining.rounds} 
-      // getCurrentTraining={getCurrentTraining}
+      addRound={addRoundToLocalTraining}
+      deleteRound={deleteRoundFromLocalTraining}
+      setRoundMenuIsVisible={setRoundMenuIsVisible}
       />
   </section>
 )};

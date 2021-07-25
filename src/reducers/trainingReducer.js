@@ -3,7 +3,8 @@ import {
   EXO_INPUT_CHANGE,
   SHOW_EXOINLISTMENU,
   EXO_IN_LIST_INPUT_CHANGE,
-  SET_TRAINING_ID
+  SET_TRAINING_ID,
+  SET_ROUNDMENU_IS_VISIBLE,
 } from '../actions/trainingViewActions';
 import {
   GET_TRAININGS_SUCCESS,
@@ -13,10 +14,12 @@ import {
   SET_LOCAL_TRAINING,
   SET_LOCAL_TRAINING_NAME,
   GET_LOCAL_TRAININGS_SUCCESS,
+  ADD_ROUND_TO_LOCAL_TRAINING,
+  DELETE_ROUND_FROM_LOCAL_TRAINING,
 } from '../actions/trainingLocalActions';
 /*----------------------------------*/
-import {currentTraining} from '../data/currentTraining';
-import {allTrainings} from '../data/allTrainings';
+// import {currentTraining} from '../data/currentTraining';
+// import {allTrainings} from '../data/allTrainings';
 /*----------------------------------*/
 const initialState = {
   currentTrainingId: 0,
@@ -30,7 +33,8 @@ const initialState = {
         id: 4,
         iteration: 1,
         duration: 0,
-        exercices: []
+        exercices: [],
+        menuIsVisible: false,
       }
     ]
   },
@@ -38,6 +42,8 @@ const initialState = {
 }
 
 const reducer = (state=initialState, action={}) => {
+  
+  const {rounds} = state.localTraining;
   
   switch (action.type) {
     case EXO_INPUT_CHANGE:
@@ -146,6 +152,45 @@ const reducer = (state=initialState, action={}) => {
       return {
         ...state,
         allLocalTrainings: action.data,
+      }
+    
+    case ADD_ROUND_TO_LOCAL_TRAINING:
+      return {
+        ...state,
+        localTraining: {
+          ...state.localTraining,
+          rounds : [
+            ...state.localTraining.rounds,
+            {
+              iteration: 1,
+              duration: 0,
+              exercices: [],
+              menuIsVisible: false,
+            }
+          ]
+        }
+      }
+    
+    case DELETE_ROUND_FROM_LOCAL_TRAINING:
+      const newRounds = rounds.filter(round => round !== rounds[action.value]);
+      
+      return {
+        ...state,
+        localTraining: {
+          ...state.localTraining,
+          rounds: newRounds,
+        }
+      }
+      
+    case SET_ROUNDMENU_IS_VISIBLE:
+      rounds[action.value.index].menuIsVisible = action.value.bool;
+      
+      return {
+        ...state,
+        localTraining: {
+          ...state.localTraining,
+          rounds
+        }
       }
       
     default:

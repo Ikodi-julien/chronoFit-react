@@ -1,13 +1,25 @@
 import {NavLink} from 'react-router-dom';
+import {useLocation} from 'react-router-dom'
 import PropTypes from 'prop-types';
 
 import './appnav.scss';
 
 const AppNav = ({toggleMenu, menuIsVisible}) => {
   
+  const location = useLocation();
+  console.log(location.pathname);
+  
   return(
     <section className="appnav__container">
-      <div className="appnav__logo">CHRONOFIT</div>
+      <div className="appnav__title">
+        {
+          location.pathname === "/custom_training" ?
+            "Custom Training" : 
+          location.pathname === "/benchmark_training" ?
+            "Benchmark Training" :
+            "Titre pas prévu..."
+        }
+      </div>
       <button 
         className="appnav__toggle"
         onClick={() => toggleMenu()}

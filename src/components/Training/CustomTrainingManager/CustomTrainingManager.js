@@ -21,9 +21,6 @@ const CustomTrainingManager = ({
 
   return (
     <div className="trainingmanager__container">
-        <h1 className="trainingmanager__title">
-          Custom Trainings
-        </h1>
         <form 
         onSubmit={(evt) => {
           evt.preventDefault();
@@ -55,7 +52,7 @@ const CustomTrainingManager = ({
               value={localTrainingName}
               onChange={(evt => setLocalTrainingName(evt.target.value))}
               className="trainingmanager__col__input"
-              placeholder="Nom de l'entrainement"
+              placeholder="Nom du nouvel entrainement"
               />
           </div>
           

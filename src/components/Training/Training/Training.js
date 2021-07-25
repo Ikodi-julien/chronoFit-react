@@ -1,20 +1,12 @@
-import { useEffect } from 'react';
-/*------------------------------*/
 import Round from '../Round/Round';
+import './trainingrounds.scss';
 
-import './training.scss';
+const Training = ({name, rounds, addRound, deleteRound, setRoundMenuIsVisible}) => {
 
-const Training = ({id, rounds, getCurrentTraining}) => {
-
-  // useEffect(() => {
-  //   if (id !== 0) getCurrentTraining(id);
-  // }, [getCurrentTraining, id]);
-  
   return (
     <section className="trainingrounds__container">
-
       {
-        id !== 0 ? 
+        name !== "" ? 
           (rounds ? rounds.map((round, index) => (
             <Round 
               key={index}
@@ -23,6 +15,10 @@ const Training = ({id, rounds, getCurrentTraining}) => {
               iteration={round.iteration}
               shrunken={round.isShrunken}
               exercices={round.exercices}
+              addRound={addRound}
+              deleteRound={deleteRound}
+              menuIsVisible={round.menuIsVisible}
+              setRoundMenuIsVisible={setRoundMenuIsVisible}
             />
           )) : null)
         : null
