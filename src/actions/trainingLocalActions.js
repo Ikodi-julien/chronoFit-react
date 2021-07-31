@@ -26,3 +26,6 @@ export const addRoundToLocalTraining = () => ({ type: ADD_ROUND_TO_LOCAL_TRAININ
 
 export const DELETE_ROUND_FROM_LOCAL_TRAINING = 'DELETE_ROUND_FROM_LOCAL_TRAINING';
 export const deleteRoundFromLocalTraining = (index) => ({ type: DELETE_ROUND_FROM_LOCAL_TRAINING, value: index });
+
+export const ADD_EXERCICE_TO_LOCAL_TRAINING = 'ADD_EXERCICE_TO_LOCAL_TRAINING';
+export const addExerciceToLocalTraining = (index) => ({type: ADD_EXERCICE_TO_LOCAL_TRAINING, value: {roundId: index} });

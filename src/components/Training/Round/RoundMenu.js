@@ -1,4 +1,4 @@
-const RoundMenu = ({index, addRound, deleteRound, setRoundMenuIsVisible}) => (
+const RoundMenu = ({index, addRound, addExercice, deleteRound, setRoundMenuIsVisible}) => (
   <section className="roundmenu">
     <div className="roundmenu__header">
       <span>Liste des actions</span>
@@ -6,13 +6,18 @@ const RoundMenu = ({index, addRound, deleteRound, setRoundMenuIsVisible}) => (
         <i className="fas fa-times" onClick={() => setRoundMenuIsVisible(index, false)}></i>
       </button>
     </div>
+    
     <ul className="roundmenu__actions">
-      <li className="roundmenu__action">Add Exercice</li>
+      <li >-------------------------</li>
+      <li 
+        className="roundmenu__action "
+        onClick={() => addExercice(index)}
+      >Add Exercice</li>
       <li 
         className="roundmenu__action" 
         onClick={() => addRound()}
       >Add round</li>
-      <li className="roundmenu__action">-------------------------</li>
+      <li>-------------------------</li>
       <li 
         className="roundmenu__action"
         onClick={() => deleteRound(index)}

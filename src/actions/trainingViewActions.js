@@ -28,3 +28,6 @@ export const setTrainingId = (id) => ({type: SET_TRAINING_ID, value: id});
 
 export const SET_ROUNDMENU_IS_VISIBLE = 'SET_ROUNDMENU_IS_VISIBLE';
 export const setRoundMenuIsVisible = (index, bool) => ({type: SET_ROUNDMENU_IS_VISIBLE, value: {index, bool}});
+
+export const SET_ROUND_ITERATION = 'SET_ROUND_ITERATION';
+export const setRoundIteration = (index, value) => ({type: SET_ROUND_ITERATION, value: {index, value}});

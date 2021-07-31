@@ -10,24 +10,36 @@ const Round = ({
   shrunken,
   exercices,
   addRound,
+  addExercice,
   deleteRound,
   setRoundMenuIsVisible,
+  setRoundIteration,
   menuIsVisible,
 }) => {
 
+  const handleChange = (evt) => setRoundIteration(index, evt.target.value)
+  
   return (
     <section className="trainingexolist__container">
       <div className="trainingrounds__header">
         {
           menuIsVisible ? <RoundMenu 
-                                index={index}
-                                addRound={addRound}
-                                deleteRound={deleteRound}
-                                setRoundMenuIsVisible={setRoundMenuIsVisible}
-                                /> : null
+                            index={index}
+                            addRound={addRound}
+                            addExercice={addExercice}
+                            deleteRound={deleteRound}
+                            setRoundMenuIsVisible={setRoundMenuIsVisible}
+                            /> : null
         }
-        <i className="fas fa-ellipsis-v" onClick={() => setRoundMenuIsVisible(index, true)}></i>
-        <span>n°{index + 1} - durée : {duration} - {iteration} rounds:</span>
+        <i className="fas fa-ellipsis-v trainingrounds__header__togglemenu" onClick={() => setRoundMenuIsVisible(index, true)}></i>
+        <span>Round n°{index + 1} - Durée : {duration}s - Nombre : 
+          <input
+            name="roundIteration" 
+            type={"number"} 
+            value={iteration} 
+            className="trainingrounds__round__iteration"
+            onChange={handleChange}
+          /></span>
         <i className="fas fa-caret-right"></i>
       </div>
       {

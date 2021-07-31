@@ -5,6 +5,7 @@ import {
   EXO_IN_LIST_INPUT_CHANGE,
   SET_TRAINING_ID,
   SET_ROUNDMENU_IS_VISIBLE,
+  SET_ROUND_ITERATION,
 } from '../actions/trainingViewActions';
 import {
   GET_TRAININGS_SUCCESS,
@@ -15,6 +16,7 @@ import {
   SET_LOCAL_TRAINING_NAME,
   GET_LOCAL_TRAININGS_SUCCESS,
   ADD_ROUND_TO_LOCAL_TRAINING,
+  ADD_EXERCICE_TO_LOCAL_TRAINING,
   DELETE_ROUND_FROM_LOCAL_TRAINING,
 } from '../actions/trainingLocalActions';
 /*----------------------------------*/
@@ -30,10 +32,22 @@ const initialState = {
   localTraining: {
     rounds: [
       {
-        id: 4,
         iteration: 1,
         duration: 0,
-        exercices: [],
+        exercices: [
+          {
+            name: 'vide',
+            description: 'vide',
+            // isBenchmark: false,
+            options: [
+              {
+                duration: 10,
+                weight: 25,
+                reps: 10,
+              }
+            ]
+          }
+        ],
         menuIsVisible: false,
       }
     ]
@@ -172,13 +186,41 @@ const reducer = (state=initialState, action={}) => {
       }
     
     case DELETE_ROUND_FROM_LOCAL_TRAINING:
-      const newRounds = rounds.filter(round => round !== rounds[action.value]);
+      const newRounds = rounds.filter(round => round.id === rounds[action.value]);
       
       return {
         ...state,
         localTraining: {
           ...state.localTraining,
           rounds: newRounds,
+        }
+      }
+      
+    case ADD_EXERCICE_TO_LOCAL_TRAINING:
+      console.log(action);
+      const round = rounds[action.value.roundId];
+      
+      round.exercices.push(
+        {
+          name: 'exo ajouté',
+          description: 'exo ajouté',
+          // isBenchmark: false,
+          options: [
+            {
+              duration: 0,
+              weight: 0,
+              reps: 0,
+            }
+          ]
+        })
+      
+      rounds[action.value.roundId]= round;
+      
+      return {
+        ...state,
+        localTraining : {
+          ...state.localTraining,
+          rounds
         }
       }
       
@@ -193,6 +235,16 @@ const reducer = (state=initialState, action={}) => {
         }
       }
       
+    case SET_ROUND_ITERATION:
+      
+      rounds[action.value.index].iteration = action.value.value;
+      return {
+        ...state,
+        localTraining: {
+          ...state.localTraining,
+          rounds
+        }
+      }
     default:
       return state;
   }

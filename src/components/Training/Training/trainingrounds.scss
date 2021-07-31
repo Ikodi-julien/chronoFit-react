@@ -17,6 +17,16 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: 5px;
+
+    &__togglemenu {
+      cursor: pointer;
+    }
   }
 
+  &__round {
+    &__iteration {
+      border: 1px solid v.$color-intermediaire;
+      max-width: 40px;
+    }
+  }
 }

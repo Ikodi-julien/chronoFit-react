@@ -5,7 +5,7 @@ import Training from './Training/Training';
 
 import './trainingview.scss';
 
-const CustomTrainingView = ({ localTraining, addRoundToLocalTraining, deleteRoundFromLocalTraining, setRoundMenuIsVisible }) => {
+const CustomTrainingView = ({ localTraining, addRoundToLocalTraining, addExerciceToLocalTraining, deleteRoundFromLocalTraining, setRoundMenuIsVisible, setRoundIteration }) => {
 
   return (
   <section className="training__container">
@@ -15,8 +15,10 @@ const CustomTrainingView = ({ localTraining, addRoundToLocalTraining, deleteRoun
       name={localTraining.name} 
       rounds={localTraining.rounds} 
       addRound={addRoundToLocalTraining}
+      addExercice={addExerciceToLocalTraining}
       deleteRound={deleteRoundFromLocalTraining}
       setRoundMenuIsVisible={setRoundMenuIsVisible}
+      setRoundIteration={setRoundIteration}
       />
   </section>
 )};
