@@ -1,26 +1,38 @@
-import ExoInList from '../ExoInList/ExoInList';
+import Sortable from 'sortablejs';
+import { useEffect } from 'react';
+
+import ExoInList from '../../../containers/ExoInListContainer';
 import ExoForm from '../../../containers/ExoFormContainer';
 import RoundMenu from './RoundMenu';
 
 import './round.scss';
 
 const Round = ({
+  // Pour Round
+  isToRender,
   roundIndex,
-  duration,
   iteration,
   shrunken,
   exercices,
+  setRoundIteration,
+  menuIsVisible,
+  // Pour RoundMenu
   addRound,
   addExercice,
   deleteRound,
   setRoundMenuIsVisible,
-  setRoundIteration,
-  menuIsVisible,
-  showExoInList,
-  showExoForm
 }) => {
 
   const handleChange = (evt) => setRoundIteration(roundIndex, evt.target.value)
+  let duration = 0;
+  exercices.forEach(exo => duration += parseInt(exo.options[0].duration) * (exo.options[0].iteration ? parseInt(exo.options[0].iteration) : 1));
+  
+  if (duration > 60) duration = `${Math.floor(duration/60)}mn ${duration % 60}s`;
+  
+  useEffect(() => {
+    const exoList = document.getElementById(`exoList-${roundIndex}`);
+    Sortable.create(exoList, {group: {name: 'exoList', pull: true, put: true }});
+  })
   
   return (
     <section className="rounds__round__container">
@@ -37,47 +49,44 @@ const Round = ({
         <button className="training__button --transparent --icone">
           <i className="fas fa-ellipsis-v trainingrounds__header__togglemenu" onClick={() => setRoundMenuIsVisible(roundIndex, true)}></i>
         </button>
-        <span className="rounds__round__header__title">Round n°{roundIndex + 1} - Durée : {duration}s - Nombre : 
-          <input
-            name="roundIteration" 
-            type={"number"} 
-            value={iteration} 
-            className="rounds__round__iteration"
-            onChange={handleChange}
-          /></span>
+        
+        <div className="rounds__round__header__column">
+          <div className="rounds__round__header__title">Round n°{roundIndex + 1} </div>
+          <div className="rounds__round__header__subtitle">Durée : {duration} - Répéter
+            <input
+              name="roundIteration"
+              type={"number"}
+              value={iteration}
+              className="rounds__round__iteration"
+              onChange={handleChange}
+            /> fois</div>
+        </div>
+        
         <button className="training__button --transparent --icone --xl">
           <i className="fas fa-caret-right"></i>
         </button>
       </div>
-      {
-        exercices.map((exo, index) => (
-          exo.isForm ? 
-          <ExoForm
-            key={index}
-            roundIndex={roundIndex}
-            index={index}
-            name={exo.name}
-            description={exo.description}
-            duration={exo.options[0].duration}
-            reps={exo.options[0].reps}
-            weight={exo.options[0].weight}
-            showExoInList={showExoInList}
-          />
-          :
-          <ExoInList
-            key={index}
-            roundIndex={roundIndex}
-            index={index}
-            name={exo.name}
-            description={exo.description}
-            duration={exo.options[0].duration}
-            reps={exo.options[0].reps}
-            weight={exo.options[0].weight}
-            showExoForm={showExoForm}
-          />
-        ))
-      }
-
+      
+      <ul className="rounds__round__exolist" id={`exoList-${roundIndex}`}>
+        {
+          exercices.map((exo, index) => (
+            exo.isForm ?
+            <li key={index}>
+              <ExoForm
+                roundIndex={roundIndex}
+                index={index}
+              />
+            </li>
+            :
+            <li key={index}>
+              <ExoInList
+                roundIndex={roundIndex}
+                index={index}
+              />
+            </li>
+          ))
+        }
+      </ul>
     </section>
   )
 }

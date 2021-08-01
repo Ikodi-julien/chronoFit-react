@@ -1,7 +1,7 @@
 /*-------------------------------------------*/
 import AppNav from '../../containers/AppNavContainer';
 import TrainingManager from './TrainingManager/TrainingManager';
-import Training from './Training/Training';
+import TrainingAPI from './Training/TrainingAPI';
 
 import './trainingview.scss';
 
@@ -16,7 +16,7 @@ const BenchmarkTrainingView = ({path, allTrainings, setTrainingId, currentTraini
       getTrainings={getTrainings}
       setTrainingId={setTrainingId}
       />
-    <Training
+    <TrainingAPI
       id={currentTrainingId} 
       rounds={currentTraining.rounds} 
       getCurrentTraining={getCurrentTraining}

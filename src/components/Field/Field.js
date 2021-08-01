@@ -14,10 +14,10 @@ const Field = ({
     name,
     value: evt.target.value
     }, index)
-    console.log('inputchange', {
-      name,
-      value: evt.target.value
-      } )
+    // console.log('inputchange', {
+    //   name,
+    //   value: evt.target.value
+    //   } )
   }
   
   return (

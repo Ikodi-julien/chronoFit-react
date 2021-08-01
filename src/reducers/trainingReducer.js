@@ -6,6 +6,7 @@ import {
   SET_ROUND_ITERATION,
   SHOW_EXO_FORM,
   SHOW_EXO_IN_LIST,
+  MOVE_ROUND_IN_STATE,
 } from '../actions/trainingViewActions';
 import {
   GET_TRAININGS_SUCCESS,
@@ -19,6 +20,7 @@ import {
   ADD_EXERCICE_TO_LOCAL_TRAINING,
   DELETE_ROUND_FROM_LOCAL_TRAINING,
   PUT_EXOFORM_IN_LOCAL_TRAINING,
+  DELETE_EXO_FROM_ROUND,
 } from '../actions/trainingLocalActions';
 /*----------------------------------*/
 // import {currentTraining} from '../data/currentTraining';
@@ -31,6 +33,9 @@ const initialState = {
   
   allLocalTrainings: [],
   localTraining: {
+    isToRender: 0,
+    name: 'local training',
+    type: 'default',
     rounds: [
       {
         menuIsVisible: false,
@@ -39,14 +44,14 @@ const initialState = {
         exercices: [
           {
             isForm: false,
-            name: 'vide',
-            description: 'Une longue description pour voir comment ça se passe s\'il y a des retours à la ligne et des trucs en plus à la finally...',
-            // isBenchmark: false,
+            name: 'A définir',
+            description: '',
             options: [
               {
-                duration: 10,
-                weight: 25,
-                reps: 10,
+                iteration: 1,
+                duration: 0,
+                weight: 0,
+                reps: 0,
               }
             ]
           }
@@ -56,15 +61,15 @@ const initialState = {
   },
   // This is TrainingManager name input
   localTrainingName: '',
-  // This is the values used in ExoForm, put in training if submited.
+  // Those are the values used in ExoForm, put in training if submited.
   exoForm: {
-    name: 'exoform',
-    desc: 'exodesc',
-    reps: 'nbreps',
-    duration: 'exoduration',
-    weight: 'exoweight',
+    name: '',
+    iteration: null,
+    desc: '',
+    reps: null,
+    duration: null,
+    weight: null,
   }
-  
 }
 
 const reducer = (state=initialState, action={}) => {
@@ -87,13 +92,13 @@ const reducer = (state=initialState, action={}) => {
       }
       
     case PUT_EXOFORM_IN_LOCAL_TRAINING:
-      console.log(action);
       allRoundsExoShrunken[action.roundIndex].exercices[action.exoIndex] = {
         ...allRoundsExoShrunken[action.roundIndex].exercices[action.exoIndex],
         name: state.exoForm.name,
         description: state.exoForm.desc,
         options: [
           {
+            iteration: state.exoForm.iteration,
             duration: state.exoForm.duration,
             weight: state.exoForm.weight,
             reps: state.exoForm.reps,
@@ -104,8 +109,10 @@ const reducer = (state=initialState, action={}) => {
         ...state,
         localTraining: {
           ...state.localTraining,
+          isToRender: Math.random(),
           rounds: allRoundsExoShrunken
-        }
+        },
+        exoForm: initialState.exoForm,
       }
     
     case ADD_EXO:
@@ -142,6 +149,33 @@ const reducer = (state=initialState, action={}) => {
         ]
       }
     
+    case DELETE_EXO_FROM_ROUND:
+      const roundsWithoutExo = allRoundsExoShrunken.map(round => {
+        const newExercices = round.exercices.filter(exo => exo !== round.exercices[action.exoIndex])
+        round.exercices = newExercices;
+        return round;
+      })
+      
+    return {
+      ...state,
+      localTraining: {
+        ...state.localTraining,
+        rounds: roundsWithoutExo
+      }
+    }
+      
+    case MOVE_ROUND_IN_STATE:
+      const [roundToMove] = rounds.splice(action.oldIndex, 1);
+      rounds.splice(action.newIndex, 0, roundToMove);
+      
+      return {
+        ...state,
+        localTraining: {
+          ...state.localTraining,
+          rounds,
+        }
+      }
+    
     case GET_TRAININGS_SUCCESS:
       // console.log(action);
       return {
@@ -165,7 +199,7 @@ const reducer = (state=initialState, action={}) => {
       if (action.value === 'default') {
         return {
           ...state,
-          localTraining: {},
+          localTraining: {...initialState.localTraining},
         }
       }
       
@@ -198,7 +232,21 @@ const reducer = (state=initialState, action={}) => {
               menuIsVisible: false,
               iteration: 1,
               duration: 0,
-              exercices: [],
+              exercices: [
+                {
+                  isForm: false,
+                  name: 'A définir',
+                  description: '',
+                  options: [
+                    {
+                      iteration: '1',
+                      duration: '0',
+                      weight: '0',
+                      reps: '0',
+                    }
+                  ]
+                }
+              ],
             }
           ]
         }
@@ -217,10 +265,11 @@ const reducer = (state=initialState, action={}) => {
       
     case ADD_EXERCICE_TO_LOCAL_TRAINING:
       console.log(action);
-      const round = rounds[action.value.roundId];
+      const round = allRoundMenuHidden[action.value.roundId];
       
       round.exercices.push(
         {
+          isForm: true,
           name: 'exo ajouté',
           description: 'exo ajouté',
           // isBenchmark: false,
@@ -233,13 +282,14 @@ const reducer = (state=initialState, action={}) => {
           ]
         })
       
-      rounds[action.value.roundId]= round;
+      allRoundMenuHidden[action.value.roundId]= round;
       
       return {
         ...state,
         localTraining : {
           ...state.localTraining,
-          rounds
+          isToRender: Math.random(),
+          rounds: allRoundMenuHidden,
         }
       }
       
@@ -275,11 +325,13 @@ const reducer = (state=initialState, action={}) => {
         ...state,
         localTraining: {
           ...state.localTraining,
+          isToRender: Math.random(),
           rounds,
         },
         exoForm: {
         name: exoToShow.name,
         desc: exoToShow.description,
+        iteration: exoToShow.options[0].iteration,
         reps: exoToShow.options[0].reps,
         duration: exoToShow.options[0].duration,
         weight: exoToShow.options[0].weight,
@@ -294,6 +346,7 @@ const reducer = (state=initialState, action={}) => {
       ...state,
       localTraining: {
         ...state.localTraining,
+        isToRender: Math.random(),
         rounds,
       },
       

@@ -32,3 +32,7 @@ export const addExerciceToLocalTraining = (index) => ({type: ADD_EXERCICE_TO_LOC
 
 export const PUT_EXOFORM_IN_LOCAL_TRAINING = 'PUT_EXOFORM_IN_LOCAL_TRAINING';
 export const putExoFormInTraining = (roundIndex, exoIndex) => ({ type: PUT_EXOFORM_IN_LOCAL_TRAINING, roundIndex, exoIndex });
+
+export const DELETE_EXO_FROM_ROUND = 'DELETE_EXO_FROM_ROUND';
+export const deleteExoFromRound = (roundIndex, exoIndex) => ({ type: DELETE_EXO_FROM_ROUND, roundIndex, exoIndex});
+

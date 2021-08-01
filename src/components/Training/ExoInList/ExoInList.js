@@ -6,6 +6,7 @@ const ExerciceInList = ({
   index, 
   name, 
   description, 
+  iteration,
   duration, 
   reps, 
   weight, 
@@ -18,7 +19,7 @@ const ExerciceInList = ({
   return (
     <div className="exoinlist">
       <div className="exoinlist__row">
-        <div className="exoinlist__name">{name}</div>
+        <div className="exoinlist__name"><span>{name}</span> - <span>{iteration} série{iteration > 1 ? 's' : ''}</span></div>
         <button 
           className="training__button --transparent --icone --xl"
           onClick={() => showExoForm(roundIndex, index)}
@@ -26,10 +27,16 @@ const ExerciceInList = ({
 
       </div>
         
-      <div className="exoinlist__row --left">
-        <div className="exoinlist__data exosinlist__description --shrunken">{countDescription > 50 ? shrunkenDescription : description}</div>
-        {countDescription > 50 ? <div className="exoinlist__data">...</div> : null}
-      </div>
+      {countDescription > 0 ? 
+        <div className="exoinlist__row --left">
+          <div className="exoinlist__data exosinlist__description --shrunken">
+            {countDescription > 50 ? shrunkenDescription : description}
+          </div>
+          {countDescription > 50 ? <div className="exoinlist__data">...</div> : null}
+        </div>
+      :
+      null
+      }
       
       <div className="exoinlist__row">
         <div className="exoinlist__data exosinlist__duration">Tps: {duration}</div>

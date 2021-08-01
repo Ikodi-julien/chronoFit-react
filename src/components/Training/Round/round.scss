@@ -4,10 +4,14 @@
   &__container {
     width: 100%;
     padding-top: 5px;
-    border: 1px dashed green;
+    // border: 1px dashed green;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+
+    & li {
+      width: 100%;
+    }
   }
 
   &__round {
@@ -20,6 +24,7 @@
       flex-direction: column;
       align-items: flex-start;
       background-color: v.$color-intermediaire;
+
     }
 
     &__header {
@@ -29,9 +34,19 @@
       justify-content: space-between;
       margin-bottom: 5px;
 
+      &__column {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
       &__title {
         display: flex;
         align-items: center;
+      }
+
+      &__subtitle {
+        font-size: 0.9em;
       }
 
       &__togglemenu {
@@ -67,6 +82,10 @@
       &__action {
         cursor: pointer;
       }
+    }
+
+    &__exolist {
+      width: 100%;
     }
   }
 }

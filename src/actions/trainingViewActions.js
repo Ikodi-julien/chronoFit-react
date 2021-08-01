@@ -22,6 +22,8 @@ export const showExoForm = (roundIndex, exoIndex) => ({ type: SHOW_EXO_FORM, val
 export const SHOW_EXO_IN_LIST = 'SHOW_EXO_IN_LIST';
 export const showExoInList = (roundIndex, exoIndex) => ({ type: SHOW_EXO_IN_LIST, value: {roundIndex, exoIndex}});
 
+export const MOVE_ROUND_IN_STATE = 'MOVE_ROUND_IN_STATE';
+export const moveRoundInState = (oldIndex, newIndex) => ({type: MOVE_ROUND_IN_STATE, oldIndex, newIndex});
 
 // A mettre dans un benchmarkTrainingActions ?
 export const ADD_EXO = "Au clic, ajoute un exercice dans la training.exoList lors de la soumission du formulaire";

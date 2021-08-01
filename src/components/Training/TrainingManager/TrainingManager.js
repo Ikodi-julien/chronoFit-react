@@ -21,7 +21,7 @@ const TrainingManager = ({path, list, getTrainings, setTrainingId}) => {
               onChange={handleSelectChange}
               className="trainingmanager__col__select"
             >
-              <option value="">Choisir un entrainement </option>
+              <option value="">Work Of Day</option>
             {
               list.map((name, index) => (
                 <option key={name.id} value={name.id}>{name.name}</option>

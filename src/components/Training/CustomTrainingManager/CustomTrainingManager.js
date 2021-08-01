@@ -36,7 +36,7 @@ const CustomTrainingManager = ({
               value={localTraining.name}
               className="trainingmanager__col__select"
             >
-              <option value="default">Choisir un entrainement </option>
+              <option value="default">Work Of Day</option>
             {
               list.map((training, index) => (
                 <option

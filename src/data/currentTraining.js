@@ -25,15 +25,15 @@ export const currentTraining = {
   },
   rounds: [
     {
-      id: 4,
-      iteration: 2,
-      duration: 298,
+      id: '4',
+      iteration: '2',
+      duration: '298',
       createdAt: '2021-07-21T20:01:27.794Z',
       updatedAt: '2021-07-21T20:01:27.814Z',
-      trainingId: 4,
+      trainingId: '4',
       exercices: [
         {
-          id: 8,
+          id: '8',
           name: 'Body Blaster',
           description: 'Complex  gym (enchainement) de trois exercices au poids de corps :  push-up  +  pull-up  +  toes-to-bar . Le pull-up et le toes-to-bar peuvent être exécutés strict (sans élan) ou avec un kipping ( élan). Le toes-to-bar peut être remplacé par un  knees-to-elbow',
           isBenchmark: false,
@@ -42,19 +42,19 @@ export const currentTraining = {
           round_has_exercices: {
             createdAt: '2021-07-21T20:01:27.812Z',
             updatedAt: '2021-07-21T20:01:27.812Z',
-            roundId: 4,
-            exerciceId: 8
+            roundId: '4',
+            exerciceId: '8'
           },
           options: [
             {
-              id: 18,
-              duration: 10,
-              weight: 25,
-              reps: 10,
+              id: '18',
+              duration: '10',
+              weight: '25',
+              reps: '10',
               createdAt: '2021-07-21T20:01:28.088Z',
               updatedAt: '2021-07-21T20:01:28.091Z',
-              exerciceId: 8,
-              trainingId: 4
+              exerciceId: '8',
+              trainingId: '4'
             }
           ]
         },

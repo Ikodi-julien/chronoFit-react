@@ -7,12 +7,14 @@ const ExoForm = ({
   
   name, 
   description, 
+  iteration,
   duration, 
   reps, 
   weight,
   
   setValue,
   putExo,
+  deleteExo,
   showExoInList,
 }) => {
 
@@ -26,6 +28,8 @@ const ExoForm = ({
     if (evt.target) return setValue(evt.target.name, evt.target.value);
     setValue(evt.name, evt.value);
   }
+  
+  const handleDelete = () => deleteExo(roundIndex, index);
   
   return (
     <div className="exoform__container">
@@ -48,6 +52,7 @@ const ExoForm = ({
             />
           <button 
           className="training__button --transparent --icone --caretopen --xl"
+          type="button"
           onClick={() => showExoInList(roundIndex, index)}
           ><i className="fas fa-caret-right "></i></button>
         </div>
@@ -63,6 +68,18 @@ const ExoForm = ({
             onChange={handleInputChange}
           >
           </textarea>
+        </div>
+        
+        <div className="exoform__input__row">
+          <label>Nb de séries: </label>
+          <Field
+            name="iteration"
+            className="exoform__input exoform__input__number"
+            type="number"
+            placeholder="séries"
+            value={iteration}
+            onChange={handleInputChange}
+          />
         </div>
         
         <div className="exoform__input__row">
@@ -102,10 +119,15 @@ const ExoForm = ({
         </div>
         
         <div className="exoform__controls">
-          <button type="submit" className="training__button  --transparent --icone">
-          <i className="fas fa-check"></i>
+          <button 
+            type="submit" 
+            className="training__button  --transparent --icone">
+            <i className="fas fa-check"></i>
           </button>
-          <button type="button" className="training__button  --transparent --icone">
+          <button 
+            type="button" 
+            className="training__button  --transparent --icone"
+            onClick={handleDelete}>
           <i className="fas fa-trash-alt"></i>
           </button>
         </div>
