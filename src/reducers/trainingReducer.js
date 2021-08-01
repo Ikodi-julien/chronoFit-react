@@ -1,11 +1,11 @@
 import {
   ADD_EXO, 
-  EXO_INPUT_CHANGE,
-  SHOW_EXOINLISTMENU,
-  EXO_IN_LIST_INPUT_CHANGE,
+  EXOFORM_INPUT_CHANGE,
   SET_TRAINING_ID,
   SET_ROUNDMENU_IS_VISIBLE,
   SET_ROUND_ITERATION,
+  SHOW_EXO_FORM,
+  SHOW_EXO_IN_LIST,
 } from '../actions/trainingViewActions';
 import {
   GET_TRAININGS_SUCCESS,
@@ -18,6 +18,7 @@ import {
   ADD_ROUND_TO_LOCAL_TRAINING,
   ADD_EXERCICE_TO_LOCAL_TRAINING,
   DELETE_ROUND_FROM_LOCAL_TRAINING,
+  PUT_EXOFORM_IN_LOCAL_TRAINING,
 } from '../actions/trainingLocalActions';
 /*----------------------------------*/
 // import {currentTraining} from '../data/currentTraining';
@@ -32,12 +33,14 @@ const initialState = {
   localTraining: {
     rounds: [
       {
+        menuIsVisible: false,
         iteration: 1,
         duration: 0,
         exercices: [
           {
+            isForm: false,
             name: 'vide',
-            description: 'vide',
+            description: 'Une longue description pour voir comment ça se passe s\'il y a des retours à la ligne et des trucs en plus à la finally...',
             // isBenchmark: false,
             options: [
               {
@@ -48,27 +51,63 @@ const initialState = {
             ]
           }
         ],
-        menuIsVisible: false,
       }
     ]
   },
+  // This is TrainingManager name input
   localTrainingName: '',
+  // This is the values used in ExoForm, put in training if submited.
+  exoForm: {
+    name: 'exoform',
+    desc: 'exodesc',
+    reps: 'nbreps',
+    duration: 'exoduration',
+    weight: 'exoweight',
+  }
+  
 }
 
 const reducer = (state=initialState, action={}) => {
   
   const {rounds} = state.localTraining;
+  const allRoundMenuHidden = rounds ? rounds.map(round => ({...round, menuIsVisible: false})) : null;
+  let allRoundsExoShrunken = rounds ? rounds.map(round => {
+    round.exercices.forEach(exo => exo.isForm = false)
+    return round
+  }) : null
   
   switch (action.type) {
-    case EXO_INPUT_CHANGE:
+    case EXOFORM_INPUT_CHANGE:
       return {
         ...state,
         exoForm: {
           ...state.exoForm,
-          [action.name]: {value: action.value}
+          [action.name]: action.value,
         }
       }
       
+    case PUT_EXOFORM_IN_LOCAL_TRAINING:
+      console.log(action);
+      allRoundsExoShrunken[action.roundIndex].exercices[action.exoIndex] = {
+        ...allRoundsExoShrunken[action.roundIndex].exercices[action.exoIndex],
+        name: state.exoForm.name,
+        description: state.exoForm.desc,
+        options: [
+          {
+            duration: state.exoForm.duration,
+            weight: state.exoForm.weight,
+            reps: state.exoForm.reps,
+          }
+        ]
+      }
+      return {
+        ...state,
+        localTraining: {
+          ...state.localTraining,
+          rounds: allRoundsExoShrunken
+        }
+      }
+    
     case ADD_EXO:
       const {nameInput, descInput, durationInput, repsInput, weightInput} = state.exoForm;
       console.log(nameInput, descInput, durationInput, repsInput, weightInput);
@@ -103,27 +142,6 @@ const reducer = (state=initialState, action={}) => {
         ]
       }
     
-      /* EXO_IN_LIST */
-      
-    case SHOW_EXOINLISTMENU:
-      // When there's a click on a burger button wich is on an exo in the list.
-      const newExoList = state.exoList.map((exo, index) => {
-        if (index === action.index) exo.menuIsVisible = !exo.menuIsVisible;
-        if (index !== action.index) exo.menuIsVisible = false;
-        return exo;
-      })
-      
-      return {
-        ...state,
-        exoList: newExoList
-      }
-    
-    case EXO_IN_LIST_INPUT_CHANGE:
-      // console.log('un input change dans exo in list');
-      return {
-        ...state
-      }
-      
     case GET_TRAININGS_SUCCESS:
       // console.log(action);
       return {
@@ -169,24 +187,25 @@ const reducer = (state=initialState, action={}) => {
       }
     
     case ADD_ROUND_TO_LOCAL_TRAINING:
+      
       return {
         ...state,
         localTraining: {
           ...state.localTraining,
           rounds : [
-            ...state.localTraining.rounds,
+            ...allRoundMenuHidden,
             {
+              menuIsVisible: false,
               iteration: 1,
               duration: 0,
               exercices: [],
-              menuIsVisible: false,
             }
           ]
         }
       }
     
     case DELETE_ROUND_FROM_LOCAL_TRAINING:
-      const newRounds = rounds.filter(round => round.id === rounds[action.value]);
+      const newRounds = rounds.filter(round => round !== rounds[action.value]);
       
       return {
         ...state,
@@ -245,6 +264,40 @@ const reducer = (state=initialState, action={}) => {
           rounds
         }
       }
+      
+    case SHOW_EXO_FORM:
+      // This shows ExoForm but all exercices have been shrunk
+      allRoundsExoShrunken[action.value.roundIndex].exercices[action.value.exoIndex].isForm = true;
+      
+      const exoToShow = allRoundsExoShrunken[action.value.roundIndex].exercices[action.value.exoIndex];
+      
+      return {
+        ...state,
+        localTraining: {
+          ...state.localTraining,
+          rounds,
+        },
+        exoForm: {
+        name: exoToShow.name,
+        desc: exoToShow.description,
+        reps: exoToShow.options[0].reps,
+        duration: exoToShow.options[0].duration,
+        weight: exoToShow.options[0].weight,
+      }
+    }
+    
+    case SHOW_EXO_IN_LIST:
+      // This hides all ExoForm
+      rounds[action.value.roundIndex].exercices[action.value.exoIndex].isForm = false;
+    
+    return {
+      ...state,
+      localTraining: {
+        ...state.localTraining,
+        rounds,
+      },
+      
+    }
     default:
       return state;
   }

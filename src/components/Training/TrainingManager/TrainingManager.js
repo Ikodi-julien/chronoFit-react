@@ -45,7 +45,7 @@ const TrainingManager = ({path, list, getTrainings, setTrainingId}) => {
                 Save
               </button>
               <button type="submit" className="trainingmanager__row__button training__button">
-                Delete
+                <i className="fas fa-trash-alt"></i>
               </button>
             </div>
             : null

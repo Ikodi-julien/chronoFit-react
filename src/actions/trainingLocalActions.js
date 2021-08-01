@@ -29,3 +29,6 @@ export const deleteRoundFromLocalTraining = (index) => ({ type: DELETE_ROUND_FRO
 
 export const ADD_EXERCICE_TO_LOCAL_TRAINING = 'ADD_EXERCICE_TO_LOCAL_TRAINING';
 export const addExerciceToLocalTraining = (index) => ({type: ADD_EXERCICE_TO_LOCAL_TRAINING, value: {roundId: index} });
+
+export const PUT_EXOFORM_IN_LOCAL_TRAINING = 'PUT_EXOFORM_IN_LOCAL_TRAINING';
+export const putExoFormInTraining = (roundIndex, exoIndex) => ({ type: PUT_EXOFORM_IN_LOCAL_TRAINING, roundIndex, exoIndex });

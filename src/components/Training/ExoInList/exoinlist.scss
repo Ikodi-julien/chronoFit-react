@@ -7,11 +7,16 @@
   padding: 0 5px;
   margin-bottom: 10px;
   border-radius: v.$border-radius;
+  background-color: v.$color-very-light;
 
   &__row {
     display: flex;
     width: 100%;
     justify-content: space-between;
+
+    &.--left {
+      justify-content: left;
+    }
   }
 
   &__name {
@@ -19,11 +24,14 @@
   }
 
   &__data {
-    padding: 8px 0;
+    margin: 5px 0;
     font-size: 0.8em;
 
-    &.--hidden {
-      display: none;
+    &.--shrunken {
+      height: 1em;
+      width: fit-content;
+      overflow: hidden;
+      padding-right: 4px;
     }
   }
 

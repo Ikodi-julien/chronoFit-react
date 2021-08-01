@@ -13,10 +13,32 @@
 
   &__button {
     /* for all buttons in /training view */
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border: none;
     border-radius: v.$border-radius;
     background-color: v.$base-color;
     color: v.$color-very-light;
-    padding: 10px 5px;
+    padding: 10px;
+
+    &.--transparent {
+      background-color: transparent;
+      color: v.$base-color;
+    }
+
+    &.--icone {
+      font-size: v.$fs-button-icone;
+      width: 44px;
+      height: 44px;
+    }
+
+    &.--caretopen {
+      transform: rotate(90deg);
+    }
+
+    &.--xl {
+      font-size: v.$fs-button-icone-xl;
+    }
   }
 }

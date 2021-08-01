@@ -1,19 +1,14 @@
 @use 'src/styles/vars'as v;
 
-.exoinlistmenu {
+.exoform {
   &__container {
-    position: absolute;
+    position: relative;
     width: 100%;
-    top: 0;
-    right: 0;
-    background-color: adjust-color(v.$base-color, $lightness: 80%);
-    border: 1px solid v.$base-color;
+    border: 1px solid adjust-color(v.$base-color, $lightness: 50%);
+    padding: 0 5px;
+    margin-bottom: 10px;
     border-radius: v.$border-radius;
-    z-index: 10;
-
-    &.--hidden {
-      display: none;
-    }
+    background-color: v.$color-very-light;
   }
 
   &__toggle {
@@ -24,19 +19,20 @@
   }
 
   &__input {
+    display: flex;
     border: none;
     // border-bottom: 1px solid adjust-color(v.$base-color, $lightness: 50%);
-    width: 100%;
+    width: 40px;
     background-color: transparent;
 
     &__name {
-      width: 70%;
+      flex: 1;
+      padding: 8px 0;
+      justify-content: space-between;
       font-size: 1.1em;
     }
 
-    &__number {
-      width: 25%;
-    }
+    &__number {}
 
     &__row {
       display: flex;
@@ -45,6 +41,9 @@
       font-size: 0.9em;
 
       & label {
+        max-width: 20%;
+        display: flex;
+        align-items: center;
         padding-right: 10px;
       }
     }
@@ -52,8 +51,13 @@
 
   &__row,
   &__textarea {
+    min-width: 80%;
+    min-height: 80px;
+    max-height: 200px;
+    flex-wrap: wrap;
     padding-bottom: 10px;
     font-size: 0.9em;
+    resize: vertical;
   }
 
   &__row {
@@ -61,4 +65,8 @@
     justify-content: space-between;
   }
 
+  &__controls {
+    display: flex;
+    justify-content: space-evenly;
+  }
 }

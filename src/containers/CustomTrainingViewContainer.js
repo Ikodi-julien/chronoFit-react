@@ -12,6 +12,8 @@ import {
   setTrainingId,
   setRoundMenuIsVisible,
   setRoundIteration,
+  showExoForm,
+  showExoInList,
 } from '../actions/trainingViewActions';
 /*---------------------------------*/
 import CustomTrainingView from '../components/Training/CustomTrainingView';
@@ -29,6 +31,8 @@ const mapDispatchToProps = (dispatch) => ({
   deleteRoundFromLocalTraining: (index) => dispatch(deleteRoundFromLocalTraining(index)),
   setRoundMenuIsVisible: (index, bool) => dispatch(setRoundMenuIsVisible(index, bool)),
   setRoundIteration: (index, value) => dispatch(setRoundIteration(index, value)),
+  showExoForm: (roundIndex, exoIndex) => dispatch(showExoForm(roundIndex, exoIndex)),
+  showExoInList: (roundIndex, exoIndex) => dispatch(showExoInList(roundIndex, exoIndex)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(CustomTrainingView);

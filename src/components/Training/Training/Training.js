@@ -1,16 +1,15 @@
 import Round from '../Round/Round';
-import './trainingrounds.scss';
 
-const Training = ({name, rounds, addRound, addExercice, deleteRound, setRoundMenuIsVisible, setRoundIteration}) => {
+const Training = ({name, rounds, addRound, addExercice, deleteRound, setRoundMenuIsVisible, setRoundIteration, showExoForm, showExoInList}) => {
 
   return (
-    <section className="trainingrounds__container">
+    <section className="rounds__container">
       {
         name !== "" ? 
           (rounds ? rounds.map((round, index) => (
             <Round 
               key={index}
-              index={index}
+              roundIndex={index}
               duration={round.duration}
               iteration={round.iteration}
               shrunken={round.isShrunken}
@@ -21,6 +20,8 @@ const Training = ({name, rounds, addRound, addExercice, deleteRound, setRoundMen
               menuIsVisible={round.menuIsVisible}
               setRoundMenuIsVisible={setRoundMenuIsVisible}
               setRoundIteration={setRoundIteration}
+              showExoForm={showExoForm}
+              showExoInList={showExoInList}
             />
           )) : null)
         : null
