@@ -42,4 +42,16 @@
       margin: 5px;
     }
   }
+
+  &__options {
+    padding: 8px;
+    display: flex;
+    justify-content: space-between;
+
+    &__type {
+      border: none;
+      background-color: v.$color-intermediaire;
+      border-bottom: 1px solid adjust-color(v.$base-color, $lightness: 60%);
+    }
+  }
 }

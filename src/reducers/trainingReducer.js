@@ -15,6 +15,7 @@ import {
 import {
   SET_LOCAL_TRAINING,
   SET_LOCAL_TRAINING_NAME,
+  SET_LOCAL_TRAINING_TYPE,
   GET_LOCAL_TRAININGS_SUCCESS,
   ADD_ROUND_TO_LOCAL_TRAINING,
   ADD_EXERCICE_TO_LOCAL_TRAINING,
@@ -35,7 +36,7 @@ const initialState = {
   localTraining: {
     isToRender: 0,
     name: 'local training',
-    type: 'default',
+    type: 'emom',
     rounds: [
       {
         menuIsVisible: false,
@@ -213,7 +214,15 @@ const reducer = (state=initialState, action={}) => {
         ...state,
         localTrainingName: action.value
       }
-      
+    
+    case SET_LOCAL_TRAINING_TYPE:
+      return {
+        ...state,
+        localTraining: {
+          ...state.localTraining,
+          type: action.value,
+        }
+      }
     case GET_LOCAL_TRAININGS_SUCCESS:
       return {
         ...state,
