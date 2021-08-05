@@ -3,6 +3,7 @@ import './exoinlist.scss';
 
 const ExerciceInList = ({
   roundIndex,
+  roundShrunken,
   index, 
   name, 
   description, 
@@ -15,16 +16,21 @@ const ExerciceInList = ({
   
   const countDescription = description.length;
   const shrunkenDescription = description.substr(0, 55);
-  
+
   return (
     <div className="exoinlist">
       <div className="exoinlist__row">
-        <div className="exoinlist__name"><span>{name}</span> - <span>{iteration} série{iteration > 1 ? 's' : ''}</span></div>
-        <button 
-          className="training__button --transparent --icone --xl"
-          onClick={() => showExoForm(roundIndex, index)}
-          ><i className="fas fa-caret-right"></i></button>
-
+        <div className="exoinlist__name">
+          <span>{name}</span> - <span>{iteration} série{iteration > 1 ? 's' : ''}</span>
+        </div>
+        {
+          !roundShrunken &&
+          <button 
+            className="training__button --transparent --icone --xl"
+            onClick={() => showExoForm(roundIndex, index)}
+            ><i className="fas fa-caret-right"></i>
+          </button>          
+        }
       </div>
         
       {countDescription > 0 ? 

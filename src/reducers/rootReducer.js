@@ -1,11 +1,13 @@
 import {combineReducers} from 'redux';
 
-import trainingReducer from './trainingReducer';
+import localTrainingReducer from './localTrainingReducer';
 import appReducer from './appReducer';
+import apiTrainingReducer from './apiTrainingReducer';
 
 const rootReducer = combineReducers({
   app: appReducer,
-  training: trainingReducer
+  apiTraining: apiTrainingReducer,
+  localTraining: localTrainingReducer
 })
 
 export default rootReducer;

@@ -1,19 +1,7 @@
 import {
-  ADD_EXO, 
-  EXOFORM_INPUT_CHANGE,
-  SET_TRAINING_ID,
   SET_ROUNDMENU_IS_VISIBLE,
   SET_SHRUNKEN_ROUND,
-  SET_ROUND_ITERATION,
-  SHOW_EXO_FORM,
-  SHOW_EXO_IN_LIST,
-  MOVE_ROUND_IN_STATE,
-  MOVE_EXO_IN_STATE,
 } from '../actions/trainingViewActions';
-import {
-  GET_TRAININGS_SUCCESS,
-  GET_CURRENT_TRAINING_SUCCESS,
-} from '../actions/trainingAjaxActions';
 import {
   SET_LOCAL_TRAINING,
   SET_LOCAL_TRAINING_NAME,
@@ -24,20 +12,31 @@ import {
   DELETE_ROUND_FROM_LOCAL_TRAINING,
   PUT_EXOFORM_IN_LOCAL_TRAINING,
   DELETE_EXO_FROM_ROUND,
+  EXOFORM_INPUT_CHANGE,
+  SHOW_EXO_FORM,
+  SET_ROUND_ITERATION,
+  SHOW_EXO_IN_LIST,
+  MOVE_ROUND_IN_STATE,
+  MOVE_EXO_IN_STATE,
 } from '../actions/trainingLocalActions';
 /*-----------------------------------*/
 import trainingServices from '../services/training';
 /*----------------------------------*/
-// import {currentTraining} from '../data/currentTraining';
+// import {apiTraining} from '../data/apiTraining';
 // import {allTrainings} from '../data/allTrainings';
 /*----------------------------------*/
 const initialState = {
-  currentTrainingId: 0,
-  allTrainings: [],
-  currentTraining: {},
-  isToRender: 0,
-  
-  allLocalTrainings: [],
+  // localTrainingReducer
+  allLocalTrainings: [], 
+  trainingManagerNameInput: '',
+  exoForm: {
+    name: '',
+    iteration: 1,
+    desc: '',
+    reps: '',
+    duration: '',
+    weight: '',
+  },
   localTraining: {
     name: 'Work Of Day',
     type: 'emom',
@@ -65,17 +64,6 @@ const initialState = {
       }
     ]
   },
-  // This is TrainingManager name input
-  localTrainingName: '',
-  // Those are the values used in ExoForm, put in training if submited.
-  exoForm: {
-    name: '',
-    iteration: 1,
-    desc: '',
-    reps: '',
-    duration: '',
-    weight: '',
-  }
 }
 
 const reducer = (state=initialState, action={}) => {
@@ -90,15 +78,45 @@ const reducer = (state=initialState, action={}) => {
   }) : null
   
   switch (action.type) {
-    case EXOFORM_INPUT_CHANGE:
-      return {
-        ...state,
-        exoForm: {
-          ...state.exoForm,
-          [action.name]: action.value,
+    
+    /*--- localTraining state---*/
+
+    case SET_LOCAL_TRAINING:
+      if (action.value === 'default') {
+        return {
+          ...state,
+          localTraining: {...initialState.localTraining},
         }
       }
       
+      
+      
+      return {
+        ...state,
+        localTraining: state.allLocalTrainings.find(training =>  training.name === action.value),
+      }
+      
+    case SET_LOCAL_TRAINING_NAME:
+      return {
+        ...state,
+        trainingManagerNameInput: action.value
+      }
+    
+    case SET_LOCAL_TRAINING_TYPE:
+      return {
+        ...state,
+        localTraining: {
+          ...state.localTraining,
+          type: action.value,
+        }
+      }
+      
+    case GET_LOCAL_TRAININGS_SUCCESS:
+      return {
+        ...state,
+        allLocalTrainings: action.data,
+      }
+    
     case PUT_EXOFORM_IN_LOCAL_TRAINING:
       allRoundsExoShrunken[action.roundIndex].exercices[action.exoIndex] = {
         ...allRoundsExoShrunken[action.roundIndex].exercices[action.exoIndex],
@@ -115,46 +133,11 @@ const reducer = (state=initialState, action={}) => {
       }
       return {
         ...state,
-        isToRender: Math.random(),
         localTraining: {
           ...state.localTraining,
           rounds: allRoundsExoShrunken
         },
         exoForm: initialState.exoForm,
-      }
-    
-    case ADD_EXO:
-      const {nameInput, descInput, durationInput, repsInput, weightInput} = state.exoForm;
-      console.log(nameInput, descInput, durationInput, repsInput, weightInput);
-      // Vérification du contenu des inputs et du type de value
-      if (!nameInput.value || !descInput.value ) {
-        console.log('1er');
-        return state
-      };
-
-      if (
-        (nameInput.value && typeof nameInput.value !== 'string') ||
-        (descInput.value && typeof descInput.value !== 'string') ||
-        (durationInput.value && typeof durationInput.value !== 'string') ||
-        (repsInput.value && typeof repsInput.value !== 'string' )||
-        (weightInput.value && typeof weightInput.value !== 'string')
-      ) {
-        console.log('2em')
-        return state
-      }
-      
-      return {
-        ...state,
-        exoList: [
-          ...state.exoList,
-          {
-            name: nameInput.value,
-            description: descInput.value,
-            duration: +durationInput.value,
-            reps: +repsInput.value,
-            weight: +weightInput.value
-          }
-        ]
       }
     
     case DELETE_EXO_FROM_ROUND:
@@ -189,70 +172,14 @@ const reducer = (state=initialState, action={}) => {
       
       return {
         ...state,
-        isToRender: Math.random(),
         localTraining: {
           ...state.localTraining,
           rounds: trainingServices.changeExoOrder(rounds, action) ,
         }
       }
     
-    case GET_TRAININGS_SUCCESS:
-      // console.log(action);
-      return {
-        ...state,
-        allTrainings: action.data,
-      }
-    
-    case SET_TRAINING_ID:
-      return {
-        ...state,
-        currentTrainingId: action.value,
-      }
-      
-    case GET_CURRENT_TRAINING_SUCCESS:
-      return {
-        ...state,
-        currentTraining: action.data,
-      }
-    
-    case SET_LOCAL_TRAINING:
-      if (action.value === 'default') {
-        return {
-          ...state,
-          localTraining: {...initialState.localTraining},
-        }
-      }
-      
-      
-      
-      return {
-        ...state,
-        localTraining: state.allLocalTrainings.find(training =>  training.name === action.value),
-      }
-      
-    case SET_LOCAL_TRAINING_NAME:
-      return {
-        ...state,
-        localTrainingName: action.value
-      }
-    
-    case SET_LOCAL_TRAINING_TYPE:
-      return {
-        ...state,
-        localTraining: {
-          ...state.localTraining,
-          type: action.value,
-        }
-      }
-      
-    case GET_LOCAL_TRAININGS_SUCCESS:
-      return {
-        ...state,
-        allLocalTrainings: action.data,
-      }
-    
     case ADD_ROUND_TO_LOCAL_TRAINING:
-      
+    
       return {
         ...state,
         localTraining: {
@@ -310,15 +237,24 @@ const reducer = (state=initialState, action={}) => {
               reps: 0,
             }]
         })
+      round.shrunken = false;
       
       allRoundMenuHidden[action.value.roundId]= round;
       
       return {
         ...state,
-        isToRender: Math.random(),
         localTraining : {
           ...state.localTraining,
           rounds: allRoundMenuHidden,
+        }
+      }
+      
+    case EXOFORM_INPUT_CHANGE:
+      return {
+        ...state,
+        exoForm: {
+          ...state.exoForm,
+          [action.name]: action.value,
         }
       }
       
@@ -364,7 +300,6 @@ const reducer = (state=initialState, action={}) => {
       
       return {
         ...state,
-        isToRender: Math.random(),
         localTraining: {
           ...state.localTraining,
           rounds,
@@ -385,13 +320,12 @@ const reducer = (state=initialState, action={}) => {
     
     return {
       ...state,
-      isToRender: Math.random(),
       localTraining: {
         ...state.localTraining,
         rounds,
       },
-      
     }
+    
     default:
       return state;
   }

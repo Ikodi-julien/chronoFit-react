@@ -11,10 +11,10 @@ import {
   deleteLocalTraining,
 } from '../actions/trainingLocalActions';
 
-const mapStateToProps = ({training}) => ({
-  trainingList: training.allLocalTrainings,
-  training: training.localTraining,
-  trainingName: training.localTrainingName,
+const mapStateToProps = ({localTraining}) => ({
+  trainingList: localTraining.allLocalTrainings,
+  training: localTraining.localTraining,
+  trainingName: localTraining.trainingManagerNameInput,
 });
 
 const mapDispatchToProps = (dispatch) => ({

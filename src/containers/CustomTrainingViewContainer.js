@@ -1,22 +1,14 @@
 import {connect} from 'react-redux';
 
-/*--------------------------------*/
-// import {
-//   getLocalTrainings, 
-//   getCurrentLocalTraining,
-//   addRoundToLocalTraining,
-//   addExerciceToLocalTraining,
-//   deleteRoundFromLocalTraining,
-// } from '../actions/trainingLocalActions';
 import {
   moveRoundInState,
-} from '../actions/trainingViewActions';
+} from '../actions/trainingLocalActions';
 /*---------------------------------*/
 import CustomTrainingView from '../components/Training/CustomTrainingView';
 
-const mapStateToProps = ({training}) => ({
-  localTraining: training.localTraining,
-  isToRender: training.isToRender,
+const mapStateToProps = ({localTraining, app}) => ({
+  localTraining: localTraining.localTraining,
+  isToRender: app.isToRender,
 })
 
 const mapDispatchToProps = (dispatch) => ({

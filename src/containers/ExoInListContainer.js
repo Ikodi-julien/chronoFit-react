@@ -3,11 +3,14 @@ import ExoInList from '../components/Training/ExoInList/ExoInList';
 
 import {
   showExoForm,
-} from '../actions/trainingViewActions';
+} from '../actions/trainingLocalActions';
 
-const mapStateToProps = ({training}, { roundIndex, index }) => {
-  const exo = training.localTraining.rounds[roundIndex].exercices[index];
-  // console.log(exo)
+const mapStateToProps = ({localTraining}, { roundIndex, index }) => {
+  const exo = localTraining.localTraining.rounds[roundIndex].exercices[index];
+  const roundShrunken = () => {
+    return localTraining.localTraining.rounds[roundIndex].exercices.length > 2 &&  localTraining.localTraining.rounds[roundIndex].shrunken ? true : false
+  }
+  
   return {
     name: exo.name,
     description: exo.description, 
@@ -16,6 +19,7 @@ const mapStateToProps = ({training}, { roundIndex, index }) => {
     reps: +exo.options[0].reps, 
     weight: +exo.options[0].weight,
     
+    roundShrunken: roundShrunken(),
     roundIndex,
     index,
   }

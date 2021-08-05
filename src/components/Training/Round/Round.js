@@ -32,14 +32,16 @@ const Round = ({
   duration = `${Math.floor(duration/60)}mn ${duration % 60}s`;
   
   useEffect(() => {
-    const exoList = document.getElementById(`exoList-${roundIndex}`);
+      const exoList = document.getElementById(`exoList-${roundIndex}`);
     
-    const sortable = Sortable.create(exoList, 
+      // D&D enabled only if no exercice being edited
+      const sortable = Sortable.create(exoList, 
       {
         group: {name: 'exoList', pull: true, put: true },
         dataIdAttr: 'exo-id',
+        draggable: '.draggable-item',
         onAdd: (evt) => {
-        // Add an error and needed to put back the item in place when item was dragged between list, react will render the state then.
+        // Had an error and needed to put back the item in place when item was dragged between list, react will render the state then.
           evt.from.insertBefore(evt.item, null); 
         },
         onEnd: (evt) => {
@@ -54,9 +56,10 @@ const Round = ({
             );
           },
       });
+        
+      const order = sortable.toArray().sort();
+      sortable.sort(order, false);
       
-    const order = sortable.toArray().sort();
-    sortable.sort(order, false);
   })
   
   return (
@@ -91,7 +94,7 @@ const Round = ({
         </div>
         
         <button 
-          className={`training__button --transparent --icone --xl ${shrunken ? "--shrunken" : ''}`}
+          className={`training__button --transparent --icone --xl ${shrunken ? "--shrunken" : '--rotate'}`}
           onClick={() => setShrunken(roundIndex, !shrunken)}
         >
           <i className="fas fa-caret-right"></i>
@@ -99,7 +102,7 @@ const Round = ({
       </div>
       
       <ul 
-        className={shrunken ? "rounds__round__exolist --shrunken" : "rounds__round__exolist"} 
+        className={shrunken && exercices.length > 2 ? "rounds__round__exolist --shrunken" : "rounds__round__exolist"} 
         id={`exoList-${roundIndex}`}
       >
         {
@@ -112,7 +115,7 @@ const Round = ({
               />
             </li>
             :
-            <li key={index} exo-id={index}>
+            <li key={index} exo-id={index} className="draggable-item">
               <ExoInList
                 roundIndex={roundIndex}
                 index={index}

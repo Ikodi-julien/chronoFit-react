@@ -17,8 +17,8 @@ export default (store) => (next) => (action) => {
   
   const {
     localTraining,
-    localTrainingName,
-  } = store.getState().training;
+    trainingManagerNameInput,
+  } = store.getState().localTraining;
   
   switch (action.type) {
     case CREATE_LOCAL_TRAINING:
@@ -26,7 +26,7 @@ export default (store) => (next) => (action) => {
       // console.log(currentTraining);
       const newTraining = {...localTraining};
       
-      newTraining.name = localTrainingName !== '' ? localTrainingName : localTraining.name;
+      newTraining.name = trainingManagerNameInput !== '' ? trainingManagerNameInput : localTraining.name;
       
       localstorage.createTraining(newTraining);
       

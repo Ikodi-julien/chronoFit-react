@@ -44,5 +44,9 @@
     &.--xl {
       font-size: v.$fs-button-icone-xl;
     }
+
+    &.--rotate {
+      transform: rotate(90deg);
+    }
   }
 }

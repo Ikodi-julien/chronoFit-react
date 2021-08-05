@@ -46,7 +46,6 @@ export default {
     // Remplacer le round qui a gagner un exo
     rounds[newRoundIndex].exercices = exoListReceivingExo;
     
-    console.log(rounds);
     return rounds;
   }
 }

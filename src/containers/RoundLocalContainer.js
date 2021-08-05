@@ -4,18 +4,19 @@ import {
   addRoundToLocalTraining,
   addExerciceToLocalTraining,
   deleteRoundFromLocalTraining,
+  setRoundIteration,
+  moveExoInState,
 } from '../actions/trainingLocalActions';
 import {
   setRoundMenuIsVisible,
-  setRoundIteration,
-  moveExoInState,
+
   setShrunkenRound,
 } from '../actions/trainingViewActions';
 
 import Round from '../components/Training/Round/Round';
 
-const mapStateToProps = ({training}, {round, index}) => ({
-  isToRender: training.isToRender,
+const mapStateToProps = ({app}, {round, index}) => ({
+  isToRender: app.isToRender,
   roundIndex: index,
   iteration:  round.iteration,
   shrunken: round.shrunken,
