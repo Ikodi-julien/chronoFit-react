@@ -22,6 +22,10 @@
     color: v.$color-very-light;
     padding: 10px;
 
+    &.--border {
+      border: 1px solid v.$base-color;
+    }
+
     &.--transparent {
       background-color: transparent;
       color: v.$base-color;

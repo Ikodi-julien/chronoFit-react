@@ -8,13 +8,15 @@ import RoundMenu from './RoundMenu';
 import './round.scss';
 
 const Round = ({
-  // Pour Round
   isToRender,
+  // Pour Round
   roundIndex,
   iteration,
   shrunken,
+  setShrunken,
   exercices,
   setRoundIteration,
+  moveExoInState,
   menuIsVisible,
   // Pour RoundMenu
   addRound,
@@ -27,27 +29,53 @@ const Round = ({
   let duration = 0;
   exercices.forEach(exo => duration += parseInt(exo.options[0].duration) * (exo.options[0].iteration ? parseInt(exo.options[0].iteration) : 1));
   
-  if (duration > 60) duration = `${Math.floor(duration/60)}mn ${duration % 60}s`;
+  duration = `${Math.floor(duration/60)}mn ${duration % 60}s`;
   
   useEffect(() => {
     const exoList = document.getElementById(`exoList-${roundIndex}`);
-    Sortable.create(exoList, {group: {name: 'exoList', pull: true, put: true }});
+    
+    const sortable = Sortable.create(exoList, 
+      {
+        group: {name: 'exoList', pull: true, put: true },
+        dataIdAttr: 'exo-id',
+        onAdd: (evt) => {
+        // Add an error and needed to put back the item in place when item was dragged between list, react will render the state then.
+          evt.from.insertBefore(evt.item, null); 
+        },
+        onEnd: (evt) => {
+            // dispatch
+            moveExoInState(
+              {
+                oldRoundIndex: parseInt(evt.from.id.substr(8,1)),
+                newRoundIndex: parseInt(evt.to.id.substr(8,1)),
+                oldIndex: evt.oldIndex,
+                newIndex: evt.newIndex,
+              }
+            );
+          },
+      });
+      
+    const order = sortable.toArray().sort();
+    sortable.sort(order, false);
   })
   
   return (
     <section className="rounds__round__container">
-      <div className="rounds__round__header">
+      <div className="rounds__round__header drag-handle">
         {
-          menuIsVisible ? <RoundMenu 
+          menuIsVisible && <RoundMenu 
                             index={roundIndex}
                             addRound={addRound}
                             addExercice={addExercice}
                             deleteRound={deleteRound}
                             setRoundMenuIsVisible={setRoundMenuIsVisible}
-                            /> : null
+                            />
         }
-        <button className="training__button --transparent --icone">
-          <i className="fas fa-ellipsis-v trainingrounds__header__togglemenu" onClick={() => setRoundMenuIsVisible(roundIndex, true)}></i>
+        <button 
+          className="training__button --transparent --icone"
+          onClick={() => setRoundMenuIsVisible(roundIndex, true)}
+        >
+          <i className="fas fa-ellipsis-v trainingrounds__header__togglemenu" ></i>
         </button>
         
         <div className="rounds__round__header__column">
@@ -62,23 +90,29 @@ const Round = ({
             /> fois</div>
         </div>
         
-        <button className="training__button --transparent --icone --xl">
+        <button 
+          className={`training__button --transparent --icone --xl ${shrunken ? "--shrunken" : ''}`}
+          onClick={() => setShrunken(roundIndex, !shrunken)}
+        >
           <i className="fas fa-caret-right"></i>
         </button>
       </div>
       
-      <ul className="rounds__round__exolist" id={`exoList-${roundIndex}`}>
+      <ul 
+        className={shrunken ? "rounds__round__exolist --shrunken" : "rounds__round__exolist"} 
+        id={`exoList-${roundIndex}`}
+      >
         {
           exercices.map((exo, index) => (
             exo.isForm ?
-            <li key={index}>
+            <li key={index} exo-id={index}>
               <ExoForm
                 roundIndex={roundIndex}
                 index={index}
               />
             </li>
             :
-            <li key={index}>
+            <li key={index} exo-id={index}>
               <ExoInList
                 roundIndex={roundIndex}
                 index={index}

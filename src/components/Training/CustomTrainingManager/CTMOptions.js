@@ -1,13 +1,13 @@
 /* eslint-disable import/no-anonymous-default-export */
-import trainingService from '../../../services/training';
+import trainingServices from '../../../services/training';
 
 export default ({training, setTrainingType}) => {
   
-  const totalTime = trainingService.getTotalTime(training);
+  const totalTime = trainingServices.getTotalTime(training);
   
   return (
     <div className="trainingmanager__options">
-      <span class="trainingmanager__options__duration">
+      <span className="trainingmanager__options__duration">
         Durée totale: {totalTime}
       </span>
       

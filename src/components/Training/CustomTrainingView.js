@@ -5,13 +5,14 @@ import TrainingLocal from './Training/TrainingLocal';
 
 import './trainingview.scss';
 
-const CustomTrainingView = ({ localTraining, moveRoundInState }) => {
+const CustomTrainingView = ({ localTraining, isToRender, moveRoundInState }) => {
 
   return (
   <section className="training__container">
     <AppNav />
     <CustomTrainingManagerContainer />
     <TrainingLocal
+      isToRender={isToRender}
       name={localTraining.name} 
       rounds={localTraining.rounds} 
       moveRoundInState={moveRoundInState}

@@ -3,10 +3,12 @@ import {
   EXOFORM_INPUT_CHANGE,
   SET_TRAINING_ID,
   SET_ROUNDMENU_IS_VISIBLE,
+  SET_SHRUNKEN_ROUND,
   SET_ROUND_ITERATION,
   SHOW_EXO_FORM,
   SHOW_EXO_IN_LIST,
   MOVE_ROUND_IN_STATE,
+  MOVE_EXO_IN_STATE,
 } from '../actions/trainingViewActions';
 import {
   GET_TRAININGS_SUCCESS,
@@ -23,6 +25,8 @@ import {
   PUT_EXOFORM_IN_LOCAL_TRAINING,
   DELETE_EXO_FROM_ROUND,
 } from '../actions/trainingLocalActions';
+/*-----------------------------------*/
+import trainingServices from '../services/training';
 /*----------------------------------*/
 // import {currentTraining} from '../data/currentTraining';
 // import {allTrainings} from '../data/allTrainings';
@@ -31,21 +35,22 @@ const initialState = {
   currentTrainingId: 0,
   allTrainings: [],
   currentTraining: {},
+  isToRender: 0,
   
   allLocalTrainings: [],
   localTraining: {
-    isToRender: 0,
-    name: 'local training',
+    name: 'Work Of Day',
     type: 'emom',
     rounds: [
       {
+        shrunken: true,
         menuIsVisible: false,
         iteration: 1,
         duration: 0,
         exercices: [
           {
             isForm: false,
-            name: 'A définir',
+            name: 'Un exercice',
             description: '',
             options: [
               {
@@ -65,18 +70,20 @@ const initialState = {
   // Those are the values used in ExoForm, put in training if submited.
   exoForm: {
     name: '',
-    iteration: null,
+    iteration: 1,
     desc: '',
-    reps: null,
-    duration: null,
-    weight: null,
+    reps: '',
+    duration: '',
+    weight: '',
   }
 }
 
 const reducer = (state=initialState, action={}) => {
   
   const {rounds} = state.localTraining;
+  
   const allRoundMenuHidden = rounds ? rounds.map(round => ({...round, menuIsVisible: false})) : null;
+  
   let allRoundsExoShrunken = rounds ? rounds.map(round => {
     round.exercices.forEach(exo => exo.isForm = false)
     return round
@@ -108,9 +115,9 @@ const reducer = (state=initialState, action={}) => {
       }
       return {
         ...state,
+        isToRender: Math.random(),
         localTraining: {
           ...state.localTraining,
-          isToRender: Math.random(),
           rounds: allRoundsExoShrunken
         },
         exoForm: initialState.exoForm,
@@ -151,17 +158,18 @@ const reducer = (state=initialState, action={}) => {
       }
     
     case DELETE_EXO_FROM_ROUND:
-      const roundsWithoutExo = allRoundsExoShrunken.map(round => {
-        const newExercices = round.exercices.filter(exo => exo !== round.exercices[action.exoIndex])
-        round.exercices = newExercices;
-        return round;
-      })
+      
+      let roundWithoutExo = allRoundsExoShrunken.find(round => round === allRoundsExoShrunken[action.roundIndex]);
+      
+      roundWithoutExo.exercices = roundWithoutExo.exercices.filter(exo => exo !== roundWithoutExo.exercices[action.exoIndex])
+      
+      allRoundsExoShrunken[action.roundIndex] = roundWithoutExo;
       
     return {
       ...state,
       localTraining: {
         ...state.localTraining,
-        rounds: roundsWithoutExo
+        rounds: allRoundsExoShrunken
       }
     }
       
@@ -174,6 +182,17 @@ const reducer = (state=initialState, action={}) => {
         localTraining: {
           ...state.localTraining,
           rounds,
+        }
+      }
+      
+    case MOVE_EXO_IN_STATE:
+      
+      return {
+        ...state,
+        isToRender: Math.random(),
+        localTraining: {
+          ...state.localTraining,
+          rounds: trainingServices.changeExoOrder(rounds, action) ,
         }
       }
     
@@ -204,6 +223,8 @@ const reducer = (state=initialState, action={}) => {
         }
       }
       
+      
+      
       return {
         ...state,
         localTraining: state.allLocalTrainings.find(training =>  training.name === action.value),
@@ -223,6 +244,7 @@ const reducer = (state=initialState, action={}) => {
           type: action.value,
         }
       }
+      
     case GET_LOCAL_TRAININGS_SUCCESS:
       return {
         ...state,
@@ -273,31 +295,29 @@ const reducer = (state=initialState, action={}) => {
       }
       
     case ADD_EXERCICE_TO_LOCAL_TRAINING:
-      console.log(action);
+      // console.log(action);
       const round = allRoundMenuHidden[action.value.roundId];
       
       round.exercices.push(
         {
           isForm: true,
-          name: 'exo ajouté',
-          description: 'exo ajouté',
+          name: '',
+          description: '',
           // isBenchmark: false,
-          options: [
-            {
+          options: [{
               duration: 0,
               weight: 0,
               reps: 0,
-            }
-          ]
+            }]
         })
       
       allRoundMenuHidden[action.value.roundId]= round;
       
       return {
         ...state,
+        isToRender: Math.random(),
         localTraining : {
           ...state.localTraining,
-          isToRender: Math.random(),
           rounds: allRoundMenuHidden,
         }
       }
@@ -305,6 +325,18 @@ const reducer = (state=initialState, action={}) => {
     case SET_ROUNDMENU_IS_VISIBLE:
       rounds[action.value.index].menuIsVisible = action.value.bool;
       
+      return {
+        ...state,
+        localTraining: {
+          ...state.localTraining,
+          rounds
+        }
+      }
+    
+    case SET_SHRUNKEN_ROUND:
+      console.log(action);
+      rounds[action.value.index].shrunken = action.value.bool;
+      console.log(rounds);
       return {
         ...state,
         localTraining: {
@@ -332,9 +364,9 @@ const reducer = (state=initialState, action={}) => {
       
       return {
         ...state,
+        isToRender: Math.random(),
         localTraining: {
           ...state.localTraining,
-          isToRender: Math.random(),
           rounds,
         },
         exoForm: {
@@ -353,9 +385,9 @@ const reducer = (state=initialState, action={}) => {
     
     return {
       ...state,
+      isToRender: Math.random(),
       localTraining: {
         ...state.localTraining,
-        isToRender: Math.random(),
         rounds,
       },
       

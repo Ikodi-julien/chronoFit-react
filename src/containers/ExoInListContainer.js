@@ -7,6 +7,7 @@ import {
 
 const mapStateToProps = ({training}, { roundIndex, index }) => {
   const exo = training.localTraining.rounds[roundIndex].exercices[index];
+  // console.log(exo)
   return {
     name: exo.name,
     description: exo.description, 

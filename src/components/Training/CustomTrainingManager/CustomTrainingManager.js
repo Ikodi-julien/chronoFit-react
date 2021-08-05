@@ -1,5 +1,6 @@
 import CTMForm from './CTMForm';
 import CTMOptions from './CTMOptions';
+
 import './customtrainingmanager.scss';
 
 const CustomTrainingManager = (props) => {

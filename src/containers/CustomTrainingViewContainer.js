@@ -16,6 +16,7 @@ import CustomTrainingView from '../components/Training/CustomTrainingView';
 
 const mapStateToProps = ({training}) => ({
   localTraining: training.localTraining,
+  isToRender: training.isToRender,
 })
 
 const mapDispatchToProps = (dispatch) => ({

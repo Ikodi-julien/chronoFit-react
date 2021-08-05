@@ -1,0 +1,48 @@
+@use '../../styles/vars'as v;
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, .6);
+  backdrop-filter: blur(4px);
+  z-index: 1000;
+
+  &__container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 320px;
+    height: 200px;
+    background-color: white;
+    border-radius: v.$border-radius;
+    padding: v.$gutter;
+    padding-top: 50px;
+  }
+
+  &__close {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  &__text {
+    flex: 1;
+  }
+
+  &__options {
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+  &.--hidden {
+    display: none;
+  }
+}

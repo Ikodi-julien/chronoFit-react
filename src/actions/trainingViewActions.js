@@ -13,6 +13,9 @@ export const setTrainingId = (id) => ({type: SET_TRAINING_ID, value: id});
 export const SET_ROUNDMENU_IS_VISIBLE = 'SET_ROUNDMENU_IS_VISIBLE';
 export const setRoundMenuIsVisible = (index, bool) => ({type: SET_ROUNDMENU_IS_VISIBLE, value: {index, bool}});
 
+export const SET_SHRUNKEN_ROUND = 'SET_SHRUNKEN_ROUND';
+export const setShrunkenRound = (index, bool) => ({type: SET_SHRUNKEN_ROUND, value: {index, bool}});
+
 export const SET_ROUND_ITERATION = 'SET_ROUND_ITERATION';
 export const setRoundIteration = (index, value) => ({type: SET_ROUND_ITERATION, value: {index, value}});
 
@@ -24,6 +27,9 @@ export const showExoInList = (roundIndex, exoIndex) => ({ type: SHOW_EXO_IN_LIST
 
 export const MOVE_ROUND_IN_STATE = 'MOVE_ROUND_IN_STATE';
 export const moveRoundInState = (oldIndex, newIndex) => ({type: MOVE_ROUND_IN_STATE, oldIndex, newIndex});
+
+export const MOVE_EXO_IN_STATE = 'MOVE_EXO_IN_STATE';
+export const moveExoInState = (obj) => ({ type: MOVE_EXO_IN_STATE, value: obj});
 
 // A mettre dans un benchmarkTrainingActions ?
 export const ADD_EXO = "Au clic, ajoute un exercice dans la training.exoList lors de la soumission du formulaire";

@@ -1,10 +1,8 @@
 /* eslint-disable import/no-anonymous-default-export */
-import {useEffect} from 'react';
+import {useEffect, useState} from 'react';
+import Modal from '../../ConfirmModal/ConfirmModal';
 
-export default (
-  {
-    props
-  }) => {
+export default ({props}) => {
     const {
       training, 
       trainingName,
@@ -16,8 +14,31 @@ export default (
       getLocalTrainings
     } = props;
     
+    const [isOpen, setIsOpen] = useState(false)
+    const [text, setText] = useState('')
+    const [action, setAction] = useState(undefined)
+    
     const handleClick = (evt) => {
-      evt.target.name === "saveTraining" ? createLocalTraining() : deleteLocalTraining();
+      if (evt.target.name === "saveTraining") {
+        setAction(() => createLocalTraining);
+        // if trainingName is Empty, ask confirmation for updating training
+        if (trainingName === '') {
+          setText(`Confirmer la mise à jour de ${training.name} ?`)
+        } else {
+          setText(`Confirmer la création de ${trainingName} ?`)
+        }
+        
+      } else if (evt.target.name === "deleteTraining") {
+        setAction(() => deleteLocalTraining);
+        // if trainingName is Empty, ask confirmation for emptying current training
+        if (trainingName === '') {
+          setText(`Confirmer la suppression de ${training.name} ?`)
+        } else {
+          setText(`Supprimer tous les rounds et exercices affichés ?`)
+        }
+      }
+        
+      setIsOpen(true);
     }
       
     const handleSelectChange = (evt) => setLocalTraining(evt.target.value);
@@ -26,7 +47,13 @@ export default (
     
     return (
       <form onSubmit={(evt) => evt.preventDefault() }>
-      
+        <Modal 
+          isOpen={isOpen}
+          setIsOpen={setIsOpen}
+          text={text}
+          actionToDispatch={action}
+        />
+        
         <div className="trainingmanager__col">
           
           <select
@@ -35,13 +62,12 @@ export default (
             value={training.name}
             className="trainingmanager__col__select"
           >
-            <option value="default">Work Of Day</option>
+          <option key="Work Of Day" value="default">Work Of Day</option>
           {
             trainingList.map((training, index) => (
               <option
                 key={training.name} 
                 value={training.name}
-                // selected={training.name === localTraining.name}
                 >{training.name}</option>
             ))
           }

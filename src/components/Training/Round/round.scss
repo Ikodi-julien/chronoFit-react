@@ -24,7 +24,6 @@
       flex-direction: column;
       align-items: flex-start;
       background-color: v.$color-intermediaire;
-
     }
 
     &__header {
@@ -51,6 +50,11 @@
 
       &__togglemenu {
         cursor: pointer;
+      }
+
+      &.drag-handle {
+        cursor: move;
+        cursor: -webkit-grabbing;
       }
     }
 
@@ -86,6 +90,13 @@
 
     &__exolist {
       width: 100%;
+
+      &.--shrunken {
+        padding-right: 60px;
+        max-height: 90px;
+        overflow-y: auto;
+        scroll-behavior: smooth;
+      }
     }
   }
 }

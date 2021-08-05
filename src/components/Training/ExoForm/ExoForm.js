@@ -1,4 +1,8 @@
+import {useState} from 'react';
+
 import Field from '../../Field/Field';
+import Modal from '../../ConfirmModal/ConfirmModal';
+
 import './exoform.scss';
 
 const ExoForm = ({
@@ -29,11 +33,25 @@ const ExoForm = ({
     setValue(evt.name, evt.value);
   }
   
-  const handleDelete = () => deleteExo(roundIndex, index);
+  const handleDelete = () => {
+    setIsOpen(true);
+    setAction(() => () => deleteExo(roundIndex, index));
+    setText(`Confirmer la suppression de cet exercice ?`);
+  }
+  
+  const [text, setText] = useState('');
+  const [action, setAction] = useState(undefined);
+  const [isOpen, setIsOpen] = useState(false);
   
   return (
     <div className="exoform__container">
-        
+      <Modal
+        text={text}
+        actionToDispatch={action}
+        isOpen={isOpen}
+        setIsOpen={setIsOpen}
+      />
+      
       <form 
         className="exoform__form"
         onSubmit={handleSubmit}
@@ -128,7 +146,7 @@ const ExoForm = ({
             type="button" 
             className="training__button  --transparent --icone"
             onClick={handleDelete}>
-          <i className="fas fa-trash-alt"></i>
+            <i className="fas fa-trash-alt"></i>
           </button>
         </div>
       </form>      

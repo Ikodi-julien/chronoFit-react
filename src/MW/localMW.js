@@ -25,7 +25,9 @@ export default (store) => (next) => (action) => {
       next(action);
       // console.log(currentTraining);
       const newTraining = {...localTraining};
-      newTraining.name = localTrainingName;
+      
+      newTraining.name = localTrainingName !== '' ? localTrainingName : localTraining.name;
+      
       localstorage.createTraining(newTraining);
       
       store.dispatch(getLocalTrainings());

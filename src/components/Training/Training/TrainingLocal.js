@@ -4,6 +4,7 @@ import RoundLocalContainer from '../../../containers/RoundLocalContainer';
 
 const TrainingLocal = (
   {
+    isToRender,
     name, 
     rounds,
     moveRoundInState,
@@ -13,6 +14,8 @@ const TrainingLocal = (
     const roundList = document.getElementById('roundList');
     const sortable = Sortable.create(roundList, 
       {
+        // Drag handler, in Round header, allow drag only with round header.
+        handle: ".drag-handle",
         // group allows to D&D between lists with the same name
         group: {name:'roundList', pull: false, put: false},
         // This is used to sort items after state is updated
@@ -33,16 +36,15 @@ const TrainingLocal = (
   return (
     <ul className="rounds__container" id="roundList">
           {
-            name !== "" ?
-              (rounds ? rounds.map((round, index) => (
+            name !== "" &&
+              (rounds && rounds.map((round, index) => (
                 <li key={index} data-id={index}>
                   <RoundLocalContainer
                     round={round}
                     index={index}
                   />
                 </li>
-              )) : null)
-            : null
+              )))
           }
     </ul>
   )
