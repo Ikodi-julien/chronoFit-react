@@ -1,6 +1,7 @@
 import Landing from '../Landing/Landing';
 import BenchmarkTrainingView from '../../containers/BenchmarkTrainingViewContainer';
 import CustomTrainingView from '../../containers/CustomTrainingViewContainer';
+import ReadTrainingView from '../ReadTrainingView/ReadTrainingView';
 import {
   BrowserRouter as Router,
   Switch,
@@ -19,6 +20,9 @@ function App() {
         </Route>
         <Route path="/custom_training">
           <CustomTrainingView path="/custom_training"/>
+        </Route>
+        <Route path="/read_training">
+          <ReadTrainingView />
         </Route>
         {/* /trainingDone pour voir les stats des entrainements réalisés */}
         {/* /exercices pour voir les exos benchmarks proposés */}
