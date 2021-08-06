@@ -10,6 +10,7 @@ import {
   createLocalTraining,
   deleteLocalTraining,
 } from '../actions/trainingLocalActions';
+import { setReadTraining } from '../actions/readTrainingActions';
 
 const mapStateToProps = ({localTraining}) => ({
   trainingList: localTraining.allLocalTrainings,
@@ -24,6 +25,7 @@ const mapDispatchToProps = (dispatch) => ({
   setLocalTrainingType: (value) => dispatch (setLocalTrainingType(value)),
   createLocalTraining: () => dispatch(createLocalTraining()),
   deleteLocalTraining: () => dispatch(deleteLocalTraining()),
+  setReadTraining: () => dispatch(setReadTraining()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(CustomTrainingManager);

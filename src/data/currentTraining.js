@@ -25,15 +25,15 @@ export const currentTraining = {
   },
   rounds: [
     {
-      id: '4',
-      iteration: '2',
-      duration: '298',
+      id: 4,
+      iteration: 2,
+      duration: 298,
       createdAt: '2021-07-21T20:01:27.794Z',
       updatedAt: '2021-07-21T20:01:27.814Z',
-      trainingId: '4',
+      trainingId: 4,
       exercices: [
         {
-          id: '8',
+          id: 8,
           name: 'Body Blaster',
           description: 'Complex  gym (enchainement) de trois exercices au poids de corps :  push-up  +  pull-up  +  toes-to-bar . Le pull-up et le toes-to-bar peuvent être exécutés strict (sans élan) ou avec un kipping ( élan). Le toes-to-bar peut être remplacé par un  knees-to-elbow',
           isBenchmark: false,
@@ -42,19 +42,20 @@ export const currentTraining = {
           round_has_exercices: {
             createdAt: '2021-07-21T20:01:27.812Z',
             updatedAt: '2021-07-21T20:01:27.812Z',
-            roundId: '4',
-            exerciceId: '8'
+            roundId: 4,
+            exerciceId: 8
           },
           options: [
             {
-              id: '18',
-              duration: '10',
-              weight: '25',
-              reps: '10',
+              id: 18,
+              iteration: 5,
+              duration: 10,
+              weight: 25,
+              reps: 10,
               createdAt: '2021-07-21T20:01:28.088Z',
               updatedAt: '2021-07-21T20:01:28.091Z',
-              exerciceId: '8',
-              trainingId: '4'
+              exerciceId: 8,
+              trainingId: 4
             }
           ]
         },
@@ -74,6 +75,7 @@ export const currentTraining = {
           options: [
             {
               id: 17,
+              iteration: 5,
               duration: 47,
               weight: 55,
               reps: 10,
@@ -100,6 +102,7 @@ export const currentTraining = {
           options: [
             {
               id: 16,
+              iteration: 5,
               duration: 19,
               weight: 65,
               reps: 10,
@@ -126,6 +129,7 @@ export const currentTraining = {
           options: [
             {
               id: 15,
+              iteration: 5,
               duration: 39,
               weight: 90,
               reps: 10,
@@ -162,6 +166,7 @@ export const currentTraining = {
           options: [
             {
               id: 14,
+              iteration: 5,
               duration: 27,
               weight: 15,
               reps: 5,
@@ -188,6 +193,7 @@ export const currentTraining = {
           options: [
             {
               id: 13,
+              iteration: 5,
               duration: 85,
               weight: 65,
               reps: 10,
@@ -214,6 +220,7 @@ export const currentTraining = {
           options: [
             {
               id: 12,
+              iteration: 5,
               duration: 70,
               weight: 20,
               reps: 5,
@@ -240,6 +247,7 @@ export const currentTraining = {
           options: [
             {
               id: 11,
+              iteration: 5,
               duration: 94,
               weight: 75,
               reps: 5,

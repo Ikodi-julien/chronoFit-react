@@ -12,7 +12,7 @@ const ExoPlaying = ({exoPlaying}) => (
       Série {exoPlaying.serieIndex} / {exoPlaying.serieCount}
     </div>
     
-    <div class="readtraining__exoplaying__row">
+    <div className="readtraining__exoplaying__row">
       <div className="readtraining__exoplaying__reps">
         {exoPlaying.reps} reps
       </div>

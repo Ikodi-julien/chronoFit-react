@@ -2,15 +2,17 @@
 import trainingServices from '../../../services/training';
 import { NavLink } from 'react-router-dom';
 
-export default ({training, setTrainingType}) => {
+export default ({training, setTrainingType, setReadTraining}) => {
   
-  const totalTime = trainingServices.getTotalTime(training);
+  const totalTime = trainingServices.getTrainingDuration(training);
   
   return (
     <div className="trainingmanager__options">
     
       <NavLink to="read_training">
-        <button className="training__button">
+        <button 
+          className="training__button"
+          onClick={() => setReadTraining()}>
           GO
         </button>
       </NavLink>

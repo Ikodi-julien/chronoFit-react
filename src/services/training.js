@@ -2,7 +2,17 @@
 const trainingServices = {
   formatSeconds: (seconds) => `${Math.floor(seconds / 60)}mn ${seconds % 60}s`,
   
-  getTotalTime: (training) => {
+  getRoundTime: (round) => {
+    let seconds = 0;
+    
+      round.exercices.forEach( exo => {
+        seconds += (parseInt(exo.options[0].duration) * parseInt(exo.options[0].iteration))
+      });
+      
+    return trainingServices.formatSeconds(seconds);
+  },
+  
+  getTrainingDuration: (training) => {
     
     let seconds = 0;
     
@@ -18,7 +28,7 @@ const trainingServices = {
       
     });
     
-    return trainingServices.formatSeconds(seconds);
+    return seconds;
   },
   
   changeExoOrder : (rounds, action) => {
@@ -49,6 +59,31 @@ const trainingServices = {
     rounds[newRoundIndex].exercices = exoListReceivingExo;
     
     return rounds;
+  },
+  
+  getTimeLine: (training) => {
+    
+    const exoList = [];
+    
+    for (let index = 0; index < training.rounds.length; index++) {
+      for (let indexExo = 0; indexExo < training.rounds[index].exercices.length; indexExo++ ) {
+        
+        exoList.push({
+          roundIndex: index + 1,
+          roundCount: training.rounds.length,
+          roundDuration: training.rounds[index].duration,
+          name: training.rounds[index].exercices[indexExo].name,
+          reps: +training.rounds[index].exercices[indexExo].options[0].reps,
+          duration: +training.rounds[index].exercices[indexExo].options[0].duration,
+          weight: +training.rounds[index].exercices[indexExo].options[0].weight,
+          description: training.rounds[index].exercices[indexExo].description,
+          serieIndex: indexExo,
+          serieCount: +training.rounds[index].exercices[indexExo].options[0].iteration,
+        })
+      }
+    }
+    
+    return exoList;
   }
 }
 

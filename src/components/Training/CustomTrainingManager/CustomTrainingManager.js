@@ -11,6 +11,7 @@ const CustomTrainingManager = (props) => {
       <CTMOptions 
         training={props.training}
         setTrainingType={props.setLocalTrainingType}  
+        setReadTraining={props.setReadTraining}
       />
     </div>
   )
