@@ -1,0 +1,20 @@
+@use '../../../styles/vars'as v;
+
+.readtraining__exodetails {
+  width: 35%;
+  text-align: center;
+  margin: 5px;
+  padding: 5px;
+  background-color: v.$color-intermediaire;
+  border: 1px solid v.$base-color;
+  border-radius: v.$border-radius;
+  font-size: 0.8rem;
+
+  &__name {
+    font-size: 1.5em;
+  }
+
+  &.--right {
+    text-align: center;
+  }
+}

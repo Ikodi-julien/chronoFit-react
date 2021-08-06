@@ -45,6 +45,10 @@
       font-size: v.$fs-button-icone-xl;
     }
 
+    &.--xxl {
+      font-size: v.$fs-button-icone-xl * 1.2;
+    }
+
     &.--rotate {
       transform: rotate(90deg);
     }

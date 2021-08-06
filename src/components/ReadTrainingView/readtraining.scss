@@ -1,6 +1,39 @@
 @use '../../styles/vars'as v;
 
 .readtraining {
+  position: relative;
   width: 100%;
   height: 100vh;
+
+  &__close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: fit-content;
+  }
+
+  &__row {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+
+    &.--center {
+      justify-content: center;
+    }
+  }
+
+  &__exotime {
+    width: 75%;
+    margin: auto;
+    border-left: 1px solid v.$base-color;
+    border-right: 1px solid v.$base-color;
+    padding: 1.5rem 0;
+  }
+
+  &__trainingtime {
+    margin: auto;
+    margin-top: 30px;
+    width: 80%;
+    font-size: 0.6em;
+  }
 }

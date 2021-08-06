@@ -1,0 +1,38 @@
+@use '../../../styles/vars'as v;
+
+.readtraining__exoplaying {
+  width: 75%;
+  background-color: v.$base-color;
+  color: v.$color-intermediaire;
+  text-align: center;
+  padding: 5px;
+  margin-top: 10px;
+  border-radius: v.$border-radius v.$border-radius 0 0;
+  font-size: 1rem;
+
+  &__name {
+    font-size: 2.2em;
+  }
+
+  &__description {
+    margin: 5px;
+    padding: 3px;
+    // border: 1px dashed v.$color-intermediaire;
+    border-radius: v.$border-radius;
+  }
+
+  &__series {
+    font-size: 1.2em;
+  }
+
+  &__row {
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+  &__reps,
+  &__weight {
+    font-size: 2em;
+    font-weight: bold;
+  }
+}

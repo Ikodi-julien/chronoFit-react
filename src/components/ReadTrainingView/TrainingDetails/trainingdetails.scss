@@ -1,1 +1,19 @@
 @use '../../../styles/vars'as v;
+
+.readtraining__details {
+  width: fit-content;
+  margin: auto;
+  padding: 20px 0;
+
+  &__name {
+    font-size: 2em;
+  }
+
+  &__round {
+    font-size: 1.5em;
+  }
+
+  &__duration {
+    font-size: 0.9em;
+  }
+}

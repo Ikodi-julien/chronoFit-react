@@ -1,17 +1,22 @@
-import './trainingdetails.scss'
+import './trainingdetails.scss';
+import trainingServices from '../../../services/training';
 
-const TrainingDetails = ({name, roundIndex, currentRoundDuration}) => (
+const TrainingDetails = ({details}) => {
+  
+  const duration = trainingServices.formatSeconds(details.currentRoundDuration);
+  
+  return (
   <section className="readtraining__details">
     <h1 className="readtraining__details__name">
-      {name}
+      {details.name}
     </h1>
     <div className="readtraining__details__round">
-      Round n°{roundIndex}
+      Round n°{details.roundIndex}
     </div>
     <div className="readtraining__details__duration">
-      Durée prévue : {currentRoundDuration}
+      Durée prévue : {duration}
     </div>
   </section>
-)
+  )}
 
 export default TrainingDetails;

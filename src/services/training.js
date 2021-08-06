@@ -1,5 +1,7 @@
 /* eslint-disable import/no-anonymous-default-export */
-export default {
+const trainingServices = {
+  formatSeconds: (seconds) => `${Math.floor(seconds / 60)}mn ${seconds % 60}s`,
+  
   getTotalTime: (training) => {
     
     let seconds = 0;
@@ -16,7 +18,7 @@ export default {
       
     });
     
-    return `${Math.floor(seconds / 60)}mn ${seconds % 60}s`;
+    return trainingServices.formatSeconds(seconds);
   },
   
   changeExoOrder : (rounds, action) => {
@@ -49,3 +51,5 @@ export default {
     return rounds;
   }
 }
+
+export default trainingServices;

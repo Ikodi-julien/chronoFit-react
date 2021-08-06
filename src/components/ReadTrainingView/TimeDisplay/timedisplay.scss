@@ -1,0 +1,19 @@
+@use '../../../styles/vars'as v;
+
+.readtraining__timedisplay {
+  // need to be in a container
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+
+
+  &__text {
+    display: flex;
+    align-items: center;
+    font-size: 1.2em;
+  }
+
+  &__time {
+    font-size: 2.5em;
+  }
+}
