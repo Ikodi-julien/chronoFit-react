@@ -1,13 +1,16 @@
 import {
-  SET_READ_TRAINING
+  SET_READ_TRAINING,
+  SET_CURRENT_EXO
 } from '../actions/readTrainingActions';
 // import trainingServices from '../services/training';
 
 const initialState = {
   timeline: [],
+  timelineIndex: 0,
   // TraingDetails
   trainingDetails: {
     name: 'Un super long titre',
+    duration: 400,
     roundIndex: 1,
     roundCount: 5,
     currentRoundDuration: 1300,
@@ -52,54 +55,68 @@ const initialState = {
 };
 
 const reducer = (state=initialState, action={}) => {
+  
+  let {exoIndex} = action;
+  
   switch (action.type) {
     case SET_READ_TRAINING:
-      console.log('trainingDetails', action.trainingDetails);
-      console.log('timeLine', action.timeline);
-      
       return {
         ...state,
         timeline: action.timeline,
-        // TraingDetails
         trainingDetails: {
           name: action.trainingDetails.name,
-          roundIndex: action.timeline[0].roundIndex,
-          roundCount: action.timeline[0].roundCount,
-          currentRoundDuration: action.timeline[0].roundDuration,
+          duration: action.trainingDetails.duration,
+        },
+      }
+      
+    case SET_CURRENT_EXO:
+      // console.log('trainingDetails', action.trainingDetails);
+      // console.log('timeLine', action.timeline);
+      if (state.timeline[exoIndex].beginning) exoIndex++;
+      if (state.timeline[exoIndex].end) return state;
+      
+      return {
+        ...state,
+        timelineIndex: exoIndex,
+        trainingDetails: {
+          ...state.trainingDetails,
+          roundIndex: state.timeline[exoIndex].roundIndex,
+          roundCount: state.timeline[exoIndex].roundCount,
+          currentRoundDuration: state.timeline[exoIndex].roundDuration,
         },
         // ExoDetails
         nextExo: {
-          name: action.timeline[1].name,
-          reps: action.timeline[1].reps,
-          duration: action.timeline[1].duration,
-          weight: action.timeline[1].weight,
+          name: state.timeline[exoIndex + 1].name,
+          reps: state.timeline[exoIndex + 1].reps,
+          duration: state.timeline[exoIndex + 1].duration,
+          weight: state.timeline[exoIndex + 1].weight,
         },
         previousExo: {
-          name: '',
-          serieCount: '',
-          reps: '',
-          duration: '',
-          weight: '',
+          name:  state.timeline[exoIndex - 1] ? state.timeline[exoIndex - 1].name : '',
+          serieCount: state.timeline[exoIndex - 1] ? state.timeline[exoIndex - 1].serieCount : '',
+          reps: state.timeline[exoIndex - 1] ? state.timeline[exoIndex - 1].reps : '',
+          duration: state.timeline[exoIndex - 1] ? state.timeline[exoIndex - 1].duration : '',
+          weight: state.timeline[exoIndex - 1] ? state.timeline[exoIndex - 1].weight : '',
         },
         // ExoPlaying
         exoPlaying: {
-          name: action.timeline[0].name,
-          description: action.timeline[0].description,
-          serieIndex: action.timeline[0].serieIndex,
-          serieCount: action.timeline[0].serieCount,
-          reps: action.timeline[0].reps,
-          weight: action.timeline[0].weight,
+          name: state.timeline[exoIndex].name,
+          description: state.timeline[exoIndex].description,
+          serieIndex: state.timeline[exoIndex].serieIndex,
+          serieCount: state.timeline[exoIndex].serieCount,
+          reps: state.timeline[exoIndex].reps,
+          weight: state.timeline[exoIndex].weight,
         },
         //Time
         timeDisplay: {
           exoPlaying : {
-            total: action.timeline[0].duration,
-            remaining: action.timeline[0].duration,
+            total: state.timeline[exoIndex].duration,
+            remaining: state.timeline[exoIndex].duration,
             fromBeginning: 0,
           },
           training: {
-            total: action.trainingDetails.duration,
-            remaining: action.trainingDetails.duration,
+            total: state.trainingDetails.duration,
+            remaining: state.trainingDetails.duration,
             fromBeginning: 0,
           }
         }

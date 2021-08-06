@@ -2,14 +2,14 @@
 const trainingServices = {
   formatSeconds: (seconds) => `${Math.floor(seconds / 60)}mn ${seconds % 60}s`,
   
-  getRoundTime: (round) => {
+  getRoundDuration: (round) => {
     let seconds = 0;
     
       round.exercices.forEach( exo => {
         seconds += (parseInt(exo.options[0].duration) * parseInt(exo.options[0].iteration))
       });
       
-    return trainingServices.formatSeconds(seconds);
+    return seconds;
   },
   
   getTrainingDuration: (training) => {
@@ -63,25 +63,28 @@ const trainingServices = {
   
   getTimeLine: (training) => {
     
-    const exoList = [];
+    const exoList = [{beginning: true}];
     
     for (let index = 0; index < training.rounds.length; index++) {
       for (let indexExo = 0; indexExo < training.rounds[index].exercices.length; indexExo++ ) {
-        
-        exoList.push({
-          roundIndex: index + 1,
-          roundCount: training.rounds.length,
-          roundDuration: training.rounds[index].duration,
-          name: training.rounds[index].exercices[indexExo].name,
-          reps: +training.rounds[index].exercices[indexExo].options[0].reps,
-          duration: +training.rounds[index].exercices[indexExo].options[0].duration,
-          weight: +training.rounds[index].exercices[indexExo].options[0].weight,
-          description: training.rounds[index].exercices[indexExo].description,
-          serieIndex: indexExo,
-          serieCount: +training.rounds[index].exercices[indexExo].options[0].iteration,
-        })
+        for (let indexSerie = 0; indexSerie < training.rounds[index].exercices[indexExo].options[0].iteration; indexSerie++) {
+          exoList.push({
+            roundIndex: index + 1,
+            roundCount: training.rounds.length,
+            roundDuration: trainingServices.getRoundDuration(training.rounds[index]),
+            name: training.rounds[index].exercices[indexExo].name,
+            reps: +training.rounds[index].exercices[indexExo].options[0].reps,
+            duration: +training.rounds[index].exercices[indexExo].options[0].duration,
+            weight: +training.rounds[index].exercices[indexExo].options[0].weight,
+            description: training.rounds[index].exercices[indexExo].description,
+            serieIndex: indexSerie + 1,
+            serieCount: +training.rounds[index].exercices[indexExo].options[0].iteration,
+          })
+        }
       }
     }
+    
+    exoList.push({end: true});
     
     return exoList;
   }

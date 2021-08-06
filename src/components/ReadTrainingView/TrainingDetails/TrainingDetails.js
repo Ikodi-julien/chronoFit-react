@@ -14,7 +14,7 @@ const TrainingDetails = ({details}) => {
       Round n°{details.roundIndex}
     </div>
     <div className="readtraining__details__duration">
-      Durée prévue : {duration}
+      Durée du round : {duration}
     </div>
   </section>
   )}

@@ -7,7 +7,8 @@ import TimeDisplay from './TimeDisplay/TimeDisplay';
 
 import './readtraining.scss';
 
-const ReadTrainingView = ({trainingDetails, nextExo, previousExo, exoPlaying, timeDisplay}) => (
+const ReadTrainingView = ({trainingDetails, nextExo, previousExo, exoPlaying, timeDisplay, currentExoIndex, setCurrentExo}) => (
+  
   <section className="readtraining">
     <NavLink to="custom_training" className="readtraining__close training__button --transparent --xl">
     <i className="fas fa-times-circle"></i>
@@ -24,7 +25,7 @@ const ReadTrainingView = ({trainingDetails, nextExo, previousExo, exoPlaying, ti
       <TimeDisplay text="Temps restant :" time={timeDisplay.exoPlaying.remaining} />
     </div>
 
-    <ReadControl />
+    <ReadControl setCurrentExo={setCurrentExo} currentExoIndex={currentExoIndex}/>
     
     <div className="readtraining__trainingtime">
       {/* <TimeDisplay text="Temps passé :" time={timeDisplay.training.fromBeginning} /> */}

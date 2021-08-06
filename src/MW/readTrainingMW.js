@@ -1,6 +1,7 @@
 /* eslint-disable import/no-anonymous-default-export */
 import {
-  SET_READ_TRAINING
+  SET_READ_TRAINING,
+  setCurrentExo
 } from '../actions/readTrainingActions';
 import trainingServices from '../services/training';
 
@@ -19,6 +20,7 @@ export default (store) => (next) => (action) => {
       action.timeline = trainingServices.getTimeLine(localTraining);
       
       next(action);
+      store.dispatch(setCurrentExo(0));
       break;
       
     default :

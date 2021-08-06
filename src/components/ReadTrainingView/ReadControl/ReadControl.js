@@ -1,8 +1,11 @@
 import './readcontrol.scss';
 
-const ReadControl = () => (
+const ReadControl = ({currentExoIndex, setCurrentExo}) => (
   <div className="readtraining__control">
-    <button className="training__button --transparent --xxl">
+    <button
+      className="training__button --transparent --xxl"
+      onClick={() => setCurrentExo(currentExoIndex - 1)}
+    >
       <i className="fas fa-backward"></i>
     </button>
     
@@ -14,7 +17,10 @@ const ReadControl = () => (
       <i className="fas fa-pause"></i>
     </button>
     
-    <button className="training__button --transparent --xxl">
+    <button 
+      className="training__button --transparent --xxl"
+      onClick={() => setCurrentExo(currentExoIndex + 1)}
+    >
       <i className="fas fa-forward"></i>
     </button>
     
