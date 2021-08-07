@@ -1,6 +1,6 @@
 import './readcontrol.scss';
 
-const ReadControl = ({currentExoIndex, setCurrentExo}) => (
+const ReadControl = ({currentExoIndex, setCurrentExo, startChrono, pauseChrono}) => (
   <div className="readtraining__control">
     <button
       className="training__button --transparent --xxl"
@@ -9,11 +9,17 @@ const ReadControl = ({currentExoIndex, setCurrentExo}) => (
       <i className="fas fa-backward"></i>
     </button>
     
-    <button className="training__button --transparent --xxl">
+    <button 
+      className="training__button --transparent --xxl"
+      onClick={() => startChrono()}
+    >
       <i className="fas fa-play"></i>
     </button>
     
-    <button className="training__button --transparent --xxl">
+    <button 
+      className="training__button --transparent --xxl"
+      onClick={() => pauseChrono()}
+    >
       <i className="fas fa-pause"></i>
     </button>
     

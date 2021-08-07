@@ -1,7 +1,32 @@
 /* eslint-disable import/no-anonymous-default-export */
 const trainingServices = {
+  /**
+   * Returns a formated time from seconds '12mn 10s' for instance
+   * @param {number} seconds 
+   * @returns string
+   */
   formatSeconds: (seconds) => `${Math.floor(seconds / 60)}mn ${seconds % 60}s`,
-  
+  /**
+   * Return a chrono formated string '12:53' for instance
+   * @param {number} seconds 
+   * @returns string
+   */
+  formatChrono: (seconds) => {
+    const unitMin = Math.floor((seconds / 60) % 10);
+    const tenMin = Math.floor(seconds / 600);
+
+    const unitSec = Math.floor((seconds % 60) % 10);
+    const tenSec = Math.floor((seconds % 60) / 10);
+    
+    const tenth = Math.floor((((seconds % 60) % 10) * 10) % 10);
+
+    return `${tenMin}${unitMin}:${tenSec}${unitSec}:${tenth}`;
+  },
+  /**
+   * Add and return all exercices duration in one round
+   * @param {object} round, a list of exercices
+   * @returns number
+   */
   getRoundDuration: (round) => {
     let seconds = 0;
     
@@ -11,7 +36,11 @@ const trainingServices = {
       
     return seconds;
   },
-  
+  /**
+   * Add and return all durations of all exercices in every round of the training
+   * @param {object} training, a list of rounds and exercices 
+   * @returns number
+   */
   getTrainingDuration: (training) => {
     
     let seconds = 0;
@@ -30,7 +59,17 @@ const trainingServices = {
     
     return seconds;
   },
-  
+  /**
+   * Move exercice between rounds when D&D between rounds, in CustomTrainingView
+   * @param {object} rounds 
+   * @param {object} action - {
+      oldRoundIndex,
+      newRoundIndex,
+      oldIndex,
+      newIndex
+    }
+   * @returns modified rounds
+   */
   changeExoOrder : (rounds, action) => {
         
     const {
@@ -60,7 +99,11 @@ const trainingServices = {
     
     return rounds;
   },
-  
+  /**
+   * Create a readable timeline from a training, the timeline is used in ReadTrainingView
+   * @param {object} training 
+   * @returns timeline - a list of exercices
+   */
   getTimeLine: (training) => {
     
     const exoList = [{beginning: true}];

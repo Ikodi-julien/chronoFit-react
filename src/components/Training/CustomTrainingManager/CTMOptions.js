@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 
 export default ({training, setTrainingType, setReadTraining}) => {
   
-  const totalTime = trainingServices.getTrainingDuration(training);
+  const formatedTrainingTime = trainingServices.formatSeconds(trainingServices.getTrainingDuration(training));
   
   return (
     <div className="trainingmanager__options">
@@ -18,7 +18,7 @@ export default ({training, setTrainingType, setReadTraining}) => {
       </NavLink>
       
       <span className="trainingmanager__options__duration">
-        Durée totale: {totalTime}
+        Durée totale: {formatedTrainingTime}
       </span>
       
       <select

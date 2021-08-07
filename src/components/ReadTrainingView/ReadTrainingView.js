@@ -7,7 +7,18 @@ import TimeDisplay from './TimeDisplay/TimeDisplay';
 
 import './readtraining.scss';
 
-const ReadTrainingView = ({trainingDetails, nextExo, previousExo, exoPlaying, timeDisplay, currentExoIndex, setCurrentExo}) => (
+const ReadTrainingView = ({
+  currentExoIndex,
+  trainingDetails, 
+  nextExo, 
+  previousExo, 
+  exoPlaying, 
+  globalTime, 
+  setCurrentExo, 
+  startChrono,
+  pauseChrono,
+  setExoPlayingTime,
+}) => (
   
   <section className="readtraining">
     <NavLink to="custom_training" className="readtraining__close training__button --transparent --xl">
@@ -21,16 +32,26 @@ const ReadTrainingView = ({trainingDetails, nextExo, previousExo, exoPlaying, ti
     <div className="readtraining__row --center">
       <ExoPlaying exoPlaying={exoPlaying} />
     </div>
+    
+    {/* ExoPlaying */}
     <div className="readtraining__exotime">
-      <TimeDisplay text="Temps restant :" time={timeDisplay.exoPlaying.remaining} />
+      <TimeDisplay 
+        text="" 
+        time={exoPlaying.currentTime} 
+        isCounting={exoPlaying.isCounting}
+        setTime={setExoPlayingTime}
+      />
     </div>
 
-    <ReadControl setCurrentExo={setCurrentExo} currentExoIndex={currentExoIndex}/>
+    <ReadControl 
+      setCurrentExo={setCurrentExo} 
+      currentExoIndex={currentExoIndex}
+      startChrono={startChrono}
+      pauseChrono={pauseChrono}
+    />
     
     <div className="readtraining__trainingtime">
-      {/* <TimeDisplay text="Temps passé :" time={timeDisplay.training.fromBeginning} /> */}
-
-      <TimeDisplay text="Temps total restant :" time={timeDisplay.training.remaining} />
+      <TimeDisplay text="Temps total restant :" time={globalTime.currentTime} />
     </div>
   </section>
 )

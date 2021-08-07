@@ -1,6 +1,9 @@
 import {
   SET_READ_TRAINING,
-  SET_CURRENT_EXO
+  SET_CURRENT_EXO,
+  START_CHRONO,
+  PAUSE_CHRONO,
+  SET_EXOPLAYING_TIME,
 } from '../actions/readTrainingActions';
 // import trainingServices from '../services/training';
 
@@ -32,25 +35,23 @@ const initialState = {
   },
   // ExoPlaying
   exoPlaying: {
+    isCounting: false,
     name: "ExoPlaying",
     description: 'je suis la description de exoPlaying',
     serieIndex: 1,
     serieCount: 5,
     reps: 10,
     weight: 20,
+    // ExoPlaying - TimeDisplay
+    duration: 200,
+    currentTime: 41,
+    fromBeginning: 159,
   },
-  //Time
-  timeDisplay: {
-    exoPlaying : {
-      total: 200,
-      remaining: 41,
-      fromBeginning: 159,
-    },
-    training: {
-      total: 400,
-      remaining: 82,
-      fromBeginning: 318,
-    }
+  //GlobalTime
+  globalTime: {
+    currentTime: 400,
+    duration: 82,
+    fromBeginning: 318,
   }
 };
 
@@ -106,19 +107,41 @@ const reducer = (state=initialState, action={}) => {
           serieCount: state.timeline[exoIndex].serieCount,
           reps: state.timeline[exoIndex].reps,
           weight: state.timeline[exoIndex].weight,
+          duration: state.timeline[exoIndex].duration,
+          currentTime: state.timeline[exoIndex].duration,
+          fromBeginning: 0,
         },
-        //Time
-        timeDisplay: {
-          exoPlaying : {
-            total: state.timeline[exoIndex].duration,
-            remaining: state.timeline[exoIndex].duration,
-            fromBeginning: 0,
-          },
-          training: {
-            total: state.trainingDetails.duration,
-            remaining: state.trainingDetails.duration,
-            fromBeginning: 0,
-          }
+        globalTime: {
+          duration: state.trainingDetails.duration,
+          currentTime: state.trainingDetails.duration,
+          fromBeginning: 0,
+        }
+      }
+      
+    case START_CHRONO:
+      return {
+        ...state,
+        exoPlaying: {
+          ...state.exoPlaying,
+          isCounting: true,
+        }
+      }
+
+    case PAUSE_CHRONO:
+      return {
+        ...state,
+        exoPlaying: {
+          ...state.exoPlaying,
+          isCounting: false,
+        }
+      }
+        
+    case SET_EXOPLAYING_TIME:
+      return {
+        ...state,
+        exoPlaying: {
+          ...state.exoPlaying,
+          currentTime: action.time,
         }
       }
     default:
