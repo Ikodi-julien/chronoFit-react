@@ -1,7 +1,8 @@
 @use '../../../styles/vars'as v;
 
 .readtraining__exodetails {
-  width: 35%;
+  width: 50%;
+  height: 100px;
   text-align: center;
   margin: 5px;
   padding: 5px;
@@ -12,9 +13,5 @@
 
   &__name {
     font-size: 1.5em;
-  }
-
-  &.--right {
-    text-align: center;
   }
 }

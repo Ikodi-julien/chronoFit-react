@@ -1,7 +1,9 @@
 /* eslint-disable import/no-anonymous-default-export */
 import {
   SET_READ_TRAINING,
-  setCurrentExo
+  setCurrentExo,
+  SET_GLOBAL_TIME,
+  endTraining,
 } from '../actions/readTrainingActions';
 import trainingServices from '../services/training';
 
@@ -21,6 +23,12 @@ export default (store) => (next) => (action) => {
       
       next(action);
       store.dispatch(setCurrentExo(0));
+      break;
+      
+    case SET_GLOBAL_TIME:
+      next(action);
+      // if global time remaining < 0.1s, put readTraining.isCounting isCounting to false,
+      if (action.time < 0.1) store.dispatch(endTraining());
       break;
       
     default :

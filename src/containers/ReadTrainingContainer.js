@@ -5,10 +5,12 @@ import {
   startChrono,
   pauseChrono,
   setExoPlayingTime,
+  setGlobalTime,
+  resetReadTraining,
 } from '../actions/readTrainingActions';
 
 const mapStateToProps = ({readTraining}) => ({
-  currentExoIndex: readTraining.timelineIndex,
+  timelineIndex: readTraining.timelineIndex,
   trainingDetails: readTraining.trainingDetails,
   nextExo: readTraining.nextExo,
   previousExo: readTraining.previousExo,
@@ -20,7 +22,9 @@ const mapDispatchToProps = (dispatch) => ({
   setCurrentExo: (exoIndex) => dispatch(setCurrentExo(exoIndex)),
   startChrono: () => dispatch(startChrono()),
   pauseChrono: () => dispatch(pauseChrono()),
-  setExoPlayingTime: (time) => dispatch(setExoPlayingTime(time))
+  setExoPlayingTime: (time) => dispatch(setExoPlayingTime(time)),
+  setGlobalTime: (time) => dispatch(setGlobalTime(time)),
+  resetReadTraining: () => dispatch(resetReadTraining()),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(ReadTrainingView);

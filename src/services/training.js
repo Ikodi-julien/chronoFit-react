@@ -109,27 +109,54 @@ const trainingServices = {
     const exoList = [{beginning: true}];
     
     for (let index = 0; index < training.rounds.length; index++) {
-      for (let indexExo = 0; indexExo < training.rounds[index].exercices.length; indexExo++ ) {
-        for (let indexSerie = 0; indexSerie < training.rounds[index].exercices[indexExo].options[0].iteration; indexSerie++) {
-          exoList.push({
-            roundIndex: index + 1,
-            roundCount: training.rounds.length,
-            roundDuration: trainingServices.getRoundDuration(training.rounds[index]),
-            name: training.rounds[index].exercices[indexExo].name,
-            reps: +training.rounds[index].exercices[indexExo].options[0].reps,
-            duration: +training.rounds[index].exercices[indexExo].options[0].duration,
-            weight: +training.rounds[index].exercices[indexExo].options[0].weight,
-            description: training.rounds[index].exercices[indexExo].description,
-            serieIndex: indexSerie + 1,
-            serieCount: +training.rounds[index].exercices[indexExo].options[0].iteration,
-          })
-        }
+      // A chaque round
+      for (let indexRoundIteration = 0; indexRoundIteration < training.rounds[index].iteration; indexRoundIteration++ ) {
+        // A chaque iteration de chaque round
+        for (let indexExo = 0; indexExo < training.rounds[index].exercices.length; indexExo++ ) {
+          // A chaque exo de chaque round
+          for (let indexSerie = 0; indexSerie < training.rounds[index].exercices[indexExo].options[0].iteration; indexSerie++) {
+            // a chaque série de chaque exo de chaque iteration de chaque round
+            exoList.push({
+              roundIndex: index + 1,
+              roundCount: training.rounds.length,
+              roundDuration: trainingServices.getRoundDuration(training.rounds[index]),
+              name: training.rounds[index].exercices[indexExo].name,
+              reps: +training.rounds[index].exercices[indexExo].options[0].reps,
+              duration: +training.rounds[index].exercices[indexExo].options[0].duration,
+              weight: +training.rounds[index].exercices[indexExo].options[0].weight,
+              description: training.rounds[index].exercices[indexExo].description,
+              serieIndex: indexSerie + 1,
+              serieCount: +training.rounds[index].exercices[indexExo].options[0].iteration,
+            })
+          }
+        }        
       }
     }
     
-    exoList.push({end: true});
+    exoList.push({
+      name: 'END',
+      reps: '',
+      duration: 0,
+      weight: '',
+      description: 'Fini, bien joué !',
+      serieIndex: '',
+      serieCount: '',
+    });
     
+    exoList.push({
+      end: true,
+      name: '',
+    })
     return exoList;
+  },
+  
+  getRemainingDuration: (timeline, indexTimeline) => {
+    let seconds = 0;
+    for (let index = indexTimeline; index < timeline.length; index++) {
+      
+      if (timeline[index].duration) seconds += timeline[index].duration;
+    }
+    return seconds;
   }
 }
 

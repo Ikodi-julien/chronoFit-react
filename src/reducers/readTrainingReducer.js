@@ -4,10 +4,14 @@ import {
   START_CHRONO,
   PAUSE_CHRONO,
   SET_EXOPLAYING_TIME,
+  SET_GLOBAL_TIME,
+  RESET_READTRAINING,
+  END_TRAINING,
 } from '../actions/readTrainingActions';
-// import trainingServices from '../services/training';
+import trainingServices from '../services/training';
 
 const initialState = {
+  render:0,
   timeline: [],
   timelineIndex: 0,
   // TraingDetails
@@ -49,8 +53,8 @@ const initialState = {
   },
   //GlobalTime
   globalTime: {
-    currentTime: 400,
     duration: 82,
+    currentTime: 400,
     fromBeginning: 318,
   }
 };
@@ -68,16 +72,21 @@ const reducer = (state=initialState, action={}) => {
           name: action.trainingDetails.name,
           duration: action.trainingDetails.duration,
         },
+        globalTime: {
+          duration: action.trainingDetails.duration,
+          currentTime: action.trainingDetails.duration,
+        }
       }
       
     case SET_CURRENT_EXO:
       // console.log('trainingDetails', action.trainingDetails);
       // console.log('timeLine', action.timeline);
       if (state.timeline[exoIndex].beginning) exoIndex++;
-      if (state.timeline[exoIndex].end) return state;
+      if (exoIndex === state.timeline.length - 1) return state;
       
       return {
         ...state,
+        render: Math.random(),
         timelineIndex: exoIndex,
         trainingDetails: {
           ...state.trainingDetails,
@@ -87,12 +96,15 @@ const reducer = (state=initialState, action={}) => {
         },
         // ExoDetails
         nextExo: {
+          ...state.nextExo,
           name: state.timeline[exoIndex + 1].name,
+          serieCount: state.timeline[exoIndex + 1].serieCount,
           reps: state.timeline[exoIndex + 1].reps,
           duration: state.timeline[exoIndex + 1].duration,
           weight: state.timeline[exoIndex + 1].weight,
         },
         previousExo: {
+          ...state.previousExo,
           name:  state.timeline[exoIndex - 1] ? state.timeline[exoIndex - 1].name : '',
           serieCount: state.timeline[exoIndex - 1] ? state.timeline[exoIndex - 1].serieCount : '',
           reps: state.timeline[exoIndex - 1] ? state.timeline[exoIndex - 1].reps : '',
@@ -101,6 +113,7 @@ const reducer = (state=initialState, action={}) => {
         },
         // ExoPlaying
         exoPlaying: {
+          ...state.exoPlaying,
           name: state.timeline[exoIndex].name,
           description: state.timeline[exoIndex].description,
           serieIndex: state.timeline[exoIndex].serieIndex,
@@ -109,12 +122,11 @@ const reducer = (state=initialState, action={}) => {
           weight: state.timeline[exoIndex].weight,
           duration: state.timeline[exoIndex].duration,
           currentTime: state.timeline[exoIndex].duration,
-          fromBeginning: 0,
         },
         globalTime: {
-          duration: state.trainingDetails.duration,
-          currentTime: state.trainingDetails.duration,
-          fromBeginning: 0,
+          ...state.globalTime,
+          isCounting: false,
+          currentTime: trainingServices.getRemainingDuration(state.timeline, exoIndex),
         }
       }
       
@@ -124,7 +136,11 @@ const reducer = (state=initialState, action={}) => {
         exoPlaying: {
           ...state.exoPlaying,
           isCounting: true,
-        }
+        },
+        globalTime: {
+          ...state.globalTime,
+          isCounting: true,
+        },
       }
 
     case PAUSE_CHRONO:
@@ -133,7 +149,11 @@ const reducer = (state=initialState, action={}) => {
         exoPlaying: {
           ...state.exoPlaying,
           isCounting: false,
-        }
+        },
+        globalTime: {
+          ...state.globalTime,
+          isCounting: false,
+        },
       }
         
     case SET_EXOPLAYING_TIME:
@@ -144,6 +164,33 @@ const reducer = (state=initialState, action={}) => {
           currentTime: action.time,
         }
       }
+
+    case SET_GLOBAL_TIME:
+      return {
+        ...state,
+        globalTime: {
+          ...state.globalTime,
+          isCounting: state.exoPlaying.isCounting,
+          currentTime: action.time,
+        }
+      }
+      
+    case RESET_READTRAINING:
+      return initialState;
+      
+    case END_TRAINING:
+      return {
+        ...state,
+        exoPlaying: {
+          ...state.exoPlaying,
+          isCounting: false,
+        },
+        globalTime: {
+          ...state.globalTime,
+          isCounting: false,
+        }
+      }
+
     default:
       return state;
   }
