@@ -4,6 +4,7 @@ import ExoDetails from './ExoDetails/ExoDetails';
 import ExoPlaying from './ExoPlaying/ExoPlaying';
 import ReadControl from './ReadControl/ReadControl';
 import CountDown from './TimeDisplay/CountDown';
+import SoundManager from './SoundManager/SoundManager';
 
 import './readtraining.scss';
 
@@ -67,6 +68,7 @@ const ReadTrainingView = ({
         setExo={setCurrentExo}
       />
     </div>
+    <SoundManager time={exoPlaying.currentTime} />
   </section>
 )
 
