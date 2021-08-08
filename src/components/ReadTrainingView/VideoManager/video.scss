@@ -1,0 +1,31 @@
+@use '../../../styles/vars'as v;
+
+.videomanager {
+  &__container {
+    position: absolute;
+    overflow: hidden;
+    height: 150px;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+
+    & .--darkfilter {
+      position: absolute;
+      height: 150px;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: v.$base-color-transparent;
+      z-index: 3;
+    }
+  }
+
+  &__video {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 2;
+  }
+}

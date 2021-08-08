@@ -1,7 +1,9 @@
+import VideoManager from '../VideoManager/VideoManager';
 import './exoplaying.scss';
 
 const ExoPlaying = ({exoPlaying}) => (
   <section className="readtraining__exoplaying">
+    <VideoManager isCounting={exoPlaying.isCounting} />
     <h1 className="readtraining__exoplaying__name">
       {exoPlaying.name}
     </h1>

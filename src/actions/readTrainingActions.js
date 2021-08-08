@@ -14,3 +14,5 @@ export const RESET_READTRAINING = 'RESET_READTRAINING';
 export const resetReadTraining = () => ({type: RESET_READTRAINING});
 export const END_TRAINING = 'END_TRAINING';
 export const endTraining = () => ({type: END_TRAINING});
+export const TELL_NEXT_EXO_NAME = 'TELL_NEXT_EXO_NAME';
+export const tellNextExoName = () => ({type: TELL_NEXT_EXO_NAME});

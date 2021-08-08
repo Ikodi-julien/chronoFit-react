@@ -1,7 +1,7 @@
 /* eslint-disable import/no-anonymous-default-export */
 import { useEffect } from 'react';
-import bip from '../../../sounds/first_bips.wav';
-import finalBip from '../../../sounds/final_bip.wav';
+import bip from '../../../assets/first_bips.wav';
+import finalBip from '../../../assets/final_bip.wav';
 
 export default ({time}) => {
   

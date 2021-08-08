@@ -1,5 +1,6 @@
 $gutter: 1.5rem;
-$base-color: #2f4452;
+$base-color: rgb(47, 68, 82);
+$base-color-transparent: rgba(0, 35, 56, 0.8);
 $color-intermediaire: adjust-color($base-color, $lightness: 70%);
 $color-very-light: adjust-color($base-color, $lightness: 90%);
 $border-radius: 5px;

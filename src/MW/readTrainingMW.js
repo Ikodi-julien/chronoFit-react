@@ -4,11 +4,13 @@ import {
   setCurrentExo,
   SET_GLOBAL_TIME,
   endTraining,
+  TELL_NEXT_EXO_NAME,
 } from '../actions/readTrainingActions';
 import trainingServices from '../services/training';
 
 export default (store) => (next) => (action) => {
   const {localTraining} = store.getState().localTraining;
+  const {nextExo} = store.getState().readTraining;
   // console.log(localTraining);
   
   switch (action.type) {
@@ -29,6 +31,12 @@ export default (store) => (next) => (action) => {
       next(action);
       // if global time remaining < 0.1s, put readTraining.isCounting isCounting to false,
       if (action.time < 0.1) store.dispatch(endTraining());
+      break;
+    
+    case TELL_NEXT_EXO_NAME:
+      console.log(action);
+      let utterance = new SpeechSynthesisUtterance(nextExo.name);
+      speechSynthesis.speak(utterance);
       break;
       
     default :

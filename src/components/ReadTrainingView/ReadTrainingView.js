@@ -4,7 +4,7 @@ import ExoDetails from './ExoDetails/ExoDetails';
 import ExoPlaying from './ExoPlaying/ExoPlaying';
 import ReadControl from './ReadControl/ReadControl';
 import CountDown from './TimeDisplay/CountDown';
-import SoundManager from './SoundManager/SoundManager';
+import BipManager from './BipManager/BipManager';
 
 import './readtraining.scss';
 
@@ -21,6 +21,7 @@ const ReadTrainingView = ({
   setExoPlayingTime,
   setGlobalTime,
   resetReadTraining,
+  tellNextExoName,
 }) => (
   
   <section className="readtraining">
@@ -48,6 +49,7 @@ const ReadTrainingView = ({
         setTime={setExoPlayingTime}
         timelineIndex={timelineIndex}
         setExo={setCurrentExo}
+        tellNextExoName={tellNextExoName}
       />
     </div>
 
@@ -68,7 +70,7 @@ const ReadTrainingView = ({
         setExo={setCurrentExo}
       />
     </div>
-    <SoundManager time={exoPlaying.currentTime} />
+    <BipManager time={exoPlaying.currentTime} />
   </section>
 )
 

@@ -1,8 +1,10 @@
 @use '../../../styles/vars'as v;
 
 .readtraining__exoplaying {
+  position: relative;
   width: 75%;
-  background-color: v.$base-color;
+  // background-color: v.$base-color-transparent;
+  overflow: hidden;
   color: v.$color-intermediaire;
   text-align: center;
   padding: 5px;
@@ -11,7 +13,9 @@
   font-size: 1rem;
 
   &__name {
+    position: relative;
     font-size: 2.2em;
+    z-index: 10;
   }
 
   &__description {
@@ -19,15 +23,22 @@
     padding: 3px;
     // border: 1px dashed v.$color-intermediaire;
     border-radius: v.$border-radius;
+    position: relative;
+    z-index: 10;
   }
 
   &__series {
     font-size: 1.2em;
+    position: relative;
+    z-index: 10;
   }
 
   &__row {
     display: flex;
     justify-content: space-evenly;
+    z-index: 10;
+    position: relative;
+    z-index: 10;
   }
 
   &__reps,

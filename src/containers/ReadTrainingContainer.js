@@ -7,6 +7,7 @@ import {
   setExoPlayingTime,
   setGlobalTime,
   resetReadTraining,
+  tellNextExoName,
 } from '../actions/readTrainingActions';
 
 const mapStateToProps = ({readTraining}) => ({
@@ -25,6 +26,7 @@ const mapDispatchToProps = (dispatch) => ({
   setExoPlayingTime: (time) => dispatch(setExoPlayingTime(time)),
   setGlobalTime: (time) => dispatch(setGlobalTime(time)),
   resetReadTraining: () => dispatch(resetReadTraining()),
+  tellNextExoName: () => dispatch(tellNextExoName()),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(ReadTrainingView);

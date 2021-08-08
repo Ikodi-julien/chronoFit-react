@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import trainingServices from '../../../services/training';
 import './timedisplay.scss';
 
-const CountDown = ({time, text, isCounting, setTime, timelineIndex, setExo}) => {
+const CountDown = ({time, text, isCounting, setTime, timelineIndex, setExo, tellNextExoName}) => {
   
   useEffect(() => {
     
@@ -13,9 +13,11 @@ const CountDown = ({time, text, isCounting, setTime, timelineIndex, setExo}) => 
       } else {
         setTimeout(() =>{setExo(timelineIndex + 1)}, 100 );  
       }
+      
+      if (Math.round(time * 10) === 50) tellNextExoName();
     } 
     
-  }, [time, setTime, isCounting, timelineIndex, setExo])
+  }, [time, setTime, isCounting, timelineIndex, setExo, tellNextExoName])
   
   return(
   <div className="readtraining__timedisplay">
