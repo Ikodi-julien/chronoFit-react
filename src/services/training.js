@@ -106,7 +106,17 @@ const trainingServices = {
    */
   getTimeLine: (training) => {
     
-    const exoList = [{beginning: true}];
+    const exoList = [{
+      beginning: true},
+      {
+      name: 'READY ?',
+      reps: '',
+      duration: 5,
+      weight: '',
+      description: 'Play pour commencer',
+      serieIndex: '',
+      serieCount: '',
+    }];
     
     for (let index = 0; index < training.rounds.length; index++) {
       // A chaque round
@@ -134,11 +144,11 @@ const trainingServices = {
     }
     
     exoList.push({
-      name: 'END',
+      name: 'Fini, bien joué !',
       reps: '',
       duration: 0,
       weight: '',
-      description: 'Fini, bien joué !',
+      description: '',
       serieIndex: '',
       serieCount: '',
     });
@@ -147,6 +157,7 @@ const trainingServices = {
       end: true,
       name: '',
     })
+    console.log(exoList);
     return exoList;
   },
   

@@ -33,9 +33,9 @@ const initialState = {
     name: '',
     iteration: 1,
     desc: '',
-    reps: '',
-    duration: '',
-    weight: '',
+    reps: 0,
+    duration: 0,
+    weight: 0,
   },
   localTraining: {
     name: 'Work Of Day',
@@ -47,19 +47,19 @@ const initialState = {
         iteration: 1,
         duration: 0,
         exercices: [
-          {
-            isForm: false,
-            name: 'Un exercice',
-            description: '',
-            options: [
-              {
-                iteration: 1,
-                duration: 0,
-                weight: 0,
-                reps: 0,
-              }
-            ]
-          }
+          // {
+          //   isForm: false,
+          //   name: 'Un exercice',
+          //   description: '',
+          //   options: [
+          //     {
+          //       iteration: 1,
+          //       duration: 0,
+          //       weight: 0,
+          //       reps: 0,
+          //     }
+          //   ]
+          // }
         ],
       }
     ]
@@ -232,6 +232,7 @@ const reducer = (state=initialState, action={}) => {
           description: '',
           // isBenchmark: false,
           options: [{
+              iteration: 1,
               duration: 0,
               weight: 0,
               reps: 0,
@@ -246,6 +247,7 @@ const reducer = (state=initialState, action={}) => {
         localTraining : {
           ...state.localTraining,
           rounds: allRoundMenuHidden,
+          exoForm: {...initialState.exoForm},
         }
       }
       

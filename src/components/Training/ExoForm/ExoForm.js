@@ -94,6 +94,7 @@ const ExoForm = ({
             name="iteration"
             className="exoform__input exoform__input__number"
             type="number"
+            min={1}
             placeholder="séries"
             value={iteration}
             onChange={handleInputChange}
@@ -107,6 +108,7 @@ const ExoForm = ({
             className="exoform__input exoform__input__number"
             type="number"
             placeholder="Reps"
+            min={0}
             value={reps}
             onChange={handleInputChange}
           />
@@ -119,6 +121,7 @@ const ExoForm = ({
             className="exoform__input exoform__input__number"
             type="number"
             placeholder="Durée"
+            min={0}
             value={duration}
             onChange={handleInputChange}
           />
@@ -131,6 +134,7 @@ const ExoForm = ({
             className="exoform__input exoform__input__number"
             type="number"
             placeholder="Poids"
+            min={0}
             onChange={handleInputChange}
             value={weight}
           />

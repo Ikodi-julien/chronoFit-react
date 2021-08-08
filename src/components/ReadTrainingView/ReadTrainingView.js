@@ -4,6 +4,7 @@ import ExoDetails from './ExoDetails/ExoDetails';
 import ExoPlaying from './ExoPlaying/ExoPlaying';
 import ReadControl from './ReadControl/ReadControl';
 import CountDown from './TimeDisplay/CountDown';
+import GlobalCountDown from './TimeDisplay/GlobalCountDown';
 import BipManager from './BipManager/BipManager';
 
 import './readtraining.scss';
@@ -12,7 +13,6 @@ const ReadTrainingView = ({
   timelineIndex,
   trainingDetails, 
   nextExo, 
-  previousExo, 
   exoPlaying, 
   globalTime, 
   setCurrentExo, 
@@ -22,6 +22,8 @@ const ReadTrainingView = ({
   setGlobalTime,
   resetReadTraining,
   tellNextExoName,
+  resetCurrent,
+  setResetCurrent,
 }) => (
   
   <section className="readtraining">
@@ -61,13 +63,13 @@ const ReadTrainingView = ({
     />
     
     <div className="readtraining__trainingtime">
-      <CountDown 
+      <GlobalCountDown 
         text="Temps total restant :" 
         time={globalTime.currentTime} 
         isCounting={globalTime.isCounting}
         setTime={setGlobalTime}
-        timelineIndex={timelineIndex}
-        setExo={setCurrentExo}
+        resetCurrent={resetCurrent}
+        setResetCurrent={setResetCurrent}
       />
     </div>
     <BipManager time={exoPlaying.currentTime} />

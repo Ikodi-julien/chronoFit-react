@@ -7,61 +7,64 @@ import {
   SET_GLOBAL_TIME,
   RESET_READTRAINING,
   END_TRAINING,
+  SET_RESET_CURRENT,
 } from '../actions/readTrainingActions';
 import trainingServices from '../services/training';
+import defaultTimeline from '../data/defaultTimeline';
 
 const initialState = {
   render:0,
-  timeline: [],
+  timeline: defaultTimeline,
   timelineIndex: 0,
   // TraingDetails
   trainingDetails: {
-    name: 'Un super long titre',
-    duration: 400,
-    roundIndex: 1,
-    roundCount: 5,
-    currentRoundDuration: 1300,
+    name: '',
+    duration: '',
+    roundIndex: '',
+    roundCount: '',
+    currentRoundDuration: '',
   },
   // ExoDetails
   nextExo: {
-    name: 'Burpees',
-    serieCount: 1,
-    reps: 10,
-    duration: 120,
-    weight: 20,
+    name: '',
+    serieCount: '',
+    reps: '',
+    duration: '',
+    weight: '',
   },
   previousExo: {
-    name: 'Handstand push-up',
-    serieCount: 3,
-    reps: 5,
-    duration: 100,
-    weight: 15,
+    name: '',
+    serieCount: '',
+    reps: '',
+    duration: '',
+    weight: '',
   },
   // ExoPlaying
   exoPlaying: {
     isCounting: false,
-    name: "ExoPlaying",
-    description: 'je suis la description de exoPlaying',
-    serieIndex: 1,
-    serieCount: 5,
-    reps: 10,
-    weight: 20,
+    name: 'Sélectionner un entrainement',
+    description: '',
+    serieIndex: '',
+    serieCount: '',
+    reps: '',
+    weight: '',
     // ExoPlaying - TimeDisplay
-    duration: 200,
-    currentTime: 41,
-    fromBeginning: 159,
+    duration: '',
+    currentTime: '',
+    fromBeginning: '',
   },
   //GlobalTime
   globalTime: {
-    duration: 82,
-    currentTime: 400,
-    fromBeginning: 318,
+    duration: '',
+    resetCurrent: false,
+    currentTime: '',
+    fromBeginning: '',
   }
 };
 
 const reducer = (state=initialState, action={}) => {
   
-  let {exoIndex} = action;
+  let {exoIndex} = action || 0;
   
   switch (action.type) {
     case SET_READ_TRAINING:
@@ -125,7 +128,7 @@ const reducer = (state=initialState, action={}) => {
         },
         globalTime: {
           ...state.globalTime,
-          isCounting: false,
+          resetCurrent: true,
           currentTime: trainingServices.getRemainingDuration(state.timeline, exoIndex),
         }
       }
@@ -170,7 +173,6 @@ const reducer = (state=initialState, action={}) => {
         ...state,
         globalTime: {
           ...state.globalTime,
-          isCounting: state.exoPlaying.isCounting,
           currentTime: action.time,
         }
       }
@@ -191,6 +193,15 @@ const reducer = (state=initialState, action={}) => {
         }
       }
 
+    case SET_RESET_CURRENT:
+      return {
+        ...state,
+        globalTime: {
+          ...state.globalTime,
+          resetCurrent: action.value,
+        }
+      }
+      
     default:
       return state;
   }

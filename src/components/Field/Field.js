@@ -5,7 +5,8 @@ const Field = ({
   value,
   name,
   onChange,
-  placeholder
+  placeholder,
+  min
 }) => {
   
   const handleChange = (evt) => {
@@ -26,6 +27,7 @@ const Field = ({
     type={type}
     value={value}
     name={name}
+    min={min}
     onChange={handleChange}
     placeholder={placeholder}
   />

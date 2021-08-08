@@ -4,7 +4,8 @@ import { NavLink } from 'react-router-dom';
 
 export default ({training, setTrainingType, setReadTraining}) => {
   
-  const formatedTrainingTime = trainingServices.formatSeconds(trainingServices.getTrainingDuration(training));
+  const timeInSec = trainingServices.getTrainingDuration(training);
+  const formatedTrainingTime = trainingServices.formatSeconds(timeInSec);
   
   return (
     <div className="trainingmanager__options">
@@ -18,7 +19,9 @@ export default ({training, setTrainingType, setReadTraining}) => {
       </NavLink>
       
       <span className="trainingmanager__options__duration">
-        Durée totale: {formatedTrainingTime}
+        Durée planifiée: {
+          isNaN(timeInSec)  ? "il manque une valeur" : formatedTrainingTime
+          }
       </span>
       
       <select

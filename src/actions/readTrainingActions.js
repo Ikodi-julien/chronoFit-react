@@ -16,3 +16,5 @@ export const END_TRAINING = 'END_TRAINING';
 export const endTraining = () => ({type: END_TRAINING});
 export const TELL_NEXT_EXO_NAME = 'TELL_NEXT_EXO_NAME';
 export const tellNextExoName = () => ({type: TELL_NEXT_EXO_NAME});
+export const SET_RESET_CURRENT = 'SET_RESET_CURRENT';
+export const setResetCurrent = (bool) => ({type: SET_RESET_CURRENT, value: bool});
