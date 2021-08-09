@@ -69,10 +69,10 @@ const ExoForm = ({
             onChange={handleInputChange}
             />
           <button 
-          className="training__button --transparent --icone --caretopen --xl"
+          className="training__button --transparent --icone --caretopen "
           type="button"
           onClick={() => showExoInList(roundIndex, index)}
-          ><i className="fas fa-caret-right "></i></button>
+          ><i className="fas fa-times"></i></button>
         </div>
         
         <div className="exoform__input__row">

@@ -26,9 +26,9 @@ const ExerciceInList = ({
         {
           !roundShrunken &&
           <button 
-            className="training__button --transparent --icone --xl"
+            className="training__button --transparent --icone"
             onClick={() => showExoForm(roundIndex, index)}
-            ><i className="fas fa-caret-right"></i>
+            ><i className="far fa-edit"></i>
           </button>          
         }
       </div>
