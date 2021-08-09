@@ -15,8 +15,8 @@ export const getCurrentLocalTrainingSuccess = (data) => ({type: GET_CURRENT_LOCA
 export const SET_LOCAL_TRAINING_NAME = 'SET_LOCAL_TRAINING_NAME';
 export const setLocalTrainingName = (value) => ({ type: SET_LOCAL_TRAINING_NAME, value});
 
-export const SET_LOCAL_TRAINING_TYPE = 'SET_LOCAL_TRAINING_TYPE';
-export const setLocalTrainingType = (value) => ({ type: SET_LOCAL_TRAINING_TYPE, value});
+export const SET_LOCAL_ROUND_TYPE = 'SET_LOCAL_ROUND_TYPE';
+export const setLocalRoundType = (roundIndex, value) => ({ type: SET_LOCAL_ROUND_TYPE, roundIndex, value});
 
 export const CREATE_LOCAL_TRAINING = 'CREATE_LOCAL_TRAINING';
 export const createLocalTraining = () => ({ type: CREATE_LOCAL_TRAINING });

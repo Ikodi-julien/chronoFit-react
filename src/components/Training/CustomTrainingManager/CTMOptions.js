@@ -23,20 +23,7 @@ export default ({training, setTrainingType, setReadTraining}) => {
           isNaN(timeInSec)  ? "il manque une valeur" : formatedTrainingTime
           }
       </span>
-      
-      <select
-        name="trainingtype"
-        className="trainingmanager__options__type"
-        value={training.type}
-        onChange={(evt) => setTrainingType(evt.target.value)}
-      >
-        <option value="emom">EMOM</option>
-        <option value="fortime">FOR TIME</option>
-        <option value="amrap">AMRAP</option>
-        {/* <option value="chipper">CHIPPER</option> */}
-        <option value="chipper">LADDER</option>
-        <option value="tabata">TABATA</option>
-      </select>
+
     </div>
   )
 }

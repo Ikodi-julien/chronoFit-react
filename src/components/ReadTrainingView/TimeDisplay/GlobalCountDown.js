@@ -22,7 +22,7 @@ const GlobalCountDown = ({time, text, isCounting, setTime, resetCurrent, setRese
       // 
       setTime(0)
     } 
-  }, [time, isCounting, setTime, resetCurrent])
+  }, [time, isCounting, setTime, resetCurrent, setResetCurrent])
   
   return(
   <div className="readtraining__timedisplay">

@@ -6,6 +6,7 @@ import {
   deleteRoundFromLocalTraining,
   setRoundIteration,
   moveExoInState,
+  setLocalRoundType,
 } from '../actions/trainingLocalActions';
 import {
   setRoundMenuIsVisible,
@@ -32,7 +33,7 @@ const mapDispatchToProps = (dispatch) => ({
   setRoundMenuIsVisible: (index, bool) => dispatch(setRoundMenuIsVisible(index, bool)), 
   setRoundIteration: (index, value) => dispatch(setRoundIteration(index, value)),
   moveExoInState: (obj) => dispatch(moveExoInState(obj)),
-  
+  setRoundType: (roundIndex, value) => dispatch(setLocalRoundType(roundIndex, value)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Round)

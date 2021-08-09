@@ -1,8 +1,10 @@
+import BipManager from '../BipManager/BipManager';
 import VideoManager from '../VideoManager/VideoManager';
 import './exoplaying.scss';
 
 const ExoPlaying = ({exoPlaying}) => (
   <section className="readtraining__exoplaying">
+    <BipManager time={exoPlaying.currentTime} isCountdown={exoPlaying.duration}/>
     <VideoManager isCounting={exoPlaying.isCounting} />
     <h1 className="readtraining__exoplaying__name">
       {exoPlaying.name}

@@ -6,7 +6,6 @@ import {
   getLocalTrainings,
   setLocalTraining,
   setLocalTrainingName,
-  setLocalTrainingType,
   createLocalTraining,
   deleteLocalTraining,
 } from '../actions/trainingLocalActions';
@@ -22,7 +21,6 @@ const mapDispatchToProps = (dispatch) => ({
   getLocalTrainings: () => dispatch(getLocalTrainings()),
   setLocalTraining: (trainingName) => dispatch(setLocalTraining(trainingName)), 
   setLocalTrainingName: (value) => dispatch(setLocalTrainingName(value)) ,
-  setLocalTrainingType: (value) => dispatch (setLocalTrainingType(value)),
   createLocalTraining: () => dispatch(createLocalTraining()),
   deleteLocalTraining: () => dispatch(deleteLocalTraining()),
   setReadTraining: () => dispatch(setReadTraining()),

@@ -37,7 +37,7 @@ const Round = ({
       // D&D enabled only if no exercice being edited
       const sortable = Sortable.create(exoList, 
       {
-        group: {name: 'exoList', pull: true, put: true },
+        group: {name: 'exoList', pull: true, put: ['exoList'] },
         dataIdAttr: 'exo-id',
         draggable: '.draggable-item',
         onAdd: (evt) => {

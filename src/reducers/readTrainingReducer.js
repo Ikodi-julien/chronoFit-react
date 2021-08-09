@@ -1,13 +1,15 @@
 import {
   SET_READ_TRAINING,
   SET_CURRENT_EXO,
-  START_CHRONO,
-  PAUSE_CHRONO,
+  START_TRAINING,
+  PAUSE_TRAINING,
   SET_EXOPLAYING_TIME,
-  SET_GLOBAL_TIME,
+  SET_GLOBAL_COUNTDOWN_TIME,
+  SET_GLOBAL_CHRONO_TIME,
+  SET_CHRONO_TIME,
   RESET_READTRAINING,
   END_TRAINING,
-  SET_RESET_CURRENT,
+  SET_GLOBAL_COUNTDOWN_SKIP_TIME,
 } from '../actions/readTrainingActions';
 import trainingServices from '../services/training';
 import defaultTimeline from '../data/defaultTimeline';
@@ -51,15 +53,22 @@ const initialState = {
     // ExoPlaying - TimeDisplay
     duration: '',
     currentTime: '',
-    fromBeginning: '',
+    isChrono: '',
   },
-  //GlobalTime
-  globalTime: {
+  chronoCurrentTime: '',
+  countDownCurrentTime: '',
+  //GlobalCountdown
+  globalCountdown: {
+    isCounting: false,
     duration: '',
-    resetCurrent: false,
     currentTime: '',
-    fromBeginning: '',
-  }
+    skipTime: false,
+  },
+  globalChrono: {
+    isCounting: false,
+    currentTime: 0,
+    skipTime: false,
+  },
 };
 
 const reducer = (state=initialState, action={}) => {
@@ -75,15 +84,19 @@ const reducer = (state=initialState, action={}) => {
           name: action.trainingDetails.name,
           duration: action.trainingDetails.duration,
         },
-        globalTime: {
+        globalCountdown: {
+          ...state.globalCountdown,
           duration: action.trainingDetails.duration,
           currentTime: action.trainingDetails.duration,
-        }
+        },
+        globalChrono: {
+          isCounting: false,
+          currentTime: 0,
+        },
       }
       
     case SET_CURRENT_EXO:
-      // console.log('trainingDetails', action.trainingDetails);
-      // console.log('timeLine', action.timeline);
+
       if (state.timeline[exoIndex].beginning) exoIndex++;
       if (exoIndex === state.timeline.length - 1) return state;
       
@@ -125,36 +138,44 @@ const reducer = (state=initialState, action={}) => {
           weight: state.timeline[exoIndex].weight,
           duration: state.timeline[exoIndex].duration,
           currentTime: state.timeline[exoIndex].duration,
+          isChrono: state.timeline[exoIndex].duration === 0 ? true : false,
         },
-        globalTime: {
-          ...state.globalTime,
-          resetCurrent: true,
+        chronoCurrentTime: 0,
+        countDownCurrentTime: state.timeline[exoIndex].duration,
+        globalCountdown: {
+          ...state.globalCountdown,
+          skipTime: true,
           currentTime: trainingServices.getRemainingDuration(state.timeline, exoIndex),
-        }
+        },
+        
       }
       
-    case START_CHRONO:
+    case START_TRAINING:
       return {
         ...state,
         exoPlaying: {
           ...state.exoPlaying,
           isCounting: true,
         },
-        globalTime: {
-          ...state.globalTime,
+        globalCountdown: {
+          ...state.globalCountdown,
+          isCounting: true,
+        },
+        globalChrono: {
+          ...state.globalChrono,
           isCounting: true,
         },
       }
 
-    case PAUSE_CHRONO:
+    case PAUSE_TRAINING:
       return {
         ...state,
         exoPlaying: {
           ...state.exoPlaying,
           isCounting: false,
         },
-        globalTime: {
-          ...state.globalTime,
+        globalCountdown: {
+          ...state.globalCountdown,
           isCounting: false,
         },
       }
@@ -168,15 +189,31 @@ const reducer = (state=initialState, action={}) => {
         }
       }
 
-    case SET_GLOBAL_TIME:
+    case SET_CHRONO_TIME:
       return {
         ...state,
-        globalTime: {
-          ...state.globalTime,
-          currentTime: action.time,
-        }
+        chronoCurrentTime: action.time,
       }
       
+    case SET_GLOBAL_COUNTDOWN_TIME:
+      return {
+        ...state,
+        globalCountdown: {
+          ...state.globalCountdown,
+          currentTime: action.time,
+        },
+      }
+      
+    
+    case SET_GLOBAL_CHRONO_TIME:
+      return {
+        ...state,
+        globalChrono: {
+          ...state.globalChrono,
+          currentTime: action.time,
+        },
+      }
+        
     case RESET_READTRAINING:
       return initialState;
       
@@ -187,21 +224,25 @@ const reducer = (state=initialState, action={}) => {
           ...state.exoPlaying,
           isCounting: false,
         },
-        globalTime: {
-          ...state.globalTime,
+        globalCountdown: {
+          ...state.globalCountdown,
+          isCounting: false,
+        },
+        globalChrono: {
+          ...state.globalChrono,
           isCounting: false,
         }
       }
 
-    case SET_RESET_CURRENT:
+    case SET_GLOBAL_COUNTDOWN_SKIP_TIME:
       return {
         ...state,
-        globalTime: {
-          ...state.globalTime,
-          resetCurrent: action.value,
+        globalCountdown: {
+          ...state.globalCountdown,
+          skipTime: action.value,
         }
       }
-      
+        
     default:
       return state;
   }

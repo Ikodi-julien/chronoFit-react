@@ -2,7 +2,7 @@
 import {
   SET_READ_TRAINING,
   setCurrentExo,
-  SET_GLOBAL_TIME,
+  SET_GLOBAL_COUNTDOWN_TIME,
   endTraining,
   TELL_NEXT_EXO_NAME,
 } from '../actions/readTrainingActions';
@@ -27,7 +27,7 @@ export default (store) => (next) => (action) => {
       store.dispatch(setCurrentExo(0));
       break;
       
-    case SET_GLOBAL_TIME:
+    case SET_GLOBAL_COUNTDOWN_TIME:
       next(action);
       // if global time remaining < 0.1s, put readTraining.isCounting isCounting to false,
       if (action.time < 0.1) store.dispatch(endTraining());

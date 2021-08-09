@@ -17,7 +17,7 @@ const TrainingLocal = (
         // Drag handler, in Round header, allow drag only with round header.
         handle: ".drag-handle",
         // group allows to D&D between lists with the same name
-        group: {name:'roundList', pull: true, put: true},
+        group: {name:'roundList', pull: true, put: ['roundList']},
         // This is used to sort items after state is updated
         dataIdAttr: 'data-id',
         disabled: false,

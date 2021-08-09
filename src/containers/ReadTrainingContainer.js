@@ -2,13 +2,15 @@ import {connect} from 'react-redux';
 import ReadTrainingView from '../components/ReadTrainingView/ReadTrainingView';
 import { 
   setCurrentExo,
-  startChrono,
-  pauseChrono,
+  startTraining,
+  pauseTraining,
   setExoPlayingTime,
-  setGlobalTime,
+  setChronoTime,
+  setGlobalCountdownTime,
+  setGlobalChronoTime,
   resetReadTraining,
   tellNextExoName,
-  setResetCurrent,
+  setGlobalCountdownSkipTime,
 } from '../actions/readTrainingActions';
 
 const mapStateToProps = ({readTraining}) => ({
@@ -16,19 +18,25 @@ const mapStateToProps = ({readTraining}) => ({
   trainingDetails: readTraining.trainingDetails,
   nextExo: readTraining.nextExo,
   exoPlaying: readTraining.exoPlaying,
-  globalTime: readTraining.globalTime,
-  resetCurrent: readTraining.globalTime.resetCurrent,
+  exoPlayingSkipTime: readTraining.exoPlaying.skipTime,
+  globalCountdown: readTraining.globalCountdown,
+  globalChrono: readTraining.globalChrono,
+  globalCountdownSkipTime: readTraining.globalCountdown.skipTime,
+  isChrono: readTraining.exoPlaying.isChrono,
+  chronoTime: readTraining.chronoCurrentTime,
 })
 
 const mapDispatchToProps = (dispatch) => ({
   setCurrentExo: (exoIndex) => dispatch(setCurrentExo(exoIndex)),
-  startChrono: () => dispatch(startChrono()),
-  pauseChrono: () => dispatch(pauseChrono()),
+  startTraining: () => dispatch(startTraining()),
+  pauseTraining: () => dispatch(pauseTraining()),
   setExoPlayingTime: (time) => dispatch(setExoPlayingTime(time)),
-  setGlobalTime: (time) => dispatch(setGlobalTime(time)),
+  setChronoTime: (time) => dispatch(setChronoTime(time)),
+  setGlobalCountdownTime: (time) => dispatch(setGlobalCountdownTime(time)),
+  setGlobalChronoTime: (time) => dispatch(setGlobalChronoTime(time)),
   resetReadTraining: () => dispatch(resetReadTraining()),
   tellNextExoName: () => dispatch(tellNextExoName()),
-  setResetCurrent: (bool) => dispatch(setResetCurrent(bool)),
+  setGlobalCountdownSkipTime: (bool) => dispatch(setGlobalCountdownSkipTime(bool)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(ReadTrainingView);

@@ -3,11 +3,11 @@ import { useEffect } from 'react';
 import trainingServices from '../../../services/training';
 import './timedisplay.scss';
 
-const CountDown = ({time, text, isCounting, setTime, timelineIndex, setExo}) => {
+const CountDown = ({time, text, isCounting, isCountdown, setTime, timelineIndex, setExo}) => {
   
   useEffect(() => {
     
-    if (isCounting){
+    if (isCounting && isCountdown){
       if (time > 0.1) {
         setTimeout(() => {setTime(time - .1)}, 100 )
       } else {
@@ -15,7 +15,7 @@ const CountDown = ({time, text, isCounting, setTime, timelineIndex, setExo}) => 
       }
     } 
     
-  }, [time, isCounting, setTime, timelineIndex, setExo])
+  }, [time, isCounting, isCountdown, setTime, timelineIndex, setExo])
   
   return(
   <div className="readtraining__timedisplay">

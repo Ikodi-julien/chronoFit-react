@@ -3,17 +3,14 @@ import { useEffect } from 'react';
 import trainingServices from '../../../services/training';
 import './timedisplay.scss';
 
-const Chrono = ({time, text, isCounting, setTime}) => {
+const Chrono = ({time, text, isCounting, isChrono, setChronoTime, setCurrentExo, currentExoIndex }) => {
   
   useEffect(() => {
-    
-    if (isCounting){
-      if (time > 0.1) {
-        setTimeout(() => {setTime(time + .1)}, 100 )
-      }
-    } 
-    
-  }, [time, isCounting, setTime])
+    if (isCounting && isChrono){
+
+      setTimeout(() => {setChronoTime(time + .1)}, 100 )
+    }
+  }, [time, isCounting, isChrono, setChronoTime])
   
   return(
   <div className="readtraining__timedisplay">
@@ -24,7 +21,12 @@ const Chrono = ({time, text, isCounting, setTime}) => {
     <div className="readtraining__timedisplay__time">
       {trainingServices.formatChrono(time)}
     </div>
-    
+    <button 
+      className="training__button"
+      onClick={() => {
+        setCurrentExo(currentExoIndex + 1)
+      }}
+    >OK SUIVANT !</button>
   </div>
 )}
 

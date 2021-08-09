@@ -5,7 +5,7 @@ import {
 import {
   SET_LOCAL_TRAINING,
   SET_LOCAL_TRAINING_NAME,
-  SET_LOCAL_TRAINING_TYPE,
+  SET_LOCAL_ROUND_TYPE,
   GET_LOCAL_TRAININGS_SUCCESS,
   ADD_ROUND_TO_LOCAL_TRAINING,
   ADD_EXERCICE_TO_LOCAL_TRAINING,
@@ -44,6 +44,7 @@ const initialState = {
       {
         shrunken: true,
         menuIsVisible: false,
+        type: '',
         iteration: 1,
         duration: 0,
         exercices: [
@@ -102,12 +103,14 @@ const reducer = (state=initialState, action={}) => {
         trainingManagerNameInput: action.value
       }
     
-    case SET_LOCAL_TRAINING_TYPE:
+    case SET_LOCAL_ROUND_TYPE:
+      rounds[action.roundIndex].type = action.value;
+      
       return {
         ...state,
         localTraining: {
           ...state.localTraining,
-          type: action.value,
+          rounds,
         }
       }
       
