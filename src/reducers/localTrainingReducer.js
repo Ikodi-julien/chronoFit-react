@@ -6,15 +6,16 @@ import {
   SET_LOCAL_TRAINING,
   SET_LOCAL_TRAINING_NAME,
   SET_LOCAL_ROUND_TYPE,
+  SET_TIMECAP,
+  SET_ROUND_ITERATION,
   GET_LOCAL_TRAININGS_SUCCESS,
   ADD_ROUND_TO_LOCAL_TRAINING,
   ADD_EXERCICE_TO_LOCAL_TRAINING,
-  DELETE_ROUND_FROM_LOCAL_TRAINING,
   PUT_EXOFORM_IN_LOCAL_TRAINING,
+  DELETE_ROUND_FROM_LOCAL_TRAINING,
   DELETE_EXO_FROM_ROUND,
   EXOFORM_INPUT_CHANGE,
   SHOW_EXO_FORM,
-  SET_ROUND_ITERATION,
   SHOW_EXO_IN_LIST,
   MOVE_ROUND_IN_STATE,
   MOVE_EXO_IN_STATE,
@@ -39,7 +40,7 @@ const initialState = {
   },
   localTraining: {
     name: 'Work Of Day',
-    type: 'emom',
+    timecap: '',
     rounds: [
       {
         shrunken: true,
@@ -94,7 +95,10 @@ const reducer = (state=initialState, action={}) => {
       
       return {
         ...state,
-        localTraining: state.allLocalTrainings.find(training =>  training.name === action.value),
+        localTraining: {
+          ...state.localTraining,
+          ...(state.allLocalTrainings.find(training =>  training.name === action.value)),
+        }
       }
       
     case SET_LOCAL_TRAINING_NAME:
@@ -294,6 +298,15 @@ const reducer = (state=initialState, action={}) => {
         localTraining: {
           ...state.localTraining,
           rounds
+        }
+      }
+      
+    case SET_TIMECAP:
+      return {
+        ...state,
+        localTraining: {
+          ...state.localTraining,
+          timecap: action.value,
         }
       }
       

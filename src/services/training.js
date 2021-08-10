@@ -106,10 +106,19 @@ const trainingServices = {
    */
   getTimeLine: (training) => {
     
+    const countRounds = (rounds) => {
+      let count = 0;
+      rounds.forEach(round => count += parseInt(round.iteration))
+      return count;
+    }
+    const totalRoundCount = countRounds(training.rounds);
+    
     const exoList = [{
       beginning: true},
       {
       name: 'READY ?',
+      roundIndex: 1,
+      roundCount: totalRoundCount,
       reps: '',
       duration: 5,
       weight: '',
@@ -127,9 +136,9 @@ const trainingServices = {
           for (let indexSerie = 0; indexSerie < training.rounds[index].exercices[indexExo].options[0].iteration; indexSerie++) {
             // a chaque série de chaque exo de chaque iteration de chaque round
             exoList.push({
-              roundIndex: index + 1,
+              roundIndex: index + indexRoundIteration,
               roundType: training.rounds[index].type,
-              roundCount: training.rounds.length,
+              roundCount: totalRoundCount,
               roundDuration: trainingServices.getRoundDuration(training.rounds[index]),
               name: training.rounds[index].exercices[indexExo].name,
               reps: +training.rounds[index].exercices[indexExo].options[0].reps,
@@ -138,6 +147,7 @@ const trainingServices = {
               description: training.rounds[index].exercices[indexExo].description,
               serieIndex: indexSerie + 1,
               serieCount: +training.rounds[index].exercices[indexExo].options[0].iteration,
+              end: false,
             })
           }
         }        
@@ -146,17 +156,24 @@ const trainingServices = {
     
     exoList.push({
       name: 'Fini, bien joué !',
-      reps: '',
+      reps: 0,
       duration: 0,
-      weight: '',
+      weight: 0,
       description: '',
-      serieIndex: '',
-      serieCount: '',
+      serieIndex: 0,
+      serieCount: 0,
+      end: true,
     });
     
     exoList.push({
-      end: true,
       name: '',
+      reps: 0,
+      duration: 0,
+      weight: 0,
+      description: '',
+      serieIndex: 0,
+      serieCount: 0,
+      end: true,
     })
     console.log(exoList);
     return exoList;

@@ -2,15 +2,21 @@
 
 .readtraining__details {
   width: fit-content;
+  height: 170px;
+  text-align: center;
   margin: auto;
-  padding: 20px 0;
+  padding: 60px 0 20px 0;
 
   &__name {
-    font-size: 2em;
+    height: 1.8em;
+    font-size: 1.8em;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    margin-bottom: 5px;
   }
 
   &__round {
-    font-size: 1.5em;
+    font-size: 1.3em;
   }
 
   &__duration {

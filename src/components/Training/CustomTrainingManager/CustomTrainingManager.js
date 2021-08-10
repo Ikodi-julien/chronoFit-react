@@ -12,6 +12,8 @@ const CustomTrainingManager = (props) => {
         training={props.training}
         setTrainingType={props.setLocalTrainingType}  
         setReadTraining={props.setReadTraining}
+        setTimecap={props.setTimecap}
+        timecapValue={props.timecapValue}
       />
     </div>
   )

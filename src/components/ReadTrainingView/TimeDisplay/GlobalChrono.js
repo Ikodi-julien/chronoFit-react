@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import trainingServices from '../../../services/training';
 import './timedisplay.scss';
 
-const GlobalChrono = ({time, text, isCounting, setTime}) => {
+const GlobalChrono = ({time, text, isCounting, setTime, resetTraining}) => {
   
   useEffect(() => {
     
@@ -23,6 +23,12 @@ const GlobalChrono = ({time, text, isCounting, setTime}) => {
       {trainingServices.formatChrono(time)}
     </div>
     
+    <button 
+      className="training_button"
+      onClick={() => resetTraining()}
+    >
+      Reïnitialiser
+    </button>
   </div>
 )}
 

@@ -8,6 +8,7 @@ import {
   setLocalTrainingName,
   createLocalTraining,
   deleteLocalTraining,
+  setTimecap,
 } from '../actions/trainingLocalActions';
 import { setReadTraining } from '../actions/readTrainingActions';
 
@@ -15,6 +16,7 @@ const mapStateToProps = ({localTraining}) => ({
   trainingList: localTraining.allLocalTrainings,
   training: localTraining.localTraining,
   trainingName: localTraining.trainingManagerNameInput,
+  timecapValue: localTraining.timecap,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -24,6 +26,7 @@ const mapDispatchToProps = (dispatch) => ({
   createLocalTraining: () => dispatch(createLocalTraining()),
   deleteLocalTraining: () => dispatch(deleteLocalTraining()),
   setReadTraining: () => dispatch(setReadTraining()),
+  setTimecap: (value) => dispatch(setTimecap(value)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(CustomTrainingManager);

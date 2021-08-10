@@ -3,26 +3,23 @@ import { useEffect } from 'react';
 import trainingServices from '../../../services/training';
 import './timedisplay.scss';
 
-const GlobalCountDown = ({time, text, isCounting, setTime, resetCurrent, setResetCurrent}) => {
+const GlobalCountDown = ({time, text, isCounting, setTime,   stopTraining,
+}) => {
   
   useEffect(() => {
     
     if (isCounting){
-      if (resetCurrent) {
-        // ExoPlaying changes
-        setTimeout(() => {
-          setResetCurrent(false);
-        }, 100 );
-        return
-      }
       if (time > 0.1) {
         setTimeout(() => {setTime(time - .1)}, 100 );
         return
       } 
-      // 
-      setTime(0)
+
+      stopTraining();
+      // Make sure to endup with 00:00:0
+      setTimeout(() => setTime(0), 110);
     } 
-  }, [time, isCounting, setTime, resetCurrent, setResetCurrent])
+  }, [time, isCounting, setTime, stopTraining,
+  ])
   
   return(
   <div className="readtraining__timedisplay">

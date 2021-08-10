@@ -61,3 +61,5 @@ export const setExoFormInputValue = (inputObject) => ({
   name: inputObject.name,
   value: inputObject.value
 })
+export const SET_TIMECAP = 'SET_TIMECAP';
+export const setTimecap = (value) => ({type: SET_TIMECAP, value});

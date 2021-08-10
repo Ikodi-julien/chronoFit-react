@@ -1,8 +1,10 @@
 @use '../../../styles/vars'as v;
 
 .readtraining__exodetails {
-  width: 50%;
-  height: 100px;
+  width: 60%;
+  height: 90px;
+  max-height: 90px;
+  overflow: hidden;
   text-align: center;
   margin: 5px;
   padding: 5px;

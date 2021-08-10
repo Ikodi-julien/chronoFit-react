@@ -3,15 +3,15 @@ import {
   SET_CURRENT_EXO,
   START_TRAINING,
   PAUSE_TRAINING,
-  SET_EXOPLAYING_TIME,
+  STOP_TRAINING,
+  SET_COUNTDOWN_TIME,
   SET_GLOBAL_COUNTDOWN_TIME,
   SET_GLOBAL_CHRONO_TIME,
   SET_CHRONO_TIME,
   RESET_READTRAINING,
   END_TRAINING,
-  SET_GLOBAL_COUNTDOWN_SKIP_TIME,
 } from '../actions/readTrainingActions';
-import trainingServices from '../services/training';
+// import trainingServices from '../services/training';
 import defaultTimeline from '../data/defaultTimeline';
 
 const initialState = {
@@ -25,6 +25,7 @@ const initialState = {
     roundIndex: '',
     roundCount: '',
     currentRoundDuration: '',
+    timecap: 0,
   },
   // ExoDetails
   nextExo: {
@@ -54,20 +55,18 @@ const initialState = {
     duration: '',
     currentTime: '',
     isChrono: '',
+    end: false,
   },
   chronoCurrentTime: '',
-  countDownCurrentTime: '',
+  countdownCurrentTime: '',
   //GlobalCountdown
   globalCountdown: {
     isCounting: false,
-    duration: '',
     currentTime: '',
-    skipTime: false,
   },
   globalChrono: {
     isCounting: false,
     currentTime: 0,
-    skipTime: false,
   },
 };
 
@@ -81,13 +80,14 @@ const reducer = (state=initialState, action={}) => {
         ...state,
         timeline: action.timeline,
         trainingDetails: {
+          ...state.trainingDetails,
           name: action.trainingDetails.name,
           duration: action.trainingDetails.duration,
+          timecap: action.trainingDetails.timecap,
         },
         globalCountdown: {
           ...state.globalCountdown,
-          duration: action.trainingDetails.duration,
-          currentTime: action.trainingDetails.duration,
+          currentTime: action.trainingDetails.timecap,
         },
         globalChrono: {
           isCounting: false,
@@ -98,6 +98,7 @@ const reducer = (state=initialState, action={}) => {
     case SET_CURRENT_EXO:
 
       if (state.timeline[exoIndex].beginning) exoIndex++;
+      if (exoIndex < 1 ) return state; // 5 first seconds or before
       if (exoIndex === state.timeline.length - 1) return state;
       
       return {
@@ -108,6 +109,8 @@ const reducer = (state=initialState, action={}) => {
           ...state.trainingDetails,
           roundIndex: state.timeline[exoIndex].roundIndex,
           roundCount: state.timeline[exoIndex].roundCount,
+          roundTotalIteration: state.timeline[exoIndex].roundTotalIteration,
+          roundCurrentIteration: state.timeline[exoIndex].roundCurrentIteration,
           currentRoundDuration: state.timeline[exoIndex].roundDuration,
         },
         // ExoDetails
@@ -139,15 +142,10 @@ const reducer = (state=initialState, action={}) => {
           duration: state.timeline[exoIndex].duration,
           currentTime: state.timeline[exoIndex].duration,
           isChrono: state.timeline[exoIndex].duration === 0 ? true : false,
+          end: state.timeline[exoIndex].end,
         },
         chronoCurrentTime: 0,
-        countDownCurrentTime: state.timeline[exoIndex].duration,
-        globalCountdown: {
-          ...state.globalCountdown,
-          skipTime: true,
-          currentTime: trainingServices.getRemainingDuration(state.timeline, exoIndex),
-        },
-        
+        countdownCurrentTime: state.timeline[exoIndex].duration,
       }
       
     case START_TRAINING:
@@ -174,19 +172,29 @@ const reducer = (state=initialState, action={}) => {
           ...state.exoPlaying,
           isCounting: false,
         },
-        globalCountdown: {
-          ...state.globalCountdown,
-          isCounting: false,
-        },
       }
         
-    case SET_EXOPLAYING_TIME:
+    case STOP_TRAINING:
       return {
         ...state,
         exoPlaying: {
           ...state.exoPlaying,
-          currentTime: action.time,
-        }
+          isCounting: false,
+        },
+        globalCountdown: {
+          ...state.globalCountdown,
+          isCounting: false,
+        },
+        globalChrono: {
+          ...state.globalChrono,
+          isCounting: false,
+        },
+      }
+      
+    case SET_COUNTDOWN_TIME:
+      return {
+        ...state,
+        countdownCurrentTime: action.time,
       }
 
     case SET_CHRONO_TIME:
@@ -215,7 +223,49 @@ const reducer = (state=initialState, action={}) => {
       }
         
     case RESET_READTRAINING:
-      return initialState;
+      return {
+        ...state,
+        timelineIndex: 1,
+        // TraingDetails
+        trainingDetails: {
+          ...state.trainingDetails,
+          roundIndex: 1,
+          currentRoundDuration: '',
+        },
+        nextExo: {
+          name: '',
+          serieCount: '',
+          reps: '',
+          duration: '',
+          weight: '',
+        },
+        // ExoPlaying
+        exoPlaying: {
+          ...state.exoPlaying,
+          isCounting: false,
+          name: state.timeline[1].name,
+          description: state.timeline[1].description,
+          serieIndex: state.timeline[1].serieIndex,
+          serieCount: state.timeline[1].serieCount,
+          reps: state.timeline[1].reps,
+          weight: state.timeline[1].weight,
+          duration: state.timeline[1].duration,
+          currentTime: state.timeline[1].duration,
+          isChrono: state.timeline[1].duration === 0 ? true : false,
+          end: state.timeline[1].end,
+        },
+        chronoCurrentTime: 0,
+        countdownCurrentTime: state.timeline[1].duration,
+        //GlobalCountdown
+        globalCountdown: {
+          isCounting: false,
+          currentTime: state.trainingDetails.timecap,
+        },
+        globalChrono: {
+          isCounting: false,
+          currentTime: 0,
+        },
+      };
       
     case END_TRAINING:
       return {
@@ -224,6 +274,8 @@ const reducer = (state=initialState, action={}) => {
           ...state.exoPlaying,
           isCounting: false,
         },
+        chronoCurrentTime: 0,
+        countdownCurrentTime: 0,
         globalCountdown: {
           ...state.globalCountdown,
           isCounting: false,
@@ -231,15 +283,6 @@ const reducer = (state=initialState, action={}) => {
         globalChrono: {
           ...state.globalChrono,
           isCounting: false,
-        }
-      }
-
-    case SET_GLOBAL_COUNTDOWN_SKIP_TIME:
-      return {
-        ...state,
-        globalCountdown: {
-          ...state.globalCountdown,
-          skipTime: action.value,
         }
       }
         

@@ -4,13 +4,13 @@ import {
   setCurrentExo,
   startTraining,
   pauseTraining,
-  setExoPlayingTime,
+  stopTraining,
+  setCountdownTime,
   setChronoTime,
   setGlobalCountdownTime,
   setGlobalChronoTime,
   resetReadTraining,
   tellNextExoName,
-  setGlobalCountdownSkipTime,
 } from '../actions/readTrainingActions';
 
 const mapStateToProps = ({readTraining}) => ({
@@ -18,25 +18,26 @@ const mapStateToProps = ({readTraining}) => ({
   trainingDetails: readTraining.trainingDetails,
   nextExo: readTraining.nextExo,
   exoPlaying: readTraining.exoPlaying,
-  exoPlayingSkipTime: readTraining.exoPlaying.skipTime,
   globalCountdown: readTraining.globalCountdown,
   globalChrono: readTraining.globalChrono,
-  globalCountdownSkipTime: readTraining.globalCountdown.skipTime,
   isChrono: readTraining.exoPlaying.isChrono,
   chronoTime: readTraining.chronoCurrentTime,
-})
+  countdownTime: readTraining.countdownCurrentTime,
+  timecap: readTraining.trainingDetails.timecap,
+});
 
 const mapDispatchToProps = (dispatch) => ({
   setCurrentExo: (exoIndex) => dispatch(setCurrentExo(exoIndex)),
   startTraining: () => dispatch(startTraining()),
   pauseTraining: () => dispatch(pauseTraining()),
-  setExoPlayingTime: (time) => dispatch(setExoPlayingTime(time)),
+  stopTraining: () => dispatch(stopTraining()),
+  resetTraining: () => dispatch(resetReadTraining()),
+  setCountdownTime: (time) => dispatch(setCountdownTime(time)),
   setChronoTime: (time) => dispatch(setChronoTime(time)),
   setGlobalCountdownTime: (time) => dispatch(setGlobalCountdownTime(time)),
   setGlobalChronoTime: (time) => dispatch(setGlobalChronoTime(time)),
   resetReadTraining: () => dispatch(resetReadTraining()),
   tellNextExoName: () => dispatch(tellNextExoName()),
-  setGlobalCountdownSkipTime: (bool) => dispatch(setGlobalCountdownSkipTime(bool)),
-})
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(ReadTrainingView);

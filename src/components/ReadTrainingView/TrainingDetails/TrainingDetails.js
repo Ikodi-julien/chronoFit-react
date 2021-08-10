@@ -11,10 +11,16 @@ const TrainingDetails = ({details}) => {
       {details.name}
     </h1>
     <div className="readtraining__details__round">
-      Round n°{details.roundIndex}
+    {
+      details.roundCount > 0 &&
+      `Round n°${details.roundIndex || 1} / ${details.roundCount}`
+    } 
+
     </div>
     <div className="readtraining__details__duration">
-      Durée du round : {duration}
+      {
+        isNaN(duration) ? null : `Durée du round : ${duration}`
+      }
     </div>
   </section>
   )}
