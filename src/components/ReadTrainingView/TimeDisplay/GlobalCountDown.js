@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 
 import trainingServices from '../../../services/training';
+import { asyncTime } from '../../../services/asyncTime';
 import './timedisplay.scss';
 
 const GlobalCountDown = ({time, text, isCounting, setTime,   stopTraining,
@@ -10,7 +11,16 @@ const GlobalCountDown = ({time, text, isCounting, setTime,   stopTraining,
     
     if (isCounting){
       if (time > 0.1) {
-        setTimeout(() => {setTime(time - .1)}, 100 );
+        
+        (async() => {
+    
+          await asyncTime.wait100ms();
+          
+          if (isCounting ){
+            setTime(time - .1)
+          }
+          
+        })()
         return
       } 
 

@@ -21,7 +21,7 @@ const ReadTrainingView = ({
   chronoTime,
   countdownTime,
   isChrono,
-  timecap,
+  isTimecap,
   
   //dispatch
   setCurrentExo, 
@@ -105,7 +105,7 @@ const ReadTrainingView = ({
     </div>
     <div className="readtraining__trainingtime">
       {
-        timecap > 0 && 
+        isTimecap > 0 && 
         <GlobalCountDown 
           text="Temps restant du Time Cap :" 
           time={globalCountdown.currentTime} 

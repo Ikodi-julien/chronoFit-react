@@ -23,7 +23,7 @@ const mapStateToProps = ({readTraining}) => ({
   isChrono: readTraining.exoPlaying.isChrono,
   chronoTime: readTraining.chronoCurrentTime,
   countdownTime: readTraining.countdownCurrentTime,
-  timecap: readTraining.trainingDetails.timecap,
+  isTimecap: readTraining.trainingDetails.timecap > 5 ? true : false,
 });
 
 const mapDispatchToProps = (dispatch) => ({

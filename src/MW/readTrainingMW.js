@@ -25,8 +25,8 @@ export default (store) => (next) => (action) => {
   
   switch (action.type) {
     case SET_READ_TRAINING:
-      // console.log('readTrainingMW', trainingServices.getTrainingDuration(localTraining));
-      action.trainingDetails = {
+
+    action.trainingDetails = {
         name: localTraining.name,
         duration: trainingServices.getTrainingDuration(localTraining),
         timecap: localTraining.timecap * 60 + 5,
@@ -45,7 +45,7 @@ export default (store) => (next) => (action) => {
         store.dispatch(endTraining());
         break;
       }
-      // This is to handle several chrono in a row, need to be stopped, reseted and started again.
+      // This is to handle several chrono in a row, need to be stopped, reseted and started again. This has no effect on GlobalChrono and GlobalCountdown
       store.dispatch(pauseTraining());
       setTimeout(() => {
         store.dispatch(setChronoTime(0));
