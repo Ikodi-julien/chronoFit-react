@@ -4,7 +4,7 @@ import {
   moveRoundInState,
 } from '../actions/trainingLocalActions';
 /*---------------------------------*/
-import CustomTrainingView from '../components/Training/CustomTrainingView';
+import CustomTrainingView from '../components/CustomTrainingView/CustomTrainingView';
 
 const mapStateToProps = ({localTraining, app}) => ({
   localTraining: localTraining.localTraining,

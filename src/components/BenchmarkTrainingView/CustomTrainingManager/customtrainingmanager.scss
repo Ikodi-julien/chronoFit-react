@@ -21,7 +21,7 @@
     &__select,
     &__input {
       margin: 2px 0px;
-      height: 25px;
+      min-height: 2.2rem;
       border: none;
       border-bottom: 1px solid adjust-color(v.$base-color, $lightness: 60%);
     }
@@ -44,9 +44,26 @@
   }
 
   &__options {
-    padding: 8px;
-    display: flex;
-    justify-content: space-between;
+    padding: 4px;
+
+    &__input {
+      border: none;
+      border-bottom: 1px solid adjust-color(v.$base-color, $lightness: 60%);
+      width: 100px;
+      padding: 0 5px;
+    }
+
+    &__row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      min-height: 2.2rem;
+      padding: 4px;
+
+      &.--right {
+        justify-content: right;
+      }
+    }
 
     &__type {
       border: none;

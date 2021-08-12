@@ -7,7 +7,7 @@ import {
 } from '../actions/trainingAjaxActions';
 import {setTrainingId} from '../actions/trainingViewActions';
 /*---------------------------------*/
-import BenchmarkTrainingView from '../components/Training/BenchmarkTrainingView';
+import BenchmarkTrainingView from '../components/BenchmarkTrainingView/BenchmarkTrainingView';
 
 const mapStateToProps = ({training}, {path}) => ({
   allTrainings: training.allTrainings,

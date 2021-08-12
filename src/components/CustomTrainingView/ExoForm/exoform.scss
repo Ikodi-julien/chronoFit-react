@@ -1,0 +1,73 @@
+@use 'src/styles/vars'as v;
+
+.exoform {
+  &__container {
+    position: relative;
+    width: 100%;
+    border: 1px solid adjust-color(v.$base-color, $lightness: 50%);
+    padding: 0 5px;
+    margin-bottom: 10px;
+    border-radius: v.$border-radius;
+    background-color: v.$color-very-light;
+  }
+
+  &__toggle {
+    padding: 8px;
+    border: none;
+    background-color: transparent;
+    font-size: 1.3em;
+  }
+
+  &__input {
+    display: flex;
+    border: none;
+    // border-bottom: 1px solid adjust-color(v.$base-color, $lightness: 50%);
+    width: 40px;
+    background-color: transparent;
+    margin: 5px 0;
+
+    &__name {
+      flex: 1;
+      padding: 8px 0;
+      justify-content: space-between;
+      font-size: 1.1em;
+    }
+
+    &__number {}
+
+    &__row {
+      display: flex;
+      justify-content: flex-start;
+      padding: 5px;
+      font-size: 0.9em;
+
+      & label {
+        max-width: 20%;
+        display: flex;
+        align-items: center;
+        padding-right: 10px;
+      }
+    }
+  }
+
+  &__row,
+  &__textarea {
+    min-width: 80%;
+    min-height: 80px;
+    max-height: 200px;
+    flex-wrap: wrap;
+    padding-bottom: 10px;
+    font-size: 0.9em;
+    resize: vertical;
+  }
+
+  &__row {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__controls {
+    display: flex;
+    justify-content: space-evenly;
+  }
+}

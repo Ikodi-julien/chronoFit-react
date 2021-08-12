@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import ExoForm from '../components/Training/ExoForm/ExoForm';
+import ExoForm from '../components/CustomTrainingView/ExoForm/ExoForm';
 
 import {
 

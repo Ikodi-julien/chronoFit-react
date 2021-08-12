@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import ExoInList from '../components/Training/ExoInList/ExoInList';
+import ExoInList from '../components/CustomTrainingView/ExoInList/ExoInList';
 
 import {
   showExoForm,

@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 /*------------------------*/
-import CustomTrainingManager from '../components/Training/CustomTrainingManager/CustomTrainingManager';
+import CustomTrainingManager from '../components/CustomTrainingView/CustomTrainingManager/CustomTrainingManager';
 /*------------------------*/
 import {
   getLocalTrainings,

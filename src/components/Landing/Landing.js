@@ -10,7 +10,7 @@ const Landing = (props) => (
       className="landing__button"
       to="benchmark_training"
     >
-      Benchmark Trainings
+      Les Girls
     </Link>
     <Link 
       className="landing__button"

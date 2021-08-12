@@ -80,6 +80,12 @@ const Round = ({
         >
           <i className="fas fa-ellipsis-v trainingrounds__header__togglemenu" ></i>
         </button>
+        <button 
+          className="training__button --transparent --icone"
+          onClick={() => addExercice(roundIndex)}
+        >
+          <i className="fas fa-plus"></i>
+        </button>
         
         <div className="rounds__round__header__column">
           <div className="rounds__round__header__title">Round n°{roundIndex + 1} </div>

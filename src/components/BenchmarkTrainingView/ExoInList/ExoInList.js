@@ -28,7 +28,7 @@ const ExerciceInList = ({
           <button 
             className="training__button --transparent --icone"
             onClick={() => showExoForm(roundIndex, index)}
-            ><i className="far fa-edit"></i>
+            ><i className="fas fa-edit"></i>
           </button>          
         }
       </div>

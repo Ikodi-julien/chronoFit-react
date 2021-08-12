@@ -34,20 +34,20 @@ const RoundMenu = ({index, addRound, addExercice, deleteRound, setRoundMenuIsVis
       </div>
       
       <ul className="rounds__round__menu__actions">
-        <li >-------------------------</li>
+        <div className="training__divider"></div>
         <li 
           className="rounds__round__menu__action "
           onClick={() => addExercice(index)}
-        >Add new Exercice</li>
+        >Ajouter un exercice</li>
         <li 
           className="rounds__round__menu__action" 
           onClick={() => addRound()}
-        >Add round after</li>
-        <li>-------------------------</li>
+        >Ajouter un round</li>
+        <div className="training__divider"></div>
         <li 
           className="rounds__round__menu__action"
           onClick={() => handleDeleteRound(index)}
-          >Delete this round</li>
+          >Supprimer ce round</li>
       </ul>
     </section>
   )

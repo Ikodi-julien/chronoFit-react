@@ -16,12 +16,12 @@ const AppNav = ({toggleMenu, menuIsVisible}) => {
           location.pathname === "/custom_training" ?
             "Custom Training" : 
           location.pathname === "/benchmark_training" ?
-            "Benchmark Training" :
+            "Les Girls" :
             "Titre pas prévu..."
         }
       </div>
       <button 
-        className="appnav__toggle"
+        className="appnav__toggle training__button --transparent --icone --xl"
         onClick={() => toggleMenu()}
         ><i className="fas fa-bars"></i></button>
       
@@ -33,7 +33,7 @@ const AppNav = ({toggleMenu, menuIsVisible}) => {
           <i className="fas fa-times"></i>
         </button>
         <NavLink to="/" className="appnav__links__link" onClick={() => toggleMenu()} >Accueil</NavLink>
-        <NavLink to="/benchmark_training" className="appnav__links__link" onClick={() => toggleMenu()} >Benchmark Trainings</NavLink>
+        <NavLink to="/benchmark_training" className="appnav__links__link" onClick={() => toggleMenu()} >Les Girls</NavLink>
         <NavLink to="/custom_training" className="appnav__links__link" onClick={() => toggleMenu()} >Custom Trainings</NavLink>
         <NavLink to="/connexion" className="appnav__links__link" onClick={() => toggleMenu()} >Connexion</NavLink>
       </ul>

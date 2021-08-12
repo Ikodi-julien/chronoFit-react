@@ -11,7 +11,7 @@ export default ({training, setTimecap, timecapValue, setReadTraining}) => {
   return (
     <div className="trainingmanager__options">
     
-      <div className="trainingmanager__options__row">
+      <div className="trainingmanager__options__row --right">
       <label>Time cap en minutes (optionnel) :</label> 
         <Field
           name="timecap"
@@ -24,19 +24,26 @@ export default ({training, setTimecap, timecapValue, setReadTraining}) => {
       </div>
       
       <div className="trainingmanager__options__row">
+      
+        <div className="trainingmanager__options__duration">
+          {
+            timeInSec > 0 ?
+              `Durée planifiée: ${isNaN(timeInSec)  ? 
+                "il manque une valeur"
+                :
+                formatedTrainingTime}`
+            : null
+          }
+        </div>
+      
         <NavLink to="read_training">
           <button
-            className="training__button"
+            className="training__button --l"
             onClick={() => setReadTraining()}>
-            GO
+            Play<i className="fas fa-stopwatch --padded"></i>
           </button>
         </NavLink>
-        
-        <span className="trainingmanager__options__duration">
-          Durée planifiée: {
-            isNaN(timeInSec)  ? "il manque une valeur" : formatedTrainingTime
-            }
-        </span>
+
       </div>
 
     </div>

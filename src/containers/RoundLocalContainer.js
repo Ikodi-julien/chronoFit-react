@@ -14,7 +14,7 @@ import {
   setShrunkenRound,
 } from '../actions/trainingViewActions';
 
-import Round from '../components/Training/Round/Round';
+import Round from '../components/CustomTrainingView/Round/Round';
 
 const mapStateToProps = ({app}, {round, index}) => ({
   isToRender: app.isToRender,
