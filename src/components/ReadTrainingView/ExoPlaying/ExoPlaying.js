@@ -17,12 +17,17 @@ const ExoPlaying = ({exoPlaying, isCountdown, countdownTime}) => (
     </div>
     
     <div className="readtraining__exoplaying__row">
-      <div className="readtraining__exoplaying__reps">
-        {exoPlaying.reps} reps
-      </div>
-      <div className="readtraining__exoplaying__weight">
+      { exoPlaying.reps > 0 && exoPlaying.reps !== '' &&
+        <div className="readtraining__exoplaying__reps">
+          {exoPlaying.reps} reps
+          </div>
+      }
+      {
+        exoPlaying.weight !== '' &&
+        <div className="readtraining__exoplaying__weight">
         {exoPlaying.weight}kg
       </div>
+      }
     </div>
     
   </section>

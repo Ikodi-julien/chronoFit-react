@@ -1,16 +1,17 @@
 @use '../../../styles/vars'as v;
 
 .readtraining__exodetails {
-  width: 60%;
-  height: 90px;
-  max-height: 90px;
-  overflow: hidden;
-  text-align: center;
-  margin: 5px;
+  width: 30%;
+  height: 110px;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  text-align: left;
+  margin: 3px;
   padding: 5px;
-  background-color: v.$color-intermediaire;
-  border: 1px solid v.$base-color;
-  border-radius: v.$border-radius;
+  color: adjust-color(v.$base-color, $lightness: 20%);
+  // background-color: v.$color-intermediaire;
+  // border: 1px solid v.$base-color;
+  // border-radius: v.$border-radius;
   font-size: 0.8rem;
 
   &__name {

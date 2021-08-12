@@ -38,9 +38,9 @@ export default ({training, setTimecap, timecapValue, setReadTraining}) => {
       
         <NavLink to="read_training">
           <button
-            className="training__button --l"
+            className="training__button"
             onClick={() => setReadTraining()}>
-            Play<i className="fas fa-stopwatch --padded"></i>
+            Play<i className="fas fa-stopwatch --padded --xl"></i>
           </button>
         </NavLink>
 

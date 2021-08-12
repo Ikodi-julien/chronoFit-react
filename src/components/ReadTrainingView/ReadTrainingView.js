@@ -20,6 +20,8 @@ const ReadTrainingView = ({
   globalChrono,
   chronoTime,
   countdownTime,
+  exoTotalTime,
+  timecap,
   isChrono,
   isTimecap,
   
@@ -40,29 +42,28 @@ const ReadTrainingView = ({
   <section className="readtraining">
     <NavLink 
       to="custom_training" 
-      className="readtraining__close training__button --transparent --xl"
+      className="readtraining__close training__button --xl"
       onClick={() => {
         resetReadTraining();
         }
       }
     >
-    <i className="fas fa-times-circle"></i>
+    <i className="fas fa-times"></i>
     </NavLink>
+    
     <TrainingDetails details={trainingDetails}/>
+    
     <div className="readtraining__row">
-      <ExoDetails exo={nextExo}/>
-    </div>
-    <div className="readtraining__row">
-      <ExoPlaying 
-        exoPlaying={exoPlaying} 
-        isCountdown={!isChrono} 
-        countdownTime={countdownTime}
-      />
+        <ExoDetails exo={nextExo}/>
+        <ExoPlaying
+          exoPlaying={exoPlaying}
+          isCountdown={!isChrono}
+          countdownTime={countdownTime}
+        />
     </div>
     
     <div className="readtraining__exotime">
       {
-        !exoPlaying.end ?
           isChrono ? 
             <Chrono
               text="" 
@@ -75,6 +76,7 @@ const ReadTrainingView = ({
           :
             <CountDown 
               text="" 
+              totalTime={exoTotalTime}
               time={countdownTime} 
               isCounting={exoPlaying.isCounting}
               setCountdownTime={setCountdownTime}
@@ -82,9 +84,7 @@ const ReadTrainingView = ({
               setExo={setCurrentExo}
               tellNextExoName={tellNextExoName}
             />
-        : null
       }
-      
     </div>
 
     <ReadControl 
@@ -94,26 +94,27 @@ const ReadTrainingView = ({
       pauseChrono={pauseTraining}
     />
     
-    <div className="readtraining__trainingtime">
-      <GlobalChrono
-        text="Temps passé :" 
-        time={globalChrono.currentTime} 
-        isCounting={globalChrono.isCounting}
-        setTime={setGlobalChronoTime}
-        resetTraining={resetTraining}
-      />
-    </div>
-    <div className="readtraining__trainingtime">
-      {
-        isTimecap > 0 && 
-        <GlobalCountDown 
-          text="Temps restant du Time Cap :" 
-          time={globalCountdown.currentTime} 
-          isCounting={globalCountdown.isCounting}
-          setTime={setGlobalCountdownTime}
-          stopTraining={stopTraining}
+    <div className="readtraining__row">
+      <div className="readtraining__trainingtime">
+        <GlobalChrono
+          text="Total"
+          time={globalChrono.currentTime}
+          isCounting={globalChrono.isCounting}
+          setTime={setGlobalChronoTime}
+          resetTraining={resetTraining}
         />
-      }
+        {
+          isTimecap > 0 &&
+          <GlobalCountDown
+            text="Time Cap"
+            timecap={timecap}
+            time={globalCountdown.currentTime}
+            isCounting={globalCountdown.isCounting}
+            setTime={setGlobalCountdownTime}
+            stopTraining={stopTraining}
+          />
+        }
+      </div>
     </div>
     
   </section>

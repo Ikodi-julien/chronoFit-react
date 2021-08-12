@@ -1,25 +1,31 @@
 @use '../../../styles/vars'as v;
 
 .readtraining__details {
-  width: fit-content;
-  height: 170px;
-  text-align: center;
+  width: 100%;
+  height: 120px;
+  text-align: left;
   margin: auto;
-  padding: 60px 0 20px 0;
+  padding: 20px 100px 10px 10px;
+  background-color: v.$base-color;
 
   &__name {
-    height: 1.8em;
-    font-size: 1.8em;
+    height: 2em;
+    color: v.$color-very-light;
+    font-size: 1.6em;
     overflow-y: auto;
     scroll-behavior: smooth;
     margin-bottom: 5px;
   }
 
   &__round {
-    font-size: 1.3em;
+    height: 1em;
+    font-size: 1.2em;
+    color: v.$color-very-light;
   }
 
   &__duration {
+    height: 1em;
     font-size: 0.9em;
+    color: v.$color-very-light;
   }
 }

@@ -25,7 +25,7 @@ const ExoDetails = ({exo, modifier=""}) => {
     }
     {
       exo.duration !== 0 && (<div className="readtraining__exodetails__duration">
-        Durée prévue : {trainingServices.formatSeconds(exo.duration)}
+        Durée : {trainingServices.formatSeconds(exo.duration)}
       </div>)
     }
     {

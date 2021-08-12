@@ -41,11 +41,13 @@
       transform: rotate(90deg);
     }
 
-    &.--l {
+    &.--l,
+    & .--l {
       font-size: v.$fs-button-icone-l;
     }
 
-    &.--xl {
+    &.--xl,
+    & .--xl {
       font-size: v.$fs-button-icone-xl;
     }
 
@@ -58,7 +60,7 @@
     }
 
     & .--padded {
-      padding: 0 5px;
+      padding: 0 10px;
     }
   }
 

@@ -1,12 +1,13 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 
 import trainingServices from '../../../services/training';
 import { asyncTime } from '../../../services/asyncTime';
 import './timedisplay.scss';
 
-const GlobalCountDown = ({time, text, isCounting, setTime,   stopTraining,
+const GlobalCountDown = ({time, timecap, text, isCounting, setTime,   stopTraining,
 }) => {
-  
+  let countdownPercentage = useRef(0);
+
   useEffect(() => {
     
     if (isCounting){
@@ -18,6 +19,7 @@ const GlobalCountDown = ({time, text, isCounting, setTime,   stopTraining,
           
           if (isCounting ){
             setTime(time - .1)
+            countdownPercentage.current = 100 - (time/timecap)*100;
           }
           
         })()
@@ -28,19 +30,33 @@ const GlobalCountDown = ({time, text, isCounting, setTime,   stopTraining,
       // Make sure to endup with 00:00:0
       setTimeout(() => setTime(0), 110);
     } 
-  }, [time, isCounting, setTime, stopTraining,
+  }, [time, timecap, isCounting, setTime, stopTraining,
   ])
   
   return(
-  <div className="readtraining__timedisplay">
-    {text !== "" && <div className="readtraining__timedisplay__text">
-      {text}
-    </div>}
+  <div className="readtraining__timedisplay --small"
+      style={
+      {backgroundImage: `conic-gradient(white ${countdownPercentage.current}%, rgb(0, 217, 255) 0%, rgb(0, 217, 255))`}
+      }
+  >
+    <div className="readtraining__timedisplay__container">
+  
+      {text !== "" && <div className="readtraining__timedisplay__text --small">
+        {text}
+      </div>}
     
-    <div className="readtraining__timedisplay__time">
-      {trainingServices.formatChrono(time)}
+    
+      <div className="readtraining__timedisplay__time --small">
+        {trainingServices.formatChrono(time)}
+      </div>
+      
+      <button
+        className="readtraining__timedisplay__button --small"
+        // onClick={() => setExo(timelineIndex + 1)}
+      >
+        {/* FINI, SUIVANT ! */}
+      </button>
     </div>
-    
   </div>
 )}
 

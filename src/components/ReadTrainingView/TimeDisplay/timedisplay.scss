@@ -2,36 +2,78 @@
 
 .readtraining__timedisplay {
   // need to be in a container
+  position: relative;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  overflow: hidden;
+
+  &__spiner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-image: conic-gradient(white 80%, rgb(0, 217, 255));
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    transform: rotate(0);
+  }
+
+  &__container {
+    display: flex;
+    background-color: v.$color-very-light;
+    justify-content: flex-end;
+    flex-direction: column;
+    // border: 1px dashed yellowgreen;
+    border-radius: 50%;
+    width: 95%;
+    height: 95%;
+    overflow: hidden;
+    z-index: 2;
+
+  }
 
   &__text {
-    display: flex;
-    align-items: center;
+    text-align: center;
     font-size: 1.5em;
+
+    &.--small {
+      font-size: 1.2em;
+    }
   }
 
   &__time {
-    font-size: 2.5em;
-  }
-
-  &__small {
     display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    border: 1px solid v.$base-color;
-    border-radius: 50%;
-    width: 170px;
-    height: 170px;
-  }
-
-  &__halfzone {
-    width: 100%;
-    height: 50%;
-    display: flex;
-    flex-direction: column;
     justify-content: center;
-    align-items: center;
+    font-size: 3em;
+    padding: 1rem;
+
+    &.--small {
+      padding: 0.3rem;
+      font-size: 2.3em;
+    }
   }
 
+  &__button {
+    border: none;
+    color: v.$color-very-light;
+    background-color: v.$base-color;
+    height: 65px;
+
+    &.--small {
+      font-size: 1.1em;
+      height: 45px;
+    }
+  }
+
+  &.--big {
+    width: 190px;
+    height: 190px;
+  }
+
+  &.--small {
+    width: 100px;
+    height: 100px;
+  }
 }

@@ -1,10 +1,11 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 
 import trainingServices from '../../../services/training';
 import { asyncTime } from '../../../services/asyncTime';
 import './timedisplay.scss';
 
 const GlobalChrono = ({time, text, isCounting, setTime, resetTraining}) => {
+  let spinnerAngle = useRef(time);
   
   useEffect(() => {
     
@@ -14,25 +15,35 @@ const GlobalChrono = ({time, text, isCounting, setTime, resetTraining}) => {
       
       if (isCounting ){
         setTime(time + .1)
+        spinnerAngle.current = time * 72;
+        
       }
     })()
   }, [time, isCounting, setTime, resetTraining])
   
   return(
-  <div className="readtraining__timedisplay__small">
-    <div class="readtraining__timedisplay__halfzone">
-      {text !== "" && <div className="readtraining__timedisplay__text">
+  <div className="readtraining__timedisplay --small">
+  
+    <div className="readtraining__timedisplay__spiner"
+        style={
+        {
+          transform: `rotate(${spinnerAngle.current}deg`,
+          transition: `transform 100ms linear`
+        }
+        }
+      />
+  
+    <div className="readtraining__timedisplay__container">
+      {text !== "" && <div className="readtraining__timedisplay__text --small">
         {text}
       </div>}
       
-      <div className="readtraining__timedisplay__time">
+      <div className="readtraining__timedisplay__time --small">
         {trainingServices.formatChrono(time)}
       </div>
-    </div>
     
-    <div class="readtraining__timedisplay__halfzone">
       <button 
-        className="training_button"
+        className="readtraining__timedisplay__button --small"
         onClick={() => resetTraining()}
       >
         Reïnitialiser
