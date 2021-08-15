@@ -11,9 +11,13 @@ import {
   setGlobalChronoTime,
   resetReadTraining,
   tellNextExoName,
+  setIsTransition,
+  resetAll,
+  endTraining,
 } from '../actions/readTrainingActions';
 
 const mapStateToProps = ({readTraining}) => ({
+  timelineLength: readTraining.timeline.length,
   timelineIndex: readTraining.timelineIndex,
   trainingDetails: readTraining.trainingDetails,
   nextExo: readTraining.nextExo,
@@ -26,6 +30,8 @@ const mapStateToProps = ({readTraining}) => ({
   exoTotalTime: readTraining.exoPlaying.duration,
   isTimecap: readTraining.trainingDetails.timecap > 5 ? true : false,
   timecap: readTraining.trainingDetails.timecap,
+  isTransition: readTraining.exoPlaying.isTransition,
+  isFinished: readTraining.trainingDetails.finished,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -40,6 +46,9 @@ const mapDispatchToProps = (dispatch) => ({
   setGlobalChronoTime: (time) => dispatch(setGlobalChronoTime(time)),
   resetReadTraining: () => dispatch(resetReadTraining()),
   tellNextExoName: () => dispatch(tellNextExoName()),
+  setIsTransition: (bool) => dispatch(setIsTransition(bool)),
+  endTraining: () => dispatch(endTraining()),
+  resetAll: () => dispatch(resetAll()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ReadTrainingView);

@@ -1,20 +1,44 @@
 @use '../../../styles/vars'as v;
 
 .readtraining__exodetails {
+  position: relative;
   width: 30%;
-  height: 110px;
-  overflow-y: auto;
-  scroll-behavior: smooth;
+  height: 150px;
   text-align: left;
-  margin: 3px;
-  padding: 5px;
   color: adjust-color(v.$base-color, $lightness: 20%);
-  // background-color: v.$color-intermediaire;
-  // border: 1px solid v.$base-color;
-  // border-radius: v.$border-radius;
   font-size: 0.8rem;
+  z-index: 1;
+
+  &__title {
+    display: flex;
+    align-items: center;
+    width: 15px;
+    height: 100%;
+    text-transform: uppercase;
+    overflow: hidden;
+    padding: 2px;
+    background-color: v.$base-color;
+    color: v.$color-very-light;
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+    font-size: 0.6rem;
+  }
+
+  &__container {
+    position: absolute;
+    background-color: v.$color-very-light;
+    width: 90%;
+    height: 100%;
+    top: 0;
+    left: 12px;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    margin: 3px;
+    padding: 5px;
+  }
 
   &__name {
-    font-size: 1.5em;
+    font-size: 1.8em;
+    color: adjust-color(v.$base-color, $lightness: 10%);
   }
 }

@@ -5,7 +5,7 @@ const trainingServices = {
    * @param {number} seconds 
    * @returns string
    */
-  formatSeconds: (seconds) => `${Math.floor(seconds / 60)}mn ${seconds % 60}s`,
+  formatSeconds: (seconds) => `${Math.floor(seconds / 60)}mn ${Math.floor(seconds % 60)}s`,
   /**
    * Return a chrono formated string '12:53' for instance
    * @param {number} seconds 
@@ -116,15 +116,15 @@ const trainingServices = {
     const exoList = [{
       beginning: true},
       {
-      name: 'READY ?',
+      name: 'READY',
       roundIndex: 1,
       roundCount: totalRoundCount,
       reps: '',
-      duration: 5,
+      duration: 3,
       weight: '',
       description: 'Play pour commencer',
-      serieIndex: '',
-      serieCount: '',
+      serieIndex: 0,
+      serieCount: 0,
     }];
     
     for (let index = 0; index < training.rounds.length; index++) {

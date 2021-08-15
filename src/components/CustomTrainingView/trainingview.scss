@@ -31,6 +31,11 @@
       color: v.$base-color;
     }
 
+    &.--white {
+      background-color: v.$color-very-light;
+      color: v.$base-color;
+    }
+
     &.--icone {
       font-size: v.$fs-button-icone;
       width: 44px;
@@ -60,7 +65,7 @@
     }
 
     & .--padded {
-      padding: 0 10px;
+      padding: 0 20px;
     }
   }
 

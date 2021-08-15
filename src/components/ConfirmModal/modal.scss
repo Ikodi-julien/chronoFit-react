@@ -9,9 +9,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgba(0, 0, 0, .6);
-  backdrop-filter: blur(4px);
+  background-color: rgba(0, 15, 37, 0.6);
+  backdrop-filter: blur(2px);
   z-index: 1000;
+
+  &.--endmodal {
+    background-color: transparent;
+    backdrop-filter: blur(0px);
+  }
+
 
   &__container {
     position: relative;
@@ -23,6 +29,16 @@
     border-radius: v.$border-radius;
     padding: v.$gutter;
     padding-top: 50px;
+
+    &.--endtraining {
+      align-self: flex-end;
+      margin-bottom: 60px;
+      width: 100%;
+      max-width: 400px;
+      background-color: v.$base-color;
+      color: v.$color-very-light;
+      border-radius: 0;
+    }
   }
 
   &__close {
@@ -35,7 +51,16 @@
 
   &__text {
     flex: 1;
+
+    & h1 {
+      font-size: 2rem;
+    }
+
+    & h2 {
+      font-size: 1.5rem;
+    }
   }
+
 
   &__options {
     display: flex;

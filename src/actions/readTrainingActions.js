@@ -22,4 +22,7 @@ export const END_TRAINING = 'END_TRAINING';
 export const endTraining = () => ({type: END_TRAINING});
 export const TELL_NEXT_EXO_NAME = 'TELL_NEXT_EXO_NAME';
 export const tellNextExoName = () => ({type: TELL_NEXT_EXO_NAME});
-
+export const SET_ISTRANSITION = 'SET_ISTRANSITION';
+export const setIsTransition = (bool) => ({type: SET_ISTRANSITION, value: bool});
+export const RESET_ALL = 'RESET_ALL';
+export const resetAll = () => ({type: RESET_ALL});

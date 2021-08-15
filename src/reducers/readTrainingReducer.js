@@ -8,8 +8,10 @@ import {
   SET_GLOBAL_COUNTDOWN_TIME,
   SET_GLOBAL_CHRONO_TIME,
   SET_CHRONO_TIME,
+  SET_ISTRANSITION,
   RESET_READTRAINING,
   END_TRAINING,
+  RESET_ALL,
 } from '../actions/readTrainingActions';
 // import trainingServices from '../services/training';
 import defaultTimeline from '../data/defaultTimeline';
@@ -26,6 +28,7 @@ const initialState = {
     roundCount: '',
     currentRoundDuration: '',
     timecap: 0,
+    finished: false,
   },
   // ExoDetails
   nextExo: {
@@ -56,6 +59,7 @@ const initialState = {
     currentTime: '',
     isChrono: '',
     end: false,
+    isTransition: false,
   },
   chronoCurrentTime: '',
   countdownCurrentTime: '',
@@ -112,6 +116,7 @@ const reducer = (state=initialState, action={}) => {
           roundTotalIteration: state.timeline[exoIndex].roundTotalIteration,
           roundCurrentIteration: state.timeline[exoIndex].roundCurrentIteration,
           currentRoundDuration: state.timeline[exoIndex].roundDuration,
+          finished: false,
         },
         // ExoDetails
         nextExo: {
@@ -142,6 +147,7 @@ const reducer = (state=initialState, action={}) => {
           duration: state.timeline[exoIndex].duration,
           currentTime: state.timeline[exoIndex].duration,
           isChrono: state.timeline[exoIndex].duration === 0 ? true : false,
+          isTransition: true,
           end: state.timeline[exoIndex].end,
         },
         chronoCurrentTime: 0,
@@ -211,7 +217,6 @@ const reducer = (state=initialState, action={}) => {
           currentTime: action.time,
         },
       }
-      
     
     case SET_GLOBAL_CHRONO_TIME:
       return {
@@ -222,6 +227,15 @@ const reducer = (state=initialState, action={}) => {
         },
       }
         
+    case SET_ISTRANSITION:
+      return {
+        ...state,
+        exoPlaying: {
+          ...state.exoPlaying,
+          isTransition: action.value,
+        }
+      }
+      
     case RESET_READTRAINING:
       return {
         ...state,
@@ -270,6 +284,10 @@ const reducer = (state=initialState, action={}) => {
     case END_TRAINING:
       return {
         ...state,
+        trainingDetails: {
+          ...state.trainingDetails,
+          finished: true,
+        },
         exoPlaying: {
           ...state.exoPlaying,
           isCounting: false,
@@ -285,6 +303,9 @@ const reducer = (state=initialState, action={}) => {
           isCounting: false,
         }
       }
+      
+    case RESET_ALL:
+      return initialState;
         
     default:
       return state;

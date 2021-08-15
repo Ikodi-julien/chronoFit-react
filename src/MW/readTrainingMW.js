@@ -20,7 +20,7 @@ import trainingServices from '../services/training';
 
 export default (store) => (next) => (action) => {
   const {localTraining} = store.getState().localTraining;
-  const {nextExo, timeline, exoPlaying} = store.getState().readTraining;
+  const {nextExo, timeline, exoPlaying, trainingDetails} = store.getState().readTraining;
   // console.log(localTraining);
   
   switch (action.type) {
@@ -29,7 +29,7 @@ export default (store) => (next) => (action) => {
     action.trainingDetails = {
         name: localTraining.name,
         duration: trainingServices.getTrainingDuration(localTraining),
-        timecap: localTraining.timecap * 60 + 5,
+        timecap: localTraining.timecap * 60,
       };
       
       action.timeline = trainingServices.getTimeLine(localTraining);
@@ -39,20 +39,23 @@ export default (store) => (next) => (action) => {
       break;
       
     case SET_CURRENT_EXO:
-      next(action);
-      if (timeline[action.exoIndex].end) {
-        // It's beyond the last exercice in timeline
-        store.dispatch(endTraining());
-        break;
+      if (!trainingDetails.finished) {
+        
+        next(action);
+        if (timeline[action.exoIndex].end) {
+          // It's beyond the last exercice in timeline
+          store.dispatch(endTraining());
+          break;
+        }
+        // This is to handle several chrono in a row, need to be stopped, reseted and started again. This has no effect on GlobalChrono and GlobalCountdown
+        store.dispatch(pauseTraining());
+        setTimeout(() => {
+          store.dispatch(setChronoTime(0));
+          store.dispatch(setCountdownTime(store.getState().readTraining.exoPlaying.duration));
+          // Don't restart if already paused before changing exo
+          if (exoPlaying.isCounting) store.dispatch(startTraining())
+        }, 110);
       }
-      // This is to handle several chrono in a row, need to be stopped, reseted and started again. This has no effect on GlobalChrono and GlobalCountdown
-      store.dispatch(pauseTraining());
-      setTimeout(() => {
-        store.dispatch(setChronoTime(0));
-        store.dispatch(setCountdownTime(store.getState().readTraining.exoPlaying.duration));
-        // Don't restart if already paused before changing exo
-        if (exoPlaying.isCounting) store.dispatch(startTraining())
-      }, 110);
         
       break;
     

@@ -3,7 +3,7 @@
 
 body {
   font-family: 'Roboto Condensed', sans-serif;
-  background-color: v.$base-color;
+  background-color: adjust-color(#2f4452, $blackness: 8%);
   color: v.$base-color;
 }
 

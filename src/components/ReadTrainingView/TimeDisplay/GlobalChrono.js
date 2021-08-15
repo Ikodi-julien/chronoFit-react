@@ -4,22 +4,24 @@ import trainingServices from '../../../services/training';
 import { asyncTime } from '../../../services/asyncTime';
 import './timedisplay.scss';
 
-const GlobalChrono = ({time, text, isCounting, setTime, resetTraining}) => {
+const GlobalChrono = ({time, text, isCounting, setTime, resetTraining, timelineIndex}) => {
   let spinnerAngle = useRef(time);
   
   useEffect(() => {
     
-    (async() => {
+    if (timelineIndex > 1) {
+      (async() => {
     
-      await asyncTime.wait100ms();
-      
-      if (isCounting ){
-        setTime(time + .1)
-        spinnerAngle.current = time * 72;
+        await asyncTime.wait100ms();
         
-      }
-    })()
-  }, [time, isCounting, setTime, resetTraining])
+        if (isCounting ){
+          setTime(time + .1)
+          spinnerAngle.current = time * 72;
+          
+        }
+      })()
+    }
+  }, [time, isCounting, setTime, resetTraining, timelineIndex])
   
   return(
   <div className="readtraining__timedisplay --small">

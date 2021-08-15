@@ -36,7 +36,7 @@ const Chrono = ({text, time, isCounting, setChronoTime, setExo, timelineIndex })
       }
     />
     
-    <div class="readtraining__timedisplay__container">
+    <div className="readtraining__timedisplay__container">
       {text !== "" && <div className="readtraining__timedisplay__text">
         {text}
       </div>}

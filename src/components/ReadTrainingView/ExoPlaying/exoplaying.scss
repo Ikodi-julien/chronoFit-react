@@ -4,47 +4,76 @@
   position: relative;
   width: 70%;
   height: 150px;
-  overflow: hidden;
   color: v.$base-color;
-  text-align: center;
-  padding: 5px;
-  margin: 2px;
-  // border: 1px solid v.$base-color;
-  // border-radius: v.$border-radius;
+  text-align: left;
   font-size: 1rem;
+  z-index: 2;
 
-  &__name {
-    position: relative;
-    height: 1.1em;
+  &__title {
+    display: flex;
+    align-items: center;
+    width: 15px;
+    height: 100%;
+    padding: 2px;
+    background-color: v.$base-color;
+    color: v.$color-very-light;
+    text-transform: uppercase;
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+    font-size: 0.6rem;
+  }
+
+  &__container {
+    width: 90%;
+    height: 100%;
+    position: absolute;
+    transform: scale(1);
+    top: 0;
+    left: 15px;
+    padding: 5px;
     overflow-y: auto;
     scroll-behavior: smooth;
-    font-size: 2.2em;
+    transform: scale(1);
+    transition: all 150ms ease-in-out;
+
+    &.--position-left {
+      left: -130px;
+      transform: scale(0.8);
+      top: -10%;
+      transition: none;
+    }
+  }
+
+  &__name,
+  &__description,
+  &__series,
+  &__row {
+    position: relative;
+    padding: 3px;
     z-index: 10;
+  }
+
+  &__name {
+    height: 1.1em;
+    font-size: 2.2em;
   }
 
   &__description {
-    position: relative;
-    margin: 5px;
-    padding: 3px;
     height: 2.2em;
-    z-index: 10;
   }
 
   &__series {
-    position: relative;
     font-size: 1.2em;
-    z-index: 10;
   }
 
   &__row {
-    position: relative;
     display: flex;
-    justify-content: space-evenly;
-    z-index: 10;
+    justify-content: left;
   }
 
   &__reps,
   &__weight {
     font-size: 2em;
+    padding-right: 20px;
   }
 }

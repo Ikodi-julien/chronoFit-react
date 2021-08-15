@@ -24,11 +24,12 @@
     display: flex;
     background-color: v.$color-very-light;
     justify-content: flex-end;
+    align-items: center;
     flex-direction: column;
     // border: 1px dashed yellowgreen;
     border-radius: 50%;
-    width: 95%;
-    height: 95%;
+    width: 93%;
+    height: 93%;
     overflow: hidden;
     z-index: 2;
 
@@ -56,7 +57,9 @@
   }
 
   &__button {
+    width: 80%;
     border: none;
+    border-radius: v.$border-radius;
     color: v.$color-very-light;
     background-color: v.$base-color;
     height: 65px;
