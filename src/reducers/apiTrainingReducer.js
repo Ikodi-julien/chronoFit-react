@@ -1,5 +1,6 @@
 import {
   SET_TRAINING_ID,
+  SET_SHRUNKEN_API_ROUND,
 } from '../actions/trainingViewActions';
 import {
   GET_TRAININGS_SUCCESS,
@@ -8,11 +9,12 @@ import {
 
 const initialState = {
   allApiTrainings: [],
-  apiTrainingId: 0,
-  apiTraining: {}, 
+  currentTrainingId: 0,
+  currentTraining: {}, 
 }
 
 const reducer = (state=initialState, action={}) => {
+  const {rounds} = state.currentTraining;
   
   switch (action.type) {
     
@@ -26,15 +28,25 @@ const reducer = (state=initialState, action={}) => {
     case GET_CURRENT_TRAINING_SUCCESS:
       return {
         ...state,
-        apiTraining: action.data,
+        currentTraining: action.data,
       }
     
     case SET_TRAINING_ID:
       return {
         ...state,
-        apiTrainingId: action.value,
+        currentTrainingId: action.value,
       }
     
+    case SET_SHRUNKEN_API_ROUND:
+      rounds[action.value.index].shrunken = action.value.bool;
+      
+      return {
+        ...state,
+        currentTraining: {
+          ...state.currentTraining,
+          rounds,
+        }
+      }
     default :
     return state;
   }

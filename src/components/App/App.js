@@ -15,11 +15,11 @@ function App() {
     <Router>
     <div className="app">
       <Switch>
-        <Route path="/benchmark_training">
-          <BenchmarkTrainingView path="/benchmark_training"/>
+        <Route path="/girls">
+          <BenchmarkTrainingView />
         </Route>
         <Route path="/custom_training">
-          <CustomTrainingView path="/custom_training"/>
+          <CustomTrainingView />
         </Route>
         <Route path="/read_training">
           <ReadTrainingContainer />

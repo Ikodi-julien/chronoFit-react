@@ -9,11 +9,8 @@ import {setTrainingId} from '../actions/trainingViewActions';
 /*---------------------------------*/
 import BenchmarkTrainingView from '../components/BenchmarkTrainingView/BenchmarkTrainingView';
 
-const mapStateToProps = ({training}, {path}) => ({
-  allTrainings: training.allTrainings,
-  currentTrainingId: training.currentTrainingId,
-  currentTraining: training.currentTraining,
-  path: path,
+const mapStateToProps = ({apiTraining}) => ({
+  allTrainings: apiTraining.allApiTrainings,
 })
 
 const mapDispatchToProps = (dispatch) => ({

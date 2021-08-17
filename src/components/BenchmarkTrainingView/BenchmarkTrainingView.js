@@ -1,26 +1,26 @@
 /*-------------------------------------------*/
 import AppNav from '../../containers/AppNavContainer';
 import TrainingManager from './TrainingManager/TrainingManager';
-import TrainingAPI from './Training/TrainingAPI';
+import TrainingAPIContainer from '../../containers/trainingAPIContainer';
 
-import './trainingview.scss';
-
-const BenchmarkTrainingView = ({path, allTrainings, setTrainingId, currentTrainingId, getTrainings, currentTraining, getCurrentTraining }) => {
+const BenchmarkTrainingView = (
+  {
+    allTrainings, 
+    getTrainings, 
+    setTrainingId, 
+    getCurrentTraining
+   }) => {
 
   return (
   <section className="training__container">
     <AppNav />
     <TrainingManager 
-      path={path}
       list={allTrainings} 
       getTrainings={getTrainings}
       setTrainingId={setTrainingId}
-      />
-    <TrainingAPI
-      id={currentTrainingId} 
-      rounds={currentTraining.rounds} 
       getCurrentTraining={getCurrentTraining}
       />
+    <TrainingAPIContainer />
   </section>
 )};
 

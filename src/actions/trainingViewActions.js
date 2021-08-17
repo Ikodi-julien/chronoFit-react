@@ -7,3 +7,5 @@ export const setRoundMenuIsVisible = (index, bool) => ({type: SET_ROUNDMENU_IS_
 export const SET_SHRUNKEN_ROUND = 'SET_SHRUNKEN_ROUND';
 export const setShrunkenRound = (index, bool) => ({type: SET_SHRUNKEN_ROUND, value: {index, bool}});
 
+export const SET_SHRUNKEN_API_ROUND = 'SET_SHRUNKEN_API_ROUND';
+export const setShrunkenApiRound = (index, bool) => ({type: SET_SHRUNKEN_API_ROUND, value: {index, bool}});

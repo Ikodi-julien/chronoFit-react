@@ -5,10 +5,19 @@ import {
   showExoForm,
 } from '../actions/trainingLocalActions';
 
-const mapStateToProps = ({localTraining}, { roundIndex, index }) => {
-  const exo = localTraining.localTraining.rounds[roundIndex].exercices[index];
-  const roundShrunken = () => {
-    return localTraining.localTraining.rounds[roundIndex].exercices.length > 2 &&  localTraining.localTraining.rounds[roundIndex].shrunken ? true : false
+const mapStateToProps = ({localTraining, apiTraining}, { isAPI, roundIndex, index }) => {
+  let exo, roundShrunken;
+
+  if (isAPI) {
+    exo = apiTraining.currentTraining.rounds[roundIndex].exercices[index];
+    roundShrunken = () => {
+      return apiTraining.currentTraining.rounds[roundIndex].exercices.length > 1 &&  apiTraining.currentTraining.rounds[roundIndex].shrunken ? true : false
+    }
+  } else {
+    exo = localTraining.localTraining.rounds[roundIndex].exercices[index];
+    roundShrunken = () => {
+      return localTraining.localTraining.rounds[roundIndex].exercices.length > 2 &&  localTraining.localTraining.rounds[roundIndex].shrunken ? true : false
+    }
   }
   
   return {

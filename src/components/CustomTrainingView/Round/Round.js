@@ -9,6 +9,7 @@ import './round.scss';
 
 const Round = ({
   isToRender,
+  isAPI,
   // Pour Round
   roundIndex,
   iteration,
@@ -26,12 +27,15 @@ const Round = ({
 }) => {
 
   const handleChange = (evt) => setRoundIteration(roundIndex, evt.target.value)
+  /*-----------------------------------*/
   let duration = 0;
+  
   exercices.forEach(exo => duration += parseInt(exo.options[0].duration) * (exo.options[0].iteration ? parseInt(exo.options[0].iteration) : 1));
   
   duration = `${Math.floor(duration/60)}mn ${duration % 60}s`;
-  
+  /*--------------------------------*/
   useEffect(() => {
+    if (!isAPI) {
       const exoList = document.getElementById(`exoList-${roundIndex}`);
     
       // D&D enabled only if no exercice being edited
@@ -59,7 +63,7 @@ const Round = ({
         
       const order = sortable.toArray().sort();
       sortable.sort(order, false);
-      
+    }
   })
   
   return (
@@ -74,19 +78,22 @@ const Round = ({
                             setRoundMenuIsVisible={setRoundMenuIsVisible}
                             />
         }
-        <button 
+        { !isAPI &&
+          <button 
           className="training__button --transparent --icone"
           onClick={() => setRoundMenuIsVisible(roundIndex, true)}
         >
           <i className="fas fa-ellipsis-v trainingrounds__header__togglemenu" ></i>
         </button>
+        }
+        { !isAPI &&
         <button 
           className="training__button --transparent --icone"
           onClick={() => addExercice(roundIndex)}
         >
           <i className="fas fa-plus"></i>
         </button>
-        
+        }
         <div className="rounds__round__header__column">
           <div className="rounds__round__header__title">Round n°{roundIndex + 1} </div>
           <div className="rounds__round__header__subtitle">Durée : {duration} - Répéter
@@ -123,6 +130,7 @@ const Round = ({
             :
             <li key={index} exo-id={index} className="draggable-item">
               <ExoInList
+                isAPI={isAPI || false}
                 roundIndex={roundIndex}
                 index={index}
               />

@@ -1,16 +1,19 @@
 import {useEffect} from 'react';
 import './trainingmanager.scss';
 
-const TrainingManager = ({path, list, getTrainings, setTrainingId}) => {
+const TrainingManager = ({list, getTrainings, setTrainingId, getCurrentTraining}) => {
   
-  const handleSelectChange = (evt) => setTrainingId(evt.target.value);
+  const handleSelectChange = (evt) => {
+    setTrainingId(evt.target.value);
+    getCurrentTraining(evt.target.value);
+  };
   
   useEffect(() => {getTrainings()}, [getTrainings]);
 
   return (
     <div className="trainingmanager__container">
         <h1 className="trainingmanager__title">
-          {path === "/benchmark_training" ? "Benchmarks Trainings" : "Custom Trainings"}
+          Les Girls
         </h1>
         <form>
         
@@ -28,30 +31,7 @@ const TrainingManager = ({path, list, getTrainings, setTrainingId}) => {
               ))
             }
             </select>
-            {
-            path === "/custom_training" ?
-            <input
-              type="text"
-              className="trainingmanager__col__input"
-              placeholder="Nom de l'entrainement"
-              /> : null
-            }
           </div>
-          
-          {
-            path === "/custom_training" ?
-            <div className="trainingmanager__row">
-              <button type="submit" className="trainingmanager__row__button training__button">
-                Save
-              </button>
-              <button type="submit" className="trainingmanager__row__button training__button">
-                <i className="fas fa-trash-alt"></i>
-              </button>
-            </div>
-            : null
-          }
-
-          
         </form>
     </div>
   )

@@ -8,7 +8,7 @@ const Landing = (props) => (
     <h1 className="landing__title">CHRONOFIT</h1>
     <Link 
       className="landing__button"
-      to="benchmark_training"
+      to="girls"
     >
       Les Girls
     </Link>
