@@ -15,7 +15,7 @@ const AppNav = ({toggleMenu, menuIsVisible}) => {
         {
           location.pathname === "/custom_training" ?
             "Custom Training" : 
-          location.pathname === "/benchmark_training" ?
+          location.pathname === "/girls" ?
             "Les Girls" :
             "Titre pas prévu..."
         }

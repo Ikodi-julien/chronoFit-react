@@ -1,7 +1,7 @@
 /*-------------------------------------------*/
 import AppNav from '../../containers/AppNavContainer';
-import TrainingManager from './TrainingManager/TrainingManager';
-import TrainingAPIContainer from '../../containers/trainingAPIContainer';
+import TypeSelector from './TypeSelector/TypeSelector';
+import TrainingApiList from '../BenchmarkTrainingView/TrainingApiList/TrainingApiList';
 
 const BenchmarkTrainingView = (
   {
@@ -14,13 +14,8 @@ const BenchmarkTrainingView = (
   return (
   <section className="training__container">
     <AppNav />
-    <TrainingManager 
-      list={allTrainings} 
-      getTrainings={getTrainings}
-      setTrainingId={setTrainingId}
-      getCurrentTraining={getCurrentTraining}
-      />
-    <TrainingAPIContainer />
+    <TypeSelector />
+    <TrainingApiList />
   </section>
 )};
 

@@ -1,0 +1,28 @@
+@use '../../../styles/vars'as v;
+
+.training__apilist__wodcard {
+  width: 100%;
+  background-color: v.$color-intermediaire;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid v.$base-color;
+
+
+  &__title {
+    font-size: 2em;
+  }
+
+  &__subtitle {
+    font-size: 1.3em;
+  }
+
+  &__row {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 8px 0;
+
+    // & .training__button {
+    //   margin: 8px;
+    // }
+  }
+}

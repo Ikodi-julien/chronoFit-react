@@ -1,0 +1,15 @@
+@use '../../../styles/vars'as v;
+
+.training__typeselector {
+  width: 100%;
+  padding: 5px;
+
+  &__row {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__item {
+    padding: 15px 0;
+  }
+}

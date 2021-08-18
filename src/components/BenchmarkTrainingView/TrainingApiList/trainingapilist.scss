@@ -1,0 +1,9 @@
+@use '../../../styles/vars'as v;
+
+.training__apilist {
+  width: 100%;
+  height: 100vh;
+  padding: 5px;
+  overflow: auto;
+  scroll-behavior: smooth;
+}
