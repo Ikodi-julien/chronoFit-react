@@ -33,7 +33,7 @@ const AppNav = ({toggleMenu, menuIsVisible}) => {
           <i className="fas fa-times"></i>
         </button>
         <NavLink to="/" className="appnav__links__link" onClick={() => toggleMenu()} >Accueil</NavLink>
-        <NavLink to="/benchmark_training" className="appnav__links__link" onClick={() => toggleMenu()} >Les Girls</NavLink>
+        <NavLink to="/girls" className="appnav__links__link" onClick={() => toggleMenu()} >Les Girls</NavLink>
         <NavLink to="/custom_training" className="appnav__links__link" onClick={() => toggleMenu()} >Custom Trainings</NavLink>
         <NavLink to="/connexion" className="appnav__links__link" onClick={() => toggleMenu()} >Connexion</NavLink>
       </ul>

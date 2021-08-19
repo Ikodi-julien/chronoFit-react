@@ -1,5 +1,5 @@
 import Landing from '../Landing/Landing';
-import BenchmarkTrainingView from '../../containers/BenchmarkTrainingViewContainer';
+import GirlViewContainer from '../../containers/GirlViewContainer';
 import CustomTrainingView from '../../containers/CustomTrainingViewContainer';
 import ReadTrainingContainer from '../../containers/ReadTrainingContainer';
 import {
@@ -16,7 +16,7 @@ function App() {
     <div className="app">
       <Switch>
         <Route path="/girls">
-          <BenchmarkTrainingView />
+          <GirlViewContainer />
         </Route>
         <Route path="/custom_training">
           <CustomTrainingView />

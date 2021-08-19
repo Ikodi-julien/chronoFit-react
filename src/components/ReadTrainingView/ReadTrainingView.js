@@ -1,5 +1,4 @@
 import { useHistory } from 'react-router-dom';
-import {NavLink} from 'react-router-dom';
 import TrainingDetails from './TrainingDetails/TrainingDetails';
 import ExoDetailsContainer from '../../containers/ExoDetailsContainer';
 import ExoPlaying from './ExoPlaying/ExoPlaying';
@@ -29,6 +28,7 @@ const ReadTrainingView = ({
   isTimecap,
   isTransition,
   isFinished,
+  viewOrigin,
   
   //dispatch
   setCurrentExo, 
@@ -49,7 +49,7 @@ const ReadTrainingView = ({
   let history = useHistory();
   
   if (timelineLength < 5) {
-    history.push("/custom_training")
+    history.push(viewOrigin)
     return null;
   }
   
@@ -60,17 +60,17 @@ const ReadTrainingView = ({
       trainingDuration={globalChrono.currentTime}
       trainingName={trainingDetails.name}
       actionToDispatch={resetAll}
+      viewOrigin={viewOrigin}
     />}
-    <NavLink 
-      to="custom_training" 
+    <button 
       className="readtraining__close training__button --xl"
       onClick={() => {
-        resetReadTraining();
+        history.push(viewOrigin);
+        resetAll();
         }
       }
-    >
-    <i className="fas fa-times"></i>
-    </NavLink>
+    ><i className="fas fa-times"></i>
+    </button>
     
     <TrainingDetails details={trainingDetails}/>
     
@@ -142,7 +142,6 @@ const ReadTrainingView = ({
         }
       </div>
     </div>
-    
   </section>
 )}
 

@@ -1,21 +1,18 @@
 /*-------------------------------------------*/
 import AppNav from '../../containers/AppNavContainer';
 import TypeSelector from './TypeSelector/TypeSelector';
-import TrainingApiList from '../BenchmarkTrainingView/TrainingApiList/TrainingApiList';
+import TrainingApiListContainer from '../../containers/TrainingApiListContainer';
 
 const BenchmarkTrainingView = (
   {
-    allTrainings, 
-    getTrainings, 
-    setTrainingId, 
-    getCurrentTraining
-   }) => {
+    getGirls
+  }) => {
 
   return (
   <section className="training__container">
     <AppNav />
-    <TypeSelector />
-    <TrainingApiList />
+    <TypeSelector getGirls={getGirls} />
+    <TrainingApiListContainer />
   </section>
 )};
 

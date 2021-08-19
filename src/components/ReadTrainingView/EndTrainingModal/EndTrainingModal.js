@@ -1,12 +1,12 @@
 import {useState}  from 'react';
-import { NavLink } from 'react-router-dom'
-
+import { useHistory } from 'react-router';
 import trainingServices from '../../../services/training';
 import '../../ConfirmModal/modal.scss';
 
-const EndTrainingModal = ({trainingDuration, trainingName, actionToDispatch}) => {
+const EndTrainingModal = ({trainingDuration, trainingName, actionToDispatch, viewOrigin}) => {
   
   const [isOpen, setIsOpen] = useState(true);
+  const history = useHistory();
   
   return (
   <section className={ `modal --endmodal ${!isOpen && "--hidden"}`}>
@@ -25,17 +25,17 @@ const EndTrainingModal = ({trainingDuration, trainingName, actionToDispatch}) =>
         <p>Durée : {trainingServices.formatSeconds(trainingDuration)}</p>
       </div>
       <div className="modal__options">
-        <NavLink to="/custom_training">
           <button
             className="training__button --white"
             onClick={() => {
               actionToDispatch();
-              setIsOpen(false)
+              setIsOpen(false);
+              console.log(history)
+              history.push(viewOrigin);
             }}
           >
             OK
           </button>
-        </NavLink>
         {/* <button
           className="training__button --transparent --border"
           onClick={() => setIsOpen(false)}

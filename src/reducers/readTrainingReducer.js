@@ -18,6 +18,7 @@ import defaultTimeline from '../data/defaultTimeline';
 
 const initialState = {
   render:0,
+  viewOrigin: '',
   timeline: defaultTimeline,
   timelineIndex: 0,
   // TraingDetails
@@ -82,6 +83,7 @@ const reducer = (state=initialState, action={}) => {
     case SET_READ_TRAINING:
       return {
         ...state,
+        viewOrigin: action.viewOrigin,
         timeline: action.timeline,
         trainingDetails: {
           ...state.trainingDetails,

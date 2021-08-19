@@ -19,6 +19,7 @@ import {
 import trainingServices from '../services/training';
 
 export default (store) => (next) => (action) => {
+  const {currentTraining} = store.getState().apiTraining;
   const {localTraining} = store.getState().localTraining;
   const {nextExo, timeline, exoPlaying, trainingDetails} = store.getState().readTraining;
   // console.log(localTraining);
@@ -26,13 +27,24 @@ export default (store) => (next) => (action) => {
   switch (action.type) {
     case SET_READ_TRAINING:
 
-    action.trainingDetails = {
+    if (action.value === 'girl') {
+      action.trainingDetails = {
+        name: currentTraining.name,
+        duration: trainingServices.getTrainingDuration(currentTraining),
+        timecap: currentTraining.timecap * 60,
+      };
+      action.viewOrigin = '/girls';
+      action.timeline = trainingServices.getTimeLine(currentTraining);
+      
+    } else {
+      action.trainingDetails = {
         name: localTraining.name,
         duration: trainingServices.getTrainingDuration(localTraining),
         timecap: localTraining.timecap * 60,
       };
-      
+      action.viewOrigin = '/custom_training';
       action.timeline = trainingServices.getTimeLine(localTraining);
+    }
       
       next(action);
       store.dispatch(setCurrentExo(0));

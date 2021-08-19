@@ -32,6 +32,7 @@ const mapStateToProps = ({readTraining}) => ({
   timecap: readTraining.trainingDetails.timecap,
   isTransition: readTraining.exoPlaying.isTransition,
   isFinished: readTraining.trainingDetails.finished,
+  viewOrigin: readTraining.viewOrigin,
 });
 
 const mapDispatchToProps = (dispatch) => ({

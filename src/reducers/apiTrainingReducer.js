@@ -5,12 +5,16 @@ import {
 import {
   GET_TRAININGS_SUCCESS,
   GET_CURRENT_TRAINING_SUCCESS,
+  GET_GIRLS_SUCCESS,
 } from '../actions/trainingAjaxActions';
+import { RESET_ALL, RESET_READTRAINING } from '../actions/readTrainingActions';
 
 const initialState = {
+  girls: [],
   allApiTrainings: [],
   currentTrainingId: 0,
   currentTraining: {}, 
+  trainingIsSet: false,
 }
 
 const reducer = (state=initialState, action={}) => {
@@ -24,11 +28,20 @@ const reducer = (state=initialState, action={}) => {
         ...state,
         allApiTrainings: action.data,
       }
+      
+          
+    case GET_GIRLS_SUCCESS:
+      // console.log(action);
+      return {
+        ...state,
+        girls: action.value,
+      }
 
     case GET_CURRENT_TRAINING_SUCCESS:
       return {
         ...state,
         currentTraining: action.data,
+        trainingIsSet: true,
       }
     
     case SET_TRAINING_ID:
@@ -47,6 +60,11 @@ const reducer = (state=initialState, action={}) => {
           rounds,
         }
       }
+    
+    case RESET_ALL:
+    case RESET_READTRAINING:
+      return initialState;
+      
     default :
     return state;
   }

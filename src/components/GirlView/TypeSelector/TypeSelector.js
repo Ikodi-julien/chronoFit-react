@@ -1,6 +1,11 @@
+import { useEffect } from 'react';
 import './typeselector.scss';
 
-const TypeSelector = () => {
+const TypeSelector = ({getGirls}) => {
+    
+  useEffect(() => {
+    getGirls();
+  }, [getGirls])
   
   return (
     <div className="training__typeselector">
