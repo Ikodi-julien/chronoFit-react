@@ -24,9 +24,11 @@ const GlobalCountDown = ({time, timecap, timelineIndex, text, isCounting, setTim
       return
     } 
 
-    endTraining();
-    // Make sure to endup with 00:00:0
-    setTimeout(() => setTime(0), 110);
+      if (time <= 0.1) {
+        endTraining();
+        // Make sure to endup with 00:00:0
+        setTimeout(() => setTime(0), 110);
+      }
     }
   }, [time, timecap, timelineIndex, isCounting, setTime, endTraining,
   ])
@@ -50,7 +52,7 @@ const GlobalCountDown = ({time, timecap, timelineIndex, text, isCounting, setTim
       
       <button
         className="readtraining__timedisplay__button --small"
-        onClick={() => stopTraining()}
+        onClick={() => endTraining()}
       >
         Terminer
       </button>

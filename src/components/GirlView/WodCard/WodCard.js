@@ -2,11 +2,8 @@ import { useHistory } from 'react-router-dom';
 import {useEffect} from 'react';
 import './wodcard.scss';
 
-const WodCard = ({id, trainingIsSet, title, subtitle, exoList, desc, targetList, getOneGirl}) => {
+const WodCard = ({trainingIsSet, title, subtitle, exoList, desc, targetList, maleId, femaleId, getOneGirl}) => {
   const history = useHistory();
-  const handleClick = () => {
-    getOneGirl(id);
-  }
   
   useEffect(() => {
     if (trainingIsSet) history.push('/read_training');
@@ -42,13 +39,33 @@ const WodCard = ({id, trainingIsSet, title, subtitle, exoList, desc, targetList,
         }
       </ul>
       <div className="training__apilist__wodcard__row">
-          <button 
+          {
+            !femaleId && 
+            <button 
             className="training__button"
-            onClick={() => handleClick()}
+            onClick={() => getOneGirl(maleId)}
           >
             GO
           </button>
-
+          }
+          {
+            femaleId && 
+            <button 
+            className="training__button"
+            onClick={() => getOneGirl(femaleId)}
+          >
+            Femme
+          </button>
+          }
+          {
+            femaleId && 
+          <button 
+            className="training__button"
+            onClick={() => getOneGirl(maleId)}
+          >
+            Homme
+          </button>
+          }
       </div>
     </article>
   )}

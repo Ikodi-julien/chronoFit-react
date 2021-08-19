@@ -9,12 +9,13 @@ const TrainingApiList = ({girlList, trainingIsSet, getOneGirl}) => {
         girlList.map(wod =>
         <li key={wod.id}>
           <WodCard
-            id={wod.id}
             title={wod.title}
             subtitle={wod.subtitle}
             exoList={wod.exercices}
             desc={wod.desc}
             targetList={wod.target}
+            maleId={wod.maleId}
+            femaleId={wod.femaleId}
             getOneGirl={getOneGirl}
             trainingIsSet={trainingIsSet}
           />
