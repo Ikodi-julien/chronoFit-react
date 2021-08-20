@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 
 import ExoInList from '../../../containers/ExoInListContainer';
 import ExoForm from '../../../containers/ExoFormContainer';
-import RoundMenu from './RoundMenu';
+import RoundMenuContainer from '../../../containers/RoundMenuContainer';
 
 import './round.scss';
 
@@ -45,7 +45,7 @@ const Round = ({
         dataIdAttr: 'exo-id',
         draggable: '.draggable-item',
         onAdd: (evt) => {
-        // Had an error and needed to put back the item in place when item was dragged between list, react will render the state then.
+        // Threw an error and needed to put back the item in place after item was dragged between list, react will render the state then.
           evt.from.insertBefore(evt.item, null); 
         },
         onEnd: (evt) => {
@@ -61,7 +61,7 @@ const Round = ({
           },
       });
         
-      const order = sortable.toArray().sort();
+      const order = sortable.toArray().sort((a, b) => a - b);
       sortable.sort(order, false);
     }
   })
@@ -70,13 +70,7 @@ const Round = ({
     <section className="rounds__round__container">
       <div className="rounds__round__header drag-handle">
         {
-          menuIsVisible && <RoundMenu 
-                            index={roundIndex}
-                            addRound={addRound}
-                            addExercice={addExercice}
-                            deleteRound={deleteRound}
-                            setRoundMenuIsVisible={setRoundMenuIsVisible}
-                            />
+          menuIsVisible && <RoundMenuContainer index={roundIndex} />
         }
         { !isAPI &&
           <button 

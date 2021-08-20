@@ -3,14 +3,14 @@ import TrainingDetails from './TrainingDetails/TrainingDetails';
 import ExoDetailsContainer from '../../containers/ExoDetailsContainer';
 import ExoPlaying from './ExoPlaying/ExoPlaying';
 import ReadControl from './ReadControl/ReadControl';
-import CountDown from './TimeDisplay/CountDown';
-import Chrono from './TimeDisplay/Chrono';
-import GlobalCountDown from './TimeDisplay/GlobalCountDown';
+import ChronoContainer from '../../containers/ChronoContainer';
+import GlobalChronoContainer from '../../containers/GlobalChronoContainer';
+import CountdownContainer from '../../containers/CountdownContainer';
+import GlobalCountdownContainer from '../../containers/GlobalCountdownContainer';
 import EndSound from './SoundManager/EndSound';
 import EndTrainingModal from './EndTrainingModal/EndTrainingModal';
 
 import './readtraining.scss';
-import GlobalChrono from './TimeDisplay/GlobalChrono';
 
 const ReadTrainingView = ({
   // state
@@ -18,12 +18,8 @@ const ReadTrainingView = ({
   timelineIndex,
   trainingDetails, 
   exoPlaying, 
-  globalCountdown, 
   globalChrono,
-  chronoTime,
   countdownTime,
-  exoTotalTime,
-  timecap,
   isChrono,
   isTimecap,
   isTransition,
@@ -34,15 +30,6 @@ const ReadTrainingView = ({
   setCurrentExo, 
   startTraining,
   pauseTraining,
-  stopTraining,
-  endTraining,
-  resetTraining,
-  setCountdownTime,
-  setChronoTime,
-  setGlobalCountdownTime,
-  setGlobalChronoTime,
-  resetReadTraining,
-  tellNextExoName,
   setIsTransition,
   resetAll,
 }) => {
@@ -88,25 +75,9 @@ const ReadTrainingView = ({
     <div className="readtraining__exotime">
       {
           isChrono ? 
-            <Chrono
-              text="" 
-              time={chronoTime} 
-              isCounting={exoPlaying.isCounting}
-              setChronoTime={setChronoTime}
-              setExo={setCurrentExo} 
-              timelineIndex={timelineIndex}
-            />
+            <ChronoContainer text="" />
           :
-            <CountDown 
-              text="" 
-              totalTime={exoTotalTime}
-              time={countdownTime} 
-              isCounting={exoPlaying.isCounting}
-              setCountdownTime={setCountdownTime}
-              timelineIndex={timelineIndex}
-              setExo={setCurrentExo}
-              tellNextExoName={tellNextExoName}
-            />
+            <CountdownContainer text="" />
       }
     </div>
 
@@ -119,26 +90,10 @@ const ReadTrainingView = ({
     
     <div className="readtraining__row">
       <div className="readtraining__trainingtime">
-        <GlobalChrono
-          text="Total"
-          timelineIndex={timelineIndex}
-          time={globalChrono.currentTime}
-          isCounting={globalChrono.isCounting}
-          setTime={setGlobalChronoTime}
-          resetTraining={resetTraining}
-        />
+        <GlobalChronoContainer text="Total" />
         {
           isTimecap > 0 &&
-          <GlobalCountDown
-            text="Time Cap"
-            timecap={timecap}
-            time={globalCountdown.currentTime}
-            timelineIndex={timelineIndex}
-            isCounting={globalCountdown.isCounting}
-            setTime={setGlobalCountdownTime}
-            endTraining={endTraining}
-            stopTraining={stopTraining}
-          />
+          <GlobalCountdownContainer text="Time Cap" />
         }
       </div>
     </div>

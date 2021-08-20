@@ -10,7 +10,6 @@ import {
 } from '../actions/trainingLocalActions';
 import {
   setRoundMenuIsVisible,
-
   setShrunkenRound,
 } from '../actions/trainingViewActions';
 

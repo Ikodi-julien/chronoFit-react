@@ -71,8 +71,12 @@ const ExoForm = ({
           <button 
           className="training__button --transparent --icone --caretopen "
           type="button"
-          onClick={() => showExoInList(roundIndex, index)}
-          ><i className="fas fa-times"></i></button>
+          onClick={() => {
+            putExo(roundIndex, index);
+            showExoInList(roundIndex, index);
+          }}
+          ><i className="fas fa-times"></i>
+          </button>
         </div>
         
         <div className="exoform__input__row">
