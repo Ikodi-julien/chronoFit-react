@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import './typeselector.scss';
 
-const TypeSelector = ({getGirls}) => {
+const TypeSelector = ({getGirls, setTypeSelected}) => {
     
   useEffect(() => {
     getGirls();
@@ -11,7 +11,10 @@ const TypeSelector = ({getGirls}) => {
     <div className="training__typeselector">
       <p>Selectionner un type de WOD:</p>
 
-      <div className="training__typeselector__row">
+      <div 
+        className="training__typeselector__row"
+        onChange={(evt) => setTypeSelected(evt.target.value)}
+      >
         <div className="training__typeselector__item">
           <label htmlFor="all">TOUS</label>
           <input type="radio" id="all" name="trainingType" value="all" />

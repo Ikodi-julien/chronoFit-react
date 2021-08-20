@@ -5,14 +5,15 @@ import TrainingApiListContainer from '../../containers/TrainingApiListContainer'
 
 const BenchmarkTrainingView = (
   {
-    getGirls
+    getGirls,
+    setTypeSelected
   }) => {
 
   return (
   <section className="training__container">
     <AppNav />
-    <TypeSelector getGirls={getGirls} />
-    <TrainingApiListContainer />
+    <TypeSelector getGirls={getGirls} setTypeSelected={setTypeSelected} />
+    <TrainingApiListContainer/>
   </section>
 )};
 

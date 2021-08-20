@@ -9,3 +9,6 @@ export const setShrunkenRound = (index, bool) => ({type: SET_SHRUNKEN_ROUND, val
 
 export const SET_SHRUNKEN_API_ROUND = 'SET_SHRUNKEN_API_ROUND';
 export const setShrunkenApiRound = (index, bool) => ({type: SET_SHRUNKEN_API_ROUND, value: {index, bool}});
+
+export const SET_TYPE_SELECTED = 'SET_TYPE_SELECTED';
+export const setTypeSelected = (value) => ({type: SET_TYPE_SELECTED, value});

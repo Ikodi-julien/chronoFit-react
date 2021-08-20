@@ -1,6 +1,7 @@
 import {
   SET_TRAINING_ID,
   SET_SHRUNKEN_API_ROUND,
+  SET_TYPE_SELECTED,
 } from '../actions/trainingViewActions';
 import {
   GET_TRAININGS_SUCCESS,
@@ -15,6 +16,7 @@ const initialState = {
   currentTrainingId: 0,
   currentTraining: {}, 
   trainingIsSet: false,
+  typeSelected: 'all',
 }
 
 const reducer = (state=initialState, action={}) => {
@@ -61,6 +63,12 @@ const reducer = (state=initialState, action={}) => {
         }
       }
     
+    case SET_TYPE_SELECTED:
+      return {
+        ...state,
+        typeSelected: action.value
+      }
+      
     case RESET_ALL:
     case RESET_READTRAINING:
       return initialState;

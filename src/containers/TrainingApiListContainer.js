@@ -5,6 +5,7 @@ import TrainingApiList from '../components/GirlView/TrainingApiList/TrainingApiL
 const mapStateToProps = ({apiTraining}) => ({
   girlList: apiTraining.girls,
   trainingIsSet: apiTraining.trainingIsSet,
+  typeSelected: apiTraining.typeSelected,
 })
 
 const mapDispatchToProps = (dispatch) => ({
