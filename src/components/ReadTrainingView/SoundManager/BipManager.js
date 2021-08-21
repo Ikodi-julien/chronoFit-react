@@ -8,13 +8,13 @@ export default ({time, isCountdown}) => {
   useEffect(() => {
     if (isCountdown) {
       if (
-        Math.round(time * 10) === 20
-        || Math.round(time * 10) === 10
+        Math.round(time * 10) === 21
+        || Math.round(time * 10) === 11
       )  {
         document.getElementById("bip").play();
       }
       
-      if (Math.round(time * 10) === 0) document.getElementById("finalBip").play()
+      if (Math.round(time * 10) === 1) document.getElementById("finalBip").play()
     }
   })
   return (

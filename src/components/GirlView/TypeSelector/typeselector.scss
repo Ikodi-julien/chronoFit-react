@@ -12,4 +12,9 @@
   &__item {
     padding: 15px 0;
   }
+
+  &__loadercontainer {
+    display: flex;
+    justify-content: center;
+  }
 }

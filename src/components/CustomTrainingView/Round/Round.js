@@ -20,9 +20,7 @@ const Round = ({
   moveExoInState,
   menuIsVisible,
   // Pour RoundMenu
-  addRound,
   addExercice,
-  deleteRound,
   setRoundMenuIsVisible,
 }) => {
 
@@ -60,7 +58,7 @@ const Round = ({
             );
           },
       });
-        
+
       const order = sortable.toArray().sort((a, b) => a - b);
       sortable.sort(order, false);
     }

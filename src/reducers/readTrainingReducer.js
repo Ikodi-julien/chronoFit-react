@@ -1,14 +1,15 @@
 import {
   SET_READ_TRAINING,
   SET_CURRENT_EXO,
-  START_TRAINING,
-  PAUSE_TRAINING,
-  STOP_TRAINING,
   SET_COUNTDOWN_TIME,
   SET_GLOBAL_COUNTDOWN_TIME,
   SET_GLOBAL_CHRONO_TIME,
   SET_CHRONO_TIME,
   SET_ISTRANSITION,
+  SET_IS_SPEAKING,
+  START_TRAINING,
+  PAUSE_TRAINING,
+  STOP_TRAINING,
   RESET_READTRAINING,
   END_TRAINING,
   RESET_ALL,
@@ -18,6 +19,7 @@ import defaultTimeline from '../data/defaultTimeline';
 
 const initialState = {
   render:0,
+  isSpeaking: true,
   viewOrigin: '',
   timeline: defaultTimeline,
   timelineIndex: 0,
@@ -236,6 +238,12 @@ const reducer = (state=initialState, action={}) => {
           ...state.exoPlaying,
           isTransition: action.value,
         }
+      }
+      
+    case SET_IS_SPEAKING:
+      return {
+        ...state,
+        isSpeaking: action.value,
       }
       
     case RESET_READTRAINING:

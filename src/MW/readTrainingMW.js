@@ -4,7 +4,7 @@ import {
   // setReadTraining,
   setCurrentExo,
   endTraining,
-  TELL_NEXT_EXO_NAME,
+  TELL_EXO_NAME,
   SET_CURRENT_EXO,
   pauseTraining,
   startTraining,
@@ -14,6 +14,7 @@ import {
   RESET_READTRAINING,
   setGlobalChronoTime,
   setGlobalCountdownTime,
+  tellExoName,
   // STOP_TRAINING,
 } from '../actions/readTrainingActions';
 import trainingServices from '../services/training';
@@ -21,7 +22,7 @@ import trainingServices from '../services/training';
 export default (store) => (next) => (action) => {
   const {currentTraining} = store.getState().apiTraining;
   const {localTraining} = store.getState().localTraining;
-  const {nextExo, timeline, exoPlaying, trainingDetails} = store.getState().readTraining;
+  const {timeline, exoPlaying, trainingDetails, isSpeaking} = store.getState().readTraining;
   // console.log(localTraining);
   
   switch (action.type) {
@@ -67,14 +68,17 @@ export default (store) => (next) => (action) => {
           // Don't restart if already paused before changing exo
           if (exoPlaying.isCounting) store.dispatch(startTraining())
         }, 110);
+        
+        // Dire le nom de l'exo actuel
+        if (isSpeaking && timeline.length > 4) store.dispatch(tellExoName());
       }
         
       break;
     
-    case TELL_NEXT_EXO_NAME:
+    case TELL_EXO_NAME:
       next(action);
-      console.log(action);
-      let utterance = new SpeechSynthesisUtterance(nextExo.name);
+      console.log('je parle', action);
+      let utterance = new SpeechSynthesisUtterance(exoPlaying.name);
       speechSynthesis.speak(utterance);
       break;
       

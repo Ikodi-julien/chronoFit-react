@@ -6,6 +6,7 @@ const mapStateToProps = ({apiTraining}) => ({
   girlList: apiTraining.girls,
   trainingIsSet: apiTraining.trainingIsSet,
   typeSelected: apiTraining.typeSelected,
+  getOneIsLoading: apiTraining.getOneIsLoading,
 })
 
 const mapDispatchToProps = (dispatch) => ({

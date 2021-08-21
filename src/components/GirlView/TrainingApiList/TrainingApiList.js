@@ -1,7 +1,16 @@
-import WodCard from "../WodCard/WodCard"
+import WodCard from "../WodCard/WodCard";
+import CircularProgress from '@material-ui/core/CircularProgress';
+
 import './trainingapilist.scss';
 
-const TrainingApiList = ({girlList, trainingIsSet, getOneGirl, typeSelected}) => {
+const TrainingApiList = (
+  {
+    girlList, 
+    trainingIsSet, 
+    getOneGirl, 
+    getOneIsLoading,
+    typeSelected,
+  }) => {
 
   const girlsSelected = typeSelected === "all" ? girlList : girlList.filter(wod => wod.type === typeSelected);
   
@@ -10,20 +19,26 @@ const TrainingApiList = ({girlList, trainingIsSet, getOneGirl, typeSelected}) =>
   return (
     <ul className="training__apilist">
       {
-        girlsSelected.map(wod =>
-          <li key={wod.id}>
-            <WodCard
-              title={wod.title}
-              subtitle={wod.subtitle}
-              exoList={wod.exercices}
-              desc={wod.desc}
-              targetList={wod.target}
-              maleId={wod.maleId}
-              femaleId={wod.femaleId}
-              getOneGirl={getOneGirl}
-              trainingIsSet={trainingIsSet}
-            />
-          </li>)
+        getOneIsLoading ?
+          <div className="training__apilist__loadercontainer">
+            <CircularProgress color={'inherit'}/>
+          </div>
+        :
+          girlsSelected.map(wod =>
+            <li key={wod.id}>
+              <WodCard
+                title={wod.title}
+                subtitle={wod.subtitle}
+                exoList={wod.exercices}
+                desc={wod.desc}
+                targetList={wod.target}
+                maleId={wod.maleId}
+                femaleId={wod.femaleId}
+                getOneGirl={getOneGirl}
+                trainingIsSet={trainingIsSet}
+              />
+            </li>
+          )
       }
     </ul>
   )

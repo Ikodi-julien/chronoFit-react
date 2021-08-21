@@ -9,6 +9,7 @@ import CountdownContainer from '../../containers/CountdownContainer';
 import GlobalCountdownContainer from '../../containers/GlobalCountdownContainer';
 import EndSound from './SoundManager/EndSound';
 import EndTrainingModal from './EndTrainingModal/EndTrainingModal';
+import VoiceManagerContainer from '../../containers/VoiceManagerContainer';
 
 import './readtraining.scss';
 
@@ -73,6 +74,7 @@ const ReadTrainingView = ({
     </div>
     
     <div className="readtraining__exotime">
+      <VoiceManagerContainer />
       {
           isChrono ? 
             <ChronoContainer text="" />

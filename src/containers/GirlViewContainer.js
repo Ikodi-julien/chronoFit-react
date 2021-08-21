@@ -11,6 +11,7 @@ import {
 import GirlView from '../components/GirlView/GirlView';
 
 const mapStateToProps = ({apiTraining}) => ({
+  getGirlsSuccess: apiTraining.getGirlsSuccess,
 })
 
 const mapDispatchToProps = (dispatch) => ({

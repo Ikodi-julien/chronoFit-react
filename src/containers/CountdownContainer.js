@@ -2,7 +2,7 @@ import { connect } from "react-redux";
 
 import CountDown from "../components/ReadTrainingView/TimeDisplay/CountDown";
 
-import {setCountdownTime, setCurrentExo, tellNextExoName } from '../actions/readTrainingActions';
+import {setCountdownTime, setCurrentExo } from '../actions/readTrainingActions';
 
 const mapStateToProps = ({readTraining}, {text}) => ({
   text,
@@ -15,7 +15,6 @@ const mapStateToProps = ({readTraining}, {text}) => ({
 const mapDispatchToProps = (dispatch) => ({
   setCountdownTime: (time) => dispatch(setCountdownTime(time)),
   setExo: (index) => dispatch(setCurrentExo(index)), 
-  tellNextExoName: () => dispatch(tellNextExoName()),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(CountDown)
