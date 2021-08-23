@@ -1,0 +1,8 @@
+@use '../../styles/vars'as v;
+
+.appcomment__text {
+  width: 80%;
+  margin: auto;
+  padding-bottom: 20px;
+  color: v.$base-color;
+}

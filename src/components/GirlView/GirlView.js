@@ -7,7 +7,7 @@ const BenchmarkTrainingView = (
   {
     getGirls,
     getGirlsSuccess,
-    setTypeSelected
+    setTypeSelected,
   }) => {
 
   return (

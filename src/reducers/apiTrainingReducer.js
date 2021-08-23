@@ -9,6 +9,7 @@ import {
   GET_GIRLS,
   GET_GIRLS_SUCCESS,
   GET_ONE_GIRL,
+  GOT_ERROR,
 } from '../actions/trainingAjaxActions';
 import { RESET_ALL, RESET_READTRAINING } from '../actions/readTrainingActions';
 
@@ -29,7 +30,6 @@ const reducer = (state=initialState, action={}) => {
   switch (action.type) {
     
     case GET_TRAININGS_SUCCESS:
-      // console.log(action);
       return {
         ...state,
         allApiTrainings: action.data,
@@ -37,13 +37,11 @@ const reducer = (state=initialState, action={}) => {
       
           
     case GET_GIRLS:
-      // console.log(action);
       return {
         ...state,
         getGirlsSuccess: false,
       }
     case GET_GIRLS_SUCCESS:
-      // console.log(action);
       return {
         ...state,
         girls: action.value,
@@ -84,6 +82,12 @@ const reducer = (state=initialState, action={}) => {
       return {
         ...state,
         typeSelected: action.value
+      }
+      
+    case GOT_ERROR:
+      return {
+        ...state,
+        getOneIsLoading: false,
       }
       
     case RESET_ALL:

@@ -30,7 +30,6 @@ const EndTrainingModal = ({trainingDuration, trainingName, actionToDispatch, vie
             onClick={() => {
               actionToDispatch();
               setIsOpen(false);
-              console.log(history)
               history.push(viewOrigin);
             }}
           >

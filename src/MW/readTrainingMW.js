@@ -23,7 +23,6 @@ export default (store) => (next) => (action) => {
   const {currentTraining} = store.getState().apiTraining;
   const {localTraining} = store.getState().localTraining;
   const {timeline, exoPlaying, trainingDetails, isSpeaking} = store.getState().readTraining;
-  // console.log(localTraining);
   
   switch (action.type) {
     case SET_READ_TRAINING:
@@ -77,9 +76,13 @@ export default (store) => (next) => (action) => {
     
     case TELL_EXO_NAME:
       next(action);
-      console.log('je parle', action);
-      let utterance = new SpeechSynthesisUtterance(exoPlaying.name);
-      speechSynthesis.speak(utterance);
+      console.log(navigator.userAgent);
+      // Disable SpeechSynthesis for Opera, not supported with android
+      if (navigator.userAgent.indexOf("OPR") === -1)  {
+        let utterance = new SpeechSynthesisUtterance(exoPlaying.name);
+        speechSynthesis.speak(utterance);
+      }
+
       break;
       
     case RESET_READTRAINING:

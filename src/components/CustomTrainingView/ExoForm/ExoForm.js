@@ -24,7 +24,6 @@ const ExoForm = ({
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    console.log('updateExo');
     putExo(roundIndex, index);
   }
   

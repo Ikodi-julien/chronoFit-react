@@ -91,8 +91,6 @@ const reducer = (state=initialState, action={}) => {
         }
       }
       
-      
-      
       return {
         ...state,
         localTraining: {
@@ -199,8 +197,8 @@ const reducer = (state=initialState, action={}) => {
               duration: 0,
               exercices: [
                 {
-                  isForm: false,
-                  name: 'A définir',
+                  isForm: true,
+                  name: '',
                   description: '',
                   options: [
                     {
@@ -229,7 +227,6 @@ const reducer = (state=initialState, action={}) => {
       }
       
     case ADD_EXERCICE_TO_LOCAL_TRAINING:
-      // console.log(action);
       const round = allRoundMenuHidden[action.value.roundId];
       
       round.exercices.push(
@@ -279,9 +276,7 @@ const reducer = (state=initialState, action={}) => {
       }
     
     case SET_SHRUNKEN_ROUND:
-      console.log(action);
       rounds[action.value.index].shrunken = action.value.bool;
-      console.log(rounds);
       return {
         ...state,
         localTraining: {

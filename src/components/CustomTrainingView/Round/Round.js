@@ -91,10 +91,12 @@ const Round = ({
           <div className="rounds__round__header__subtitle">Durée : {duration} - Répéter
             <input
               name="roundIteration"
-              type={"number"}
+              type="number"
+              min={1}
               value={iteration}
               className="rounds__round__iteration"
               onChange={handleChange}
+              placeholder="nb"
             /> fois</div>
         </div>
         
@@ -107,7 +109,7 @@ const Round = ({
       </div>
       
       <ul 
-        className={shrunken && exercices.length > 2 ? "rounds__round__exolist --shrunken" : "rounds__round__exolist"} 
+        className={shrunken ? "rounds__round__exolist --shrunken" : "rounds__round__exolist"} 
         id={`exoList-${roundIndex}`}
       >
         {

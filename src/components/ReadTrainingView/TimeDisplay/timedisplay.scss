@@ -18,6 +18,10 @@
     height: 100%;
     z-index: 1;
     transform: rotate(0);
+
+    &.--spin {
+      animation: spiner 5s linear infinite;
+    }
   }
 
   &__container {
@@ -78,5 +82,15 @@
   &.--small {
     width: 100px;
     height: 100px;
+  }
+
+  @keyframes spiner {
+    0% {
+      transform: rotate(0)
+    }
+
+    100% {
+      transform: rotate(360deg)
+    }
   }
 }

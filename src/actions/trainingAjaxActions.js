@@ -15,3 +15,6 @@ export const getGirlsSuccess = (data) => ({type: GET_GIRLS_SUCCESS, value: data}
 export const GET_ONE_GIRL = 'GET_ONE_GIRL';
 export const getOneGirl = (id) => ({type: GET_ONE_GIRL, value: id});
 export const GET_ONE_GIRL_SUCCESS = 'GET_ONE_GIRL_SUCCESS';
+
+export const GOT_ERROR = 'GOT_ERROR';
+export const gotError = (error) => ({type: GOT_ERROR, value: error});

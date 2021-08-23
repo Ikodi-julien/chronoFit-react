@@ -2,6 +2,7 @@ import Landing from '../Landing/Landing';
 import GirlViewContainer from '../../containers/GirlViewContainer';
 import CustomTrainingView from '../../containers/CustomTrainingViewContainer';
 import ReadTrainingContainer from '../../containers/ReadTrainingContainer';
+import AppCommentContainer from '../../containers/AppCommentContainer';
 import {
   BrowserRouter as Router,
   Switch,
@@ -14,6 +15,7 @@ function App() {
   return (
     <Router>
     <div className="app">
+    <AppCommentContainer />
       <Switch>
         <Route path="/girls">
           <GirlViewContainer />

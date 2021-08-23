@@ -1,4 +1,4 @@
-import {TOGGLE_MENU} from '../actions/appActions';
+import {TOGGLE_MENU, SET_APP_COMMENT_IS_OPEN} from '../actions/appActions';
 
 import {
   PUT_EXOFORM_IN_LOCAL_TRAINING,
@@ -7,10 +7,13 @@ import {
   SHOW_EXO_FORM,
   SHOW_EXO_IN_LIST,
 } from '../actions/trainingLocalActions';
+import { GOT_ERROR } from '../actions/trainingAjaxActions';
 
 const initialState = {
   menuIsVisible: false,
   isToRender: 0,
+  messageToUser: '',
+  commentIsOpen: false
 }
 
 const reducer = (state=initialState, action={}) => {
@@ -20,6 +23,19 @@ const reducer = (state=initialState, action={}) => {
       return {
         ...state,
         menuIsVisible: !state.menuIsVisible
+      }
+    
+    case GOT_ERROR:
+      return {
+        ...state,
+        messageToUser: action.value,
+        commentIsOpen: true
+      }
+      
+    case SET_APP_COMMENT_IS_OPEN:
+      return {
+        ...state,
+        commentIsOpen: action.value,
       }
       
     case PUT_EXOFORM_IN_LOCAL_TRAINING:

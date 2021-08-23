@@ -7,7 +7,6 @@ import './appnav.scss';
 const AppNav = ({toggleMenu, menuIsVisible}) => {
   
   const location = useLocation();
-  console.log(location.pathname);
   
   return(
     <section className="appnav__container">
@@ -35,7 +34,7 @@ const AppNav = ({toggleMenu, menuIsVisible}) => {
         <NavLink to="/" className="appnav__links__link" onClick={() => toggleMenu()} >Accueil</NavLink>
         <NavLink to="/girls" className="appnav__links__link" onClick={() => toggleMenu()} >Les Girls</NavLink>
         <NavLink to="/custom_training" className="appnav__links__link" onClick={() => toggleMenu()} >Custom Trainings</NavLink>
-        <NavLink to="/connexion" className="appnav__links__link" onClick={() => toggleMenu()} >Connexion</NavLink>
+        {/* <NavLink to="/connexion" className="appnav__links__link" onClick={() => toggleMenu()} >Connexion</NavLink> */}
       </ul>
       
     </section>

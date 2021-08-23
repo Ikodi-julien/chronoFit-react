@@ -22,7 +22,7 @@ const TypeSelector = ({getGirls, setTypeSelected, getGirlsSuccess}) => {
         >
           <div className="training__typeselector__item">
             <label htmlFor="all">TOUS</label>
-            <input type="radio" id="all" name="trainingType" value="all" />
+            <input type="radio" id="all" name="trainingType" value="all" defaultChecked/>
           </div>
           <div className="training__typeselector__item">
             <label htmlFor="ft">FOR TIME</label>

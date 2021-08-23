@@ -2,17 +2,17 @@
 import {useEffect, useState} from 'react';
 import Modal from '../../ConfirmModal/ConfirmModal';
 
-export default ({props}) => {
-    const {
-      training, 
-      trainingName,
-      trainingList,
-      setLocalTraining,
-      setLocalTrainingName,
-      createLocalTraining,
-      deleteLocalTraining,
-      getLocalTrainings
-    } = props;
+export default (
+  {
+    training, 
+    trainingName,
+    trainingList,
+    setLocalTraining,
+    setLocalTrainingName,
+    createLocalTraining,
+    deleteLocalTraining,
+    getLocalTrainings
+  }) => {
     
     const [isOpen, setIsOpen] = useState(false)
     const [text, setText] = useState('')

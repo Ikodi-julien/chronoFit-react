@@ -23,7 +23,6 @@ const TrainingLocal = (
         disabled: false,
         // On déplace le rounds[oldIndex] à son nouvel index dans le state rounds[newIndex]
         onEnd: (evt) => {
-          console.log(evt.oldIndex, evt.newIndex)
           moveRoundInState(evt.oldIndex, evt.newIndex)
         }
       }

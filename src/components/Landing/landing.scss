@@ -3,16 +3,18 @@
 .landing {
   &__container {
     width: 100%;
-    height: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
 
   &__title {
     font-size: 2.5em;
-    margin: auto;
-    margin-bottom: 100px;
     padding: v.$gutter;
     color: v.$base-color;
     text-align: center;
+    margin-bottom: 60px;
   }
 
   &__button {
@@ -26,5 +28,14 @@
     padding: v.$gutter;
     border: none;
     border-radius: v.$border-radius;
+  }
+
+  &__links {
+    margin-bottom: 60px;
+  }
+
+  &__video {
+    display: flex;
+    justify-content: center;
   }
 }

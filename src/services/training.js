@@ -136,7 +136,7 @@ const trainingServices = {
           for (let indexSerie = 0; indexSerie < training.rounds[index].exercices[indexExo].options[0].iteration; indexSerie++) {
             // a chaque série de chaque exo de chaque iteration de chaque round
             exoList.push({
-              roundIndex: index + indexRoundIteration,
+              roundIndex: index + indexRoundIteration + 1,
               roundType: training.rounds[index].type,
               roundCount: totalRoundCount,
               roundDuration: trainingServices.getRoundDuration(training.rounds[index]),
@@ -175,7 +175,6 @@ const trainingServices = {
       serieCount: 0,
       end: true,
     })
-    console.log(exoList);
     return exoList;
   },
   

@@ -3,12 +3,9 @@ import { useEffect } from 'react';
 import trainingServices from '../../../services/training';
 import { asyncTime } from '../../../services/asyncTime';
 import './timedisplay.scss';
-import { useRef } from 'react';
 
 const Chrono = ({text, time, isCounting, setChronoTime, setExo, timelineIndex }) => {
   
-  let spinnerAngle = useRef(time);
-
   useEffect(() => {
     
     (async() => {
@@ -17,7 +14,6 @@ const Chrono = ({text, time, isCounting, setChronoTime, setExo, timelineIndex })
       
       if (isCounting ){
         setChronoTime(time + .1);
-        spinnerAngle.current = time * 72;
       }
     })()
 
@@ -27,14 +23,7 @@ const Chrono = ({text, time, isCounting, setChronoTime, setExo, timelineIndex })
   <div 
     className="readtraining__timedisplay --big"
     >
-    <div className="readtraining__timedisplay__spiner"
-      style={
-      {
-        transform: `rotate(${spinnerAngle.current}deg`,
-        transition: `transform 100ms linear`
-      }
-      }
-    />
+    <div className={`readtraining__timedisplay__spiner ${isCounting && "--spin"}`}/>
     
     <div className="readtraining__timedisplay__container">
       {text !== "" && <div className="readtraining__timedisplay__text">

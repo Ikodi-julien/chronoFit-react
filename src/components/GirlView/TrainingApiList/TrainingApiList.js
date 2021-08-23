@@ -14,8 +14,6 @@ const TrainingApiList = (
 
   const girlsSelected = typeSelected === "all" ? girlList : girlList.filter(wod => wod.type === typeSelected);
   
-  console.log(typeSelected)
-  console.log(girlsSelected)
   return (
     <ul className="training__apilist">
       {

@@ -50,22 +50,23 @@ const WodCard = ({trainingIsSet, title, subtitle, exoList, desc, targetList, mal
           }
           {
             femaleId && 
-            <button 
-            className="training__button"
-            onClick={() => getOneGirl(femaleId)}
-          >
-            Femme
-          </button>
-          }
-          {
-            femaleId && 
           <button 
             className="training__button"
             onClick={() => getOneGirl(maleId)}
           >
-            Homme
+            + lourd
           </button>
           }
+          {
+            femaleId && 
+            <button 
+            className="training__button"
+            onClick={() => getOneGirl(femaleId)}
+          >
+            - lourd
+          </button>
+          }
+
       </div>
     </article>
   )}

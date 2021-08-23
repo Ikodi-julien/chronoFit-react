@@ -1,20 +1,33 @@
 import CTMForm from './CTMForm';
-import CTMOptions from './CTMOptions';
+import CTMOptionsContainer from '../../../containers/CTMOptionsContainer';
 
 import './customtrainingmanager.scss';
 
-const CustomTrainingManager = (props) => {
+const CustomTrainingManager = (
+  {
+    trainingList, 
+    training,
+    trainingName,
+    getLocalTrainings,
+    setLocalTraining, 
+    setLocalTrainingName,
+    createLocalTraining,
+    deleteLocalTraining,
+  }) => {
   
   return (
     <div className="trainingmanager__container">
-      <CTMForm props={props} />
-      <CTMOptions 
-        training={props.training}
-        setTrainingType={props.setLocalTrainingType}  
-        setReadTraining={props.setReadTraining}
-        setTimecap={props.setTimecap}
-        timecapValue={props.timecapValue}
+      <CTMForm 
+        training={training}
+        trainingName={trainingName}
+        trainingList={trainingList}
+        setLocalTraining={setLocalTraining}
+        setLocalTrainingName={setLocalTrainingName}
+        createLocalTraining={createLocalTraining}
+        deleteLocalTraining={deleteLocalTraining}
+        getLocalTrainings={getLocalTrainings}
       />
+      <CTMOptionsContainer />
     </div>
   )
 }

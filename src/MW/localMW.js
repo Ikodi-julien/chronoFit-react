@@ -23,7 +23,6 @@ export default (store) => (next) => (action) => {
   switch (action.type) {
     case CREATE_LOCAL_TRAINING:
       next(action);
-      // console.log(currentTraining);
       const newTraining = {...localTraining};
       
       newTraining.name = trainingManagerNameInput !== '' ? trainingManagerNameInput : localTraining.name;
@@ -38,7 +37,6 @@ export default (store) => (next) => (action) => {
     case GET_LOCAL_TRAININGS:
       next(action);
       const localTrainings = localstorage.getTrainings();
-      // console.log(localTrainings);
       store.dispatch(getLocalTrainingsSuccess(localTrainings))
       store.dispatch(setLocalTrainingName(''));
       
@@ -46,7 +44,6 @@ export default (store) => (next) => (action) => {
     
     case DELETE_LOCAL_TRAINING:
       next(action);
-      console.log(localTraining.name)
       localstorage.deleteTraining(localTraining.name);
       store.dispatch(getLocalTrainings());
       store.dispatch(setLocalTraining('default'));
