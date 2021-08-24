@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 
 import trainingServices from '../../../services/training';
-import { asyncTime } from '../../../services/asyncTime';
+import asyncTime from '../../../services/asyncTime';
 import './timedisplay.scss';
 
 const Chrono = ({text, time, isCounting, setChronoTime, setExo, timelineIndex }) => {
@@ -10,7 +10,7 @@ const Chrono = ({text, time, isCounting, setChronoTime, setExo, timelineIndex })
     
     (async() => {
     
-      await asyncTime.wait100ms();
+      await asyncTime.wait(100);
       
       if (isCounting ){
         setChronoTime(time + .1);

@@ -18,8 +18,9 @@ import {
   // STOP_TRAINING,
 } from '../actions/readTrainingActions';
 import trainingServices from '../services/training';
+import asyncTime from '../services/asyncTime';
 
-export default (store) => (next) => (action) => {
+export default (store) => (next) => async (action) => {
   const {currentTraining} = store.getState().apiTraining;
   const {localTraining} = store.getState().localTraining;
   const {timeline, exoPlaying, trainingDetails, isSpeaking} = store.getState().readTraining;
@@ -68,15 +69,23 @@ export default (store) => (next) => (action) => {
           if (exoPlaying.isCounting) store.dispatch(startTraining())
         }, 110);
         
-        // Dire le nom de l'exo actuel
-        if (isSpeaking && timeline.length > 4) store.dispatch(tellExoName());
+        // Speak name of exo, if no exo were added in training then timeline.length === 4
+        if (isSpeaking && timeline.length > 4) {
+          // store timelineIndex
+          const indexBefore = store.getState().readTraining.timelineIndex;
+          // wait before speaking
+          await asyncTime.wait(400);
+          // Compare timelineIndex after and index before
+          const indexAfter = store.getState().readTraining.timelineIndex;
+          // This is to avoid repeating when going through exercices
+          if (indexBefore === indexAfter) store.dispatch(tellExoName());
+        }
       }
         
       break;
     
     case TELL_EXO_NAME:
       next(action);
-      console.log(navigator.userAgent);
       // Disable SpeechSynthesis for Opera, not supported with android
       if (navigator.userAgent.indexOf("OPR") === -1)  {
         let utterance = new SpeechSynthesisUtterance(exoPlaying.name);

@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 
 import trainingServices from '../../../services/training';
-import { asyncTime } from '../../../services/asyncTime';
+import asyncTime from '../../../services/asyncTime';
 import './timedisplay.scss';
 
 const GlobalChrono = ({time, text, isCounting, setTime, resetTraining, timelineIndex}) => {
@@ -11,7 +11,7 @@ const GlobalChrono = ({time, text, isCounting, setTime, resetTraining, timelineI
     if (timelineIndex > 1) {
       (async() => {
     
-        await asyncTime.wait100ms();
+        await asyncTime.wait(100);
         if (isCounting ) setTime(time + .1)
       })()
     }
