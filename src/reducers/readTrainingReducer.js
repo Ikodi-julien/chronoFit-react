@@ -19,7 +19,7 @@ import defaultTimeline from '../data/defaultTimeline';
 
 const initialState = {
   render:0,
-  isSpeaking: false,
+  isSpeaking: true,
   viewOrigin: '',
   timeline: defaultTimeline,
   timelineIndex: 0,

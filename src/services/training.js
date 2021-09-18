@@ -116,7 +116,7 @@ const trainingServices = {
     const exoList = [{
       beginning: true},
       {
-      name: 'READY',
+      name: 'Prêt à y aller ?',
       roundIndex: 1,
       roundCount: totalRoundCount,
       reps: '',
