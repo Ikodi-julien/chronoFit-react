@@ -13,12 +13,6 @@
   backdrop-filter: blur(2px);
   z-index: 1000;
 
-  &.--endmodal {
-    background-color: transparent;
-    backdrop-filter: blur(0px);
-  }
-
-
   &__container {
     position: relative;
     display: flex;
@@ -29,16 +23,6 @@
     border-radius: v.$border-radius;
     padding: v.$gutter;
     padding-top: 50px;
-
-    &.--endtraining {
-      align-self: flex-end;
-      margin-bottom: 60px;
-      width: 100%;
-      max-width: 400px;
-      background-color: v.$base-color;
-      color: v.$color-very-light;
-      border-radius: 0;
-    }
   }
 
   &__close {
