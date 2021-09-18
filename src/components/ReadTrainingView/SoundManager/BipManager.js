@@ -1,6 +1,6 @@
 /* eslint-disable import/no-anonymous-default-export */
 import { useEffect } from 'react';
-import bip from '../../../assets/first_bips.wav';
+import bip from '../../../assets/first_bips_2.wav';
 import finalBip from '../../../assets/final_bip.wav';
 
 export default ({time, isCountdown}) => {
