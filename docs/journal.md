@@ -1,5 +1,35 @@
 # JOURNAL CHRONOFIT-REACT
 
+### Le 05/04/2022
+
+Je reprends ce jour le développement de l'application en tant que "side project", peu de temps à lui consacrer mais toujours une pratique régulière du cross-training. Par ailleur cette petite app est bien utile quasi au quotidien, ne lui manque que les fonctionnalités de stockage des résultats des trainings puis de stats.
+Egalement des améliorations ergonomiques sont à envisager.
+
+Que du plaisir pour la suite, à prévoir :
+
+- Avoir une réflexion sur les stats attendues :
+  - Résultats par période de temps (aujourd'hui, 7 derniers jours, 30 derniers jours, 365 derniers jours, total) :
+    - Durée d'entrainement,
+    - Nombre d'entrainements total,
+    - Nombre d'entrainements par nom,
+    - Quantité de reps ou durée par type d'exercice (regroupé par poids),
+    - Prévoir des graphs d'évolution, date de début et de fin par select, unité de temps pour regroupement (semaine, mois, année),
+- Après réflexion , rédiger la logique attendu pour le CRUD des entrainements.
+  - Faire une liste d'exercices qui seront suivis en stats (nom, poids, description), disponibles dans un select dans le formulaire CustomTraining,
+  - CRUD :
+    - Create : Ecriture du state "timeline" "aplatit ou déplier ?" en NoSql après modif et/ou validation par utilisateur en fin de training,
+    - Read / Update / Delete : Une même vue affiche, permet de modifier ou supprimer l'entrainement affiché,
+- Ensuite, définir les nouvelles vues nécessaires :
+- Réaliser les wireframes, (récap fin entrainement avec possibilité de modif puis validation, affichage des entrainements réalisés et tris, page avec stats et graphs, calendrier en lien avec le ou les entrainements réalisés ce jour là...)
+- Réaliser la vue récap en fin de training pour l'écriture dans un premier temps,
+- Mettre en place la base NoSql et la relier au front,
+- Réaliser et relier les autres vues,
+- Mettre une authentification par token en lien avec auth.ikodi.eu.
+
+---
+
+---
+
 ### Le 03/05/2021, 1h avant la réunion de projet TeacCup
 
 Faire des inputs controlés dans le ExoInListMenu
@@ -15,10 +45,11 @@ Voir [react-dnd](https://react-dnd.github.io/react-dnd/about) il semblerait que 
 A commencer à mettre en place quand les fonctionnalités update et delete d'un exo via son menu déplié seront ok.
 
 A garder à l'esprit les fonctionnalités à venir :
-* Possibilité d'ajouter un ou plusieurs composants "Round" au training. Ce composant est une liste qui contiendra des exos.
-* Il doit être possible de répéter la lecture des exos dans le "Round" un nombre de fois donné.
-* On doit pouvoir faire un drag d'exo d'un parent vers un enfant et vice-versa, c'est à dire remplir ou vider un round avec les "ExoInList" déjà créés.
-* On doit pouvoir modifier l'ordre des exos dans "TrainingExoList" et dans "Round".
+
+- Possibilité d'ajouter un ou plusieurs composants "Round" au training. Ce composant est une liste qui contiendra des exos.
+- Il doit être possible de répéter la lecture des exos dans le "Round" un nombre de fois donné.
+- On doit pouvoir faire un drag d'exo d'un parent vers un enfant et vice-versa, c'est à dire remplir ou vider un round avec les "ExoInList" déjà créés.
+- On doit pouvoir modifier l'ordre des exos dans "TrainingExoList" et dans "Round".
 
 ```javascript
 // exemple de state à re-réfléchir
@@ -87,25 +118,28 @@ Next => update et delete depuis "ExerciceInListMenu".
 ### Le 01/05/2021 t= 3h
 
 Tel la tortue qui avance lentement mais sans faillir vers son objectif...
-  * Fait tous les champs contrôlés du composant 'TrainingForm', création d'un composant 'Field', actions / actionMaker et reducer ok !
-  * Gérer la soumission de ce formulaire, doit ajouter un objet dans le state 'training.exoList' => ok + vérif du type et non vide
-  * Revoir l'organisation du composant 'ExerciceInList' + faire le composant 'ExerciceInListMenu' => ok.
-  
+
+- Fait tous les champs contrôlés du composant 'TrainingForm', création d'un composant 'Field', actions / actionMaker et reducer ok !
+- Gérer la soumission de ce formulaire, doit ajouter un objet dans le state 'training.exoList' => ok + vérif du type et non vide
+- Revoir l'organisation du composant 'ExerciceInList' + faire le composant 'ExerciceInListMenu' => ok.
+
 Next: Gérer le toggle du ExoInListMenu
 
 ### Le 29/04/2021 t= 1h
 
 Après une journée bien remplie sur le projet Oclock "TeaCup".
 1h pour une action :
-* Afficher les composants ExerciceInList (hydratés) d'après un fake state => ok en pile 30mn !
+
+- Afficher les composants ExerciceInList (hydratés) d'après un fake state => ok en pile 30mn !
 
 Next : Essayer d'ajouter un exo dans le state à l'aide du formulaire et donc l'afficher ?
 
 ### Le 27/04/2021 t= 1h
 
 Le matin 1h avant le début d'Oclock.
-actions : 
-* HIDE_MENU affiche / cache le menu de navigation principal => ok.
+actions :
+
+- HIDE_MENU affiche / cache le menu de navigation principal => ok.
 
 Perte de temps à cause de l'oubli de l'import du container à la place du component dans le parent... un classique, juste perdu 20mn cette fois-ci...
 
@@ -114,7 +148,7 @@ Next : Une autre action
 ### Le 26/04/2021 (t=2h).
 
 Poursuite du css des composants de base de la vue "/training".
-Les composants principaux sont en place, prochaine étape les premières actions (yes !). 
+Les composants principaux sont en place, prochaine étape les premières actions (yes !).
 
 PS: Le projet de fin de formation O'clock commence demain, donc niveau temps c'est pas gagné...
 
@@ -127,7 +161,6 @@ J'utilise [whimsical](https://whimsical.com/wireframes-58sAibeYwDaieCC1NRUd4i).
 Dans le whimsical, j'ai commencé à lister les actions dont je pense avoir besoin.
 
 Une page d'accueil minimum est mise en place.
-La page "/training" est débutée, beaucoup de css à faire  
+La page "/training" est débutée, beaucoup de css à faire
 
 ![wireframes chronofit le 25/04/2021](./chronofit-wireframes-25042021.png)
-
