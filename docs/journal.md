@@ -1,5 +1,23 @@
 # JOURNAL CHRONOFIT-REACT
 
+### Le 07/04/2022
+
+Création composants vue EndTrainingView -> en cours
+
+### Le 06/04/2022
+
+Liste des exos suivis en stats : - GYM : - HSPU, - Dips, - Pistols, - Tractions strictes, - Tractions keeping, - Tractions butterfly, - Pompes strictes, - Pompes prise serrée, - Pompes australiennes, - Pick Push Up, - Muscle Ups, - HALTERO: - Back Squat, - Front Squat, - Fentes, - Squat Snatch, - Squat Cleans, - Clean and Jerk, - Deadlifts, - Thrusters, - Bench Presse,
+CARDIO - CORE - AUTRE: - Double Under, - Wall Balls, - Sit Ups, - KB Swings,
+
+Vues à créer :
+
+- EndTrainingView : Récap fin entrainement avec RUD,
+- SearchTrainingsView : Entrainements réalisés avec tris,
+- StatsView : Stats et graphs,
+- DiaryView : calendrier en lien avec le ou les entrainements réalisés.
+
+Début wireframe EndTrainingView -> ok
+
 ### Le 05/04/2022
 
 Je reprends ce jour le développement de l'application en tant que "side project", peu de temps à lui consacrer mais toujours une pratique régulière du cross-training. Par ailleur cette petite app est bien utile quasi au quotidien, ne lui manque que les fonctionnalités de stockage des résultats des trainings puis de stats.
