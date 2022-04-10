@@ -1,4 +1,5 @@
 $gutter: 1.5rem;
+
 $base-color: rgb(47, 68, 82);
 $base-color-transparent: rgba(0, 35, 56, 0.8);
 $color-medium: adjust-color($base-color, $lightness: 30%);
@@ -13,3 +14,4 @@ $fs-button-icone-xl: 2.2em;
 
 $appnav-height: 64px;
 $typeselector-height: 50px;
+$max-app-width: 400px;

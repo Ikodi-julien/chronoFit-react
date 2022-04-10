@@ -1,9 +1,9 @@
-@use 'src/styles/vars'as v;
+@use "src/styles/vars" as v;
 
 .app {
   margin: auto;
   width: 100%;
-  max-width: 400px;
+  max-width: v.$max-app-width;
   min-width: 320px;
   min-height: 100vh;
   // padding-top: v.$padding-top;

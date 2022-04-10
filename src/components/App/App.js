@@ -2,7 +2,7 @@ import Landing from "../Landing/Landing";
 import GirlViewContainer from "../../containers/GirlViewContainer";
 import CustomTrainingView from "../../containers/CustomTrainingViewContainer";
 import ReadTrainingContainer from "../../containers/ReadTrainingContainer";
-import EndTrainingContainer from "../../containers/EndTrainingContainer";
+import EndTrainingModalContainer from "../../containers/EndTrainingModalContainer";
 import AppCommentContainer from "../../containers/AppCommentContainer";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
@@ -24,7 +24,7 @@ function App() {
             <ReadTrainingContainer />
           </Route>
           <Route path="/end_test">
-            <EndTrainingContainer />
+            <EndTrainingModalContainer />
           </Route>
           {/* /search : SearchTrainingsView, entrainements réalisés avec tris */}
           {/* /exercices pour voir les exos benchmarks proposés */}

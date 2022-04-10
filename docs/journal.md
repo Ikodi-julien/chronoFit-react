@@ -1,8 +1,20 @@
 # JOURNAL CHRONOFIT-REACT
 
+### Le 10/04/2022
+
+### Le 10/04/2022
+
+Passer le tableau dans EndTrainingModal de ReadTrainingView -> ok
+Ajout boutons de ctrl à EndTrainingModal ->
+
+### Le 09/04/2022
+
+Composant vue EndTrainingViewModal -> en cours
+Amélioration composant AppNav, suppression du container -> ok
+
 ### Le 07/04/2022
 
-Création composants vue EndTrainingView -> en cours
+Création composants vue EndTrainingModal -> en cours
 
 ### Le 06/04/2022
 
