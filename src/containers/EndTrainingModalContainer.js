@@ -1,19 +1,18 @@
 import { connect } from "react-redux";
 
-import EndTrainingModal from "../components/EndTrainingModal/EndTrainingModal";
+import EndTrainingModal from "../components/ReadTrainingView/EndTrainingModal/EndTrainingModal";
 import { testTimeline } from "../data/testTimeline";
-// import {
-//   addRoundToLocalTraining,
-//   addExerciceToLocalTraining,
-//   deleteRoundFromLocalTraining,
-// } from '../actions/trainingLocalActions';
-// import {
-//   setRoundMenuIsVisible,
-// } from '../actions/trainingViewActions';
 
-const mapStateToProps = ({ readTraining }) => ({
+const mapStateToProps = (
+  { readTraining },
+  { actionToDispatch, viewOrigin }
+) => ({
   // timeline: readTraining.timeline,
   timeline: testTimeline,
+  trainingDuration: readTraining.globalChrono.currentTime,
+  trainingName: readTraining.trainingDetails.name,
+  actionToDispatch,
+  viewOrigin,
 });
 
 const mapDispatchToProps = (dispatch) => ({

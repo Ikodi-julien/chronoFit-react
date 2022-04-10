@@ -1,8 +1,8 @@
-@use 'reset';
-@use 'vars'as v;
+@use "reset";
+@use "vars" as v;
 
 body {
-  font-family: 'Roboto Condensed', sans-serif;
+  font-family: "Roboto Condensed", sans-serif;
   background-color: adjust-color(#2f4452, $blackness: 8%);
   color: v.$base-color;
 }
@@ -15,4 +15,17 @@ h3 {
 
 img {
   max-width: 100%;
+}
+
+th,
+td {
+  border: 1px solid v.$base-color;
+  padding: 0.5rem;
+  font-size: small;
+}
+
+thead,
+tfoot {
+  background-color: v.$base-color;
+  color: v.$color-very-light;
 }

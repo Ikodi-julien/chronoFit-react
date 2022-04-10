@@ -1,4 +1,4 @@
-@use '../../styles/vars'as v;
+@use "../../styles/vars" as v;
 
 .modal {
   position: fixed;
@@ -18,11 +18,20 @@
     display: flex;
     flex-direction: column;
     width: 320px;
-    height: 200px;
+    // height: 200px;
     background-color: white;
     border-radius: v.$border-radius;
     padding: v.$gutter;
     padding-top: 50px;
+    &.--endtraining {
+      width: 100%;
+      max-width: v.$max-app-width;
+      // height: 200px;
+      background-color: white;
+      border-radius: v.$border-radius;
+      padding: v.$gutter;
+      padding-top: 50px;
+    }
   }
 
   &__close {
@@ -44,7 +53,6 @@
       font-size: 1.5rem;
     }
   }
-
 
   &__options {
     display: flex;
