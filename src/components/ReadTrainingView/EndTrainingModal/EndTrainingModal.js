@@ -12,23 +12,42 @@ const EndTrainingModal = ({
   timeline,
 }) => {
   const [isOpen, setIsOpen] = useState(true);
+  const [isModif, setIsModif] = useState(true);
   const history = useHistory();
+  const createRecord = () => console.log("createRecord");
 
   return (
     <section className={`modal ${!isOpen && "--hidden"}`}>
       <div className="modal__container --endtraining">
-        <div className="modal__close">
-          {/* <button
-          className="training__button --transparent --icone"
-          onClick={() => setIsOpen(false)}
-        >
-          <i className="fas fa-times"></i>
-        </button> */}
-        </div>
         <div className="modal__text">
           <h1>Entrainement terminé</h1>
           <h2>{trainingName}</h2>
           <p>Durée : {trainingServices.formatSeconds(trainingDuration)}</p>
+        </div>
+
+        <div className="--row">
+          <div className="modal__quit">
+            <button
+              className="training__button"
+              onClick={() => setIsModif(!isModif)}
+            >
+              Modifier
+            </button>
+          </div>
+          <div className="modal__quit">
+            <button className="training__button" onClick={() => createRecord()}>
+              Enregistrer
+            </button>
+          </div>
+
+          <div className="modal__quit">
+            <button
+              className="training__button"
+              onClick={() => setIsOpen(false)}
+            >
+              Quitter sans enregistrer
+            </button>
+          </div>
         </div>
 
         <table>
@@ -43,30 +62,11 @@ const EndTrainingModal = ({
           </thead>
           <tbody>
             {timeline.map((exo, index) => {
-              if (index < 2 || index > timeline.length - 2) return null;
-              return <RecapExoLine key={index} exo={exo} />;
+              if (index < 2 || index > timeline.length - 3) return null;
+              return <RecapExoLine key={index} exo={exo} isModif={isModif} />;
             })}
           </tbody>
         </table>
-
-        <div className="modal__options">
-          <button
-            className="training__button --white"
-            onClick={() => {
-              actionToDispatch();
-              setIsOpen(false);
-              history.push(viewOrigin);
-            }}
-          >
-            OK
-          </button>
-          {/* <button
-          className="training__button --transparent --border"
-          onClick={() => setIsOpen(false)}
-        >
-          Exit
-        </button> */}
-        </div>
       </div>
     </section>
   );
