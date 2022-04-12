@@ -1,7 +1,8 @@
 import {
   SET_READ_TRAINING,
   SET_CURRENT_EXO,
-  ADD_TO_RECORD,
+  ADD_CHRONO_TO_RECORD,
+  ADD_COUNTDOWN_TO_RECORD,
   SET_COUNTDOWN_TIME,
   SET_GLOBAL_COUNTDOWN_TIME,
   SET_GLOBAL_CHRONO_TIME,
@@ -14,6 +15,7 @@ import {
   RESET_READTRAINING,
   END_TRAINING,
   RESET_ALL,
+  SET_END_TRAINING_VALUE,
 } from "../actions/readTrainingActions";
 // import trainingServices from '../services/training';
 import defaultTimeline from "../data/defaultTimeline";
@@ -169,13 +171,8 @@ const reducer = (state = initialState, action = {}) => {
         countdownCurrentTime: state.timeline[exoIndex].duration,
       };
 
-    case ADD_TO_RECORD:
-      if (
-        state.timeline[exoIndex].beginning ||
-        exoIndex < 1 ||
-        exoIndex === state.timeline.length - 1
-      )
-        return state;
+    case ADD_CHRONO_TO_RECORD:
+      // if (state.timelineIndex < 2) return state;
       return {
         ...state,
         trainingRecord: [
@@ -183,7 +180,26 @@ const reducer = (state = initialState, action = {}) => {
           {
             name: state.exoPlaying.name,
             description: state.exoPlaying.description,
-            duration: state.exoPlaying.duration,
+            duration: Math.round(state.chronoCurrentTime * 10) / 10,
+            reps: state.exoPlaying.reps,
+            weight: state.exoPlaying.weight,
+          },
+        ],
+      };
+
+    case ADD_COUNTDOWN_TO_RECORD:
+      if (state.timelineIndex < 2) return state;
+      return {
+        ...state,
+        trainingRecord: [
+          ...state.trainingRecord,
+          {
+            name: state.exoPlaying.name,
+            description: state.exoPlaying.description,
+            duration:
+              Math.round(
+                (state.exoPlaying.duration - state.countdownCurrentTime) * 10
+              ) / 10,
             reps: state.exoPlaying.reps,
             weight: state.exoPlaying.weight,
           },
@@ -350,6 +366,15 @@ const reducer = (state = initialState, action = {}) => {
     case RESET_ALL:
       return initialState;
 
+    case SET_END_TRAINING_VALUE:
+      const trainingRecord = state.trainingRecord;
+      const exoToChange = trainingRecord[action.index];
+      const exoChanged = { ...exoToChange, [action.name]: action.value };
+      trainingRecord[action.index] = exoChanged;
+      return {
+        ...state,
+        trainingRecord,
+      };
     default:
       return state;
   }

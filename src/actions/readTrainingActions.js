@@ -5,8 +5,10 @@ export const setCurrentExo = (exoIndex) => ({
   type: SET_CURRENT_EXO,
   exoIndex,
 });
-export const ADD_TO_RECORD = "ADD_TO_RECORD";
-export const addToRecord = () => ({ type: ADD_TO_RECORD });
+export const ADD_CHRONO_TO_RECORD = "ADD_CHRONO_TO_RECORD";
+export const addChronoToRecord = () => ({ type: ADD_CHRONO_TO_RECORD });
+export const ADD_COUNTDOWN_TO_RECORD = "ADD_COUNTDOWN_TO_RECORD";
+export const addCountdownToRecord = () => ({ type: ADD_COUNTDOWN_TO_RECORD });
 export const START_TRAINING = "START_TRAINING";
 export const startTraining = () => ({ type: START_TRAINING });
 export const PAUSE_TRAINING = "PAUSE_TRAINING";
@@ -42,3 +44,10 @@ export const RESET_ALL = "RESET_ALL";
 export const resetAll = () => ({ type: RESET_ALL });
 export const SET_IS_SPEAKING = "SET_IS_SPEAKING";
 export const setIsSpeaking = (bool) => ({ type: SET_IS_SPEAKING, value: bool });
+export const SET_END_TRAINING_VALUE = "SET_END_TRAINING_VALUE";
+export const setEndTrainingValue = (index, name, value) => ({
+  type: SET_END_TRAINING_VALUE,
+  index,
+  name,
+  value,
+});

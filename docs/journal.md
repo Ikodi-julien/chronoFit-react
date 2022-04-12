@@ -1,11 +1,14 @@
 # JOURNAL CHRONOFIT-REACT
 
-### Le 10/04/2022
+### Le 11/04/22
+
+Créer la timeline à enregistrer -> ok (trainingRecord dans le state readTraining, avec composant / container / action / reducer et input reliés pour modif, la totale !)
+Prévoir la possibilité d'annuler les modifs avant l'upload.
 
 ### Le 10/04/2022
 
 Passer le tableau dans EndTrainingModal de ReadTrainingView -> ok
-Ajout boutons de ctrl à EndTrainingModal ->
+Ajout boutons de ctrl à EndTrainingModal -> ok
 
 ### Le 09/04/2022
 

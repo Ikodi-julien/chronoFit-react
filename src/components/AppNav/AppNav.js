@@ -60,8 +60,4 @@ const AppNav = () => {
   );
 };
 
-AppNav.propTypes = {
-  toggleMenu: PropTypes.func.isRequired,
-  menuIsVisible: PropTypes.bool.isRequired,
-};
 export default AppNav;

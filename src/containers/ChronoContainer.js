@@ -5,7 +5,7 @@ import Chrono from "../components/ReadTrainingView/TimeDisplay/Chrono";
 import {
   setChronoTime,
   setCurrentExo,
-  addToRecord,
+  addChronoToRecord,
 } from "../actions/readTrainingActions";
 
 const mapStateToProps = ({ readTraining }, { text }) => ({
@@ -18,7 +18,7 @@ const mapStateToProps = ({ readTraining }, { text }) => ({
 const mapDispatchToProps = (dispatch) => ({
   setChronoTime: (time) => dispatch(setChronoTime(time)),
   setExo: (index) => dispatch(setCurrentExo(index)),
-  addToRecord: () => dispatch(addToRecord()),
+  addChronoToRecord: () => dispatch(addChronoToRecord()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Chrono);

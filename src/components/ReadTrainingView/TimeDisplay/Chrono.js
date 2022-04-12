@@ -11,7 +11,7 @@ const Chrono = ({
   setChronoTime,
   setExo,
   timelineIndex,
-  addToRecord,
+  addChronoToRecord,
 }) => {
   useEffect(() => {
     (async () => {
@@ -42,7 +42,7 @@ const Chrono = ({
         <button
           className="readtraining__timedisplay__button"
           onClick={() => {
-            addToRecord();
+            addChronoToRecord();
             setExo(timelineIndex + 1);
           }}
         >

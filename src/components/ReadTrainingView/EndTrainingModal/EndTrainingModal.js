@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useHistory } from "react-router";
 import trainingServices from "../../../services/training";
-import RecapExoLine from "./RecapExoLine/RecapExoLine";
+import RecapExolineContainer from "../../../containers/RecapExolineContainer";
 import "../../ConfirmModal/modal.scss";
 
 const EndTrainingModal = ({
@@ -9,7 +9,8 @@ const EndTrainingModal = ({
   trainingName,
   actionToDispatch,
   viewOrigin,
-  timeline,
+  trainingRecord,
+  setValue,
 }) => {
   const [isOpen, setIsOpen] = useState(true);
   const [isModif, setIsModif] = useState(true);
@@ -61,9 +62,15 @@ const EndTrainingModal = ({
             </tr>
           </thead>
           <tbody>
-            {timeline.map((exo, index) => {
-              if (index < 2 || index > timeline.length - 3) return null;
-              return <RecapExoLine key={index} exo={exo} isModif={isModif} />;
+            {trainingRecord.map((exo, index) => {
+              return (
+                <RecapExolineContainer
+                  key={index}
+                  index={index}
+                  isModif={isModif}
+                  setValue={setValue}
+                />
+              );
             })}
           </tbody>
         </table>

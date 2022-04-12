@@ -13,7 +13,6 @@ import {
   setIsTransition,
   resetAll,
   endTraining,
-  addToRecord,
 } from "../actions/readTrainingActions";
 
 const mapStateToProps = ({ readTraining }) => ({
@@ -37,7 +36,6 @@ const mapStateToProps = ({ readTraining }) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   setCurrentExo: (exoIndex) => dispatch(setCurrentExo(exoIndex)),
-  addToRecord: () => dispatch(addToRecord()),
   startTraining: () => dispatch(startTraining()),
   pauseTraining: () => dispatch(pauseTraining()),
   stopTraining: () => dispatch(stopTraining()),

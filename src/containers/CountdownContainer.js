@@ -5,7 +5,7 @@ import CountDown from "../components/ReadTrainingView/TimeDisplay/CountDown";
 import {
   setCountdownTime,
   setCurrentExo,
-  addToRecord,
+  addCountdownToRecord,
 } from "../actions/readTrainingActions";
 
 const mapStateToProps = ({ readTraining }, { text }) => ({
@@ -19,7 +19,7 @@ const mapStateToProps = ({ readTraining }, { text }) => ({
 const mapDispatchToProps = (dispatch) => ({
   setCountdownTime: (time) => dispatch(setCountdownTime(time)),
   setExo: (index) => dispatch(setCurrentExo(index)),
-  addToRecord: () => dispatch(addToRecord()),
+  addCountdownToRecord: () => dispatch(addCountdownToRecord()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(CountDown);
