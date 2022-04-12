@@ -1,6 +1,7 @@
 import {
   SET_READ_TRAINING,
   SET_CURRENT_EXO,
+  ADD_TO_RECORD,
   SET_COUNTDOWN_TIME,
   SET_GLOBAL_COUNTDOWN_TIME,
   SET_GLOBAL_CHRONO_TIME,
@@ -13,74 +14,75 @@ import {
   RESET_READTRAINING,
   END_TRAINING,
   RESET_ALL,
-} from '../actions/readTrainingActions';
+} from "../actions/readTrainingActions";
 // import trainingServices from '../services/training';
-import defaultTimeline from '../data/defaultTimeline';
+import defaultTimeline from "../data/defaultTimeline";
 
 const initialState = {
-  render:0,
+  render: 0,
   isSpeaking: true,
-  viewOrigin: '',
+  viewOrigin: "",
   timeline: defaultTimeline,
   timelineIndex: 0,
   // TraingDetails
   trainingDetails: {
-    name: '',
-    duration: '',
-    roundIndex: '',
-    roundCount: '',
-    currentRoundDuration: '',
+    name: "",
+    duration: "",
+    roundIndex: "",
+    roundCount: "",
+    currentRoundDuration: "",
     timecap: 0,
     finished: false,
   },
   // ExoDetails
   nextExo: {
-    name: '',
-    serieCount: '',
-    reps: '',
-    duration: '',
-    weight: '',
+    name: "",
+    serieCount: "",
+    reps: "",
+    duration: "",
+    weight: "",
   },
   previousExo: {
-    name: '',
-    serieCount: '',
-    reps: '',
-    duration: '',
-    weight: '',
+    name: "",
+    serieCount: "",
+    reps: "",
+    duration: "",
+    weight: "",
   },
   // ExoPlaying
   exoPlaying: {
     isCounting: false,
-    name: 'Sélectionner un entrainement',
-    description: '',
-    serieIndex: '',
-    serieCount: '',
-    reps: '',
-    weight: '',
+    name: "Sélectionner un entrainement",
+    description: "",
+    serieIndex: "",
+    serieCount: "",
+    reps: "",
+    weight: "",
     // ExoPlaying - TimeDisplay
-    duration: '',
-    currentTime: '',
-    isChrono: '',
+    duration: "",
+    currentTime: "",
+    isChrono: "",
     end: false,
     isTransition: false,
   },
-  chronoCurrentTime: '',
-  countdownCurrentTime: '',
+  chronoCurrentTime: "",
+  countdownCurrentTime: "",
   //GlobalCountdown
   globalCountdown: {
     isCounting: false,
-    currentTime: '',
+    currentTime: "",
   },
   globalChrono: {
     isCounting: false,
     currentTime: 0,
   },
+  // TrainingRecord, to be sent to DB
+  trainingRecord: [],
 };
 
-const reducer = (state=initialState, action={}) => {
-  
-  let {exoIndex} = action || 0;
-  
+const reducer = (state = initialState, action = {}) => {
+  let { exoIndex } = action || 0;
+
   switch (action.type) {
     case SET_READ_TRAINING:
       return {
@@ -101,14 +103,13 @@ const reducer = (state=initialState, action={}) => {
           isCounting: false,
           currentTime: 0,
         },
-      }
-      
-    case SET_CURRENT_EXO:
+      };
 
+    case SET_CURRENT_EXO:
       if (state.timeline[exoIndex].beginning) exoIndex++;
-      if (exoIndex < 1 ) return state; // 5 first seconds or before
+      if (exoIndex < 1) return state; // 5 first seconds or before
       if (exoIndex === state.timeline.length - 1) return state;
-      
+
       return {
         ...state,
         render: Math.random(),
@@ -133,11 +134,21 @@ const reducer = (state=initialState, action={}) => {
         },
         previousExo: {
           ...state.previousExo,
-          name:  state.timeline[exoIndex - 1] ? state.timeline[exoIndex - 1].name : '',
-          serieCount: state.timeline[exoIndex - 1] ? state.timeline[exoIndex - 1].serieCount : '',
-          reps: state.timeline[exoIndex - 1] ? state.timeline[exoIndex - 1].reps : '',
-          duration: state.timeline[exoIndex - 1] ? state.timeline[exoIndex - 1].duration : '',
-          weight: state.timeline[exoIndex - 1] ? state.timeline[exoIndex - 1].weight : '',
+          name: state.timeline[exoIndex - 1]
+            ? state.timeline[exoIndex - 1].name
+            : "",
+          serieCount: state.timeline[exoIndex - 1]
+            ? state.timeline[exoIndex - 1].serieCount
+            : "",
+          reps: state.timeline[exoIndex - 1]
+            ? state.timeline[exoIndex - 1].reps
+            : "",
+          duration: state.timeline[exoIndex - 1]
+            ? state.timeline[exoIndex - 1].duration
+            : "",
+          weight: state.timeline[exoIndex - 1]
+            ? state.timeline[exoIndex - 1].weight
+            : "",
         },
         // ExoPlaying
         exoPlaying: {
@@ -156,8 +167,29 @@ const reducer = (state=initialState, action={}) => {
         },
         chronoCurrentTime: 0,
         countdownCurrentTime: state.timeline[exoIndex].duration,
-      }
-      
+      };
+
+    case ADD_TO_RECORD:
+      if (
+        state.timeline[exoIndex].beginning ||
+        exoIndex < 1 ||
+        exoIndex === state.timeline.length - 1
+      )
+        return state;
+      return {
+        ...state,
+        trainingRecord: [
+          ...state.trainingRecord,
+          {
+            name: state.exoPlaying.name,
+            description: state.exoPlaying.description,
+            duration: state.exoPlaying.duration,
+            reps: state.exoPlaying.reps,
+            weight: state.exoPlaying.weight,
+          },
+        ],
+      };
+
     case START_TRAINING:
       return {
         ...state,
@@ -173,7 +205,7 @@ const reducer = (state=initialState, action={}) => {
           ...state.globalChrono,
           isCounting: true,
         },
-      }
+      };
 
     case PAUSE_TRAINING:
       return {
@@ -182,8 +214,8 @@ const reducer = (state=initialState, action={}) => {
           ...state.exoPlaying,
           isCounting: false,
         },
-      }
-        
+      };
+
     case STOP_TRAINING:
       return {
         ...state,
@@ -199,20 +231,20 @@ const reducer = (state=initialState, action={}) => {
           ...state.globalChrono,
           isCounting: false,
         },
-      }
-      
+      };
+
     case SET_COUNTDOWN_TIME:
       return {
         ...state,
         countdownCurrentTime: action.time,
-      }
+      };
 
     case SET_CHRONO_TIME:
       return {
         ...state,
         chronoCurrentTime: action.time,
-      }
-      
+      };
+
     case SET_GLOBAL_COUNTDOWN_TIME:
       return {
         ...state,
@@ -220,8 +252,8 @@ const reducer = (state=initialState, action={}) => {
           ...state.globalCountdown,
           currentTime: action.time,
         },
-      }
-    
+      };
+
     case SET_GLOBAL_CHRONO_TIME:
       return {
         ...state,
@@ -229,23 +261,23 @@ const reducer = (state=initialState, action={}) => {
           ...state.globalChrono,
           currentTime: action.time,
         },
-      }
-        
+      };
+
     case SET_ISTRANSITION:
       return {
         ...state,
         exoPlaying: {
           ...state.exoPlaying,
           isTransition: action.value,
-        }
-      }
-      
+        },
+      };
+
     case SET_IS_SPEAKING:
       return {
         ...state,
         isSpeaking: action.value,
-      }
-      
+      };
+
     case RESET_READTRAINING:
       return {
         ...state,
@@ -254,14 +286,14 @@ const reducer = (state=initialState, action={}) => {
         trainingDetails: {
           ...state.trainingDetails,
           roundIndex: 1,
-          currentRoundDuration: '',
+          currentRoundDuration: "",
         },
         nextExo: {
-          name: '',
-          serieCount: '',
-          reps: '',
-          duration: '',
-          weight: '',
+          name: "",
+          serieCount: "",
+          reps: "",
+          duration: "",
+          weight: "",
         },
         // ExoPlaying
         exoPlaying: {
@@ -289,8 +321,9 @@ const reducer = (state=initialState, action={}) => {
           isCounting: false,
           currentTime: 0,
         },
+        trainingRecord: [],
       };
-      
+
     case END_TRAINING:
       return {
         ...state,
@@ -311,15 +344,15 @@ const reducer = (state=initialState, action={}) => {
         globalChrono: {
           ...state.globalChrono,
           isCounting: false,
-        }
-      }
-      
+        },
+      };
+
     case RESET_ALL:
       return initialState;
-        
+
     default:
       return state;
   }
-}
+};
 
 export default reducer;

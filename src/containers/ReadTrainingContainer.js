@@ -1,6 +1,6 @@
-import {connect} from 'react-redux';
-import ReadTrainingView from '../components/ReadTrainingView/ReadTrainingView';
-import { 
+import { connect } from "react-redux";
+import ReadTrainingView from "../components/ReadTrainingView/ReadTrainingView";
+import {
   setCurrentExo,
   startTraining,
   pauseTraining,
@@ -13,9 +13,10 @@ import {
   setIsTransition,
   resetAll,
   endTraining,
-} from '../actions/readTrainingActions';
+  addToRecord,
+} from "../actions/readTrainingActions";
 
-const mapStateToProps = ({readTraining}) => ({
+const mapStateToProps = ({ readTraining }) => ({
   timelineLength: readTraining.timeline.length,
   timelineIndex: readTraining.timelineIndex,
   trainingDetails: readTraining.trainingDetails,
@@ -36,6 +37,7 @@ const mapStateToProps = ({readTraining}) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   setCurrentExo: (exoIndex) => dispatch(setCurrentExo(exoIndex)),
+  addToRecord: () => dispatch(addToRecord()),
   startTraining: () => dispatch(startTraining()),
   pauseTraining: () => dispatch(pauseTraining()),
   stopTraining: () => dispatch(stopTraining()),
