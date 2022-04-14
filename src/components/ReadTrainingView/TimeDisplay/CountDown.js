@@ -32,6 +32,7 @@ const CountDown = ({
 
       (async () => {
         await asyncTime.wait(100);
+        addCountdownToRecord();
         setExo(timelineIndex + 1);
       })();
     }

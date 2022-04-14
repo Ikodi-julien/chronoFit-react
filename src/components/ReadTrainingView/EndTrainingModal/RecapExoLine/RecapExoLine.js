@@ -9,7 +9,6 @@ const RecapExoLine = ({
   setValue,
 }) => {
   const handleInputChange = (evt) => {
-    console.log(evt.target, evt.value);
     setValue(index, evt.target.name, evt.target.value);
   };
 

@@ -42,7 +42,6 @@ const Round = ({
   /*--------------------------------*/
   useEffect(() => {
     if (!isAPI) {
-      console.log(document.querySelector("input[name='roundIteration']"));
       const exoList = document.getElementById(`exoList-${roundIndex}`);
 
       // D&D enabled only if no exercice being edited

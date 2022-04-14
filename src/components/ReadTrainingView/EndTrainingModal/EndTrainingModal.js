@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useHistory } from "react-router";
+// import { useHistory } from "react-router";
 import trainingServices from "../../../services/training";
 import RecapExolineContainer from "../../../containers/RecapExolineContainer";
 import "../../ConfirmModal/modal.scss";
@@ -15,7 +15,7 @@ const EndTrainingModal = ({
 }) => {
   const [isOpen, setIsOpen] = useState(true);
   const [isModif, setIsModif] = useState(true);
-  const history = useHistory();
+  // const history = useHistory();
   const createRecord = () => console.log("createRecord");
 
   return (
