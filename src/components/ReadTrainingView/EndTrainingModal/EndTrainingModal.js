@@ -11,6 +11,7 @@ const EndTrainingModal = ({
   viewOrigin,
   trainingRecord,
   setValue,
+  resetRecordTraining,
 }) => {
   const [isOpen, setIsOpen] = useState(true);
   const [isModif, setIsModif] = useState(true);
@@ -28,12 +29,24 @@ const EndTrainingModal = ({
 
         <div className="--row">
           <div className="modal__quit">
-            <button
-              className="training__button"
-              onClick={() => setIsModif(!isModif)}
-            >
-              Modifier
-            </button>
+            {isModif ? (
+              <button
+                className="training__button"
+                onClick={() => setIsModif(!isModif)}
+              >
+                Modifier
+              </button>
+            ) : (
+              <button
+                className="training__button"
+                onClick={() => {
+                  setIsModif(!isModif);
+                  resetRecordTraining();
+                }}
+              >
+                Annuler les modifs
+              </button>
+            )}
           </div>
           <div className="modal__quit">
             <button className="training__button" onClick={() => createRecord()}>

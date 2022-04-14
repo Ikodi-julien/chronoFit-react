@@ -1,5 +1,17 @@
 # JOURNAL CHRONOFIT-REACT
 
+### 14/04/22
+
+Fix Issue #4, l'input "roundIteration" perd le focus -> ok (géré en conditionnant sortable.js au focus sur l'input),
+Ajout d'un 'recordTrainingBackup' dans le state pour pouvoir annuler les modifs -> ok
+Bouton d'annulation des modifs visible si en mode 'modif' -> ok
+
+Prochaines étapes :
+
+- Mettre en place la base NoSql et la relier au front,
+- Réaliser et relier les autres vues,
+- Mettre une authentification par token en lien avec auth.ikodi.eu.
+
 ### Le 11/04/22
 
 Créer la timeline à enregistrer -> ok (trainingRecord dans le state readTraining, avec composant / container / action / reducer et input reliés pour modif, la totale !)

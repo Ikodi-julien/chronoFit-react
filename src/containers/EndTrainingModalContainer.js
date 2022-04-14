@@ -1,5 +1,6 @@
 import { connect } from "react-redux";
 
+import { resetRecordTraining } from "../actions/readTrainingActions";
 import EndTrainingModal from "../components/ReadTrainingView/EndTrainingModal/EndTrainingModal";
 
 const mapStateToProps = (
@@ -14,6 +15,8 @@ const mapStateToProps = (
   viewOrigin,
 });
 
-const mapDispatchToProps = (dispatch) => ({});
+const mapDispatchToProps = (dispatch) => ({
+  resetRecordTraining: () => dispatch(resetRecordTraining()),
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(EndTrainingModal);

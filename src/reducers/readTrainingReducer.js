@@ -16,6 +16,7 @@ import {
   END_TRAINING,
   RESET_ALL,
   SET_END_TRAINING_VALUE,
+  RESET_TRAININGRECORD,
 } from "../actions/readTrainingActions";
 // import trainingServices from '../services/training';
 import defaultTimeline from "../data/defaultTimeline";
@@ -80,6 +81,7 @@ const initialState = {
   },
   // TrainingRecord, to be sent to DB
   trainingRecord: [],
+  backupTrainingRecord: [],
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -361,6 +363,7 @@ const reducer = (state = initialState, action = {}) => {
           ...state.globalChrono,
           isCounting: false,
         },
+        backupTrainingRecord: state.trainingRecord.map((exo) => exo),
       };
 
     case RESET_ALL:
@@ -375,6 +378,13 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         trainingRecord,
       };
+
+    case RESET_TRAININGRECORD:
+      return {
+        ...state,
+        trainingRecord: state.backupTrainingRecord.map((exo) => exo),
+      };
+
     default:
       return state;
   }
