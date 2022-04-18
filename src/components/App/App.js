@@ -18,7 +18,7 @@ function App() {
           <Route path="/girls">
             <GirlViewContainer />
           </Route>
-          <Route path="/entrainements">
+          <Route path="/entrainement">
             <CustomTrainingView />
           </Route>
           <Route path="/read_training">

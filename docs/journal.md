@@ -4,7 +4,7 @@
 
 - Création d'un table trainings dans base authikodi avec contrainte foreign key sur users.id + script de création -> ok
 - Relier l'écriture en DB depuis le front :
-  - créer endpoint POST dans app auth ->
+  - créer endpoint POST dans app auth -> ok (POST /chronofit/new-training)
   - créer gestion evt dans app chronofit + ecriture des entrainements en base ->
 - Relier la lecture en DB depuis le front :
   - créer endpoint GET dans app auth -> ok pour GET /chronofit/trainings

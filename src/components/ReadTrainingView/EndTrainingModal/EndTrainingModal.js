@@ -12,11 +12,15 @@ const EndTrainingModal = ({
   trainingRecord,
   setValue,
   resetRecordTraining,
+  postNewTraining,
 }) => {
   const [isOpen, setIsOpen] = useState(true);
   const [isModif, setIsModif] = useState(true);
   // const history = useHistory();
-  const createRecord = () => console.log("createRecord");
+  const createRecord = () => {
+    postNewTraining();
+    console.log("createRecord");
+  };
 
   return (
     <section className={`modal ${!isOpen && "--hidden"}`}>

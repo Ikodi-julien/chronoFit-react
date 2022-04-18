@@ -53,3 +53,5 @@ export const setEndTrainingValue = (index, name, value) => ({
 });
 export const RESET_TRAININGRECORD = "RESET_TRAININGRECORD";
 export const resetRecordTraining = () => ({ type: RESET_TRAININGRECORD });
+export const POST_NEW_TRAINING = "POST_NEW_TRAINING";
+export const postNewTraining = () => ({ type: POST_NEW_TRAINING });

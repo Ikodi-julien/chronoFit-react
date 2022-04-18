@@ -11,8 +11,8 @@ const Landing = (props) => (
       <Link className="landing__button" to="/girls">
         Les Girls
       </Link>
-      <Link className="landing__button" to="/entrainements">
-        Entrainements
+      <Link className="landing__button" to="/entrainement">
+        Entrainement
       </Link>
       <Link className="landing__button" to="/recap_entrainements">
         Récap entrainements

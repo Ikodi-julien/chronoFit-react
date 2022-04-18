@@ -11,8 +11,8 @@ const AppNav = () => {
   return (
     <section className="appnav__container">
       <div className="appnav__title">
-        {location.pathname === "/custom_training"
-          ? "Custom Training"
+        {location.pathname === "/entrainement"
+          ? "Entrainement"
           : location.pathname === "/girls"
           ? "Les Girls"
           : location.pathname === "/recap_entrainements"
