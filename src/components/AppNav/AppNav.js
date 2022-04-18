@@ -15,6 +15,8 @@ const AppNav = () => {
           ? "Custom Training"
           : location.pathname === "/girls"
           ? "Les Girls"
+          : location.pathname === "/recap_entrainements"
+          ? "Entrainements effectués"
           : "Titre pas prévu..."}
       </div>
       <button
@@ -53,11 +55,18 @@ const AppNav = () => {
             Les Girls
           </NavLink>
           <NavLink
-            to="/custom_training"
+            to="/entrainements"
             className="appnav__links__link"
             onClick={() => setNavMenuIsOpen(false)}
           >
-            Custom Trainings
+            Entrainements
+          </NavLink>
+          <NavLink
+            to="/recap_entrainements"
+            className="appnav__links__link"
+            onClick={() => setNavMenuIsOpen(false)}
+          >
+            Récap entraînements
           </NavLink>
           {/* <NavLink to="/connexion" className="appnav__links__link" onClick={() => toggleMenu()} >Connexion</NavLink> */}
         </nav>

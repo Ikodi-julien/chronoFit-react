@@ -1,4 +1,4 @@
-import RecapExoLine from "../components/ReadTrainingView/EndTrainingModal/RecapExoLine/RecapExoLine";
+import ExoTabLine from "../components/ExoTab/ExoTabLine/ExoTabLine";
 import { connect } from "react-redux";
 import { setEndTrainingValue } from "../actions/readTrainingActions";
 
@@ -18,4 +18,4 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(setEndTrainingValue(index, name, value)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(RecapExoLine);
+export default connect(mapStateToProps, mapDispatchToProps)(ExoTabLine);

@@ -1,4 +1,4 @@
-const RecapExoLine = ({
+const ExoTabLine = ({
   index,
   name,
   description,
@@ -46,4 +46,4 @@ const RecapExoLine = ({
     </tr>
   );
 };
-export default RecapExoLine;
+export default ExoTabLine;

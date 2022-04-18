@@ -7,6 +7,7 @@ import AppCommentContainer from "../../containers/AppCommentContainer";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import "./app.scss";
+import RecapTrainingsView from "../RecapTrainingsView/RecapTrainingsView";
 
 function App() {
   return (
@@ -17,7 +18,7 @@ function App() {
           <Route path="/girls">
             <GirlViewContainer />
           </Route>
-          <Route path="/custom_training">
+          <Route path="/entrainements">
             <CustomTrainingView />
           </Route>
           <Route path="/read_training">
@@ -26,7 +27,9 @@ function App() {
           <Route path="/end_test">
             <EndTrainingModalContainer />
           </Route>
-          {/* /search : SearchTrainingsView, entrainements réalisés avec tris */}
+          <Route path="/recap_entrainements">
+            <RecapTrainingsView />
+          </Route>
           {/* /exercices pour voir les exos benchmarks proposés */}
           {/* /connexion pour les forms de connexion */}
           {/* /user pour la gestion des données utilisateur */}

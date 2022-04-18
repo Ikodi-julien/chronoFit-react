@@ -3,11 +3,14 @@
 ### 18/04/22
 
 - Création d'un table trainings dans base authikodi avec contrainte foreign key sur users.id + script de création -> ok
-- Relier l'écriture depuis le front :
-  - créer endpoint dans app auth -> ok pour GET /chronofit/trainings
+- Relier l'écriture en DB depuis le front :
+  - créer endpoint POST dans app auth ->
+  - créer gestion evt dans app chronofit + ecriture des entrainements en base ->
+- Relier la lecture en DB depuis le front :
+  - créer endpoint GET dans app auth -> ok pour GET /chronofit/trainings
   - créer vue affichage des trainings:
-    - Nouvelle entrée du menu "Entrainements fait" ->
-    - Dans "Entrainements fait", créer l'affichage de la liste des entrainements, plus tard les options de tri ->
+    - Nouvelle entrée du menu "Entrainements fait" -> ok
+    - Dans "Entrainements fait", créer l'affichage de la liste des entrainements, plus tard les options de tri -> ok
   - créer gestion evt dans app chronofit + affichage des entrainements en base ->
 
 Prochaines étapes :

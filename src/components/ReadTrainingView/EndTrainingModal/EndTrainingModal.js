@@ -1,7 +1,7 @@
 import { useState } from "react";
 // import { useHistory } from "react-router";
 import trainingServices from "../../../services/training";
-import RecapExolineContainer from "../../../containers/RecapExolineContainer";
+import ExoTab from "../../../components/ExoTab/ExoTab";
 import "../../ConfirmModal/modal.scss";
 
 const EndTrainingModal = ({
@@ -64,29 +64,11 @@ const EndTrainingModal = ({
           </div>
         </div>
 
-        <table>
-          <thead>
-            <tr>
-              <th>Exo</th>
-              <th>Description</th>
-              <th>Temps</th>
-              <th>Reps</th>
-              <th>Poids</th>
-            </tr>
-          </thead>
-          <tbody>
-            {trainingRecord.map((exo, index) => {
-              return (
-                <RecapExolineContainer
-                  key={index}
-                  index={index}
-                  isModif={isModif}
-                  setValue={setValue}
-                />
-              );
-            })}
-          </tbody>
-        </table>
+        <ExoTab
+          trainingRecord={trainingRecord}
+          setValue={setValue}
+          isModif={isModif}
+        />
       </div>
     </section>
   );
