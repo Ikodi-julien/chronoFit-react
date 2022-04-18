@@ -36,6 +36,7 @@ const CountDown = ({
         setExo(timelineIndex + 1);
       })();
     }
+    // eslint-disable-next-line
   }, [time, totalTime, isCounting, setCountdownTime, timelineIndex, setExo]);
 
   return (

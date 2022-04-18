@@ -1,16 +1,30 @@
 # JOURNAL CHRONOFIT-REACT
 
+### 18/04/22
+
+- Création d'un table trainings dans base authikodi avec contrainte foreign key sur users.id + script de création -> ok
+- Relier l'écriture depuis le front :
+  - créer endpoint dans app auth -> ok pour GET /chronofit/trainings
+  - créer vue affichage des trainings:
+    - Nouvelle entrée du menu "Entrainements fait" ->
+    - Dans "Entrainements fait", créer l'affichage de la liste des entrainements, plus tard les options de tri ->
+  - créer gestion evt dans app chronofit + affichage des entrainements en base ->
+
+Prochaines étapes :
+
+- Réaliser et relier les autres vues:
+  - EndTrainingView : Récap fin entrainement avec RUD -> fait partiel,
+  - SearchTrainingsView : Entrainements réalisés avec tris,
+  - StatsView : Stats et graphs,
+- Mettre une authentification par token en lien avec auth.ikodi.eu.
+- (pas MVP) DiaryView : calendrier en lien avec le ou les entrainements réalisés.
+
 ### 14/04/22
 
 Fix Issue #4, l'input "roundIteration" perd le focus -> ok (géré en conditionnant sortable.js au focus sur l'input),
 Ajout d'un 'recordTrainingBackup' dans le state pour pouvoir annuler les modifs -> ok
 Bouton d'annulation des modifs visible si en mode 'modif' -> ok
-
-Prochaines étapes :
-
-- Mettre en place la base NoSql et la relier au front,
-- Réaliser et relier les autres vues,
-- Mettre une authentification par token en lien avec auth.ikodi.eu.
+version poussée sur aws -> ok
 
 ### Le 11/04/22
 
@@ -70,10 +84,6 @@ Que du plaisir pour la suite, à prévoir :
 - Mettre en place la base NoSql et la relier au front,
 - Réaliser et relier les autres vues,
 - Mettre une authentification par token en lien avec auth.ikodi.eu.
-
----
-
----
 
 ### Le 03/05/2021, 1h avant la réunion de projet TeacCup
 

@@ -1,6 +1,6 @@
 import { NavLink, useLocation } from "react-router-dom";
 import { useState } from "react";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 
 import "./appnav.scss";
 
@@ -24,38 +24,44 @@ const AppNav = () => {
         <i className="fas fa-bars"></i>
       </button>
 
-      <ul
-        className={navMenuIsOpen ? "appnav__links --visible" : "appnav__links"}
+      <div
+        className={
+          navMenuIsOpen
+            ? "appnav__links__container --visible"
+            : "appnav__links__container"
+        }
       >
-        <button
-          className="appnav__links__close"
-          onClick={() => setNavMenuIsOpen(!navMenuIsOpen)}
-        >
-          <i className="fas fa-times"></i>
-        </button>
-        <NavLink
-          to="/"
-          className="appnav__links__link"
-          onClick={() => setNavMenuIsOpen(false)}
-        >
-          Accueil
-        </NavLink>
-        <NavLink
-          to="/girls"
-          className="appnav__links__link"
-          onClick={() => setNavMenuIsOpen(false)}
-        >
-          Les Girls
-        </NavLink>
-        <NavLink
-          to="/custom_training"
-          className="appnav__links__link"
-          onClick={() => setNavMenuIsOpen(false)}
-        >
-          Custom Trainings
-        </NavLink>
-        {/* <NavLink to="/connexion" className="appnav__links__link" onClick={() => toggleMenu()} >Connexion</NavLink> */}
-      </ul>
+        <nav className="appnav__links">
+          <button
+            className="appnav__links__close"
+            onClick={() => setNavMenuIsOpen(!navMenuIsOpen)}
+          >
+            <i className="fas fa-times"></i>
+          </button>
+          <NavLink
+            to="/"
+            className="appnav__links__link"
+            onClick={() => setNavMenuIsOpen(false)}
+          >
+            Accueil
+          </NavLink>
+          <NavLink
+            to="/girls"
+            className="appnav__links__link"
+            onClick={() => setNavMenuIsOpen(false)}
+          >
+            Les Girls
+          </NavLink>
+          <NavLink
+            to="/custom_training"
+            className="appnav__links__link"
+            onClick={() => setNavMenuIsOpen(false)}
+          >
+            Custom Trainings
+          </NavLink>
+          {/* <NavLink to="/connexion" className="appnav__links__link" onClick={() => toggleMenu()} >Connexion</NavLink> */}
+        </nav>
+      </div>
     </section>
   );
 };

@@ -1,4 +1,4 @@
-@use 'src/styles/vars'as v;
+@use "src/styles/vars" as v;
 
 .appnav {
   &__container {
@@ -21,29 +21,44 @@
   }
 
   &__links {
-    position: absolute;
-    width: 100%;
-    height: 100vh;
+    position: relative;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    top: -200vh;
-    left: 0px;
-    background-color: rgb(213, 234, 241);
-    font-size: 2em;
+    align-items: flex-start;
+    justify-content: center;
+    margin: 1rem;
+    width: 100%;
+    height: fit-content;
+    background-color: rgb(241, 245, 247);
+    font-size: 1.5rem;
     color: v.$base-color;
-    transition: all 200ms ease-out;
+    border: 1px solid v.$base-color;
+    border-radius: v.$border-radius;
+    padding-bottom: 2rem;
 
-    &__link {
-      padding: 10px;
-      margin: 20px;
+    &__container {
+      position: absolute;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      width: 100%;
+      height: 100vh;
+      top: -200vh;
+      left: 0px;
+      background-color: rgba(241, 245, 247, 0.8);
+      transition: top 200ms ease-out;
+
+      &.--visible {
+        top: 0;
+        opacity: 0.95;
+        z-index: 100;
+        transition: all 200ms ease-out;
+      }
     }
 
-    &.--visible {
-      top: 0;
-      opacity: .95;
-      z-index: 100;
-      transition: all 200ms ease-out;
+    &__link {
+      padding: 1rem;
+      // margin: 1rem;
     }
 
     &__close {
