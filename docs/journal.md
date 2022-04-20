@@ -1,26 +1,31 @@
 # JOURNAL CHRONOFIT-REACT
 
-### 18/04/22
+### 20/04/22
 
-- Création d'un table trainings dans base authikodi avec contrainte foreign key sur users.id + script de création -> ok
-- Relier l'écriture en DB depuis le front :
-  - créer endpoint POST dans app auth -> ok (POST /chronofit/new-training)
-  - créer gestion evt dans app chronofit + ecriture des entrainements en base ->
-- Relier la lecture en DB depuis le front :
-  - créer endpoint GET dans app auth -> ok pour GET /chronofit/trainings
-  - créer vue affichage des trainings:
-    - Nouvelle entrée du menu "Entrainements fait" -> ok
-    - Dans "Entrainements fait", créer l'affichage de la liste des entrainements, plus tard les options de tri -> ok
-  - créer gestion evt dans app chronofit + affichage des entrainements en base ->
+- créer gestion evt dans app chronofit + affichage des entrainements en DB -> TODO
 
 Prochaines étapes :
 
 - Réaliser et relier les autres vues:
   - EndTrainingView : Récap fin entrainement avec RUD -> fait partiel,
-  - SearchTrainingsView : Entrainements réalisés avec tris,
+  - SearchTrainingsView : Entrainements réalisés avec tris -> partiel
   - StatsView : Stats et graphs,
 - Mettre une authentification par token en lien avec auth.ikodi.eu.
 - (pas MVP) DiaryView : calendrier en lien avec le ou les entrainements réalisés.
+
+### 18/04/22
+
+- Création d'un table trainings dans base authikodi avec contrainte foreign key sur users.id + script de création -> ok
+- Relier l'écriture en DB depuis le front :
+  - créer endpoint POST dans app auth -> ok (POST /chronofit/new-training)
+  - créer gestion evt dans app chronofit + ecriture des entrainements en base -> ok
+- Relier la lecture en DB depuis le front :
+
+  - créer endpoint GET dans app auth -> ok pour GET /chronofit/trainings
+  - créer vue affichage des trainings:
+    - Nouvelle entrée du menu "Entrainements fait" -> ok
+    - Dans "Entrainements fait", créer l'affichage de la liste des entrainements, plus tard les options de tri -> ok
+  - créer gestion evt dans app chronofit + affichage des entrainements en DB -> TODO
 
 ### 14/04/22
 

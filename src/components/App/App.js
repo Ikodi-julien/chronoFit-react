@@ -7,7 +7,7 @@ import AppCommentContainer from "../../containers/AppCommentContainer";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import "./app.scss";
-import RecapTrainingsView from "../RecapTrainingsView/RecapTrainingsView";
+import RecapTrainingsContainer from "../../containers/RecapTrainingsContainer";
 
 function App() {
   return (
@@ -28,7 +28,7 @@ function App() {
             <EndTrainingModalContainer />
           </Route>
           <Route path="/recap_entrainements">
-            <RecapTrainingsView />
+            <RecapTrainingsContainer />
           </Route>
           {/* /exercices pour voir les exos benchmarks proposés */}
           {/* /connexion pour les forms de connexion */}

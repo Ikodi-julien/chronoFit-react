@@ -1,12 +1,16 @@
+import { useEffect } from "react";
 import AppNav from "../AppNav/AppNav";
 import TrainingTab from "../TrainingTab/TrainingTab";
 
-const RecapTrainingsView = () => {
+const RecapTrainingsView = ({ recapTrainings, getTrainingsDone }) => {
+  useEffect(() => getTrainingsDone(), []);
+
   return (
     <section className="training__container">
       <AppNav />
       {/* // TODO ajouter possibilité d'affichage entre deux dates */}
-      <TrainingTab />
+      <TrainingTab recapTrainings={recapTrainings} />
+      <i className="fa-solid fa-circle-plus"></i>
     </section>
   );
 };

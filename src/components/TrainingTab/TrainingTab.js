@@ -1,8 +1,7 @@
 import TrainingTabLine from "./TrainingTabLine/TrainingTabLine";
-import fakeTrainings from "./fakeTrainings";
+// import fakeTrainings from "./fakeTrainings";
 
-const TrainingTab = () => {
-  const trainings = fakeTrainings;
+const TrainingTab = ({ recapTrainings }) => {
   return (
     <table>
       <thead>
@@ -13,7 +12,7 @@ const TrainingTab = () => {
         </tr>
       </thead>
       <tbody>
-        {trainings.map((training, index) => {
+        {recapTrainings.map((training, index) => {
           return <TrainingTabLine key={index} training={training} />;
         })}
       </tbody>

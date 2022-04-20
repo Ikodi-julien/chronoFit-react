@@ -4,8 +4,8 @@ import axios from "axios";
 import { URL } from "../settings";
 
 import {
-  // GET_TRAININGS,
-  // getTrainingsSuccess,
+  GET_TRAININGS_DONE,
+  setTrainingsDone,
   // GET_CURRENT_TRAINING,
   getCurrentTrainingSuccess,
   GET_GIRLS,
@@ -29,21 +29,16 @@ export default (store) => (next) => (action) => {
   const readTrainingState = store.getState().readTraining;
 
   switch (action.type) {
-    // case GET_TRAININGS:
-    //   next(action);
-    //   axios.get(`${URL}/trainings`)
-    //     .then(res => store.dispatch(getTrainingsSuccess(res.data)))
-    //     .catch(err => console.error(err))
-    // break
-
-    // case GET_CURRENT_TRAINING:
-    //   next(action);
-    //   if (action.value === '') return store.dispatch(getCurrentTrainingSuccess({}))
-
-    //   axios.get(`${URL}/training/${action.value}`)
-    //     .then(res => store.dispatch(getCurrentTrainingSuccess(res.data)))
-    //     .catch(err => console.error(err))
-    // break
+    case GET_TRAININGS_DONE:
+      next(action);
+      axios
+        .get(`${URL}/chronofit/trainings-done`)
+        .then((res) => {
+          console.log(res.data);
+          store.dispatch(setTrainingsDone(res.data));
+        })
+        .catch((err) => console.error(err));
+      break;
 
     case GET_GIRLS:
       next(action);
