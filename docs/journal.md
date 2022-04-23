@@ -1,8 +1,44 @@
 # JOURNAL CHRONOFIT-REACT
 
-### 20/04/22
+### 23/04/22
 
-- créer gestion evt dans app chronofit + affichage des entrainements en DB -> TODO
+Revoir la forme de l'objet stocké et de l'objet renvoyé, voir si possible de stocker et renvoyer sous la forme:
+
+```javascript
+{
+  id: 1,
+  user_id: 50,
+  name: 'test',
+  duration: 6,
+  timecap: 0,
+  exos: [
+      {
+        name: 'exo 1',
+        description: 'desc de l\'exo 1',
+        duration: 1.9,
+        reps: 2,
+        weight: 2
+      },
+      {
+        name: 'exo 2',
+        description: 'desc de l\'exo 2',
+        duration: 1.9,
+        reps: 3,
+        weight: 0
+      },
+      {
+        name: 'exo 2',
+        description: 'desc de l\'exo 3',
+        duration: 1.9,
+        reps: 3,
+        weight: 0
+      }
+    ],
+  created_at: '2022-04-18T17:51:22.232Z'
+},
+```
+
+--> ok, colonne DB passée en type json[]
 
 Prochaines étapes :
 
@@ -12,6 +48,10 @@ Prochaines étapes :
   - StatsView : Stats et graphs,
 - Mettre une authentification par token en lien avec auth.ikodi.eu.
 - (pas MVP) DiaryView : calendrier en lien avec le ou les entrainements réalisés.
+
+### 20/04/22
+
+- créer gestion evt dans app chronofit + affichage des entrainements en DB -> ok
 
 ### 18/04/22
 

@@ -30,6 +30,7 @@ const initialState = {
   // TraingDetails
   trainingDetails: {
     name: "",
+    type: "à gérer",
     duration: "",
     roundIndex: "",
     roundCount: "",

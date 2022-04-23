@@ -1,9 +1,9 @@
 const TrainingTabLine = ({ training }) => (
   <tr>
     <td>{training.created_at}</td>
-    <td>{training.training.name}</td>
+    <td>{training.name}</td>
     <td>
-      <i class="fas fa-chevron-down"></i>
+      <i className="fas fa-chevron-down"></i>
     </td>
   </tr>
 );

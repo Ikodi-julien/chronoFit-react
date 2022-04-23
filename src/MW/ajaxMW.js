@@ -66,10 +66,10 @@ export default (store) => (next) => (action) => {
     case POST_NEW_TRAINING:
       const { trainingDetails, trainingRecord } = readTrainingState;
       const training = { ...trainingDetails, exos: trainingRecord };
-
+      console.log(training);
       axios
         .post(`${URL}/chronofit/new-training`, {
-          training,
+          ...training,
         })
         .then((res) => console.log(res.data))
         .catch((error) => {
