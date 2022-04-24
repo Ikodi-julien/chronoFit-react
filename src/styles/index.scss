@@ -20,10 +20,10 @@ img {
 th,
 td {
   border: 1px solid v.$base-color;
-  padding: 0.5rem;
+  padding: 0.2rem;
   font-size: small;
   & input {
-    width: 3rem;
+    max-width: 3rem;
   }
 }
 

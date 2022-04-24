@@ -1,5 +1,26 @@
 # JOURNAL CHRONOFIT-REACT
 
+### 24/04/22
+
+EndTrainingView, récap fin entrainement :
+
+- Bouton enregistrer en DB -> ok (d'avant),
+- Bouton modifier / annuler les modifs -> ok (d'avant),
+- Bouton supprimer une ligne (si en modif)-> ok
+- Modale de validation de la suppression ->
+- Modale de validation de l'enregistrement ->
+
+Prochaines étapes :
+
+- Réaliser et relier les autres vues:
+  - SearchTrainingsView, affiche les entrainements réalisés avec tris:
+    - Vue principale et affichage des entrainements en DB -> ok
+    - Affichage des détails et exos d'un training ->
+    - Faire des tris ->
+  - StatsView : Stats et graphs,
+- Mettre une authentification par token en lien avec auth.ikodi.eu.
+- (pas MVP) DiaryView : calendrier en lien avec le ou les entrainements réalisés.
+
 ### 23/04/22
 
 Revoir la forme de l'objet stocké et de l'objet renvoyé, voir si possible de stocker et renvoyer sous la forme:
@@ -39,15 +60,6 @@ Revoir la forme de l'objet stocké et de l'objet renvoyé, voir si possible de s
 ```
 
 --> ok, colonne DB passée en type json[]
-
-Prochaines étapes :
-
-- Réaliser et relier les autres vues:
-  - EndTrainingView : Récap fin entrainement avec RUD -> fait partiel,
-  - SearchTrainingsView : Entrainements réalisés avec tris -> partiel
-  - StatsView : Stats et graphs,
-- Mettre une authentification par token en lien avec auth.ikodi.eu.
-- (pas MVP) DiaryView : calendrier en lien avec le ou les entrainements réalisés.
 
 ### 20/04/22
 

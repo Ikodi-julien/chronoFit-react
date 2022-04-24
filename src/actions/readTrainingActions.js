@@ -55,3 +55,9 @@ export const RESET_TRAININGRECORD = "RESET_TRAININGRECORD";
 export const resetRecordTraining = () => ({ type: RESET_TRAININGRECORD });
 export const POST_NEW_TRAINING = "POST_NEW_TRAINING";
 export const postNewTraining = () => ({ type: POST_NEW_TRAINING });
+export const DELETE_EXO_FROM_END_TRAINING_RECAP =
+  "DELETE_EXO_FROM_END_TRAINING_RECAP";
+export const deleteExoFromEndTrainingRecap = (index) => ({
+  type: DELETE_EXO_FROM_END_TRAINING_RECAP,
+  value: index,
+});

@@ -3,6 +3,7 @@ import AppNav from "../AppNav/AppNav";
 import TrainingTab from "../TrainingTab/TrainingTab";
 
 const RecapTrainingsView = ({ recapTrainings, getTrainingsDone }) => {
+  // eslint-disable-next-line
   useEffect(() => getTrainingsDone(), []);
 
   return (

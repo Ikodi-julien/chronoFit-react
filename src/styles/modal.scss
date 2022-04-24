@@ -1,4 +1,4 @@
-@use "../../styles/vars" as v;
+@use "vars" as v;
 
 .modal {
   position: fixed;
@@ -23,15 +23,6 @@
     border-radius: v.$border-radius;
     padding: v.$gutter;
     padding-top: 50px;
-    &.--endtraining {
-      width: 100%;
-      max-width: v.$max-app-width;
-      // height: 200px;
-      background-color: white;
-      border-radius: v.$border-radius;
-      padding: v.$gutter;
-      padding-top: 50px;
-    }
   }
 
   &__close {
@@ -59,6 +50,17 @@
     justify-content: space-evenly;
   }
 
+  &__header {
+    padding: v.$gutter;
+  }
+  & .--endtraining {
+    width: 100%;
+    max-width: v.$max-app-width;
+    background-color: white;
+    border-radius: v.$border-radius;
+    padding: 0;
+    padding-top: 50px;
+  }
   &.--hidden {
     display: none;
   }
@@ -67,5 +69,9 @@
     width: 100%;
     justify-content: space-between;
     padding: 1rem 0;
+  }
+  &.--endmodal {
+    background-color: transparent;
+    backdrop-filter: blur(1px);
   }
 }

@@ -17,6 +17,7 @@ import {
   RESET_ALL,
   SET_END_TRAINING_VALUE,
   RESET_TRAININGRECORD,
+  DELETE_EXO_FROM_END_TRAINING_RECAP,
 } from "../actions/readTrainingActions";
 // import trainingServices from '../services/training';
 import defaultTimeline from "../data/defaultTimeline";
@@ -379,6 +380,14 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         trainingRecord,
       };
+
+    case DELETE_EXO_FROM_END_TRAINING_RECAP:
+      console.log(action);
+      const data = state.trainingRecord.filter(
+        (exo) => exo !== state.trainingRecord[action.value]
+      );
+
+      return { ...state, trainingRecord: data };
 
     case RESET_TRAININGRECORD:
       return {

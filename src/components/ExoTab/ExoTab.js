@@ -10,6 +10,7 @@ const ExoTab = ({ trainingRecord, setValue, isModif }) => {
           <th>Temps</th>
           <th>Reps</th>
           <th>Poids</th>
+          {isModif && <th>Suppr.</th>}
         </tr>
       </thead>
       <tbody>

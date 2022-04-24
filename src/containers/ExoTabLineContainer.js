@@ -1,6 +1,9 @@
 import ExoTabLine from "../components/ExoTab/ExoTabLine/ExoTabLine";
 import { connect } from "react-redux";
-import { setEndTrainingValue } from "../actions/readTrainingActions";
+import {
+  setEndTrainingValue,
+  deleteExoFromEndTrainingRecap,
+} from "../actions/readTrainingActions";
 
 const mapStateToProps = ({ readTraining }, { key, index, isModif }) => ({
   key,
@@ -16,6 +19,8 @@ const mapStateToProps = ({ readTraining }, { key, index, isModif }) => ({
 const mapDispatchToProps = (dispatch) => ({
   setValue: (index, name, value) =>
     dispatch(setEndTrainingValue(index, name, value)),
+  deleteExoFromEndTrainingRecap: (index) =>
+    dispatch(deleteExoFromEndTrainingRecap(index)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ExoTabLine);
