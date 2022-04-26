@@ -11,7 +11,6 @@ const RecapTrainingsView = ({ recapTrainings, getTrainingsDone }) => {
       <AppNav />
       {/* // TODO ajouter possibilité d'affichage entre deux dates */}
       <TrainingTab recapTrainings={recapTrainings} />
-      <i className="fa-solid fa-circle-plus"></i>
     </section>
   );
 };

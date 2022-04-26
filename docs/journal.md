@@ -5,7 +5,8 @@
 - Modale de validation de l'enregistrement -> ok
 - SearchTrainingsView, affiche les entrainements réalisés avec tris:
   - Vue principale et affichage des entrainements en DB -> ok
-  - Affichage des détails et exos d'un training ->
+  - Affichage des détails et exos d'un training:
+    - Composant TrainingRecapDetails -> En cours, création d'un nouveau reducer / actions / container / composant / modale, reste à afficher les détails dans la modale.
   - Faire des tris ->
 
 Prochaines étapes :
