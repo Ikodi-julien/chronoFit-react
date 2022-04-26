@@ -1,5 +1,20 @@
 # JOURNAL CHRONOFIT-REACT
 
+### 26/04/2022
+
+- Modale de validation de l'enregistrement -> ok
+- SearchTrainingsView, affiche les entrainements réalisés avec tris:
+  - Vue principale et affichage des entrainements en DB -> ok
+  - Affichage des détails et exos d'un training ->
+  - Faire des tris ->
+
+Prochaines étapes :
+
+- Réaliser et relier les autres vues:
+  - StatsView : Stats et graphs,
+- Mettre une authentification par token en lien avec auth.ikodi.eu.
+- (pas MVP) DiaryView : calendrier en lien avec le ou les entrainements réalisés.
+
 ### 24/04/22
 
 EndTrainingView, récap fin entrainement :
@@ -7,19 +22,6 @@ EndTrainingView, récap fin entrainement :
 - Bouton enregistrer en DB -> ok (d'avant),
 - Bouton modifier / annuler les modifs -> ok (d'avant),
 - Bouton supprimer une ligne (si en modif)-> ok
-- Modale de validation de la suppression ->
-- Modale de validation de l'enregistrement ->
-
-Prochaines étapes :
-
-- Réaliser et relier les autres vues:
-  - SearchTrainingsView, affiche les entrainements réalisés avec tris:
-    - Vue principale et affichage des entrainements en DB -> ok
-    - Affichage des détails et exos d'un training ->
-    - Faire des tris ->
-  - StatsView : Stats et graphs,
-- Mettre une authentification par token en lien avec auth.ikodi.eu.
-- (pas MVP) DiaryView : calendrier en lien avec le ou les entrainements réalisés.
 
 ### 23/04/22
 
