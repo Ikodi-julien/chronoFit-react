@@ -1,6 +1,6 @@
 const TrainingTabLine = ({ training, displayTrainingDetails }) => (
   <tr>
-    <td>{training.created_at}</td>
+    <td>{training.date}</td>
     <td>{training.name}</td>
     <td
       style={{

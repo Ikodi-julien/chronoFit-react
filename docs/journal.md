@@ -1,5 +1,29 @@
 # JOURNAL CHRONOFIT-REACT
 
+### 29/04/2022
+
+- Affichage des détails et exos d'un training:
+  - Composant TrainingRecapDetails :
+    - Création d'un nouveau reducer / actions-> ok
+    - Création container / composant / modale -> ok
+    - Reste à afficher les détails dans la modale -> ok
+  - Améliorer le format de la date -> ok
+
+Prochaines étapes :
+
+- Ajouter tri par date ->
+- Ajouter tri par nom ->
+- Ajouter le type de training :
+  - A la création ->
+  - A la récupération ->
+  - Affichage dans le tableau ->
+- Ajouter tri par type ->
+- Mettre une authentification par token en lien avec auth.ikodi.eu.
+- Réaliser et relier les autres vues:
+  - StatsView : Stats et graphs,
+  - (pas MVP) DiaryView : calendrier en lien avec le ou les entrainements réalisés.
+- Gérer les améliorations listées dans le repo github,
+
 ### 26/04/2022
 
 - Modale de validation de l'enregistrement -> ok
@@ -7,14 +31,6 @@
   - Vue principale et affichage des entrainements en DB -> ok
   - Affichage des détails et exos d'un training:
     - Composant TrainingRecapDetails -> En cours, création d'un nouveau reducer / actions / container / composant / modale, reste à afficher les détails dans la modale.
-  - Faire des tris ->
-
-Prochaines étapes :
-
-- Réaliser et relier les autres vues:
-  - StatsView : Stats et graphs,
-- Mettre une authentification par token en lien avec auth.ikodi.eu.
-- (pas MVP) DiaryView : calendrier en lien avec le ou les entrainements réalisés.
 
 ### 24/04/22
 
