@@ -4,7 +4,6 @@ import {
   SET_TYPE_SELECTED,
 } from "../actions/trainingViewActions";
 import {
-  SET_TRAININGS_DONE,
   GET_CURRENT_TRAINING_SUCCESS,
   GET_GIRLS,
   GET_GIRLS_SUCCESS,
@@ -21,19 +20,12 @@ const initialState = {
   currentTraining: {},
   trainingIsSet: false,
   typeSelected: "all",
-  recapTrainings: [],
 };
 
 const reducer = (state = initialState, action = {}) => {
   const { rounds } = state.currentTraining;
 
   switch (action.type) {
-    case SET_TRAININGS_DONE:
-      return {
-        ...state,
-        recapTrainings: action.value,
-      };
-
     case GET_GIRLS:
       return {
         ...state,

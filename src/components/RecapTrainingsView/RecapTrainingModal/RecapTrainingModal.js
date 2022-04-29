@@ -1,18 +1,15 @@
-import { useState } from "react";
 import trainingServices from "../../../services/training";
-import ExoTab from "../../ExoTab/ExoTab";
+import RecapExoTab from "../../RecapExoTab/RecapExoTab";
 import "../../../styles/modal.scss";
 
-const RecapTrainingModale = ({ training }) => {
-  const [isOpen, setIsOpen] = useState(true);
-
+const RecapTrainingModal = ({ training, isOpen, setModalIsOpen }) => {
   return (
     <section className={`modal ${!isOpen && "--hidden"}`}>
       <div className="modal__container --endtraining">
         <div className="modal__header">
           <button
             className="readtraining__close training__button --xl"
-            onClick={() => setIsOpen(false)}
+            onClick={() => setModalIsOpen(false)}
           >
             <i className="fas fa-times"></i>
           </button>
@@ -23,10 +20,10 @@ const RecapTrainingModale = ({ training }) => {
           </div>
         </div>
 
-        <ExoTab trainingRecord={training} />
+        <RecapExoTab training={training} />
       </div>
     </section>
   );
 };
 
-export default RecapTrainingModale;
+export default RecapTrainingModal;

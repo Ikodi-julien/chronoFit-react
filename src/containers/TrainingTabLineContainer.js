@@ -7,7 +7,7 @@ const mapStateToProps = (state, { training }) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  displayTrainingDetails: () => dispatch(displayTrainingDetails()),
+  displayTrainingDetails: (id) => dispatch(displayTrainingDetails(id)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(TrainingTabLine);

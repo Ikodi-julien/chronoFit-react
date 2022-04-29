@@ -2,8 +2,8 @@ import { connect } from "react-redux";
 import RecapTrainingsView from "../components/RecapTrainingsView/RecapTrainingsView";
 import { getTrainingsDone } from "../actions/trainingAjaxActions";
 
-const mapStateToProps = ({ apiTraining }) => ({
-  recapTrainings: apiTraining.recapTrainings,
+const mapStateToProps = ({ recapTrainings }) => ({
+  trainings: recapTrainings.trainings,
 });
 
 const mapDispatchToProps = (dispatch) => ({
