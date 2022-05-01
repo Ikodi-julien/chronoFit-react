@@ -8,6 +8,7 @@ import { SET_TRAININGS_DONE } from "../actions/trainingAjaxActions";
 const initialState = {
   recapTrainingModalIsOpen: false,
   trainings: [],
+  shownTrainings: [],
   sortDateDesc: true,
   sortNameDesc: true,
   currentTraining: {
@@ -50,6 +51,7 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         trainings: action.value,
+        shownTrainings: action.value,
       };
 
     case DISPLAY_TRAINING_DETAILS:
@@ -69,14 +71,13 @@ const reducer = (state = initialState, action = {}) => {
       };
 
     case SORT_TRAINING_TAB:
-      // console.log("sort table", action.value);
       let { trainings, sortDateDesc, sortNameDesc } = state;
-      // console.log("trainings", trainings);
-      let sortedTrainings = [];
+      let shownTrainings = [];
+      const sortByKey = (key) => (a, b) => a[key] > b[key] ? 1 : -1;
 
+      // Utilise slice() pour faire une copie du state et ne pas le modifier directement
       if (action.value === "date") {
-        // Utilise slice() pour faire une copie du state et ne pas le modifier directement
-        sortedTrainings = trainings.slice().sort(function (a, b) {
+        shownTrainings = trainings.slice().sort(function (a, b) {
           const keyA = new Date(a.created_at),
             keyB = new Date(b.created_at);
           // Compare the 2 dates
@@ -85,26 +86,40 @@ const reducer = (state = initialState, action = {}) => {
           return 0;
         });
         if (!sortDateDesc) {
-          sortedTrainings = sortedTrainings.reverse();
+          shownTrainings = shownTrainings.reverse();
         }
         sortDateDesc = !sortDateDesc;
       }
+
       if (action.value === "name") {
-        // Utilise slice() pour faire une copie du state et ne pas le modifier directement
-        const sortByKey = (key) => (a, b) => a[key] > b[key] ? 1 : -1;
-        sortedTrainings = trainings.slice().sort(sortByKey("name"));
-
-        console.log("sortedTrainings", sortedTrainings);
-
+        shownTrainings = trainings.slice().sort(sortByKey("name"));
         if (sortNameDesc) {
-          sortedTrainings = sortedTrainings.reverse();
+          shownTrainings = shownTrainings.reverse();
         }
         sortNameDesc = !sortNameDesc;
       }
 
+      if (
+        ["FOR TIME", "EMOM", "AMRAP", "MAX REPS", "none"].includes(action.value)
+      ) {
+        console.log("value", action.value);
+        if (action.value === "none") {
+          return {
+            ...state,
+            shownTrainings: state.trainings,
+          };
+        } else {
+          shownTrainings = state.trainings
+            .slice()
+            .sort(sortByKey("date"))
+            .reverse()
+            .filter((training) => training.type === action.value);
+        }
+      }
+
       return {
         ...state,
-        trainings: sortedTrainings,
+        shownTrainings,
         sortDateDesc,
         sortNameDesc,
       };

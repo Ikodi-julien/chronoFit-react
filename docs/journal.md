@@ -4,13 +4,15 @@
 
 - Ajouter tri par date -> ok
 - Ajouter tri par nom -> ok
+- Fix affichage Landing après click sur chrono sans entrainement sélectionné -> ok, ct une mauvaise url dans CTMOptions.js
 - Ajouter le type de training :
   - A la création -> ok
   ```javascript
   ["FOR TIME", "EMOM", "AMRAP", "MAX REPS"];
   ```
-  - A l'écriture en BdD ->
-  - Affichage dans le tableau ->
+  - Affichage à la fin de l'entrainement -> ok
+  - A l'écriture en BdD -> ok
+  - Affichage dans le tableau récap ->
 - Ajouter tri par type ->
 
 Prochaines étapes :

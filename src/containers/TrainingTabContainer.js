@@ -3,7 +3,7 @@ import TrainingTab from "../components/TrainingTab/TrainingTab";
 import { sortTrainingTab } from "../actions/recapTrainingsActions";
 
 const mapStateToProps = ({ recapTrainings }) => ({
-  trainings: recapTrainings.trainings,
+  trainings: recapTrainings.shownTrainings,
 });
 
 const mapDispatchToProps = (dispatch) => ({
