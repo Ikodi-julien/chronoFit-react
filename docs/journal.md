@@ -2,10 +2,13 @@
 
 ### 01/05/2022
 
-- Ajouter tri par date ->
-- Ajouter tri par nom ->
+- Ajouter tri par date -> ok
+- Ajouter tri par nom -> ok
 - Ajouter le type de training :
   - A la création ->
+  ```javascript
+  ["FOR TIME", "EMOM", "AMRAP", "MAX REPS"];
+  ```
   - A la récupération ->
   - Affichage dans le tableau ->
 - Ajouter tri par type ->

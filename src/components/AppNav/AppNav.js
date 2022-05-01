@@ -55,7 +55,7 @@ const AppNav = () => {
             Les Girls
           </NavLink>
           <NavLink
-            to="/entrainements"
+            to="/entrainement"
             className="appnav__links__link"
             onClick={() => setNavMenuIsOpen(false)}
           >

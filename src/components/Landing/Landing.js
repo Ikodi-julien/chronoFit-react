@@ -9,13 +9,13 @@ const Landing = (props) => (
     <h1 className="landing__title">CHRONOFIT</h1>
     <div className="landing__links">
       <Link className="landing__button" to="/girls">
-        Les Girls
+        Les Girls - WODs tout fait
       </Link>
       <Link className="landing__button" to="/entrainement">
-        Entrainement
+        WODs persos et création
       </Link>
       <Link className="landing__button" to="/recap_entrainements">
-        Récap entrainements
+        Historique
       </Link>
     </div>
     <div className="landing__video">
