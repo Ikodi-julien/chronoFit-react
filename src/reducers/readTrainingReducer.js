@@ -31,7 +31,7 @@ const initialState = {
   // TraingDetails
   trainingDetails: {
     name: "",
-    type: "à gérer",
+    type: "",
     duration: "",
     roundIndex: "",
     roundCount: "",
@@ -98,6 +98,7 @@ const reducer = (state = initialState, action = {}) => {
         trainingDetails: {
           ...state.trainingDetails,
           name: action.trainingDetails.name,
+          type: action.trainingDetails.type,
           duration: action.trainingDetails.duration,
           timecap: action.trainingDetails.timecap,
         },

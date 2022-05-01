@@ -42,7 +42,7 @@ export default (store) => (next) => async (action) => {
           duration: trainingServices.getTrainingDuration(localTraining),
           timecap: localTraining.timecap * 60,
         };
-        action.viewOrigin = "/custom_training";
+        action.viewOrigin = "/entrainement";
         action.timeline = trainingServices.getTimeLine(localTraining);
       }
 

@@ -5,11 +5,11 @@
 - Ajouter tri par date -> ok
 - Ajouter tri par nom -> ok
 - Ajouter le type de training :
-  - A la création ->
+  - A la création -> ok
   ```javascript
   ["FOR TIME", "EMOM", "AMRAP", "MAX REPS"];
   ```
-  - A la récupération ->
+  - A l'écriture en BdD ->
   - Affichage dans le tableau ->
 - Ajouter tri par type ->
 

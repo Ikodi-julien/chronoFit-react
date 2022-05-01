@@ -317,7 +317,10 @@ const reducer = (state = initialState, action = {}) => {
     case SET_TRAINING_TYPE:
       return {
         ...state,
-        type: action.value,
+        localTraining: {
+          ...state.localTraining,
+          type: action.value,
+        },
       };
 
     case SHOW_EXO_FORM:
