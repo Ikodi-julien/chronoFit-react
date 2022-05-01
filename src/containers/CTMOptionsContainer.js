@@ -6,6 +6,7 @@ import { setTimecap, setTrainingType } from "../actions/trainingLocalActions";
 const mapStateToProps = ({ localTraining }) => ({
   training: localTraining.localTraining,
   timecapValue: localTraining.localTraining.timecap,
+  typeValue: localTraining.localTraining.type,
 });
 
 const mapDispatchToProps = (dispatch) => ({

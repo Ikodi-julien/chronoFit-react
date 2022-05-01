@@ -91,6 +91,7 @@ const reducer = (state = initialState, action = {}) => {
 
   switch (action.type) {
     case SET_READ_TRAINING:
+      // Passe par un MW avant...
       return {
         ...state,
         viewOrigin: action.viewOrigin,
@@ -98,9 +99,9 @@ const reducer = (state = initialState, action = {}) => {
         trainingDetails: {
           ...state.trainingDetails,
           name: action.trainingDetails.name,
-          type: action.trainingDetails.type,
           duration: action.trainingDetails.duration,
           timecap: action.trainingDetails.timecap,
+          type: action.trainingDetails.type,
         },
         globalCountdown: {
           ...state.globalCountdown,

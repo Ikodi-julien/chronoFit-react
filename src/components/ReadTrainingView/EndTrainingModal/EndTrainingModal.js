@@ -7,8 +7,7 @@ import ConfirmModal from "../../ConfirmModal/ConfirmModal";
 const EndTrainingModal = ({
   trainingDuration,
   trainingName,
-  actionToDispatch,
-  viewOrigin,
+  trainingType,
   trainingRecord,
   setValue,
   resetRecordTraining,
@@ -32,6 +31,7 @@ const EndTrainingModal = ({
           <div className="modal__text">
             <h1>Entrainement terminé</h1>
             <h2>{trainingName}</h2>
+            <h3>{trainingType}</h3>
             <p>Durée : {trainingServices.formatSeconds(trainingDuration)}</p>
           </div>
           <div className="--row">

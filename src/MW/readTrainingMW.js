@@ -41,6 +41,7 @@ export default (store) => (next) => async (action) => {
           name: localTraining.name,
           duration: trainingServices.getTrainingDuration(localTraining),
           timecap: localTraining.timecap * 60,
+          type: localTraining.type,
         };
         action.viewOrigin = "/entrainement";
         action.timeline = trainingServices.getTimeLine(localTraining);

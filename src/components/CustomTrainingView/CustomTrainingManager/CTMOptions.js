@@ -8,6 +8,7 @@ export default ({
   setTimecap,
   timecapValue,
   setType,
+  typeValue,
   setReadTraining,
 }) => {
   const timeInSec = trainingServices.getTrainingDuration(training);
@@ -17,7 +18,11 @@ export default ({
     <div className="trainingmanager__options">
       <div className="trainingmanager__options__row">
         <label>Type :</label>
-        <select name="type" onChange={(evt) => setType(evt.target.value)}>
+        <select
+          name="type"
+          onChange={(evt) => setType(evt.target.value)}
+          value={typeValue}
+        >
           <option value="">Choix du type</option>
           <option value="FOR TIME">FOR TIME</option>
           <option value="EMOM">EMOM</option>

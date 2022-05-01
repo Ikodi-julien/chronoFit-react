@@ -14,8 +14,7 @@ const mapStateToProps = (
   trainingRecord: readTraining.trainingRecord,
   trainingDuration: readTraining.globalChrono.currentTime,
   trainingName: readTraining.trainingDetails.name,
-  actionToDispatch,
-  viewOrigin,
+  trainingType: readTraining.trainingDetails.type,
 });
 
 const mapDispatchToProps = (dispatch) => ({
