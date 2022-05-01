@@ -14,7 +14,7 @@ const ExoTab = ({ training, setValue, isModif }) => {
         </tr>
       </thead>
       <tbody>
-        {training.exos.map((exo, index) => {
+        {training.map((exo, index) => {
           return (
             <ExoTabLineContainer
               key={index}

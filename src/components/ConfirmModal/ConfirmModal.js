@@ -1,5 +1,3 @@
-import "../../styles/modal.scss";
-
 const ConfirmModal = ({ text, isOpen, setIsOpen, actionToDispatch }) => {
   return (
     <section className={isOpen ? "modal" : "modal --hidden"}>

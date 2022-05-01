@@ -1,0 +1,31 @@
+@use "vars" as v;
+
+th,
+td {
+  border: 1px solid v.$base-color;
+  padding: 0.2rem;
+  font-size: small;
+}
+tbody > th,
+td {
+  & input {
+    max-width: 3rem;
+  }
+  & i {
+    position: relative;
+    transform: translate(-50%);
+    left: 50%;
+  }
+}
+thead > tr > th {
+  font-size: 1.1rem;
+  padding: 1rem 0.5rem;
+  & i {
+    padding: 0 1rem;
+  }
+}
+thead,
+tfoot {
+  background-color: v.$base-color;
+  color: v.$color-very-light;
+}

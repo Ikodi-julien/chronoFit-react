@@ -1,6 +1,5 @@
 import trainingServices from "../../../services/training";
 import RecapExoTab from "../../RecapExoTab/RecapExoTab";
-import "../../../styles/modal.scss";
 
 const RecapTrainingModal = ({ training, isOpen, setModalIsOpen }) => {
   return (

@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 import AppNav from "../AppNav/AppNav";
 import RecapTrainingModalContainer from "../../containers/RecapTrainingModalContainer";
-import TrainingTab from "../TrainingTab/TrainingTab";
+import TrainingTabContainer from "../../containers/TrainingTabContainer";
 
-const RecapTrainingsView = ({ trainings, getTrainingsDone }) => {
+const RecapTrainingsView = ({ getTrainingsDone }) => {
   // eslint-disable-next-line
   useEffect(() => getTrainingsDone(), []);
 
@@ -12,7 +12,7 @@ const RecapTrainingsView = ({ trainings, getTrainingsDone }) => {
       <AppNav />
       {/* // TODO ajouter possibilité d'affichage entre deux dates */}
       <RecapTrainingModalContainer />
-      <TrainingTab trainings={trainings} />
+      <TrainingTabContainer />
     </section>
   );
 };

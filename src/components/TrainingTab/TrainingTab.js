@@ -1,13 +1,22 @@
 import TrainingTabLineContainer from "../../containers/TrainingTabLineContainer";
-// import fakeTrainings from "./fakeTrainings";
 
-const TrainingTab = ({ trainings }) => {
+const TrainingTab = ({ trainings, sortTrainingTab }) => {
   return (
     <table>
       <thead>
         <tr>
-          <th>Date</th>
-          <th>Nom</th>
+          <th
+            onClick={() => sortTrainingTab("date")}
+            style={{ cursor: "pointer" }}
+          >
+            Date <i className="fas fa-sort"></i>
+          </th>
+          <th
+            onClick={() => sortTrainingTab("name")}
+            style={{ cursor: "pointer" }}
+          >
+            Nom <i className="fas fa-sort"></i>
+          </th>
           <th>Détails</th>
         </tr>
       </thead>

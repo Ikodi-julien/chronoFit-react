@@ -3,7 +3,6 @@ import { useHistory } from "react-router";
 import trainingServices from "../../../services/training";
 import ExoTab from "../../../components/ExoTab/ExoTab";
 import ConfirmModal from "../../ConfirmModal/ConfirmModal";
-import "../../../styles/modal.scss";
 
 const EndTrainingModal = ({
   trainingDuration,
@@ -80,7 +79,7 @@ const EndTrainingModal = ({
         </div>
 
         <ExoTab
-          trainingRecord={trainingRecord}
+          training={trainingRecord}
           setValue={setValue}
           isModif={isModif}
         />
