@@ -1,4 +1,3 @@
-import Landing from "../Landing/Landing";
 import GirlViewContainer from "../../containers/GirlViewContainer";
 import CustomTrainingView from "../../containers/CustomTrainingViewContainer";
 import ReadTrainingContainer from "../../containers/ReadTrainingContainer";
@@ -8,6 +7,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import "./app.scss";
 import RecapTrainingsContainer from "../../containers/RecapTrainingsContainer";
+import LandingContainer from "../../containers/LandingContainer";
 
 function App() {
   return (
@@ -36,7 +36,7 @@ function App() {
           {/* /stats : StatsView stats et graphs, */}
           {/* /diary : DiaryView, calendrier entrainements */}
           <Route path="/">
-            <Landing />
+            <LandingContainer />
           </Route>
         </Switch>
       </div>

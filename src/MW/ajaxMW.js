@@ -1,7 +1,7 @@
 /* eslint-disable import/no-anonymous-default-export */
 import axios from "axios";
 
-import { URL } from "../settings";
+import { APP_URL } from "../settings";
 
 import {
   GET_TRAININGS_DONE,
@@ -32,7 +32,7 @@ export default (store) => (next) => (action) => {
     case GET_TRAININGS_DONE:
       next(action);
       axios
-        .get(`${URL}/chronofit/trainings-done`)
+        .get(`${APP_URL}/chronofit/trainings-done`)
         .then((res) => {
           console.log(res.data);
           store.dispatch(setTrainingsDone(res.data));
@@ -43,7 +43,7 @@ export default (store) => (next) => (action) => {
     case GET_GIRLS:
       next(action);
       axios
-        .get(`${URL}/girls`)
+        .get(`${APP_URL}/girls`)
         .then((res) => store.dispatch(getGirlsSuccess(res.data)))
         .catch((err) => {
           store.dispatch(gotError(errorMsg));
@@ -53,7 +53,7 @@ export default (store) => (next) => (action) => {
     case GET_ONE_GIRL:
       next(action);
       axios
-        .get(`${URL}/girl/${action.value}`)
+        .get(`${APP_URL}/girl/${action.value}`)
         .then((res) => {
           store.dispatch(getCurrentTrainingSuccess(res.data));
           store.dispatch(setReadTraining("girl"));
@@ -68,7 +68,7 @@ export default (store) => (next) => (action) => {
       const training = { ...trainingDetails, exos: trainingRecord };
       console.log(training);
       axios
-        .post(`${URL}/chronofit/new-training`, {
+        .post(`${APP_URL}/chronofit/new-training`, {
           ...training,
         })
         .then((res) => console.log(res.data))

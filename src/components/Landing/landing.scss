@@ -1,4 +1,4 @@
-@use 'src/styles/vars'as v;
+@use "src/styles/vars" as v;
 
 .landing {
   &__container {
@@ -9,25 +9,20 @@
     justify-content: space-between;
   }
 
+  &__header {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    border-top: 1px solid v.$base-color;
+    border-bottom: 1px solid v.$base-color;
+    margin: 50px 0;
+    align-items: center;
+  }
   &__title {
     font-size: 2.5em;
     padding: v.$gutter;
     color: v.$base-color;
     text-align: center;
-    margin-bottom: 60px;
-  }
-
-  &__button {
-    display: block;
-    width: 60%;
-    margin: auto;
-    margin-bottom: 10px;
-    background-color: v.$base-color;
-    color: v.$color-very-light;
-    font-size: large;
-    padding: v.$gutter;
-    border: none;
-    border-radius: v.$border-radius;
   }
 
   &__links {

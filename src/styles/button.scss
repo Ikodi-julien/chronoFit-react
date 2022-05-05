@@ -1,0 +1,23 @@
+.landing__button {
+  display: block;
+  width: 60%;
+  margin: auto;
+  margin-bottom: 10px;
+  background-color: v.$base-color;
+  color: v.$color-very-light;
+  font-size: large;
+  padding: v.$gutter;
+  border: none;
+  border-radius: v.$border-radius;
+}
+
+.header__button {
+  display: block;
+  width: fit-content;
+  background-color: v.$color-very-light;
+  color: v.$base-color;
+  font-size: large;
+  padding: v.$gutter;
+  border-left: 1px solid v.$base-color;
+  // border-radius: v.$border-radius;
+}
