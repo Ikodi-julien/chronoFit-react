@@ -5,16 +5,20 @@ import { AUTH_URL } from "../../settings";
 import { useEffect } from "react";
 import "./landing.scss";
 
-const Landing = ({ getMe, isUserLoggued }) => {
+const Landing = ({ getMe, isUserLoggued, logout }) => {
   useEffect(() => getMe());
   return (
     <section className="landing__container">
       <header className="landing__header">
         <h1 className="landing__title">CHRONOFIT</h1>
-        {!isUserLoggued && (
-          <a className="header__button" href={AUTH_URL}>
+        {!isUserLoggued ? (
+          <a className="header__button" href={`${AUTH_URL}/?app=chronofit`}>
             Connexion
           </a>
+        ) : (
+          <div className="header__button" onClick={() => logout()}>
+            Déconnexion
+          </div>
         )}
       </header>
 

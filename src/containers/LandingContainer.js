@@ -1,5 +1,5 @@
 import Landing from "../components/Landing/Landing";
-import { getMe } from "../actions/authActions";
+import { getMe, logout } from "../actions/authActions";
 import { connect } from "react-redux";
 
 const mapStateToProps = ({ auth }, ownProps) => ({
@@ -8,6 +8,7 @@ const mapStateToProps = ({ auth }, ownProps) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   getMe: () => dispatch(getMe()),
+  logout: () => dispatch(logout()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Landing);

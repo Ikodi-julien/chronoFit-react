@@ -1,5 +1,22 @@
 # JOURNAL CHRONOFIT-REACT
 
+### 07/05/2022
+
+- retour auto à chronofit après identification ok ->
+- retour auto à chronofit après création d'un compte ->
+
+Prochaines étapes :
+
+- Mettre une authentification par token en lien avec auth.ikodi.eu :
+  - Affichage bouton connexion pour sauv. / Enregistrer selon state.isUserLoggued ->
+  - Modification queries pour utiliser l'id du user loggué à l'insert BdD ->
+  - Affichage confirmation ou erreur après insert (alert ?)->
+  - Deploy version béta ->
+- Réaliser et relier les autres vues:
+  - StatsView : Stats et graphs,
+  - (pas MVP) DiaryView : calendrier en lien avec le ou les entrainements réalisés.
+- Gérer les améliorations listées dans le repo github,
+
 ### 05/05/2022
 
 - Mettre une authentification par token en lien avec auth.ikodi.eu :
@@ -15,20 +32,6 @@
       }
   ```
   - Affichage bouton connexion / déconnexion selon state.isUserLoggued -> ok
-  -
-
-Prochaines étapes :
-
-- Mettre une authentification par token en lien avec auth.ikodi.eu :
-  - retour auto à chronofit après identification ok ->
-  - retour auto à chronofit après création d'un compte ->
-  - Affichage bouton connexion pour sauv. / Enregistrer selon state.isUserLoggued ->
-  - Modification queries pour utiliser l'id du user loggué à l'insert BdD ->
-  - Affichage confirmation ou erreur après insert (alert ?)->
-- Réaliser et relier les autres vues:
-  - StatsView : Stats et graphs,
-  - (pas MVP) DiaryView : calendrier en lien avec le ou les entrainements réalisés.
-- Gérer les améliorations listées dans le repo github,
 
 ### 01/05/2022
 
