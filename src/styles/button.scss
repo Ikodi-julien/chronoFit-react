@@ -10,6 +10,64 @@
   border: none;
   border-radius: v.$border-radius;
 }
+.training__button {
+  /* for all buttons in /training view */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  border-radius: v.$border-radius;
+  background-color: v.$base-color;
+  color: v.$color-very-light;
+  padding: 10px;
+  margin: 4px;
+
+  &.--border {
+    border: 1px solid v.$base-color;
+  }
+
+  &.--transparent {
+    background-color: transparent;
+    color: v.$base-color;
+  }
+
+  &.--white {
+    background-color: v.$color-very-light;
+    color: v.$base-color;
+  }
+
+  &.--icone {
+    font-size: v.$fs-button-icone;
+    width: 44px;
+    height: 44px;
+  }
+
+  &.--caretopen {
+    transform: rotate(90deg);
+  }
+
+  &.--l,
+  & .--l {
+    font-size: v.$fs-button-icone-l;
+  }
+
+  &.--xl,
+  & .--xl {
+    font-size: v.$fs-button-icone-xl;
+  }
+
+  &.--xxl {
+    font-size: v.$fs-button-icone-xl * 1.2;
+  }
+
+  &.--rotate {
+    transform: rotate(90deg);
+  }
+
+  & .--padded {
+    padding: 0 20px;
+  }
+}
 
 .header__button {
   display: block;
@@ -17,7 +75,8 @@
   background-color: v.$color-very-light;
   color: v.$base-color;
   font-size: large;
-  padding: v.$gutter;
+  padding: v.$gutter/2;
   border-left: 1px solid v.$base-color;
+  cursor: pointer;
   // border-radius: v.$border-radius;
 }

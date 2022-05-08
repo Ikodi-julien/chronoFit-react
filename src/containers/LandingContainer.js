@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 
 const mapStateToProps = ({ auth }, ownProps) => ({
   isUserLoggued: auth.isUserLoggued,
+  nickname: auth.nickname,
 });
 
 const mapDispatchToProps = (dispatch) => ({
