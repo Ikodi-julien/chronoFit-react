@@ -2,11 +2,11 @@ import { useHistory } from "react-router";
 
 const EndTrainingControls = ({
   resetRecordTraining,
-  setIsModaleOpen,
   setIsOpen,
   isModif,
   setIsModif,
   resetAll,
+  postNewTraining,
 }) => {
   const history = useHistory();
   return (
@@ -34,7 +34,12 @@ const EndTrainingControls = ({
       <div className="modal__quit">
         <button
           className="training__button"
-          onClick={() => setIsModaleOpen(true)}
+          onClick={() => {
+            setIsOpen(false);
+            postNewTraining();
+            resetAll();
+            history.push("/");
+          }}
         >
           Enregistrer
         </button>

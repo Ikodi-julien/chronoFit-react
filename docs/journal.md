@@ -5,11 +5,18 @@
 Affichage button historique sur landing fonction de connexion -> ok
 Affichage info "connecté" sur Landing -> ok
 Affichage controles sur EndTrainingModal selon state.isUserLoggued -> ok
+Modification queries, utiliser l'id du user loggué en READ -> ok
+Modification queries, utiliser l'id du user loggué en WRITE -> ok
+Affichage confirmation ou erreur après insert (alert ?)-> ok
+Retour accueil après enregistrement training -> ok
+Faire DELETE depuis récap trainings:
+
+- Bouton ->
+- Action, MW ->
+  Deploy version ->
 
 Prochaines étapes :
 
-- Modification queries pour utiliser l'id du user loggué à l'insert BdD ->
-- Affichage confirmation ou erreur après insert (alert ?)->
 - Réaliser et relier les autres vues:
   - StatsView : Stats et graphs,
   - (pas MVP) DiaryView : calendrier en lien avec le ou les entrainements réalisés.

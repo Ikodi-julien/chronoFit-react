@@ -32,7 +32,7 @@ export default (store) => (next) => (action) => {
     case GET_TRAININGS_DONE:
       next(action);
       axios
-        .get(`${APP_URL}/chronofit/trainings-done`)
+        .get(`${APP_URL}/chronofit/trainings-done`, { withCredentials: true })
         .then((res) => {
           console.log(res.data);
           store.dispatch(setTrainingsDone(res.data));
@@ -68,13 +68,19 @@ export default (store) => (next) => (action) => {
       const training = { ...trainingDetails, exos: trainingRecord };
       console.log(training);
       axios
-        .post(`${APP_URL}/chronofit/new-training`, {
-          ...training,
+        .post(
+          `${APP_URL}/chronofit/new-training`,
+          {
+            ...training,
+          },
+          { withCredentials: true }
+        )
+        .then((res) => {
+          // console.log(res.data);
+          window.alert("C'est enregistré !");
         })
-        .then((res) => console.log(res.data))
         .catch((error) => {
           store.dispatch(gotError(errorMsg));
-          console.log(error);
         });
 
       next(action);
