@@ -1,7 +1,7 @@
 /* eslint-disable import/no-anonymous-default-export */
 import axios from "axios";
 
-import { APP_URL } from "../settings";
+import { API_URL, AUTH_URL } from "../settings";
 
 import {
   GET_TRAININGS_DONE,
@@ -34,7 +34,7 @@ export default (store) => (next) => (action) => {
     case GET_TRAININGS_DONE:
       next(action);
       axios
-        .get(`${APP_URL}/chronofit/trainings-done`, { withCredentials: true })
+        .get(`${AUTH_URL}/chronofit/trainings-done`, { withCredentials: true })
         .then((res) => {
           console.log(res.data);
           store.dispatch(setTrainingsDone(res.data));
@@ -45,7 +45,7 @@ export default (store) => (next) => (action) => {
     case GET_GIRLS:
       next(action);
       axios
-        .get(`${APP_URL}/girls`)
+        .get(`${API_URL}/girls`)
         .then((res) => store.dispatch(getGirlsSuccess(res.data)))
         .catch((err) => {
           store.dispatch(gotError(errorMsg));
@@ -55,7 +55,7 @@ export default (store) => (next) => (action) => {
     case GET_ONE_GIRL:
       next(action);
       axios
-        .get(`${APP_URL}/girl/${action.value}`)
+        .get(`${API_URL}/girl/${action.value}`)
         .then((res) => {
           store.dispatch(getCurrentTrainingSuccess(res.data));
           store.dispatch(setReadTraining("girl"));
@@ -71,7 +71,7 @@ export default (store) => (next) => (action) => {
       console.log(training);
       axios
         .post(
-          `${APP_URL}/chronofit/new-training`,
+          `${AUTH_URL}/chronofit/new-training`,
           {
             ...training,
           },
@@ -91,7 +91,7 @@ export default (store) => (next) => (action) => {
     case DELETE_TRAINING:
       console.log("DELETE_TRAINING", action.value);
       axios
-        .delete(`${APP_URL}/chronofit/training/${action.value}`, {
+        .delete(`${AUTH_URL}/chronofit/training/${action.value}`, {
           withCredentials: true,
         })
         .then((res) => {
