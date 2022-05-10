@@ -16,8 +16,9 @@ const TrainingTab = ({ trainings, sortTrainingTab, typeValue }) => {
               name="type"
               onChange={(evt) => sortTrainingTab(evt.target.value)}
               value={typeValue}
+              style={{ width: "4rem" }}
             >
-              <option value="none">Choix du type</option>
+              <option value="none">TOUS</option>
               <option value="FOR TIME">FOR TIME</option>
               <option value="EMOM">EMOM</option>
               <option value="AMRAP">AMRAP</option>

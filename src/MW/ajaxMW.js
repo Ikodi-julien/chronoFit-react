@@ -12,11 +12,13 @@ import {
   getGirlsSuccess,
   GET_ONE_GIRL,
   gotError,
+  getTrainingsDone,
 } from "../actions/trainingAjaxActions";
 import {
   setReadTraining,
   POST_NEW_TRAINING,
 } from "../actions/readTrainingActions";
+import { DELETE_TRAINING } from "../actions/recapTrainingsActions";
 
 export default (store) => (next) => (action) => {
   const errorMsg = (
@@ -78,6 +80,25 @@ export default (store) => (next) => (action) => {
         .then((res) => {
           // console.log(res.data);
           window.alert("C'est enregistré !");
+        })
+        .catch((error) => {
+          store.dispatch(gotError(errorMsg));
+        });
+
+      next(action);
+      break;
+
+    case DELETE_TRAINING:
+      console.log("DELETE_TRAINING", action.value);
+      axios
+        .delete(`${APP_URL}/chronofit/training/${action.value}`, {
+          withCredentials: true,
+        })
+        .then((res) => {
+          // console.log(res.data);
+          res.data
+            ? store.dispatch(getTrainingsDone())
+            : store.dispatch(gotError(errorMsg));
         })
         .catch((error) => {
           store.dispatch(gotError(errorMsg));

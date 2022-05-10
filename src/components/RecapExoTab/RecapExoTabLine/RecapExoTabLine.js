@@ -1,4 +1,4 @@
-const RecapExoTabLine = ({ index, exo }) => {
+const RecapExoTabLine = ({ exo }) => {
   return (
     <tr>
       <td>{exo.name}</td>

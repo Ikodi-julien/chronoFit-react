@@ -1,5 +1,17 @@
 # JOURNAL CHRONOFIT-REACT
 
+### 10/05/2022
+
+Route api -> ok (delete /chronofit/training/:id)
+Deploy version ->
+
+Prochaines étapes :
+
+- Réaliser et relier les autres vues:
+  - StatsView : Stats et graphs,
+  - (pas MVP) DiaryView : calendrier en lien avec le ou les entrainements réalisés.
+- Gérer les améliorations listées dans le repo github,
+
 ### 08/05/2022
 
 Affichage button historique sur landing fonction de connexion -> ok
@@ -11,16 +23,8 @@ Affichage confirmation ou erreur après insert (alert ?)-> ok
 Retour accueil après enregistrement training -> ok
 Faire DELETE depuis récap trainings:
 
-- Bouton ->
-- Action, MW ->
-  Deploy version ->
-
-Prochaines étapes :
-
-- Réaliser et relier les autres vues:
-  - StatsView : Stats et graphs,
-  - (pas MVP) DiaryView : calendrier en lien avec le ou les entrainements réalisés.
-- Gérer les améliorations listées dans le repo github,
+- Bouton -> ok
+- Action, MW -> ok
 
 ### 07/05/2022
 
