@@ -9,18 +9,28 @@
     justify-content: space-between;
   }
 
-  &__header {
+  &__row {
     width: 100%;
     display: flex;
+    display: flex;
     justify-content: space-around;
+    align-items: center;
+  }
+  &__header {
+    width: 100%;
     border-top: 1px solid v.$base-color;
     border-bottom: 1px solid v.$base-color;
-    margin: 50px 0;
-    align-items: center;
+    margin: v.$gutter 0;
+    text-align: right;
+  }
+  &__connected {
+    padding: 8px;
+    background-color: v.$base-color;
+    color: v.$color-very-light;
   }
   &__title {
     font-size: 2.5em;
-    padding: v.$gutter;
+    padding: v.$gutter/2;
     color: v.$base-color;
     text-align: center;
   }

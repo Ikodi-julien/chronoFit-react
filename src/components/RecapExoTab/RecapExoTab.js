@@ -10,12 +10,11 @@ const RecapExoTab = ({ training, isModif }) => {
           <th>Temps</th>
           <th>Reps</th>
           <th>Poids</th>
-          {isModif && <th>Suppr.</th>}
         </tr>
       </thead>
       <tbody>
         {training.exos.map((exo, index) => {
-          return <RecapExoTabLine key={index} index={index} exo={exo} />;
+          return <RecapExoTabLine key={index} exo={exo} />;
         })}
       </tbody>
     </table>

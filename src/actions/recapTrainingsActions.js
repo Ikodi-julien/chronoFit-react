@@ -13,3 +13,5 @@ export const sortTrainingTab = (value) => ({
   value,
 });
 export const SORT_TRAINING_TAB = "SORT_TRAINING_TAB";
+export const DELETE_TRAINING = "DELETE_TRAINING";
+export const deleteTraining = (id) => ({ type: DELETE_TRAINING, value: id });

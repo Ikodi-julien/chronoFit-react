@@ -1,10 +1,9 @@
 # JOURNAL CHRONOFIT-REACT
 
-### 08/05/2022
+### 10/05/2022
 
-Affichage bouton connexion pour sauv. / Enregistrer selon state.isUserLoggued ->
-Modification queries pour utiliser l'id du user loggué à l'insert BdD ->
-Affichage confirmation ou erreur après insert (alert ?)->
+Route api -> ok (delete /chronofit/training/:id)
+Deploy version ->
 
 Prochaines étapes :
 
@@ -13,10 +12,25 @@ Prochaines étapes :
   - (pas MVP) DiaryView : calendrier en lien avec le ou les entrainements réalisés.
 - Gérer les améliorations listées dans le repo github,
 
+### 08/05/2022
+
+Affichage button historique sur landing fonction de connexion -> ok
+Affichage info "connecté" sur Landing -> ok
+Affichage controles sur EndTrainingModal selon state.isUserLoggued -> ok
+Modification queries, utiliser l'id du user loggué en READ -> ok
+Modification queries, utiliser l'id du user loggué en WRITE -> ok
+Affichage confirmation ou erreur après insert (alert ?)-> ok
+Retour accueil après enregistrement training -> ok
+Faire DELETE depuis récap trainings:
+
+- Bouton -> ok
+- Action, MW -> ok
+
 ### 07/05/2022
 
-- retour auto à chronofit après identification ok -> ok
-- Deploy version -> ok
+retour auto à chronofit après identification ok -> ok
+retour auto à chronofit après création d'un compte -> ok
+Deploy version -> ok
 
 ### 05/05/2022
 

@@ -12,11 +12,13 @@ import {
   getGirlsSuccess,
   GET_ONE_GIRL,
   gotError,
+  getTrainingsDone,
 } from "../actions/trainingAjaxActions";
 import {
   setReadTraining,
   POST_NEW_TRAINING,
 } from "../actions/readTrainingActions";
+import { DELETE_TRAINING } from "../actions/recapTrainingsActions";
 
 export default (store) => (next) => (action) => {
   const errorMsg = (
@@ -32,7 +34,7 @@ export default (store) => (next) => (action) => {
     case GET_TRAININGS_DONE:
       next(action);
       axios
-        .get(`${APP_URL}/chronofit/trainings-done`)
+        .get(`${APP_URL}/chronofit/trainings-done`, { withCredentials: true })
         .then((res) => {
           console.log(res.data);
           store.dispatch(setTrainingsDone(res.data));
@@ -68,13 +70,38 @@ export default (store) => (next) => (action) => {
       const training = { ...trainingDetails, exos: trainingRecord };
       console.log(training);
       axios
-        .post(`${APP_URL}/chronofit/new-training`, {
-          ...training,
+        .post(
+          `${APP_URL}/chronofit/new-training`,
+          {
+            ...training,
+          },
+          { withCredentials: true }
+        )
+        .then((res) => {
+          // console.log(res.data);
+          window.alert("C'est enregistré !");
         })
-        .then((res) => console.log(res.data))
         .catch((error) => {
           store.dispatch(gotError(errorMsg));
-          console.log(error);
+        });
+
+      next(action);
+      break;
+
+    case DELETE_TRAINING:
+      console.log("DELETE_TRAINING", action.value);
+      axios
+        .delete(`${APP_URL}/chronofit/training/${action.value}`, {
+          withCredentials: true,
+        })
+        .then((res) => {
+          // console.log(res.data);
+          res.data
+            ? store.dispatch(getTrainingsDone())
+            : store.dispatch(gotError(errorMsg));
+        })
+        .catch((error) => {
+          store.dispatch(gotError(errorMsg));
         });
 
       next(action);
