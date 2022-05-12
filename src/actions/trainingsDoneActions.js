@@ -15,3 +15,8 @@ export const sortTrainingTab = (value) => ({
 export const SORT_TRAINING_TAB = "SORT_TRAINING_TAB";
 export const DELETE_TRAINING = "DELETE_TRAINING";
 export const deleteTraining = (id) => ({ type: DELETE_TRAINING, value: id });
+export const MODIFY_TRAINING_DONE = "MODIFY_TRAINING_DONE";
+export const modifyTrainingDone = (bool) => ({
+  type: MODIFY_TRAINING_DONE,
+  value: bool,
+});

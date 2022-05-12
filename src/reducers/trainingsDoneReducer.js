@@ -1,8 +1,9 @@
 import {
   DISPLAY_TRAINING_DETAILS,
+  MODIFY_TRAINING_DONE,
   SET_TRAINING_MODAL_ISOPEN,
   SORT_TRAINING_TAB,
-} from "../actions/recapTrainingsActions";
+} from "../actions/trainingsDoneActions";
 import { SET_TRAININGS_DONE } from "../actions/trainingAjaxActions";
 
 const initialState = {
@@ -43,6 +44,7 @@ const initialState = {
     ],
     created_at: "2022-04-23T12:53:08.557Z",
   },
+  isModif: false,
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -124,6 +126,11 @@ const reducer = (state = initialState, action = {}) => {
         sortNameDesc,
       };
 
+    case MODIFY_TRAINING_DONE:
+      return {
+        ...state,
+        isModif: action.value,
+      };
     default:
       return state;
   }

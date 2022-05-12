@@ -6,7 +6,7 @@ import AppCommentContainer from "../../containers/AppCommentContainer";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import "./app.scss";
-import RecapTrainingsContainer from "../../containers/RecapTrainingsContainer";
+import TrainingsDoneContainer from "../../containers/TrainingsDoneContainer";
 import LandingContainer from "../../containers/LandingContainer";
 
 function App() {
@@ -28,7 +28,7 @@ function App() {
             <EndTrainingModalContainer />
           </Route>
           <Route path="/recap_entrainements">
-            <RecapTrainingsContainer />
+            <TrainingsDoneContainer />
           </Route>
           {/* /exercices pour voir les exos benchmarks proposés */}
           {/* /connexion pour les forms de connexion */}

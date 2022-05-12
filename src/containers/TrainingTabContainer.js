@@ -1,9 +1,9 @@
 import { connect } from "react-redux";
 import TrainingTab from "../components/TrainingTab/TrainingTab";
-import { sortTrainingTab } from "../actions/recapTrainingsActions";
+import { sortTrainingTab } from "../actions/trainingsDoneActions";
 
-const mapStateToProps = ({ recapTrainings }) => ({
-  trainings: recapTrainings.shownTrainings,
+const mapStateToProps = ({ trainingsDone }) => ({
+  trainings: trainingsDone.shownTrainings,
 });
 
 const mapDispatchToProps = (dispatch) => ({

@@ -1,16 +1,25 @@
 # JOURNAL CHRONOFIT-REACT
 
-### 10/05/2022
+### 12/05/2022
 
-Route api -> ok (delete /chronofit/training/:id)
-Deploy version ->
+Faire update depuis recap trainings:
+
+- Ajout bouton -> ok
+- Action/reducer pour modifier les champs -> ok
 
 Prochaines étapes :
 
+- Action / reducer pour lier les valeurs des champs ->
+- Upload du training modifié à la validation ->
 - Réaliser et relier les autres vues:
   - StatsView : Stats et graphs,
   - (pas MVP) DiaryView : calendrier en lien avec le ou les entrainements réalisés.
 - Gérer les améliorations listées dans le repo github,
+
+### 10/05/2022
+
+Route api -> ok (delete /chronofit/training/:id)
+Deploy version -> ok (FIX uRLs in setting.js)
 
 ### 08/05/2022
 

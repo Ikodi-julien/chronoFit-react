@@ -1,11 +1,13 @@
+import TrainingsDoneModalExoTabContainer from "../../../containers/TrainingsDoneModalExoTabContainer";
 import trainingServices from "../../../services/training";
-import RecapExoTab from "../../RecapExoTab/RecapExoTab";
 
-const RecapTrainingModal = ({
+const TrainingsDoneModal = ({
   training,
   isOpen,
   setModalIsOpen,
   deleteTraining,
+  modifyTrainingDone,
+  isModif,
 }) => {
   return (
     <section className={`modal ${!isOpen && "--hidden"}`}>
@@ -27,6 +29,16 @@ const RecapTrainingModal = ({
           <button
             className="training__button --l --transparent"
             onClick={() => {
+              isModif ? console.log("valider") : modifyTrainingDone(true);
+            }}
+          >
+            <i className="fas fa-pen" style={{ paddingRight: "10px" }}></i>
+            {isModif ? "Valider" : "Modifier"}
+          </button>
+
+          <button
+            className="training__button --l --transparent"
+            onClick={() => {
               if (window.confirm("Supprimer cet entraînement ?")) {
                 deleteTraining(training.id);
                 setModalIsOpen(false);
@@ -41,10 +53,10 @@ const RecapTrainingModal = ({
           </button>
         </div>
 
-        <RecapExoTab training={training} />
+        <TrainingsDoneModalExoTabContainer training={training} />
       </div>
     </section>
   );
 };
 
-export default RecapTrainingModal;
+export default TrainingsDoneModal;

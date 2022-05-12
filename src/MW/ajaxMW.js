@@ -18,7 +18,7 @@ import {
   setReadTraining,
   POST_NEW_TRAINING,
 } from "../actions/readTrainingActions";
-import { DELETE_TRAINING } from "../actions/recapTrainingsActions";
+import { DELETE_TRAINING } from "../actions/trainingsDoneActions";
 
 export default (store) => (next) => (action) => {
   const errorMsg = (
