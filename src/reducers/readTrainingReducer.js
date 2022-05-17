@@ -381,15 +381,20 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         trainingRecord,
+        render: state.render + 1,
       };
 
     case DELETE_EXO_FROM_END_TRAINING_RECAP:
       console.log(action);
-      const data = state.trainingRecord.filter(
-        (exo) => exo !== state.trainingRecord[action.value]
-      );
 
-      return { ...state, trainingRecord: data };
+      if (window.confirm("Supprimer la ligne sélectionnée ?")) {
+        const data = state.trainingRecord.filter(
+          (exo) => exo !== state.trainingRecord[action.value]
+        );
+
+        return { ...state, trainingRecord: data };
+      }
+      return { ...state };
 
     case RESET_TRAININGRECORD:
       return {

@@ -3,10 +3,12 @@ import {
   MODIFY_TRAINING_DONE,
   SET_TRAINING_MODAL_ISOPEN,
   SORT_TRAINING_TAB,
+  SET_TRAININGDONE_MODAL_VALUE,
 } from "../actions/trainingsDoneActions";
 import { SET_TRAININGS_DONE } from "../actions/trainingAjaxActions";
 
 const initialState = {
+  render: 0,
   recapTrainingModalIsOpen: false,
   trainings: [],
   shownTrainings: [],
@@ -131,6 +133,19 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         isModif: action.value,
       };
+
+    case SET_TRAININGDONE_MODAL_VALUE:
+      const { index, name, value } = action.value;
+      const { currentTraining } = state;
+      const exoToChange = currentTraining.exos[index];
+      const exoChanged = { ...exoToChange, [name]: value };
+      currentTraining.exos[index] = exoChanged;
+      return {
+        ...state,
+        currentTraining,
+        render: state.render + 1,
+      };
+
     default:
       return state;
   }

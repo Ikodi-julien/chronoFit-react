@@ -4,6 +4,7 @@ import {
   setRecapTraingModalIsOpen,
   deleteTraining,
   modifyTrainingDone,
+  setTrainingDoneModalValue,
 } from "../actions/trainingsDoneActions";
 
 const mapStateToProps = ({ trainingsDone }) => ({
@@ -16,6 +17,8 @@ const mapDispatchToProps = (dispatch) => ({
   setModalIsOpen: (bool) => dispatch(setRecapTraingModalIsOpen(bool)),
   deleteTraining: (id) => dispatch(deleteTraining(id)),
   modifyTrainingDone: (bool) => dispatch(modifyTrainingDone(bool)),
+  setTrainingDoneModalValue: (value) =>
+    dispatch(setTrainingDoneModalValue(value)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(TrainingsDoneModal);

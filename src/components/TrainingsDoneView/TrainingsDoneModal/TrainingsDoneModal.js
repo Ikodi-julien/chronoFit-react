@@ -1,4 +1,4 @@
-import TrainingsDoneModalExoTabContainer from "../../../containers/TrainingsDoneModalExoTabContainer";
+import TrainingDoneExoTabContainer from "../../../containers/TrainingDoneExoTabContainer";
 import trainingServices from "../../../services/training";
 
 const TrainingsDoneModal = ({
@@ -8,6 +8,7 @@ const TrainingsDoneModal = ({
   deleteTraining,
   modifyTrainingDone,
   isModif,
+  setTrainingDoneModalValue,
 }) => {
   return (
     <section className={`modal ${!isOpen && "--hidden"}`}>
@@ -53,7 +54,7 @@ const TrainingsDoneModal = ({
           </button>
         </div>
 
-        <TrainingsDoneModalExoTabContainer training={training} />
+        <TrainingDoneExoTabContainer isModif={isModif} />
       </div>
     </section>
   );

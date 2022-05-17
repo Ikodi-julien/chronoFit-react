@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useHistory } from "react-router";
 import trainingServices from "../../../services/training";
-import ExoTab from "../../../components/ExoTab/ExoTab";
+import EndTrainingExoTabContainer from "../../../containers/EndTrainingExoTabContainer";
 import EndTrainingControls from "./EndTrainingControls/EndTrainingControls";
 
 const EndTrainingModal = ({
@@ -9,7 +9,6 @@ const EndTrainingModal = ({
   trainingName,
   trainingType,
   trainingRecord,
-  setValue,
   resetRecordTraining,
   postNewTraining,
   isUserLoggued,
@@ -51,11 +50,7 @@ const EndTrainingModal = ({
           )}
         </div>
 
-        <ExoTab
-          training={trainingRecord}
-          setValue={setValue}
-          isModif={isModif}
-        />
+        <EndTrainingExoTabContainer exos={trainingRecord} isModif={isModif} />
       </div>
     </section>
   );

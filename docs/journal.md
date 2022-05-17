@@ -1,20 +1,27 @@
 # JOURNAL CHRONOFIT-REACT
 
+### 16/05/2022
+
+- Faire un container EndTrainingExoTabContainer et un TrainingDoneExoTabContainer et passer les props au composant ExoLine -> ok
+- Action / reducer pour lier les valeurs des champs -> ok
+
+Aussi bien galéré pour trouver une méthode pour faire le render des exos, pour mémoire les props des objets à n+2 ne provoquent pas de render => j'utilise une prop render dans le state mise à jour et fournie au container quand render nécessaire.
+
+Prochaines étapes :
+
+- Delete d'un exo dans un trainingDone ->
+- Upload du training modifié à la validation ->
+- Réaliser et relier les autres vues:
+  - StatsView : Stats et graphs,
+  - (pas MVP) DiaryView : calendrier en lien avec le ou les entrainements réalisés.
+- Gérer les améliorations listées dans le repo github,
+
 ### 12/05/2022
 
 Faire update depuis recap trainings:
 
 - Ajout bouton -> ok
 - Action/reducer pour modifier les champs -> ok
-
-Prochaines étapes :
-
-- Action / reducer pour lier les valeurs des champs ->
-- Upload du training modifié à la validation ->
-- Réaliser et relier les autres vues:
-  - StatsView : Stats et graphs,
-  - (pas MVP) DiaryView : calendrier en lien avec le ou les entrainements réalisés.
-- Gérer les améliorations listées dans le repo github,
 
 ### 10/05/2022
 

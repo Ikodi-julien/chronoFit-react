@@ -20,3 +20,13 @@ export const modifyTrainingDone = (bool) => ({
   type: MODIFY_TRAINING_DONE,
   value: bool,
 });
+export const SET_TRAININGDONE_MODAL_VALUE = "SET_TRAININGDONE_MODAL_VALUE";
+export const setTrainingDoneModalValue = (index, name, value) => ({
+  type: SET_TRAININGDONE_MODAL_VALUE,
+  value: { index, name, value },
+});
+export const DELETE_EXO_FROM_TRAINING_DONE = "DELETE_EXO_FROM_TRAINING_DONE";
+export const deleteExoFromTrainingDone = (index) => ({
+  type: DELETE_EXO_FROM_TRAINING_DONE,
+  value: index,
+});

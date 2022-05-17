@@ -1,6 +1,6 @@
-import ExoTabLineContainer from "../../containers/ExoTabLineContainer";
+import ExoTabLine from "../ExoTab/ExoTabLine/ExoTabLine";
 
-const ExoTab = ({ training, setValue, isModif }) => {
+const ExoTab = ({ isModif, exos, setValue, deleteExo }) => {
   return (
     <table>
       <thead>
@@ -14,16 +14,16 @@ const ExoTab = ({ training, setValue, isModif }) => {
         </tr>
       </thead>
       <tbody>
-        {training.map((exo, index) => {
-          return (
-            <ExoTabLineContainer
-              key={index}
-              index={index}
-              isModif={isModif}
-              setValue={setValue}
-            />
-          );
-        })}
+        {exos.map((exo, index) => (
+          <ExoTabLine
+            key={index}
+            index={index}
+            isModif={isModif}
+            exo={exo}
+            setValue={setValue}
+            deleteExo={deleteExo}
+          />
+        ))}
       </tbody>
     </table>
   );
