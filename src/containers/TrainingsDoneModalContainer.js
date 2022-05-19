@@ -5,6 +5,7 @@ import {
   deleteTraining,
   modifyTrainingDone,
   setTrainingDoneModalValue,
+  updateTrainingDone,
 } from "../actions/trainingsDoneActions";
 
 const mapStateToProps = ({ trainingsDone }) => ({
@@ -19,6 +20,7 @@ const mapDispatchToProps = (dispatch) => ({
   modifyTrainingDone: (bool) => dispatch(modifyTrainingDone(bool)),
   setTrainingDoneModalValue: (value) =>
     dispatch(setTrainingDoneModalValue(value)),
+  updateTraining: (id) => dispatch(updateTrainingDone(id)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(TrainingsDoneModal);

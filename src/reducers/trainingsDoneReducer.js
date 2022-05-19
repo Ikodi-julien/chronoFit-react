@@ -4,6 +4,8 @@ import {
   SET_TRAINING_MODAL_ISOPEN,
   SORT_TRAINING_TAB,
   SET_TRAININGDONE_MODAL_VALUE,
+  DELETE_EXO_FROM_TRAINING_DONE,
+  UPDATE_TRAINING_SUCCESS,
 } from "../actions/trainingsDoneActions";
 import { SET_TRAININGS_DONE } from "../actions/trainingAjaxActions";
 
@@ -50,6 +52,9 @@ const initialState = {
 };
 
 const reducer = (state = initialState, action = {}) => {
+  const { currentTraining } = state;
+  let { trainings, sortDateDesc, sortNameDesc } = state;
+
   switch (action.type) {
     case SET_TRAININGS_DONE:
       return {
@@ -75,7 +80,6 @@ const reducer = (state = initialState, action = {}) => {
       };
 
     case SORT_TRAINING_TAB:
-      let { trainings, sortDateDesc, sortNameDesc } = state;
       let shownTrainings = [];
       const sortByKey = (key) => (a, b) => a[key] > b[key] ? 1 : -1;
 
@@ -136,7 +140,6 @@ const reducer = (state = initialState, action = {}) => {
 
     case SET_TRAININGDONE_MODAL_VALUE:
       const { index, name, value } = action.value;
-      const { currentTraining } = state;
       const exoToChange = currentTraining.exos[index];
       const exoChanged = { ...exoToChange, [name]: value };
       currentTraining.exos[index] = exoChanged;
@@ -146,6 +149,23 @@ const reducer = (state = initialState, action = {}) => {
         render: state.render + 1,
       };
 
+    case DELETE_EXO_FROM_TRAINING_DONE:
+      const filteredExos = currentTraining.exos.filter(
+        (exo) => exo !== currentTraining.exos[action.value]
+      );
+      return {
+        ...state,
+        currentTraining: {
+          ...state.currentTraining,
+          exos: [...filteredExos],
+        },
+      };
+
+    case UPDATE_TRAINING_SUCCESS:
+      window.alert("Les modifications sont bien enregistrées");
+      return {
+        ...state,
+      };
     default:
       return state;
   }

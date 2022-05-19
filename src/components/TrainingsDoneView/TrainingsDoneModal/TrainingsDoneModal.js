@@ -8,7 +8,7 @@ const TrainingsDoneModal = ({
   deleteTraining,
   modifyTrainingDone,
   isModif,
-  setTrainingDoneModalValue,
+  updateTraining,
 }) => {
   return (
     <section className={`modal ${!isOpen && "--hidden"}`}>
@@ -16,7 +16,15 @@ const TrainingsDoneModal = ({
         <div className="modal__header">
           <button
             className="readtraining__close training__button --xl --transparent"
-            onClick={() => setModalIsOpen(false)}
+            onClick={() => {
+              if (
+                isModif &&
+                !window.confirm("Quitter sans enregistrer les modifs ?")
+              )
+                return;
+              setModalIsOpen(false);
+              modifyTrainingDone(false);
+            }}
           >
             <i className="fas fa-times"></i>
           </button>
@@ -30,11 +38,11 @@ const TrainingsDoneModal = ({
           <button
             className="training__button --l --transparent"
             onClick={() => {
-              isModif ? console.log("valider") : modifyTrainingDone(true);
+              isModif ? updateTraining(training.id) : modifyTrainingDone(true);
             }}
           >
             <i className="fas fa-pen" style={{ paddingRight: "10px" }}></i>
-            {isModif ? "Valider" : "Modifier"}
+            {isModif ? "Enregistrer" : "Modifier"}
           </button>
 
           <button

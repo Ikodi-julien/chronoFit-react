@@ -30,3 +30,10 @@ export const deleteExoFromTrainingDone = (index) => ({
   type: DELETE_EXO_FROM_TRAINING_DONE,
   value: index,
 });
+export const UPDATE_TRAINING_DONE = "UPDATE_TRAINING_DONE";
+export const updateTrainingDone = (id) => ({
+  type: UPDATE_TRAINING_DONE,
+  value: id,
+});
+export const UPDATE_TRAINING_SUCCESS = "UPDATE_TRAINING_SUCCESS";
+export const updateTrainingSuccess = () => ({ type: UPDATE_TRAINING_SUCCESS });
