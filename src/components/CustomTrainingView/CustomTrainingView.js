@@ -3,8 +3,6 @@ import AppNav from "../AppNav/AppNav";
 import CustomTrainingManagerContainer from "../../containers/CustomTrainingManagerContainer";
 import TrainingLocal from "./TrainingLocal/TrainingLocal";
 
-import "./trainingview.scss";
-
 const CustomTrainingView = ({
   localTraining,
   isToRender,

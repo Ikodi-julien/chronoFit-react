@@ -1,20 +1,35 @@
 # JOURNAL CHRONOFIT-REACT
 
+### 19/05/2022
+
+Delete d'un exo dans un trainingDone -> ok
+Upload du training modifié à la validation -> ok
+Confirmation du succes de l'upload -> ok
+Demande si upload quand quitte avec modifs sans valider -> ok
+Ajout de la fonction "Création de rounds réutilisables":
+
+- Créer un route "rounds" -> ok
+- Afficher les composants de base :
+  - Refacto pour réutilisation de CTMForm, CTMOptions et CustomTrainingManager en CMForm, CMOptions et CustomManager -> ok
+
+Prochaines étapes :
+
+- Ajout de la fonction "Création de rounds réutilisables":
+  - Finir la mise en place des composants ->
+  - Créer les actions liées aux rounds + reducer ->
+  - CRUD fonctionne ->
+- Ajouter le bouton pour gérer son compte ->
+- Réaliser et relier les autres vues:
+  - StatsView : Stats et graphs,
+  - (pas MVP) DiaryView : calendrier en lien avec le ou les entrainements réalisés.
+- Gérer les améliorations listées dans le repo github,
+
 ### 16/05/2022
 
 - Faire un container EndTrainingExoTabContainer et un TrainingDoneExoTabContainer et passer les props au composant ExoLine -> ok
 - Action / reducer pour lier les valeurs des champs -> ok
 
 Aussi bien galéré pour trouver une méthode pour faire le render des exos, pour mémoire les props des objets à n+2 ne provoquent pas de render => j'utilise une prop render dans le state mise à jour et fournie au container quand render nécessaire.
-
-Prochaines étapes :
-
-- Delete d'un exo dans un trainingDone ->
-- Upload du training modifié à la validation ->
-- Réaliser et relier les autres vues:
-  - StatsView : Stats et graphs,
-  - (pas MVP) DiaryView : calendrier en lien avec le ou les entrainements réalisés.
-- Gérer les améliorations listées dans le repo github,
 
 ### 12/05/2022
 

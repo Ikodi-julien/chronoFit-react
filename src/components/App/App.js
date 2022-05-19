@@ -1,5 +1,6 @@
 import GirlViewContainer from "../../containers/GirlViewContainer";
 import CustomTrainingView from "../../containers/CustomTrainingViewContainer";
+import CustomRoundView from "../../containers/CustomRoundViewContainer";
 import ReadTrainingContainer from "../../containers/ReadTrainingContainer";
 import EndTrainingModalContainer from "../../containers/EndTrainingModalContainer";
 import AppCommentContainer from "../../containers/AppCommentContainer";
@@ -30,9 +31,10 @@ function App() {
           <Route path="/recap_entrainements">
             <TrainingsDoneContainer />
           </Route>
+          <Route path="/rounds">
+            <CustomRoundView />
+          </Route>
           {/* /exercices pour voir les exos benchmarks proposés */}
-          {/* /connexion pour les forms de connexion */}
-          {/* /user pour la gestion des données utilisateur */}
           {/* /stats : StatsView stats et graphs, */}
           {/* /diary : DiaryView, calendrier entrainements */}
           <Route path="/">

@@ -34,6 +34,9 @@ const Landing = ({ getMe, isUserLoggued, logout, nickname }) => {
         <Link className="landing__button" to="/entrainement">
           WODs persos et création
         </Link>
+        <Link className="landing__button" to="/rounds">
+          Création de rounds
+        </Link>
         {isUserLoggued && (
           <Link className="landing__button" to="/recap_entrainements">
             Historique

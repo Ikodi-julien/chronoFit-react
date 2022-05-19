@@ -7,16 +7,17 @@ import "./appnav.scss";
 const AppNav = () => {
   const location = useLocation();
   const [navMenuIsOpen, setNavMenuIsOpen] = useState(false);
-
+  const slugs = {
+    "/entrainement": "Entrainement",
+    "/girls": "Les Girls",
+    "/recap_entrainements": "Entrainements effectués",
+    "/rounds": "Création de rounds",
+  };
   return (
     <section className="appnav__container">
       <div className="appnav__title">
-        {location.pathname === "/entrainement"
-          ? "Entrainement"
-          : location.pathname === "/girls"
-          ? "Les Girls"
-          : location.pathname === "/recap_entrainements"
-          ? "Entrainements effectués"
+        {slugs[location.pathname]
+          ? slugs[location.pathname]
           : "Titre pas prévu..."}
       </div>
       <button
@@ -60,6 +61,13 @@ const AppNav = () => {
             onClick={() => setNavMenuIsOpen(false)}
           >
             Entrainements
+          </NavLink>
+          <NavLink
+            to="/rounds"
+            className="appnav__links__link"
+            onClick={() => setNavMenuIsOpen(false)}
+          >
+            Rounds
           </NavLink>
           <NavLink
             to="/recap_entrainements"

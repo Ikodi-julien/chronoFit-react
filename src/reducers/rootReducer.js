@@ -1,6 +1,7 @@
 import { combineReducers } from "redux";
 
 import localTrainingReducer from "./localTrainingReducer";
+import localRoundReducer from "./localRoundReducer";
 import appReducer from "./appReducer";
 import apiTrainingReducer from "./apiTrainingReducer";
 import readTrainingReducer from "./readTrainingReducer";
@@ -11,6 +12,7 @@ const rootReducer = combineReducers({
   app: appReducer,
   apiTraining: apiTrainingReducer,
   localTraining: localTrainingReducer,
+  localRound: localRoundReducer,
   readTraining: readTrainingReducer,
   trainingsDone: trainingsDoneReducer,
   auth: authReducer,
