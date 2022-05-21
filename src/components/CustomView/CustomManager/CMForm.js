@@ -1,6 +1,6 @@
 /* eslint-disable import/no-anonymous-default-export */
 import { useEffect, useState } from "react";
-import Modal from "../ConfirmModal/ConfirmModal";
+import Modal from "../../ConfirmModal/ConfirmModal";
 
 export default ({
   item,

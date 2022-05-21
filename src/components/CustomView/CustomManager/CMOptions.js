@@ -1,6 +1,6 @@
 /* eslint-disable import/no-anonymous-default-export */
-import Field from "../Field/Field";
-import trainingServices from "../../services/training";
+import Field from "../../Field/Field";
+import trainingServices from "../../../services/training";
 import { NavLink } from "react-router-dom";
 
 export default ({

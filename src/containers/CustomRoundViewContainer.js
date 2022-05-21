@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 
 /*---------------------------------*/
-import CustomRoundView from "../components/CustomRoundView/CustomRoundView";
+import CustomRoundView from "../components/CustomView/CustomRoundView";
 
 const mapStateToProps = ({ localTraining, app }) => ({});
 

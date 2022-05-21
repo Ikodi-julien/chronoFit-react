@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import CMOptions from "../components/CustomManager/CMOptions";
+import CMOptions from "../components/CustomView/CustomManager/CMOptions";
 import { setReadTraining } from "../actions/readTrainingActions";
 import { setTimecap, setTrainingType } from "../actions/trainingLocalActions";
 

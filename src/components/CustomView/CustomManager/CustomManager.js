@@ -1,7 +1,8 @@
 import CMForm from "./CMForm";
-import CMOptionsContainer from "../../containers/CMOptionsContainer";
+import CMOptionsContainer from "../../../containers/CMOptionsContainer";
 
 import "./custommanager.scss";
+import { useLocation } from "react-router-dom";
 
 const CustomManager = ({
   item,
@@ -13,6 +14,7 @@ const CustomManager = ({
   createItem,
   deleteItem,
 }) => {
+  const location = useLocation();
   return (
     <div className="trainingmanager__container">
       <CMForm
@@ -25,7 +27,7 @@ const CustomManager = ({
         createItem={createItem}
         deleteItem={deleteItem}
       />
-      <CMOptionsContainer />
+      {location.pathname === "/entrainement" && <CMOptionsContainer />}
     </div>
   );
 };
