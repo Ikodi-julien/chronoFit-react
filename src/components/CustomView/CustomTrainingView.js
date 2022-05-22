@@ -1,7 +1,7 @@
 /*-------------------------------------------*/
 import AppNav from "../AppNav/AppNav";
 import CustomTrainingManagerContainer from "../../containers/CustomTrainingManagerContainer";
-import TrainingLocal from "./TrainingLocal/TrainingLocal";
+import TrainingSortable from "./TrainingSortable/TrainingSortable";
 
 const CustomTrainingView = ({
   localTraining,
@@ -12,7 +12,7 @@ const CustomTrainingView = ({
     <section className="training__container">
       <AppNav />
       <CustomTrainingManagerContainer />
-      <TrainingLocal
+      <TrainingSortable
         isToRender={isToRender}
         name={localTraining.name}
         rounds={localTraining.rounds}

@@ -1,22 +1,21 @@
 import { connect } from "react-redux";
 import ExoForm from "../components/CustomView/ExoForm/ExoForm";
 
-import {} from "../actions/trainingViewActions";
-
 import {
   putExoFormInTraining,
   deleteExoFromRound,
-  setExoFormInputValue,
   showExoInList,
 } from "../actions/trainingLocalActions";
 
-const mapStateToProps = ({ localTraining }, { roundIndex, index }) => ({
-  name: localTraining.exoForm.name,
-  description: localTraining.exoForm.desc,
-  iteration: localTraining.exoForm.iteration,
-  duration: localTraining.exoForm.duration,
-  reps: localTraining.exoForm.reps,
-  weight: localTraining.exoForm.weight,
+import { setExoFormInputValue } from "../actions/exoFormActions";
+
+const mapStateToProps = ({ exoForm }, { roundIndex, index }) => ({
+  name: exoForm.name,
+  description: exoForm.desc,
+  iteration: exoForm.iteration,
+  duration: exoForm.duration,
+  reps: exoForm.reps,
+  weight: exoForm.weight,
 
   roundIndex,
   index,

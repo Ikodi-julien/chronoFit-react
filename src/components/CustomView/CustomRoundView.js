@@ -1,24 +1,13 @@
 import AppNav from "../AppNav/AppNav";
 import CustomRoundManagerContainer from "../../containers/CustomRoundManagerContainer";
-// import TrainingLocal from "./TrainingLocal/TrainingLocal";
+import RoundInCustomRoundContainer from "../../containers/RoundInCustomRoundContainer";
 
-const CustomRoundView = (
-  {
-    // localTraining,
-    // isToRender,
-    // moveRoundInState,
-  }
-) => {
+const CustomRoundView = ({ localRound, isToRender, moveRoundInState }) => {
   return (
     <section className="training__container">
       <AppNav />
       <CustomRoundManagerContainer />
-      {/* <TrainingLocal
-        isToRender={isToRender}
-        name={localTraining.name}
-        rounds={localTraining.rounds}
-        moveRoundInState={moveRoundInState}
-      /> */}
+      <RoundInCustomRoundContainer />
     </section>
   );
 };

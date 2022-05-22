@@ -1,5 +1,29 @@
 # JOURNAL CHRONOFIT-REACT
 
+### 22/05/2022
+
+Faire un MW pour mettre le contenu d'exoForm dans l'action -> ok
+Finir la mise en place des composants -> en cours
+Créer les actions liées aux rounds + reducer -> en cours
+Ajout de la fonction "Création de rounds réutilisables":
+
+- CRUD fonctionne ->
+
+Prochaines étapes :
+
+- Ajouter le bouton pour gérer son compte ->
+- Réaliser et relier les autres vues:
+  - StatsView : Stats et graphs,
+  - (pas MVP) DiaryView : calendrier en lien avec le ou les entrainements réalisés.
+- Gérer les améliorations listées dans le repo github:
+  - Ajout CRUD de rounds custom -> en cours,
+
+### 21/05/2022
+
+- Finir la mise en place des composants -> en cours
+- Créer les actions liées aux rounds + reducer -> en cours
+- Faire un reducer pour ExoForm -> ok
+
 ### 19/05/2022
 
 Delete d'un exo dans un trainingDone -> ok
@@ -11,18 +35,6 @@ Ajout de la fonction "Création de rounds réutilisables":
 - Créer un route "rounds" -> ok
 - Afficher les composants de base :
   - Refacto pour réutilisation de CTMForm, CTMOptions et CustomTrainingManager en CMForm, CMOptions et CustomManager -> ok
-
-Prochaines étapes :
-
-- Ajout de la fonction "Création de rounds réutilisables":
-  - Finir la mise en place des composants ->
-  - Créer les actions liées aux rounds + reducer ->
-  - CRUD fonctionne ->
-- Ajouter le bouton pour gérer son compte ->
-- Réaliser et relier les autres vues:
-  - StatsView : Stats et graphs,
-  - (pas MVP) DiaryView : calendrier en lien avec le ou les entrainements réalisés.
-- Gérer les améliorations listées dans le repo github,
 
 ### 16/05/2022
 

@@ -6,8 +6,6 @@ import {
   SET_LOCAL_TRAINING,
   SET_LOCAL_TRAINING_NAME,
   SET_LOCAL_ROUND_TYPE,
-  SET_TIMECAP,
-  SET_TRAINING_TYPE,
   SET_ROUND_ITERATION,
   GET_LOCAL_TRAININGS_SUCCESS,
   ADD_ROUND_TO_LOCAL_TRAINING,
@@ -15,7 +13,6 @@ import {
   PUT_EXOFORM_IN_LOCAL_TRAINING,
   DELETE_ROUND_FROM_LOCAL_TRAINING,
   DELETE_EXO_FROM_ROUND,
-  EXOFORM_INPUT_CHANGE,
   SHOW_EXO_FORM,
   SHOW_EXO_IN_LIST,
   MOVE_ROUND_IN_STATE,
@@ -31,14 +28,6 @@ const initialState = {
   // localTrainingReducer
   allLocalTrainings: [],
   trainingManagerNameInput: "",
-  exoForm: {
-    name: "",
-    iteration: 1,
-    desc: "",
-    reps: 0,
-    duration: 0,
-    weight: 0,
-  },
   localTraining: {
     name: "Work Of Day",
     timecap: "",
@@ -129,16 +118,17 @@ const reducer = (state = initialState, action = {}) => {
       };
 
     case PUT_EXOFORM_IN_LOCAL_TRAINING:
-      allRoundsExoShrunken[action.roundIndex].exercices[action.exoIndex] = {
-        ...allRoundsExoShrunken[action.roundIndex].exercices[action.exoIndex],
-        name: state.exoForm.name,
-        description: state.exoForm.desc,
+      const { exoForm, roundIndex, exoIndex } = action;
+      allRoundsExoShrunken[roundIndex].exercices[exoIndex] = {
+        ...allRoundsExoShrunken[roundIndex].exercices[exoIndex],
+        name: exoForm.name,
+        description: exoForm.desc,
         options: [
           {
-            iteration: state.exoForm.iteration,
-            duration: state.exoForm.duration,
-            weight: state.exoForm.weight,
-            reps: state.exoForm.reps,
+            iteration: exoForm.iteration,
+            duration: exoForm.duration,
+            weight: exoForm.weight,
+            reps: exoForm.reps,
           },
         ],
       };
@@ -148,7 +138,6 @@ const reducer = (state = initialState, action = {}) => {
           ...state.localTraining,
           rounds: allRoundsExoShrunken,
         },
-        exoForm: initialState.exoForm,
       };
 
     case DELETE_EXO_FROM_ROUND:
@@ -265,15 +254,6 @@ const reducer = (state = initialState, action = {}) => {
         },
       };
 
-    case EXOFORM_INPUT_CHANGE:
-      return {
-        ...state,
-        exoForm: {
-          ...state.exoForm,
-          [action.name]: action.value,
-        },
-      };
-
     case SET_ROUNDMENU_IS_VISIBLE:
       rounds[action.value.index].menuIsVisible = action.value.bool;
 
@@ -302,24 +282,6 @@ const reducer = (state = initialState, action = {}) => {
         localTraining: {
           ...state.localTraining,
           rounds,
-        },
-      };
-
-    case SET_TIMECAP:
-      return {
-        ...state,
-        localTraining: {
-          ...state.localTraining,
-          timecap: action.value,
-        },
-      };
-
-    case SET_TRAINING_TYPE:
-      return {
-        ...state,
-        localTraining: {
-          ...state.localTraining,
-          type: action.value,
         },
       };
 

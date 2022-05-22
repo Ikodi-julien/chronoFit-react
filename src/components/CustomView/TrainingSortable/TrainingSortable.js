@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import Sortable from "sortablejs";
-import RoundLocalContainer from "../../../containers/RoundLocalContainer";
+import RoundInCustomTrainingContainer from "../../../containers/RoundInCustomTrainingContainer";
 
-const TrainingLocal = ({ isToRender, name, rounds, moveRoundInState }) => {
+const TrainingSortable = ({ isToRender, name, rounds, moveRoundInState }) => {
   useEffect(() => {
     // Allow to keep focus on input "roundIteration"
     if (!document.querySelector("input[name='roundIteration']:focus")) {
@@ -33,11 +33,11 @@ const TrainingLocal = ({ isToRender, name, rounds, moveRoundInState }) => {
         rounds &&
         rounds.map((round, index) => (
           <li key={index} data-id={index}>
-            <RoundLocalContainer round={round} index={index} />
+            <RoundInCustomTrainingContainer round={round} index={index} />
           </li>
         ))}
     </ul>
   );
 };
 
-export default TrainingLocal;
+export default TrainingSortable;
