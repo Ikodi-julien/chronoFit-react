@@ -9,3 +9,15 @@ export const SET_TIMECAP = "SET_TIMECAP";
 export const setTimecap = (value) => ({ type: SET_TIMECAP, value });
 export const SET_TRAINING_TYPE = "SET_TRAINING_TYPE";
 export const setTrainingType = (value) => ({ type: SET_TRAINING_TYPE, value });
+
+export const SHOW_EXO_FORM = "SHOW_EXO_FORM";
+export const showExoForm = (value) => ({
+  type: SHOW_EXO_FORM,
+  value,
+});
+
+export const SHOW_EXO_IN_LIST = "SHOW_EXO_IN_LIST";
+export const showExoInList = (value) => ({
+  type: SHOW_EXO_IN_LIST,
+  value,
+});

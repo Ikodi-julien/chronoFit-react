@@ -33,55 +33,31 @@ import trainingServices from "../services/training";
 const initialState = {
   isApi: false,
   menuIsVisible: false,
-  // localTrainingReducer
   allLocalRounds: [],
   roundManagerNameInput: "",
-
-  localRound: {
-    name: "Work Of Day",
-    // timecap: "",
-    // type: "",
-    // rounds: [
-    //   {
-    shrunken: true,
-    menuIsVisible: false,
-    type: "",
-    iteration: 1,
-    duration: 0,
-    exercices: [
-      // {
-      //   isForm: false,
-      //   name: 'Un exercice',
-      //   description: '',
-      //   options: [
-      //     {
-      //       iteration: 1,
-      //       duration: 0,
-      //       weight: 0,
-      //       reps: 0,
-      //     }
-      //   ]
-      // }
-      //   ],
-      // },
-    ],
-  },
+  name: "Work Of Day",
+  shrunken: true,
+  type: "",
+  iteration: 1,
+  duration: 0,
+  exercices: [
+    {
+      isForm: false,
+      name: "Un exercice",
+      description: "",
+      options: [
+        {
+          iteration: 1,
+          duration: 0,
+          weight: 0,
+          reps: 0,
+        },
+      ],
+    },
+  ],
 };
 
 const reducer = (state = initialState, action = {}) => {
-  const { rounds } = state.allLocalRounds;
-
-  const allRoundMenuHidden = rounds
-    ? rounds.map((round) => ({ ...round, menuIsVisible: false }))
-    : null;
-
-  let allRoundsExoShrunken = rounds
-    ? rounds.map((round) => {
-        round.exercices.forEach((exo) => (exo.isForm = false));
-        return round;
-      })
-    : null;
-
   switch (action.type) {
     /*--- localTraining state---*/
 

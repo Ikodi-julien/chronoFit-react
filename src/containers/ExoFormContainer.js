@@ -4,10 +4,9 @@ import ExoForm from "../components/CustomView/ExoForm/ExoForm";
 import {
   putExoFormInTraining,
   deleteExoFromRound,
-  showExoInList,
 } from "../actions/trainingLocalActions";
 
-import { setExoFormInputValue } from "../actions/exoFormActions";
+import { setExoFormInputValue, showExoInList } from "../actions/exoFormActions";
 
 const mapStateToProps = ({ exoForm }, { roundIndex, index }) => ({
   name: exoForm.name,
@@ -16,7 +15,6 @@ const mapStateToProps = ({ exoForm }, { roundIndex, index }) => ({
   duration: exoForm.duration,
   reps: exoForm.reps,
   weight: exoForm.weight,
-
   roundIndex,
   index,
 });

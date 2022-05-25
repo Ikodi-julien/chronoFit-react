@@ -10,7 +10,7 @@ import // getLocalTrainings,
 "../actions/trainingLocalActions";
 
 const mapStateToProps = ({ localRound }) => ({
-  item: localRound.localRound,
+  item: localRound,
   itemName: localRound.roundManagerNameInput,
   itemList: localRound.allLocalRounds,
 });

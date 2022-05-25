@@ -9,7 +9,7 @@ import "./round.scss";
 
 const Round = ({
   isToRender,
-  isAPI,
+  type,
   // Pour Round
   roundIndex,
   iteration,
@@ -41,7 +41,7 @@ const Round = ({
   duration = `${Math.floor(duration / 60)}mn ${duration % 60}s`;
   /*--------------------------------*/
   useEffect(() => {
-    if (!isAPI) {
+    if (type !== "api") {
       const exoList = document.getElementById(`exoList-${roundIndex}`);
 
       // D&D enabled only if no exercice being edited
@@ -73,7 +73,7 @@ const Round = ({
     <section className="rounds__round__container">
       <div className="rounds__round__header drag-handle">
         {menuIsVisible && <RoundMenuContainer index={roundIndex} />}
-        {!isAPI && (
+        {type !== "api" && (
           <button
             className="training__button --transparent --icone"
             onClick={() => setRoundMenuIsVisible(roundIndex, true)}
@@ -81,7 +81,7 @@ const Round = ({
             <i className="fas fa-ellipsis-v trainingrounds__header__togglemenu"></i>
           </button>
         )}
-        {!isAPI && (
+        {type !== "api" && (
           <button
             className="training__button --transparent --icone"
             onClick={() => addExercice(roundIndex)}
@@ -133,11 +133,7 @@ const Round = ({
             </li>
           ) : (
             <li key={index} exo-id={index} className="draggable-item">
-              <ExoInList
-                isAPI={isAPI || false}
-                roundIndex={roundIndex}
-                index={index}
-              />
+              <ExoInList type={type} roundIndex={roundIndex} index={index} />
             </li>
           )
         )}

@@ -1,30 +1,45 @@
 import { connect } from "react-redux";
 import ExoInList from "../components/CustomView/ExoInList/ExoInList";
 
-import { showExoForm } from "../actions/trainingLocalActions";
+import { showExoForm } from "../actions/exoFormActions";
 
 const mapStateToProps = (
-  { localTraining, apiTraining },
-  { isAPI, roundIndex, index }
+  { localTraining, apiTraining, localRound },
+  { type, roundIndex, index }
 ) => {
   let exo, roundShrunken;
 
-  if (isAPI) {
-    exo = apiTraining.currentTraining.rounds[roundIndex].exercices[index];
-    roundShrunken = () => {
-      return apiTraining.currentTraining.rounds[roundIndex].exercices.length >
-        1 && apiTraining.currentTraining.rounds[roundIndex].shrunken
-        ? true
-        : false;
-    };
-  } else {
-    exo = localTraining.localTraining.rounds[roundIndex].exercices[index];
-    roundShrunken = () => {
-      return localTraining.localTraining.rounds[roundIndex].exercices.length >
-        2 && localTraining.localTraining.rounds[roundIndex].shrunken
-        ? true
-        : false;
-    };
+  switch (type) {
+    case "api":
+      exo = apiTraining.currentTraining.rounds[roundIndex].exercices[index];
+      roundShrunken = () => {
+        return apiTraining.currentTraining.rounds[roundIndex].exercices.length >
+          1 && apiTraining.currentTraining.rounds[roundIndex].shrunken
+          ? true
+          : false;
+      };
+      break;
+    case "training":
+      exo = localTraining.localTraining.rounds[roundIndex].exercices[index];
+      roundShrunken = () => {
+        return localTraining.localTraining.rounds[roundIndex].exercices.length >
+          2 && localTraining.localTraining.rounds[roundIndex].shrunken
+          ? true
+          : false;
+      };
+      break;
+
+    case "round":
+      exo = localRound.exercices[index];
+      roundShrunken = () => {
+        return localRound.exercices.length > 2 && localRound.shrunken
+          ? true
+          : false;
+      };
+      break;
+
+    default:
+      break;
   }
 
   return {

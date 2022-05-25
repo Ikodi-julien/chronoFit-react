@@ -13,11 +13,11 @@ import {
   PUT_EXOFORM_IN_LOCAL_TRAINING,
   DELETE_ROUND_FROM_LOCAL_TRAINING,
   DELETE_EXO_FROM_ROUND,
-  SHOW_EXO_FORM,
-  SHOW_EXO_IN_LIST,
   MOVE_ROUND_IN_STATE,
   MOVE_EXO_IN_STATE,
 } from "../actions/trainingLocalActions";
+
+import { SHOW_EXO_FORM, SHOW_EXO_IN_LIST } from "../actions/exoFormActions";
 /*-----------------------------------*/
 import trainingServices from "../services/training";
 /*----------------------------------*/
@@ -291,24 +291,11 @@ const reducer = (state = initialState, action = {}) => {
         action.value.exoIndex
       ].isForm = true;
 
-      const exoToShow =
-        allRoundsExoShrunken[action.value.roundIndex].exercices[
-          action.value.exoIndex
-        ];
-
       return {
         ...state,
         localTraining: {
           ...state.localTraining,
           rounds,
-        },
-        exoForm: {
-          name: exoToShow.name,
-          desc: exoToShow.description,
-          iteration: exoToShow.options[0].iteration,
-          reps: exoToShow.options[0].reps,
-          duration: exoToShow.options[0].duration,
-          weight: exoToShow.options[0].weight,
         },
       };
 

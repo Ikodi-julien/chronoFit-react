@@ -94,15 +94,3 @@ export const setRoundIteration = (index, value) => ({
   type: SET_ROUND_ITERATION,
   value: { index, value },
 });
-
-export const SHOW_EXO_FORM = "SHOW_EXO_FORM";
-export const showExoForm = (roundIndex, exoIndex) => ({
-  type: SHOW_EXO_FORM,
-  value: { roundIndex, exoIndex },
-});
-
-export const SHOW_EXO_IN_LIST = "SHOW_EXO_IN_LIST";
-export const showExoInList = (roundIndex, exoIndex) => ({
-  type: SHOW_EXO_IN_LIST,
-  value: { roundIndex, exoIndex },
-});

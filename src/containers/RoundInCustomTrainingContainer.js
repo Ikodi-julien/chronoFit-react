@@ -22,6 +22,7 @@ const mapStateToProps = ({ app }, { round, index }) => ({
   shrunken: round.shrunken,
   exercices: round.exercices,
   menuIsVisible: round.menuIsVisible,
+  type: "training",
 });
 
 const mapDispatchToProps = (dispatch) => ({

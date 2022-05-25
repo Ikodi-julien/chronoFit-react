@@ -1,11 +1,10 @@
 # JOURNAL CHRONOFIT-REACT
 
-### 22/05/2022
+### 25/05/22
 
-Faire un MW pour mettre le contenu d'exoForm dans l'action -> ok
+Ajout de la fonction "Création de rounds réutilisables":
 Finir la mise en place des composants -> en cours
 Créer les actions liées aux rounds + reducer -> en cours
-Ajout de la fonction "Création de rounds réutilisables":
 
 - CRUD fonctionne ->
 
@@ -17,6 +16,13 @@ Prochaines étapes :
   - (pas MVP) DiaryView : calendrier en lien avec le ou les entrainements réalisés.
 - Gérer les améliorations listées dans le repo github:
   - Ajout CRUD de rounds custom -> en cours,
+
+### 22/05/2022
+
+Ajout de la fonction "Création de rounds réutilisables":
+Faire un MW pour mettre le contenu d'exoForm dans l'action -> ok
+Finir la mise en place des composants -> en cours
+Créer les actions liées aux rounds + reducer -> en cours
 
 ### 21/05/2022
 

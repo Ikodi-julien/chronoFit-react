@@ -1,18 +1,12 @@
-import {
-  EXOFORM_INPUT_CHANGE,
-  SET_TIMECAP,
-  SET_TRAINING_TYPE,
-} from "../actions/exoFormActions";
+import { EXOFORM_INPUT_CHANGE, SHOW_EXO_FORM } from "../actions/exoFormActions";
 
 const initialState = {
-  exoForm: {
-    name: "",
-    iteration: 1,
-    desc: "",
-    reps: 0,
-    duration: 0,
-    weight: 0,
-  },
+  name: "",
+  desc: "",
+  iteration: 1,
+  reps: 0,
+  duration: 0,
+  weight: 0,
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -20,29 +14,14 @@ const reducer = (state = initialState, action = {}) => {
     case EXOFORM_INPUT_CHANGE:
       return {
         ...state,
-        exoForm: {
-          ...state.exoForm,
-          [action.name]: action.value,
-        },
+        [action.name]: action.value,
       };
 
-    case SET_TIMECAP:
+    case SHOW_EXO_FORM:
       return {
-        ...state,
-        localTraining: {
-          ...state.localTraining,
-          timecap: action.value,
-        },
+        ...action.value.exoToShow,
       };
 
-    case SET_TRAINING_TYPE:
-      return {
-        ...state,
-        localTraining: {
-          ...state.localTraining,
-          type: action.value,
-        },
-      };
     default:
       return state;
   }
