@@ -1,9 +1,9 @@
-export const GET_CUSTOM_ROUNDS = "GET_CUSTOM_ROUNDS";
-export const getCustomRounds = () => ({ type: GET_CUSTOM_ROUNDS });
+export const GET_LOCAL_ROUNDS = "GET_LOCAL_ROUNDS";
+export const getLocalRounds = () => ({ type: GET_LOCAL_ROUNDS });
 
-export const GET_CUSTOM_ROUNDS_SUCCESS = "GET_CUSTOM_ROUNDS_SUCCESS";
-export const getCustomRoundsSuccess = (data) => ({
-  type: GET_CUSTOM_ROUNDS_SUCCESS,
+export const GET_LOCAL_ROUNDS_SUCCESS = "GET_LOCAL_ROUNDS_SUCCESS";
+export const getLocalRoundsSuccess = (data) => ({
+  type: GET_LOCAL_ROUNDS_SUCCESS,
   data,
 });
 
@@ -38,8 +38,8 @@ export const setCustomRoundType = (roundIndex, value) => ({
   value,
 });
 
-export const CREATE_CUSTOM_ROUND = "CREATE_CUSTOM_ROUND";
-export const createCustomRound = () => ({ type: CREATE_CUSTOM_ROUND });
+export const CREATE_LOCAL_ROUND = "CREATE_LOCAL_ROUND";
+export const createLocalRound = () => ({ type: CREATE_LOCAL_ROUND });
 
 export const DELETE_CUSTOM_ROUND = "DELETE_CUSTOM_ROUND";
 export const deleteCustomRound = () => ({ type: DELETE_CUSTOM_ROUND });

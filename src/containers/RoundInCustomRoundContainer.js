@@ -15,11 +15,11 @@ import Round from "../components/CustomView/Round/Round";
 
 const mapStateToProps = ({ app, localRound }) => ({
   isToRender: app.isToRender,
-  isAPI: localRound.isApi,
+  isAPI: localRound.localRound.isApi,
   roundIndex: 0,
-  iteration: localRound.iteration,
-  exercices: localRound.exercices,
-  menuIsVisible: localRound.menuIsVisible,
+  iteration: localRound.localRound.iteration,
+  exercices: localRound.localRound.exercices,
+  menuIsVisible: localRound.localRound.menuIsVisible,
   type: "round",
 });
 

@@ -15,8 +15,8 @@ export default ({
   const formatedTrainingTime = trainingServices.formatSeconds(timeInSec);
 
   return (
-    <div className="trainingmanager__options">
-      <div className="trainingmanager__options__row">
+    <div className="custommanager__options">
+      <div className="custommanager__options__row">
         <label>Type :</label>
         <select
           name="type"
@@ -33,15 +33,15 @@ export default ({
         <Field
           name="timecap"
           type="number"
-          className="trainingmanager__options__input"
+          className="custommanager__options__input"
           placeholder="Durée maxi"
           value={timecapValue}
           onChange={(evt) => setTimecap(evt.value)}
         />
       </div>
 
-      <div className="trainingmanager__options__row">
-        <div className="trainingmanager__options__duration">
+      <div className="custommanager__options__row">
+        <div className="custommanager__options__duration">
           {timeInSec > 0
             ? `Durée planifiée: ${
                 isNaN(timeInSec) ? "il manque une valeur" : formatedTrainingTime

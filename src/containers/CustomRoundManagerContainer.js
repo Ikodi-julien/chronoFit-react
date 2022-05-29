@@ -2,24 +2,24 @@ import { connect } from "react-redux";
 /*------------------------*/
 import CustomManager from "../components/CustomView/CustomManager/CustomManager";
 /*------------------------*/
-import // getLocalTrainings,
-// setLocalTraining,
-// setLocalTrainingName,
-// createLocalTraining,
-// deleteLocalTraining,
-"../actions/trainingLocalActions";
+import {
+  setCustomRoundName,
+  setCustomRound,
+  getLocalRounds,
+  createLocalRound,
+} from "../actions/roundLocalActions";
 
 const mapStateToProps = ({ localRound }) => ({
-  item: localRound,
+  item: localRound.localRound,
   itemName: localRound.roundManagerNameInput,
   itemList: localRound.allLocalRounds,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  getItems: () => {},
-  setItem: () => {},
-  setItemName: () => {},
-  createItem: () => {},
+  getItems: () => dispatch(getLocalRounds()),
+  setItem: (value) => dispatch(setCustomRound(value)),
+  setItemName: (value) => dispatch(setCustomRoundName(value)),
+  createItem: () => dispatch(createLocalRound()),
   deleteItem: () => {},
 });
 

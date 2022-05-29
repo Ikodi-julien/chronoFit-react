@@ -16,7 +16,7 @@ const CustomManager = ({
 }) => {
   const location = useLocation();
   return (
-    <div className="trainingmanager__container">
+    <div className="custommanager__container">
       <CMForm
         item={item}
         itemName={itemName}

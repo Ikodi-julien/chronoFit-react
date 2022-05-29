@@ -8,6 +8,14 @@ import {
   CREATE_LOCAL_TRAINING,
   DELETE_LOCAL_TRAINING,
 } from "../actions/trainingLocalActions";
+import {
+  GET_LOCAL_ROUNDS,
+  CREATE_LOCAL_ROUND,
+  getLocalRounds,
+  getLocalRoundsSuccess,
+  setCustomRoundName,
+  setCustomRound,
+} from "../actions/roundLocalActions";
 /*---------------------------------------*/
 import localstorage from "../services/localstorage";
 /*---------------------------------------*/
@@ -15,6 +23,7 @@ import localstorage from "../services/localstorage";
 export default (store) => (next) => (action) => {
   const { localTraining, trainingManagerNameInput } =
     store.getState().localTraining;
+  const { localRound } = store.getState().localRound;
 
   switch (action.type) {
     case CREATE_LOCAL_TRAINING:
@@ -49,6 +58,31 @@ export default (store) => (next) => (action) => {
       store.dispatch(setLocalTrainingName(""));
 
       break;
+
+    case GET_LOCAL_ROUNDS:
+      next(action);
+      const localRounds = localstorage.getRounds();
+      store.dispatch(getLocalRoundsSuccess(localRounds));
+      store.dispatch(setCustomRoundName(""));
+
+      break;
+
+    case CREATE_LOCAL_ROUND:
+      next(action);
+      const newRound = { ...localRound };
+
+      newRound.name =
+        trainingManagerNameInput !== ""
+          ? trainingManagerNameInput
+          : localTraining.name;
+
+      localstorage.createRound(newRound);
+
+      store.dispatch(getLocalRounds());
+      store.dispatch(setCustomRound(newRound.name));
+      store.dispatch(setCustomRoundName(""));
+      break;
+
     default:
       next(action);
   }

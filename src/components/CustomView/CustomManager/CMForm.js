@@ -17,7 +17,7 @@ export default ({
   const [action, setAction] = useState(undefined);
 
   const handleClick = (evt) => {
-    if (evt.target.name === "saveTraining") {
+    if (evt.target.name === "saveItem") {
       setAction(() => createItem);
       // if trainingName is Empty, ask confirmation for updating training
       if (itemName === "") {
@@ -25,13 +25,13 @@ export default ({
       } else {
         setText(`Confirmer la création de ${itemName} ?`);
       }
-    } else if (evt.target.name === "deleteTraining") {
+    } else if (evt.target.name === "deleteItem") {
       setAction(() => deleteItem);
       // if trainingName is Empty, ask confirmation for emptying current training
       if (itemName === "") {
         setText(`Confirmer la suppression de ${item.name} ?`);
       } else {
-        setText(`Supprimer tous les rounds et exercices affichés ?`);
+        setText(`Confirmer la suppression ?`);
       }
     }
 
@@ -53,15 +53,15 @@ export default ({
         actionToDispatch={action}
       />
 
-      <div className="trainingmanager__col">
+      <div className="custommanager__col">
         <select
-          name="trainings"
+          name="item"
           onChange={handleSelectChange}
           value={item.name}
-          className="trainingmanager__col__select"
+          className="custommanager__col__select"
         >
           <option key="Work Of Day" value="default">
-            Work Of Day
+            Ceux qui existent
           </option>
           {itemList.map((training, index) => (
             <option key={training.name} value={training.name}>
@@ -73,25 +73,25 @@ export default ({
           type="text"
           value={itemName}
           onChange={(evt) => setItemName(evt.target.value)}
-          className="trainingmanager__col__input"
-          placeholder="Nom du nouvel entrainement"
+          className="custommanager__col__input"
+          placeholder="Nom du nouveau"
         />
       </div>
 
-      <div className="trainingmanager__row">
+      <div className="custommanager__row">
         <button
-          name="saveTraining"
+          name="saveItem"
           type="submit"
           onClick={handleClick}
-          className="trainingmanager__row__button training__button"
+          className="custommanager__row__button training__button"
         >
           Save
         </button>
         <button
-          name="deleteTraining"
+          name="deleteItem"
           type="submit"
           onClick={handleClick}
-          className="trainingmanager__row__button training__button"
+          className="custommanager__row__button training__button"
         >
           Delete
         </button>

@@ -30,9 +30,9 @@ const mapStateToProps = (
       break;
 
     case "round":
-      exo = localRound.exercices[index];
+      exo = localRound.localRound.exercices[index];
       roundShrunken = () => {
-        return localRound.exercices.length > 2 && localRound.shrunken
+        return localRound.localRound.exercices.length > 2 && localRound.shrunken
           ? true
           : false;
       };

@@ -10,7 +10,7 @@ import {
   GET_CURRENT_CUSTOM_ROUND,
   GET_CURRENT_CUSTOM_ROUND_SUCCESS,
   GET_CUSTOM_ROUNDS,
-  GET_CUSTOM_ROUNDS_SUCCESS,
+  GET_LOCAL_ROUNDS_SUCCESS,
   ADD_EXERCICE_TO_CUSTOM_ROUND,
   PUT_EXOFORM_IN_CUSTOM_ROUND,
   DELETE_CUSTOM_ROUND,
@@ -27,63 +27,102 @@ import {
 /*-----------------------------------*/
 import trainingServices from "../services/training";
 /*----------------------------------*/
-// import {apiTraining} from '../data/apiTraining';
-// import {allTrainings} from '../data/allTrainings';
-/*----------------------------------*/
 const initialState = {
   isApi: false,
-  menuIsVisible: false,
-  allLocalRounds: [],
-  roundManagerNameInput: "",
-  name: "Work Of Day",
-  shrunken: true,
-  type: "",
-  iteration: 1,
-  duration: 0,
-  exercices: [
+  allLocalRounds: [
     {
-      isForm: false,
-      name: "Un exercice",
-      description: "",
-      options: [
+      name: "test round 29/05",
+      shrunken: false,
+      menuIsVisible: false,
+      type: "",
+      iteration: 1,
+      duration: 0,
+      exercices: [
         {
-          iteration: 1,
-          duration: 0,
-          weight: 0,
-          reps: 0,
+          isForm: false,
+          name: "Exo test",
+          description: "Des détails",
+          options: [
+            {
+              iteration: 1,
+              duration: "2",
+              weight: "2",
+              reps: "3",
+            },
+          ],
+        },
+        {
+          isForm: false,
+          name: "Exo test 2",
+          description: "description 2",
+          options: [
+            {
+              iteration: "2",
+              duration: "2",
+              weight: 0,
+              reps: "5",
+            },
+          ],
         },
       ],
+      // exoForm: {
+      //   name: '',
+      //   iteration: 1,
+      //   desc: '',
+      //   reps: 0,
+      //   duration: 0,
+      //   weight: 0
+      // }
     },
   ],
+  roundManagerNameInput: "",
+  localRound: {
+    name: "Custom Round",
+    menuIsVisible: false,
+    shrunken: true,
+    type: "",
+    iteration: 1,
+    duration: 0,
+    exercices: [
+      {
+        isForm: false,
+        name: "Un exercice",
+        description: "",
+        options: [
+          {
+            iteration: 1,
+            duration: 0,
+            weight: 0,
+            reps: 0,
+          },
+        ],
+      },
+    ],
+  },
 };
 
 const reducer = (state = initialState, action = {}) => {
   switch (action.type) {
     /*--- localTraining state---*/
 
-    // case SET_LOCAL_TRAINING:
-    //   if (action.value === "default") {
-    //     return {
-    //       ...state,
-    //       localTraining: { ...initialState.localTraining },
-    //     };
-    //   }
+    case SET_CUSTOM_ROUND:
+      if (action.value === "default") {
+        return state;
+      }
 
-    //   return {
-    //     ...state,
-    //     localTraining: {
-    //       ...state.localTraining,
-    //       ...state.allLocalTrainings.find(
-    //         (training) => training.name === action.value
-    //       ),
-    //     },
-    //   };
+      return {
+        ...state,
+        localRound: {
+          ...state.localRound,
+          ...state.allLocalRounds.find((round) => round.name === action.value),
+        },
+      };
 
-    // case SET_LOCAL_TRAINING_NAME:
-    //   return {
-    //     ...state,
-    //     trainingManagerNameInput: action.value,
-    //   };
+    case SET_CUSTOM_ROUND_NAME:
+      return {
+        ...state,
+        roundManagerNameInput: action.value,
+      };
 
     // case SET_LOCAL_ROUND_TYPE:
     //   rounds[action.roundIndex].type = action.value;
@@ -96,11 +135,11 @@ const reducer = (state = initialState, action = {}) => {
     //     },
     //   };
 
-    // case GET_LOCAL_TRAININGS_SUCCESS:
-    //   return {
-    //     ...state,
-    //     allLocalTrainings: action.data,
-    //   };
+    case GET_LOCAL_ROUNDS_SUCCESS:
+      return {
+        ...state,
+        allLocalRounds: action.data,
+      };
 
     // case PUT_EXOFORM_IN_LOCAL_TRAINING:
     //   allRoundsExoShrunken[action.roundIndex].exercices[action.exoIndex] = {
@@ -165,37 +204,6 @@ const reducer = (state = initialState, action = {}) => {
     //     },
     //   };
 
-    // case ADD_ROUND_TO_LOCAL_TRAINING:
-    //   return {
-    //     ...state,
-    //     localTraining: {
-    //       ...state.localTraining,
-    //       rounds: [
-    //         ...allRoundMenuHidden,
-    //         {
-    //           menuIsVisible: false,
-    //           iteration: 1,
-    //           duration: 0,
-    //           exercices: [
-    //             {
-    //               isForm: true,
-    //               name: "",
-    //               description: "",
-    //               options: [
-    //                 {
-    //                   iteration: "1",
-    //                   duration: "0",
-    //                   weight: "0",
-    //                   reps: "0",
-    //                 },
-    //               ],
-    //             },
-    //           ],
-    //         },
-    //       ],
-    //     },
-    //   };
-
     // case DELETE_ROUND_FROM_LOCAL_TRAINING:
     //   const newRounds = rounds.filter(
     //     (round) => round !== rounds[action.value]
@@ -209,35 +217,29 @@ const reducer = (state = initialState, action = {}) => {
     //     },
     //   };
 
-    // case ADD_EXERCICE_TO_LOCAL_TRAINING:
-    //   const round = allRoundMenuHidden[action.value.roundId];
-
-    //   round.exercices.push({
-    //     isForm: true,
-    //     name: "",
-    //     description: "",
-    //     // isBenchmark: false,
-    //     options: [
-    //       {
-    //         iteration: 1,
-    //         duration: 0,
-    //         weight: 0,
-    //         reps: 0,
-    //       },
-    //     ],
-    //   });
-    //   round.shrunken = false;
-
-    //   allRoundMenuHidden[action.value.roundId] = round;
-
-    //   return {
-    //     ...state,
-    //     localTraining: {
-    //       ...state.localTraining,
-    //       rounds: allRoundMenuHidden,
-    //       exoForm: { ...initialState.exoForm },
-    //     },
-    //   };
+    case ADD_EXERCICE_TO_CUSTOM_ROUND:
+      return {
+        ...state,
+        localRound: {
+          ...state.localRound,
+          exercices: [
+            ...state.localRound.exercices,
+            {
+              isForm: false,
+              name: "Un nouvel exercice",
+              description: "",
+              options: [
+                {
+                  iteration: 1,
+                  duration: 0,
+                  weight: 0,
+                  reps: 0,
+                },
+              ],
+            },
+          ],
+        },
+      };
 
     // case EXOFORM_INPUT_CHANGE:
     //   return {
