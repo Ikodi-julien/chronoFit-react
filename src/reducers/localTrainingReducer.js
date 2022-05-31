@@ -17,7 +17,10 @@ import {
   MOVE_EXO_IN_STATE,
 } from "../actions/trainingLocalActions";
 
-import { SHOW_EXO_FORM, SHOW_EXO_IN_LIST } from "../actions/exoFormActions";
+import {
+  SHOW_EXO_IN_TRAINING_FORM,
+  SHOW_EXO_IN_LIST,
+} from "../actions/exoFormActions";
 /*-----------------------------------*/
 import trainingServices from "../services/training";
 /*----------------------------------*/
@@ -285,7 +288,7 @@ const reducer = (state = initialState, action = {}) => {
         },
       };
 
-    case SHOW_EXO_FORM:
+    case SHOW_EXO_IN_TRAINING_FORM:
       // This shows ExoForm but all exercices have been shrunk
       allRoundsExoShrunken[action.value.roundIndex].exercices[
         action.value.exoIndex

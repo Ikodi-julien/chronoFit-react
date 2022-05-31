@@ -1,4 +1,8 @@
-import { EXOFORM_INPUT_CHANGE, SHOW_EXO_FORM } from "../actions/exoFormActions";
+import {
+  EXOFORM_INPUT_CHANGE,
+  SHOW_EXO_IN_TRAINING_FORM,
+  SHOW_EXO_ROUND_FORM,
+} from "../actions/exoFormActions";
 
 const initialState = {
   name: "",
@@ -17,7 +21,12 @@ const reducer = (state = initialState, action = {}) => {
         [action.name]: action.value,
       };
 
-    case SHOW_EXO_FORM:
+    case SHOW_EXO_IN_TRAINING_FORM:
+      return {
+        ...action.value.exoToShow,
+      };
+
+    case SHOW_EXO_ROUND_FORM:
       return {
         ...action.value.exoToShow,
       };

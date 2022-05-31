@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import ExoInList from "../components/CustomView/ExoInList/ExoInList";
 
-import { showExoForm } from "../actions/exoFormActions";
+import { showExoInTrainingForm } from "../actions/exoFormActions";
 
 const mapStateToProps = (
   { localTraining, apiTraining, localRound },
@@ -58,7 +58,7 @@ const mapStateToProps = (
 
 const mapDispatchToProps = (dispatch) => ({
   showExoForm: (roundIndex, exoIndex) =>
-    dispatch(showExoForm(roundIndex, exoIndex)),
+    dispatch(showExoInTrainingForm(roundIndex, exoIndex)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ExoInList);

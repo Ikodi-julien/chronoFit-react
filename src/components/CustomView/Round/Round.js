@@ -1,7 +1,9 @@
 import Sortable from "sortablejs";
 import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 
-import ExoInList from "../../../containers/ExoInListContainer";
+import ExoInTraining from "../../../containers/ExoInTrainingContainer";
+import ExoInRound from "../../../containers/ExoInRoundContainer";
 import ExoForm from "../../../containers/ExoFormContainer";
 import RoundMenuContainer from "../../../containers/RoundMenuContainer";
 
@@ -40,6 +42,8 @@ const Round = ({
 
   duration = `${Math.floor(duration / 60)}mn ${duration % 60}s`;
   /*--------------------------------*/
+  const location = useLocation();
+  /*---------------------------------*/
   useEffect(() => {
     if (type !== "api") {
       const exoList = document.getElementById(`exoList-${roundIndex}`);
@@ -133,7 +137,15 @@ const Round = ({
             </li>
           ) : (
             <li key={index} exo-id={index} className="draggable-item">
-              <ExoInList type={type} roundIndex={roundIndex} index={index} />
+              {location.pathname === "/entrainement" ? (
+                <ExoInTraining
+                  type={type}
+                  roundIndex={roundIndex}
+                  index={index}
+                />
+              ) : (
+                <ExoInRound index={index} />
+              )}
             </li>
           )
         )}

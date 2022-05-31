@@ -5,7 +5,10 @@ import {
   MOVE_EXO_IN_STATE,
   ADD_EXERCICE_TO_LOCAL_TRAINING,
 } from "../actions/trainingLocalActions";
-import { SHOW_EXO_FORM, SHOW_EXO_IN_LIST } from "../actions/exoFormActions";
+import {
+  SHOW_EXO_IN_TRAINING_FORM,
+  SHOW_EXO_IN_LIST,
+} from "../actions/exoFormActions";
 import { GOT_ERROR } from "../actions/trainingAjaxActions";
 
 const initialState = {
@@ -39,7 +42,7 @@ const reducer = (state = initialState, action = {}) => {
     case PUT_EXOFORM_IN_LOCAL_TRAINING:
     case MOVE_EXO_IN_STATE:
     case ADD_EXERCICE_TO_LOCAL_TRAINING:
-    case SHOW_EXO_FORM:
+    case SHOW_EXO_IN_TRAINING_FORM:
     case SHOW_EXO_IN_LIST:
       return {
         ...state,

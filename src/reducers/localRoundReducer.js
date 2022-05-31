@@ -23,6 +23,7 @@ import {
   EXOFORM_INPUT_CHANGE,
   SET_TIMECAP,
   SET_TRAINING_TYPE,
+  SHOW_EXO_ROUND_FORM,
 } from "../actions/exoFormActions";
 /*-----------------------------------*/
 import trainingServices from "../services/training";
@@ -102,6 +103,11 @@ const initialState = {
 };
 
 const reducer = (state = initialState, action = {}) => {
+  let exoShrunken = state.localRound.exercices.map((exo) => ({
+    ...exo,
+    isForm: false,
+  }));
+
   switch (action.type) {
     /*--- localTraining state---*/
 
@@ -299,32 +305,18 @@ const reducer = (state = initialState, action = {}) => {
     //     },
     //   };
 
-    // case SHOW_EXO_FORM:
-    //   // This shows ExoForm but all exercices have been shrunk
-    //   allRoundsExoShrunken[action.value.roundIndex].exercices[
-    //     action.value.exoIndex
-    //   ].isForm = true;
+    case SHOW_EXO_ROUND_FORM:
+      // This shows ExoForm but all exercices have been shrunk
+      console.log(exoShrunken);
+      exoShrunken[action.value.exoIndex].isForm = true;
 
-    //   const exoToShow =
-    //     allRoundsExoShrunken[action.value.roundIndex].exercices[
-    //       action.value.exoIndex
-    //     ];
-
-    //   return {
-    //     ...state,
-    //     localTraining: {
-    //       ...state.localTraining,
-    //       rounds,
-    //     },
-    //     exoForm: {
-    //       name: exoToShow.name,
-    //       desc: exoToShow.description,
-    //       iteration: exoToShow.options[0].iteration,
-    //       reps: exoToShow.options[0].reps,
-    //       duration: exoToShow.options[0].duration,
-    //       weight: exoToShow.options[0].weight,
-    //     },
-    //   };
+      return {
+        ...state,
+        localRound: {
+          ...state.localRound,
+          exercices: exoShrunken,
+        },
+      };
 
     // case SHOW_EXO_IN_LIST:
     //   // This hides all ExoForm

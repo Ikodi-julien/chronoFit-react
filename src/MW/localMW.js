@@ -24,6 +24,7 @@ export default (store) => (next) => (action) => {
   const { localTraining, trainingManagerNameInput } =
     store.getState().localTraining;
   const { localRound } = store.getState().localRound;
+  const { roundManagerNameInput } = store.getState().localRound;
 
   switch (action.type) {
     case CREATE_LOCAL_TRAINING:
@@ -69,13 +70,11 @@ export default (store) => (next) => (action) => {
 
     case CREATE_LOCAL_ROUND:
       next(action);
+
       const newRound = { ...localRound };
-
       newRound.name =
-        trainingManagerNameInput !== ""
-          ? trainingManagerNameInput
-          : localTraining.name;
-
+        roundManagerNameInput !== "" ? roundManagerNameInput : localRound.name;
+      console.log(newRound);
       localstorage.createRound(newRound);
 
       store.dispatch(getLocalRounds());

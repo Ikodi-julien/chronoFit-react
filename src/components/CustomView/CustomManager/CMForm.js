@@ -64,7 +64,7 @@ export default ({
             Ceux qui existent
           </option>
           {itemList.map((training, index) => (
-            <option key={training.name} value={training.name}>
+            <option key={index} value={training.name}>
               {training.name}
             </option>
           ))}

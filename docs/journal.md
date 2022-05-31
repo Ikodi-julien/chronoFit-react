@@ -1,17 +1,22 @@
 # JOURNAL CHRONOFIT-REACT
 
-### 29/05/2022
+### 31/05/2022
 
 Ajout de la fonction "Création de rounds réutilisables":
 Finir la mise en place des composants :
 
-- Adapter CMForm -> ok
-- Créer RoundCustomManagerContainer -> en cours
-- Créer les fonctions pour gérer les rounds en local storage -> ok
-- Ajout d'un exercice au round -> ok
-- Enregistrement d'un round en local -> a y'est presque !
-- Le select affiche les rounds récup en local ->
-- Modifier un exercice du round ->
+- Enregistrement d'un round en local -> ok
+- Le select affiche les rounds récup en local -> ok
+- Modifier un exercice du round :
+  - Créer le container "ExoInRoundContainer" -> ok
+  - Renommer "ExoInListContainer" en "ExoInTrainingContainer" -> ok
+    - Ca fonctionne dans la vue Training -> ok
+  - Renommer shoExoForm() en showExoInTrainingForm() -> ok
+    - Ca fonctionne dans la vue Training -> ok
+  - Mettre en place "ExoInRoundContainer" -> ok
+    - Ca fonctionne dans CustomRoundView -> ok
+  - Créer showExoRoundForm() -> ok
+    - Ca fonctionne dans CustomRoundView -> ok
 
 Créer les actions liées aux rounds + reducer -> en cours
 CRUD CustomRound fonctionne ->
@@ -25,6 +30,16 @@ Prochaines étapes :
 - Réaliser et relier les autres vues:
   - StatsView : Stats et graphs,
   - (pas MVP) DiaryView : calendrier en lien avec le ou les entrainements réalisés.
+
+### 29/05/2022
+
+Ajout de la fonction "Création de rounds réutilisables":
+Finir la mise en place des composants :
+
+- Adapter CMForm -> ok
+- Créer RoundCustomManagerContainer -> en cours
+- Créer les fonctions pour gérer les rounds en local storage -> ok
+- Ajout d'un exercice au round -> ok
 
 ### 25/05/22
 
