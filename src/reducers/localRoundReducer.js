@@ -6,14 +6,13 @@ import {
   SET_CUSTOM_ROUND_NAME,
   SET_CUSTOM_ROUND,
   SET_CUSTOM_ROUND_ITERATION,
-  SET_CUSTOM_ROUND_TYPE,
   GET_CURRENT_CUSTOM_ROUND,
   GET_CURRENT_CUSTOM_ROUND_SUCCESS,
   GET_CUSTOM_ROUNDS,
   GET_LOCAL_ROUNDS_SUCCESS,
   ADD_EXERCICE_TO_CUSTOM_ROUND,
+  DELETE_LOCAL_ROUND,
   PUT_EXOFORM_IN_CUSTOM_ROUND,
-  DELETE_CUSTOM_ROUND,
   DELETE_EXO_FROM_CUSTOM_ROUND,
   SHOW_EXO_FORM_CUSTOM_ROUND,
   SHOW_EXO_IN_CUSTOM_ROUND,
@@ -107,6 +106,7 @@ const reducer = (state = initialState, action = {}) => {
     ...exo,
     isForm: false,
   }));
+  const localRound = { ...state.localRound };
 
   switch (action.type) {
     /*--- localTraining state---*/
@@ -130,98 +130,59 @@ const reducer = (state = initialState, action = {}) => {
         roundManagerNameInput: action.value,
       };
 
-    // case SET_LOCAL_ROUND_TYPE:
-    //   rounds[action.roundIndex].type = action.value;
-
-    //   return {
-    //     ...state,
-    //     localTraining: {
-    //       ...state.localTraining,
-    //       rounds,
-    //     },
-    //   };
-
     case GET_LOCAL_ROUNDS_SUCCESS:
       return {
         ...state,
         allLocalRounds: action.data,
       };
 
-    // case PUT_EXOFORM_IN_LOCAL_TRAINING:
-    //   allRoundsExoShrunken[action.roundIndex].exercices[action.exoIndex] = {
-    //     ...allRoundsExoShrunken[action.roundIndex].exercices[action.exoIndex],
-    //     name: state.exoForm.name,
-    //     description: state.exoForm.desc,
-    //     options: [
-    //       {
-    //         iteration: state.exoForm.iteration,
-    //         duration: state.exoForm.duration,
-    //         weight: state.exoForm.weight,
-    //         reps: state.exoForm.reps,
-    //       },
-    //     ],
-    //   };
-    //   return {
-    //     ...state,
-    //     localTraining: {
-    //       ...state.localTraining,
-    //       rounds: allRoundsExoShrunken,
-    //     },
-    //     exoForm: initialState.exoForm,
-    //   };
+    case PUT_EXOFORM_IN_CUSTOM_ROUND:
+      console.log(action);
+      exoShrunken[action.exoIndex] = {
+        isForm: false,
+        name: action.exoForm.name,
+        description: action.exoForm.desc,
+        options: [
+          {
+            iteration: action.exoForm.iteration,
+            duration: action.exoForm.duration,
+            weight: action.exoForm.weight,
+            reps: action.exoForm.reps,
+          },
+        ],
+      };
 
-    // case DELETE_EXO_FROM_ROUND:
-    //   let roundWithoutExo = allRoundsExoShrunken.find(
-    //     (round) => round === allRoundsExoShrunken[action.roundIndex]
-    //   );
+      return {
+        ...state,
+        localRound: {
+          ...state.localRound,
+          exercices: [...exoShrunken],
+        },
+      };
 
-    //   roundWithoutExo.exercices = roundWithoutExo.exercices.filter(
-    //     (exo) => exo !== roundWithoutExo.exercices[action.exoIndex]
-    //   );
+    case DELETE_EXO_FROM_CUSTOM_ROUND:
+      console.log(action);
+      localRound.exercices.forEach((exo) => (exo.isForm = false));
+      localRound.exercices.splice(action.exoIndex, 1);
+      console.log(localRound);
+      return {
+        ...state,
+        localRound,
+      };
 
-    //   allRoundsExoShrunken[action.roundIndex] = roundWithoutExo;
+    case MOVE_EXO_IN_CUSTOM_ROUND:
+      console.log(action);
+      const [exoToMove] = localRound.exercices.splice(action.value.oldIndex, 1);
+      localRound.exercices.splice(action.value.newIndex, 0, exoToMove);
 
-    //   return {
-    //     ...state,
-    //     localTraining: {
-    //       ...state.localTraining,
-    //       rounds: allRoundsExoShrunken,
-    //     },
-    //   };
-
-    // case MOVE_ROUND_IN_STATE:
-    //   const [roundToMove] = rounds.splice(action.oldIndex, 1);
-    //   rounds.splice(action.newIndex, 0, roundToMove);
-
-    //   return {
-    //     ...state,
-    //     localTraining: {
-    //       ...state.localTraining,
-    //       rounds,
-    //     },
-    //   };
-
-    // case MOVE_EXO_IN_STATE:
-    //   return {
-    //     ...state,
-    //     localTraining: {
-    //       ...state.localTraining,
-    //       rounds: trainingServices.changeExoOrder(rounds, action),
-    //     },
-    //   };
-
-    // case DELETE_ROUND_FROM_LOCAL_TRAINING:
-    //   const newRounds = rounds.filter(
-    //     (round) => round !== rounds[action.value]
-    //   );
-
-    //   return {
-    //     ...state,
-    //     localTraining: {
-    //       ...state.localTraining,
-    //       rounds: newRounds,
-    //     },
-    //   };
+      console.log(localRound.exercices);
+      return {
+        ...state,
+        localRound: {
+          ...state.localRound,
+          exercices: localRound.exercices,
+        },
+      };
 
     case ADD_EXERCICE_TO_CUSTOM_ROUND:
       return {
@@ -277,15 +238,12 @@ const reducer = (state = initialState, action = {}) => {
     //     },
     //   };
 
-    // case SET_ROUND_ITERATION:
-    //   rounds[action.value.index].iteration = action.value.value;
-    //   return {
-    //     ...state,
-    //     localTraining: {
-    //       ...state.localTraining,
-    //       rounds,
-    //     },
-    //   };
+    case SET_CUSTOM_ROUND_ITERATION:
+      localRound.iteration = action.value;
+      return {
+        ...state,
+        localRound,
+      };
 
     // case SET_TIMECAP:
     //   return {
@@ -306,8 +264,7 @@ const reducer = (state = initialState, action = {}) => {
     //   };
 
     case SHOW_EXO_ROUND_FORM:
-      // This shows ExoForm but all exercices have been shrunk
-      console.log(exoShrunken);
+      // console.log(exoShrunken);
       exoShrunken[action.value.exoIndex].isForm = true;
 
       return {
@@ -332,6 +289,10 @@ const reducer = (state = initialState, action = {}) => {
     //     },
     //   };
 
+    case DELETE_LOCAL_ROUND:
+      return {
+        ...initialState,
+      };
     default:
       return state;
   }

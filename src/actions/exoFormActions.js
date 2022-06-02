@@ -28,3 +28,9 @@ export const showExoInList = (value) => ({
   type: SHOW_EXO_IN_LIST,
   value,
 });
+
+export const SHOW_ROUND_EXO_IN_LIST = "SHOW_ROUND_EXO_IN_LIST";
+export const showRoundExoInList = (value) => ({
+  type: SHOW_ROUND_EXO_IN_LIST,
+  value,
+});

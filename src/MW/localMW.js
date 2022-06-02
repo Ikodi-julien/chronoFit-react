@@ -15,6 +15,7 @@ import {
   getLocalRoundsSuccess,
   setCustomRoundName,
   setCustomRound,
+  DELETE_LOCAL_ROUND,
 } from "../actions/roundLocalActions";
 /*---------------------------------------*/
 import localstorage from "../services/localstorage";
@@ -60,6 +61,8 @@ export default (store) => (next) => (action) => {
 
       break;
 
+    /*-------- ROUNDS ---------------*/
+    /*-------------------------------*/
     case GET_LOCAL_ROUNDS:
       next(action);
       const localRounds = localstorage.getRounds();
@@ -82,6 +85,14 @@ export default (store) => (next) => (action) => {
       store.dispatch(setCustomRoundName(""));
       break;
 
+    case DELETE_LOCAL_ROUND:
+      next(action);
+      localstorage.deleteRound(localRound.name);
+      store.dispatch(getLocalRounds());
+      store.dispatch(setCustomRound("default"));
+      store.dispatch(setCustomRoundName(""));
+
+      break;
     default:
       next(action);
   }

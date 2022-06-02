@@ -31,18 +31,11 @@ export const setCustomRoundName = (value) => ({
   value,
 });
 
-export const SET_CUSTOM_ROUND_TYPE = "SET_CUSTOM_ROUND_TYPE";
-export const setCustomRoundType = (roundIndex, value) => ({
-  type: SET_CUSTOM_ROUND_TYPE,
-  roundIndex,
-  value,
-});
-
 export const CREATE_LOCAL_ROUND = "CREATE_LOCAL_ROUND";
 export const createLocalRound = () => ({ type: CREATE_LOCAL_ROUND });
 
-export const DELETE_CUSTOM_ROUND = "DELETE_CUSTOM_ROUND";
-export const deleteCustomRound = () => ({ type: DELETE_CUSTOM_ROUND });
+export const DELETE_LOCAL_ROUND = "DELETE_LOCAL_ROUND";
+export const deleteLocalRound = () => ({ type: DELETE_LOCAL_ROUND });
 
 export const ADD_EXERCICE_TO_CUSTOM_ROUND = "ADD_EXERCICE_TO_CUSTOM_ROUND";
 export const addExerciceToCustomRound = (index) => ({
@@ -51,16 +44,14 @@ export const addExerciceToCustomRound = (index) => ({
 });
 
 export const PUT_EXOFORM_IN_CUSTOM_ROUND = "PUT_EXOFORM_IN_CUSTOM_ROUND";
-export const putExoFormInRound = (roundIndex, exoIndex) => ({
+export const putExoFormInRound = (exoIndex) => ({
   type: PUT_EXOFORM_IN_CUSTOM_ROUND,
-  roundIndex,
   exoIndex,
 });
 
 export const DELETE_EXO_FROM_CUSTOM_ROUND = "DELETE_EXO_FROM_CUSTOM_ROUND";
-export const deleteExoFromCustomRound = (roundIndex, exoIndex) => ({
+export const deleteExoFromCustomRound = (exoIndex) => ({
   type: DELETE_EXO_FROM_CUSTOM_ROUND,
-  roundIndex,
   exoIndex,
 });
 
@@ -71,9 +62,9 @@ export const moveExoInCustomRound = (obj) => ({
 });
 
 export const SET_CUSTOM_ROUND_ITERATION = "SET_CUSTOM_ROUND_ITERATION";
-export const setCustomRoundIteration = (index, value) => ({
+export const setCustomRoundIteration = (value) => ({
   type: SET_CUSTOM_ROUND_ITERATION,
-  value: { index, value },
+  value,
 });
 
 export const SHOW_EXO_FORM_CUSTOM_ROUND = "SHOW_EXO_FORM_CUSTOM_ROUND";

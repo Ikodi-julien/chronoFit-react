@@ -1,5 +1,41 @@
 # JOURNAL CHRONOFIT-REACT
 
+### 02/06/22
+
+Créer les actions liées aux rounds + reducer:
+
+- setCustomRoundIteration -> ok
+- deleteExoFromCustomRound -> ok
+- moveExoInCustomRound -> ok
+
+Prochaines étapes :
+
+- Pouvoir ajouter un round deja fait dans un training ->
+- Gérer les améliorations listées dans le repo github:
+  - Possible de charger un CustomRound dans un training ->
+  - Passer ExoForm en modale ->
+- Ajouter le bouton pour gérer son compte ->
+- Réaliser et relier les autres vues:
+  - StatsView : Stats et graphs,
+  - (pas MVP) Diar---View : calendrier en lien avec le ou les entrainements réalisés.
+
+### 01/06/2022
+
+Ajout de la fonction "Création de rounds réutilisables":
+
+Créer les actions liées aux rounds + reducer:
+
+- getLocalRounds -> ok
+- setCustomRound -> ok
+- getCurrentCustomRound -> ?
+- setCustomRoundName -> ok
+- createLocalRound -> ok
+- deleteCustomRound -> ok
+- addExerciceToCustomRound -> ok
+- putExoFormInRound -> ok
+- showExoFormCustomRound -> ok
+- showExoInCustomRound -> ok
+
 ### 31/05/2022
 
 Ajout de la fonction "Création de rounds réutilisables":
@@ -17,19 +53,6 @@ Finir la mise en place des composants :
     - Ca fonctionne dans CustomRoundView -> ok
   - Créer showExoRoundForm() -> ok
     - Ca fonctionne dans CustomRoundView -> ok
-
-Créer les actions liées aux rounds + reducer -> en cours
-CRUD CustomRound fonctionne ->
-
-Prochaines étapes :
-
-- Gérer les améliorations listées dans le repo github:
-  - Ajout CRUD de rounds custom -> en cours,
-  - Passer EoForm en modale ->
-- Ajouter le bouton pour gérer son compte ->
-- Réaliser et relier les autres vues:
-  - StatsView : Stats et graphs,
-  - (pas MVP) DiaryView : calendrier en lien avec le ou les entrainements réalisés.
 
 ### 29/05/2022
 

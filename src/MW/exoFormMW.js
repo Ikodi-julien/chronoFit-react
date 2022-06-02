@@ -1,4 +1,5 @@
 import { PUT_EXOFORM_IN_LOCAL_TRAINING } from "../actions/trainingLocalActions";
+import { PUT_EXOFORM_IN_CUSTOM_ROUND } from "../actions/roundLocalActions";
 import {
   SHOW_EXO_IN_TRAINING_FORM,
   SHOW_EXO_ROUND_FORM,
@@ -32,6 +33,9 @@ export default (store) => (next) => (action) => {
       next(action);
       break;
 
+    /*--------------------------------*/
+    /*----------- ROUND --------------*/
+    /*--------------------------------*/
     case SHOW_EXO_ROUND_FORM:
       const exoRound =
         store.getState().localRound.localRound.exercices[action.value.exoIndex];
@@ -53,6 +57,11 @@ export default (store) => (next) => (action) => {
       next(action);
       break;
 
+    case PUT_EXOFORM_IN_CUSTOM_ROUND:
+      action.exoForm = store.getState().exoForm;
+      console.log("exoForm", action);
+      next(action);
+      break;
     default:
       next(action);
   }

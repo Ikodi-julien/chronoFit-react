@@ -7,6 +7,7 @@ import {
   setCustomRound,
   getLocalRounds,
   createLocalRound,
+  deleteLocalRound,
 } from "../actions/roundLocalActions";
 
 const mapStateToProps = ({ localRound }) => ({
@@ -20,7 +21,7 @@ const mapDispatchToProps = (dispatch) => ({
   setItem: (value) => dispatch(setCustomRound(value)),
   setItemName: (value) => dispatch(setCustomRoundName(value)),
   createItem: () => dispatch(createLocalRound()),
-  deleteItem: () => {},
+  deleteItem: () => dispatch(deleteLocalRound()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(CustomManager);

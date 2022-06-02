@@ -4,7 +4,8 @@ import { useLocation } from "react-router-dom";
 
 import ExoInTraining from "../../../containers/ExoInTrainingContainer";
 import ExoInRound from "../../../containers/ExoInRoundContainer";
-import ExoForm from "../../../containers/ExoFormContainer";
+import ExoInTrainingForm from "../../../containers/ExoInTrainingFormContainer";
+import ExoInRoundForm from "../../../containers/ExoInRoundFormContainer";
 import RoundMenuContainer from "../../../containers/RoundMenuContainer";
 
 import "./round.scss";
@@ -133,7 +134,11 @@ const Round = ({
         {exercices.map((exo, index) =>
           exo.isForm ? (
             <li key={index} exo-id={index}>
-              <ExoForm roundIndex={roundIndex} index={index} />
+              {location.pathname === "/entrainement" ? (
+                <ExoInTrainingForm roundIndex={roundIndex} index={index} />
+              ) : (
+                <ExoInRoundForm index={index} />
+              )}
             </li>
           ) : (
             <li key={index} exo-id={index} className="draggable-item">
