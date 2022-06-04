@@ -5,7 +5,7 @@ import {
 import {
   SET_LOCAL_TRAINING,
   SET_LOCAL_TRAINING_NAME,
-  SET_LOCAL_ROUND_TYPE,
+  SET_LOCAL_TRAINING_TYPE,
   SET_ROUND_ITERATION,
   GET_LOCAL_TRAININGS_SUCCESS,
   ADD_ROUND_TO_LOCAL_TRAINING,
@@ -15,6 +15,7 @@ import {
   DELETE_EXO_FROM_ROUND,
   MOVE_ROUND_IN_STATE,
   MOVE_EXO_IN_STATE,
+  SET_LOCAL_TRAINING_TIMECAP,
 } from "../actions/trainingLocalActions";
 
 import {
@@ -39,7 +40,6 @@ const initialState = {
       {
         shrunken: true,
         menuIsVisible: false,
-        type: "",
         iteration: 1,
         duration: 0,
         exercices: [
@@ -103,14 +103,21 @@ const reducer = (state = initialState, action = {}) => {
         trainingManagerNameInput: action.value,
       };
 
-    case SET_LOCAL_ROUND_TYPE:
-      rounds[action.roundIndex].type = action.value;
-
+    case SET_LOCAL_TRAINING_TYPE:
       return {
         ...state,
         localTraining: {
           ...state.localTraining,
-          rounds,
+          type: action.value,
+        },
+      };
+
+    case SET_LOCAL_TRAINING_TIMECAP:
+      return {
+        ...state,
+        localTraining: {
+          ...state.localTraining,
+          timecap: action.value,
         },
       };
 

@@ -7,12 +7,6 @@ export const getLocalRoundsSuccess = (data) => ({
   data,
 });
 
-export const SET_CUSTOM_ROUND = "SET_CUSTOM_ROUND";
-export const setCustomRound = (roundName) => ({
-  type: SET_CUSTOM_ROUND,
-  value: roundName,
-});
-
 export const GET_CURRENT_CUSTOM_ROUND = "GET_CURRENT_CUSTOM_ROUND";
 export const getCurrentCustomRound = (id) => ({
   type: GET_CURRENT_CUSTOM_ROUND,
@@ -25,9 +19,21 @@ export const getCurrentCustomRoundSuccess = (data) => ({
   data,
 });
 
+export const SET_CUSTOM_ROUND = "SET_CUSTOM_ROUND";
+export const setCustomRound = (roundName) => ({
+  type: SET_CUSTOM_ROUND,
+  value: roundName,
+});
+
 export const SET_CUSTOM_ROUND_NAME = "SET_CUSTOM_ROUND_NAME";
 export const setCustomRoundName = (value) => ({
   type: SET_CUSTOM_ROUND_NAME,
+  value,
+});
+
+export const SET_CUSTOM_ROUND_ITERATION = "SET_CUSTOM_ROUND_ITERATION";
+export const setCustomRoundIteration = (value) => ({
+  type: SET_CUSTOM_ROUND_ITERATION,
   value,
 });
 
@@ -43,15 +49,15 @@ export const addExerciceToCustomRound = (index) => ({
   value: { roundId: index },
 });
 
-export const PUT_EXOFORM_IN_CUSTOM_ROUND = "PUT_EXOFORM_IN_CUSTOM_ROUND";
-export const putExoFormInRound = (exoIndex) => ({
-  type: PUT_EXOFORM_IN_CUSTOM_ROUND,
-  exoIndex,
-});
-
 export const DELETE_EXO_FROM_CUSTOM_ROUND = "DELETE_EXO_FROM_CUSTOM_ROUND";
 export const deleteExoFromCustomRound = (exoIndex) => ({
   type: DELETE_EXO_FROM_CUSTOM_ROUND,
+  exoIndex,
+});
+
+export const PUT_EXOFORM_IN_CUSTOM_ROUND = "PUT_EXOFORM_IN_CUSTOM_ROUND";
+export const putExoFormInRound = (exoIndex) => ({
+  type: PUT_EXOFORM_IN_CUSTOM_ROUND,
   exoIndex,
 });
 
@@ -59,12 +65,6 @@ export const MOVE_EXO_IN_CUSTOM_ROUND = "MOVE_EXO_IN_CUSTOM_ROUND";
 export const moveExoInCustomRound = (obj) => ({
   type: MOVE_EXO_IN_CUSTOM_ROUND,
   value: obj,
-});
-
-export const SET_CUSTOM_ROUND_ITERATION = "SET_CUSTOM_ROUND_ITERATION";
-export const setCustomRoundIteration = (value) => ({
-  type: SET_CUSTOM_ROUND_ITERATION,
-  value,
 });
 
 export const SHOW_EXO_FORM_CUSTOM_ROUND = "SHOW_EXO_FORM_CUSTOM_ROUND";

@@ -78,7 +78,7 @@ const Round = ({
     <section className="rounds__round__container">
       <div className="rounds__round__header drag-handle">
         {menuIsVisible && <RoundMenuContainer index={roundIndex} />}
-        {type !== "api" && (
+        {type === "training" && (
           <button
             className="training__button --transparent --icone"
             onClick={() => setRoundMenuIsVisible(roundIndex, true)}

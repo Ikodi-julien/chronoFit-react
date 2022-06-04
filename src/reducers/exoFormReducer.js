@@ -3,6 +3,8 @@ import {
   SHOW_EXO_IN_TRAINING_FORM,
   SHOW_EXO_ROUND_FORM,
 } from "../actions/exoFormActions";
+import { PUT_EXOFORM_IN_CUSTOM_ROUND } from "../actions/roundLocalActions";
+import { PUT_EXOFORM_IN_LOCAL_TRAINING } from "../actions/trainingLocalActions";
 
 const initialState = {
   name: "",
@@ -31,6 +33,11 @@ const reducer = (state = initialState, action = {}) => {
         ...action.value.exoToShow,
       };
 
+    case PUT_EXOFORM_IN_CUSTOM_ROUND:
+    case PUT_EXOFORM_IN_LOCAL_TRAINING:
+      return {
+        ...initialState,
+      };
     default:
       return state;
   }

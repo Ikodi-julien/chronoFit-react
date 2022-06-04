@@ -1,7 +1,10 @@
 import { connect } from "react-redux";
 import CMOptions from "../components/CustomView/CustomManager/CMOptions";
 import { setReadTraining } from "../actions/readTrainingActions";
-import { setTimecap, setTrainingType } from "../actions/exoFormActions";
+import {
+  setLocalTrainingType,
+  setLocalTrainingTimecap,
+} from "../actions/trainingLocalActions";
 
 const mapStateToProps = ({ localTraining }) => ({
   training: localTraining.localTraining,
@@ -11,8 +14,8 @@ const mapStateToProps = ({ localTraining }) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   setReadTraining: () => dispatch(setReadTraining()),
-  setTimecap: (value) => dispatch(setTimecap(value)),
-  setType: (value) => dispatch(setTrainingType(value)),
+  setTimecap: (value) => dispatch(setLocalTrainingTimecap(value)),
+  setType: (value) => dispatch(setLocalTrainingType(value)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(CMOptions);

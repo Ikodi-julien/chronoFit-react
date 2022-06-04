@@ -62,6 +62,7 @@ export default (store) => (next) => (action) => {
       console.log("exoForm", action);
       next(action);
       break;
+
     default:
       next(action);
   }

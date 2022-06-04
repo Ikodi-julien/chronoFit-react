@@ -1,80 +1,19 @@
 import {
-  SET_ROUNDMENU_IS_VISIBLE,
-  SET_SHRUNKEN_ROUND,
-} from "../actions/trainingViewActions";
-import {
   SET_CUSTOM_ROUND_NAME,
   SET_CUSTOM_ROUND,
   SET_CUSTOM_ROUND_ITERATION,
-  GET_CURRENT_CUSTOM_ROUND,
-  GET_CURRENT_CUSTOM_ROUND_SUCCESS,
-  GET_CUSTOM_ROUNDS,
   GET_LOCAL_ROUNDS_SUCCESS,
   ADD_EXERCICE_TO_CUSTOM_ROUND,
   DELETE_LOCAL_ROUND,
   PUT_EXOFORM_IN_CUSTOM_ROUND,
   DELETE_EXO_FROM_CUSTOM_ROUND,
-  SHOW_EXO_FORM_CUSTOM_ROUND,
-  SHOW_EXO_IN_CUSTOM_ROUND,
   MOVE_EXO_IN_CUSTOM_ROUND,
 } from "../actions/roundLocalActions";
-import {
-  EXOFORM_INPUT_CHANGE,
-  SET_TIMECAP,
-  SET_TRAINING_TYPE,
-  SHOW_EXO_ROUND_FORM,
-} from "../actions/exoFormActions";
+import { SHOW_EXO_ROUND_FORM } from "../actions/exoFormActions";
 /*-----------------------------------*/
-import trainingServices from "../services/training";
-/*----------------------------------*/
 const initialState = {
   isApi: false,
-  allLocalRounds: [
-    {
-      name: "test round 29/05",
-      shrunken: false,
-      menuIsVisible: false,
-      type: "",
-      iteration: 1,
-      duration: 0,
-      exercices: [
-        {
-          isForm: false,
-          name: "Exo test",
-          description: "Des détails",
-          options: [
-            {
-              iteration: 1,
-              duration: "2",
-              weight: "2",
-              reps: "3",
-            },
-          ],
-        },
-        {
-          isForm: false,
-          name: "Exo test 2",
-          description: "description 2",
-          options: [
-            {
-              iteration: "2",
-              duration: "2",
-              weight: 0,
-              reps: "5",
-            },
-          ],
-        },
-      ],
-      // exoForm: {
-      //   name: '',
-      //   iteration: 1,
-      //   desc: '',
-      //   reps: 0,
-      //   duration: 0,
-      //   weight: 0
-      // }
-    },
-  ],
+  allLocalRounds: [],
   roundManagerNameInput: "",
   localRound: {
     name: "Custom Round",
@@ -86,7 +25,7 @@ const initialState = {
     exercices: [
       {
         isForm: false,
-        name: "Un exercice",
+        name: "",
         description: "",
         options: [
           {

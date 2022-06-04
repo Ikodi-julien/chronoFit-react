@@ -1,23 +1,33 @@
 # JOURNAL CHRONOFIT-REACT
 
+### 04/06/2022
+
+Ajout de la fonction "Création de rounds réutilisables":
+
+- vider exoForm reducer après création d'un exo -> ok
+- Ne pas afficher roundMenu si CustomRound -> ok
+- Fix timecap et type d'un training -> ok
+  - Possible de charger un CustomRound dans un training ->
+
+Prochaines étapes :
+
+- Gérer les améliorations listées dans le repo github:
+  - Passer ExoForm en modale ->
+- Ajouter le bouton pour gérer son compte ->
+- Deploy version ->
+- Réaliser et relier les autres vues:
+  - StatsView : Stats et graphs,
+  - (pas MVP) Diar---View : calendrier en lien avec le ou les entrainements réalisés.
+
 ### 02/06/22
+
+Ajout de la fonction "Création de rounds réutilisables":
 
 Créer les actions liées aux rounds + reducer:
 
 - setCustomRoundIteration -> ok
 - deleteExoFromCustomRound -> ok
 - moveExoInCustomRound -> ok
-
-Prochaines étapes :
-
-- Pouvoir ajouter un round deja fait dans un training ->
-- Gérer les améliorations listées dans le repo github:
-  - Possible de charger un CustomRound dans un training ->
-  - Passer ExoForm en modale ->
-- Ajouter le bouton pour gérer son compte ->
-- Réaliser et relier les autres vues:
-  - StatsView : Stats et graphs,
-  - (pas MVP) Diar---View : calendrier en lien avec le ou les entrainements réalisés.
 
 ### 01/06/2022
 

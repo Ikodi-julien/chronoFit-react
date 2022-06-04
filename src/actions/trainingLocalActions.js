@@ -31,10 +31,15 @@ export const setLocalTrainingName = (value) => ({
   value,
 });
 
-export const SET_LOCAL_ROUND_TYPE = "SET_LOCAL_ROUND_TYPE";
-export const setLocalRoundType = (roundIndex, value) => ({
-  type: SET_LOCAL_ROUND_TYPE,
-  roundIndex,
+export const SET_LOCAL_TRAINING_TYPE = "SET_LOCAL_TRAINING_TYPE";
+export const setLocalTrainingType = (value) => ({
+  type: SET_LOCAL_TRAINING_TYPE,
+  value,
+});
+
+export const SET_LOCAL_TRAINING_TIMECAP = "SET_LOCAL_TRAINING_TIMECAP";
+export const setLocalTrainingTimecap = (value) => ({
+  type: SET_LOCAL_TRAINING_TIMECAP,
   value,
 });
 
