@@ -1,19 +1,31 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-import Modal from '../../ConfirmModal/ConfirmModal';
+import Modal from "../../ConfirmModal/ConfirmModal";
 
-const RoundMenu = ({index, addRound, addExercice, deleteRound, setRoundMenuIsVisible}) => {
-  
-  const [isOpen, setIsOpen] = useState(false)
-  const [text, setText] = useState('')
-  const [action, setAction] = useState(undefined)
-  
+const RoundMenu = ({
+  index,
+  addRound,
+  addLocalRound,
+  addExercice,
+  deleteRound,
+  setRoundMenuIsVisible,
+  getLocalRounds,
+  localRounds,
+}) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [text, setText] = useState("");
+  const [action, setAction] = useState(undefined);
+
+  useEffect(() => {
+    getLocalRounds();
+  }, [getLocalRounds]);
+
   const handleDeleteRound = () => {
     setIsOpen(true);
     setAction(() => () => deleteRound(index));
-    setText(`Confirmer la suppression du round n°${index + 1} ?`)
-  }
-  
+    setText(`Confirmer la suppression du round n°${index + 1} ?`);
+  };
+
   return (
     <section className="rounds__round__menu">
       <Modal
@@ -22,35 +34,60 @@ const RoundMenu = ({index, addRound, addExercice, deleteRound, setRoundMenuIsVis
         actionToDispatch={action}
         text={text}
       />
-      
+
       <div className="rounds__round__menu__header">
         <span>Liste des actions</span>
-        <button 
+        <button
           className="rounds__round__menu__close"
           onClick={() => setRoundMenuIsVisible(index, false)}
         >
-          <i className="fas fa-times" ></i>
+          <i className="fas fa-times"></i>
         </button>
       </div>
-      
+
       <ul className="rounds__round__menu__actions">
         <div className="training__divider"></div>
-        <li 
+        <li
           className="rounds__round__menu__action "
           onClick={() => addExercice(index)}
-        >Ajouter un exercice</li>
-        <li 
-          className="rounds__round__menu__action" 
-          onClick={() => addRound()}
-        >Ajouter un round</li>
+        >
+          Ajouter un exercice
+        </li>
+        <li className="rounds__round__menu__action" onClick={() => addRound()}>
+          Ajouter un round vide
+        </li>
+        <li
+          className="rounds__round__menu__action"
+          // onClick={() => addLocalRound()}
+        >
+          <select
+            name="localRound"
+            onChange={(evt) => {
+              addLocalRound(evt.target.value);
+              setRoundMenuIsVisible(index, false);
+            }}
+            defaultValue="default"
+          >
+            <option value="default" disabled>
+              Ajouter un round perso
+            </option>
+            {localRounds.map((round, index) => (
+              <option key={index} value={index}>
+                {round.name}
+              </option>
+            ))}
+          </select>
+        </li>
         <div className="training__divider"></div>
-        <li 
+        <li
           className="rounds__round__menu__action"
           onClick={() => handleDeleteRound(index)}
-          >Supprimer ce round</li>
+        >
+          Supprimer ce round
+        </li>
       </ul>
     </section>
-  )
-  }
+  );
+};
 
 export default RoundMenu;

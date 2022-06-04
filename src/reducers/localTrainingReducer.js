@@ -9,6 +9,7 @@ import {
   SET_ROUND_ITERATION,
   GET_LOCAL_TRAININGS_SUCCESS,
   ADD_ROUND_TO_LOCAL_TRAINING,
+  ADD_LOCAL_ROUND_TO_LOCAL_TRAINING,
   ADD_EXERCICE_TO_LOCAL_TRAINING,
   PUT_EXOFORM_IN_LOCAL_TRAINING,
   DELETE_ROUND_FROM_LOCAL_TRAINING,
@@ -221,6 +222,14 @@ const reducer = (state = initialState, action = {}) => {
         },
       };
 
+    case ADD_LOCAL_ROUND_TO_LOCAL_TRAINING:
+      return {
+        ...state,
+        localTraining: {
+          ...state.localTraining,
+          rounds: [...state.localTraining.rounds, action.roundToAdd],
+        },
+      };
     case DELETE_ROUND_FROM_LOCAL_TRAINING:
       const newRounds = rounds.filter(
         (round) => round !== rounds[action.value]

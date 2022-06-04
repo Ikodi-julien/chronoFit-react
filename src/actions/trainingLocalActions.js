@@ -7,12 +7,6 @@ export const getLocalTrainingsSuccess = (data) => ({
   data,
 });
 
-export const SET_LOCAL_TRAINING = "SET_LOCAL_TRAINING";
-export const setLocalTraining = (trainingName) => ({
-  type: SET_LOCAL_TRAINING,
-  value: trainingName,
-});
-
 export const GET_CURRENT_LOCAL_TRAINING = "GET_CURRENT_LOCAL_TRAINING";
 export const getCurrentLocalTraining = (id) => ({
   type: GET_CURRENT_LOCAL_TRAINING,
@@ -23,6 +17,12 @@ export const GET_CURRENT_LOCAL_TRAINING_SUCCESS =
 export const getCurrentLocalTrainingSuccess = (data) => ({
   type: GET_CURRENT_LOCAL_TRAINING_SUCCESS,
   data,
+});
+
+export const SET_LOCAL_TRAINING = "SET_LOCAL_TRAINING";
+export const setLocalTraining = (trainingName) => ({
+  type: SET_LOCAL_TRAINING,
+  value: trainingName,
 });
 
 export const SET_LOCAL_TRAINING_NAME = "SET_LOCAL_TRAINING_NAME";
@@ -52,6 +52,13 @@ export const deleteLocalTraining = () => ({ type: DELETE_LOCAL_TRAINING });
 export const ADD_ROUND_TO_LOCAL_TRAINING = "ADD_ROUND_TO_LOCAL_TRAINING";
 export const addRoundToLocalTraining = () => ({
   type: ADD_ROUND_TO_LOCAL_TRAINING,
+});
+
+export const ADD_LOCAL_ROUND_TO_LOCAL_TRAINING =
+  "ADD_LOCAL_ROUND_TO_LOCAL_TRAINING";
+export const addLocalRoundToLocalTraining = (value) => ({
+  type: ADD_LOCAL_ROUND_TO_LOCAL_TRAINING,
+  value,
 });
 
 export const DELETE_ROUND_FROM_LOCAL_TRAINING =

@@ -7,10 +7,17 @@ Ajout de la fonction "Création de rounds réutilisables":
 - vider exoForm reducer après création d'un exo -> ok
 - Ne pas afficher roundMenu si CustomRound -> ok
 - Fix timecap et type d'un training -> ok
-  - Possible de charger un CustomRound dans un training ->
+- commit -> ok
+- café ! -> ok
+- Possible de charger un CustomRound dans un training:
+  - Ajouter une entrée au RoundMenu -> ok
+  - Affiche un select des localRounds -> ok
+  - Le select dispatch ADD_LOCAL_ROUND_TO_LOCAL_TRAINING -> ok
+  - Ajoute le round dans le training -> ok
 
 Prochaines étapes :
 
+- FIX: Position modale delete round dans TrainingView ->
 - Gérer les améliorations listées dans le repo github:
   - Passer ExoForm en modale ->
 - Ajouter le bouton pour gérer son compte ->
