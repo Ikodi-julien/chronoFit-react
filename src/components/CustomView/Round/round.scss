@@ -1,4 +1,4 @@
-@use 'src/styles/vars'as v;
+@use "src/styles/vars" as v;
 
 .rounds {
   &__container {
@@ -27,7 +27,7 @@
     }
 
     &__header {
-      position: relative;
+      // position: relative;
       width: 100%;
       display: flex;
       justify-content: space-between;
@@ -66,13 +66,20 @@
 
     &__menu {
       position: absolute;
-      top: 20px;
+      top: -200vh;
+      left: 0;
+      width: 100vw;
+      height: fit-content;
+      min-height: 100vh;
       padding: 8px;
       background-color: v.$color-intermediaire;
       border: 1px solid v.$base-color;
       border-radius: v.$border-radius;
       z-index: 2;
-      width: 80%;
+      &.--visible {
+        top: 0;
+        transition: top 200ms;
+      }
 
       &__header {
         display: flex;

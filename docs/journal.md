@@ -1,5 +1,19 @@
 # JOURNAL CHRONOFIT-REACT
 
+### 05/06/2022
+
+Faire de roundMenu une modale ->
+
+Prochaines étapes :
+
+- Passer ExoForm en modale ->
+- Ajouter le bouton pour gérer son compte ->
+- Test complet round + training + CRUD ->
+- Deploy version ->
+- Réaliser et relier les autres vues:
+  - StatsView : Stats et graphs,
+  - (pas MVP) Diar---View : calendrier en lien avec le ou les entrainements réalisés.
+
 ### 04/06/2022
 
 Ajout de la fonction "Création de rounds réutilisables":
@@ -14,17 +28,7 @@ Ajout de la fonction "Création de rounds réutilisables":
   - Affiche un select des localRounds -> ok
   - Le select dispatch ADD_LOCAL_ROUND_TO_LOCAL_TRAINING -> ok
   - Ajoute le round dans le training -> ok
-
-Prochaines étapes :
-
-- FIX: Position modale delete round dans TrainingView ->
-- Gérer les améliorations listées dans le repo github:
-  - Passer ExoForm en modale ->
-- Ajouter le bouton pour gérer son compte ->
-- Deploy version ->
-- Réaliser et relier les autres vues:
-  - StatsView : Stats et graphs,
-  - (pas MVP) Diar---View : calendrier en lien avec le ou les entrainements réalisés.
+- FIX: Position modale delete round dans TrainingView -> ok
 
 ### 02/06/22
 

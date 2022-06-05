@@ -11,9 +11,10 @@ import {
 import { getLocalRounds } from "../actions/roundLocalActions";
 import { setRoundMenuIsVisible } from "../actions/trainingViewActions";
 
-const mapStateToProps = ({ localRound }, { index }) => ({
+const mapStateToProps = ({ localRound }, { index, isVisible }) => ({
   localRounds: localRound.allLocalRounds,
   index,
+  isVisible,
 });
 
 const mapDispatchToProps = (dispatch) => ({
