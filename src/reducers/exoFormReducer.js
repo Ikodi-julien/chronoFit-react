@@ -7,6 +7,8 @@ import { PUT_EXOFORM_IN_CUSTOM_ROUND } from "../actions/roundLocalActions";
 import { PUT_EXOFORM_IN_LOCAL_TRAINING } from "../actions/trainingLocalActions";
 
 const initialState = {
+  roundIndex: 0,
+  exoIndex: 0,
   name: "",
   desc: "",
   iteration: 1,

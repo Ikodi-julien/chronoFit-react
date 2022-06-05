@@ -147,36 +147,6 @@ const reducer = (state = initialState, action = {}) => {
         },
       };
 
-    // case EXOFORM_INPUT_CHANGE:
-    //   return {
-    //     ...state,
-    //     exoForm: {
-    //       ...state.exoForm,
-    //       [action.name]: action.value,
-    //     },
-    //   };
-
-    // case SET_ROUNDMENU_IS_VISIBLE:
-    //   rounds[action.value.index].menuIsVisible = action.value.bool;
-
-    //   return {
-    //     ...state,
-    //     localTraining: {
-    //       ...state.localTraining,
-    //       rounds,
-    //     },
-    //   };
-
-    // case SET_SHRUNKEN_ROUND:
-    //   rounds[action.value.index].shrunken = action.value.bool;
-    //   return {
-    //     ...state,
-    //     localTraining: {
-    //       ...state.localTraining,
-    //       rounds,
-    //     },
-    //   };
-
     case SET_CUSTOM_ROUND_ITERATION:
       localRound.iteration = action.value;
       return {
@@ -184,47 +154,15 @@ const reducer = (state = initialState, action = {}) => {
         localRound,
       };
 
-    // case SET_TIMECAP:
-    //   return {
-    //     ...state,
-    //     localTraining: {
-    //       ...state.localTraining,
-    //       timecap: action.value,
-    //     },
-    //   };
-
-    // case SET_TRAINING_TYPE:
-    //   return {
-    //     ...state,
-    //     localTraining: {
-    //       ...state.localTraining,
-    //       type: action.value,
-    //     },
-    //   };
-
-    case SHOW_EXO_ROUND_FORM:
-      // console.log(exoShrunken);
-      exoShrunken[action.value.exoIndex].isForm = true;
-
-      return {
-        ...state,
-        localRound: {
-          ...state.localRound,
-          exercices: exoShrunken,
-        },
-      };
-
-    // case SHOW_EXO_IN_LIST:
-    //   // This hides all ExoForm
-    //   rounds[action.value.roundIndex].exercices[
-    //     action.value.exoIndex
-    //   ].isForm = false;
+    // case SHOW_EXO_ROUND_FORM:
+    //   // console.log(exoShrunken);
+    //   exoShrunken[action.value.exoIndex].isForm = true;
 
     //   return {
     //     ...state,
-    //     localTraining: {
-    //       ...state.localTraining,
-    //       rounds,
+    //     localRound: {
+    //       ...state.localRound,
+    //       exercices: exoShrunken,
     //     },
     //   };
 

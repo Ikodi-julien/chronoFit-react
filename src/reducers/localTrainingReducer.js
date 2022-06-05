@@ -21,7 +21,7 @@ import {
 
 import {
   SHOW_EXO_IN_TRAINING_FORM,
-  SHOW_EXO_IN_LIST,
+  // SHOW_EXO_IN_LIST,
 } from "../actions/exoFormActions";
 /*-----------------------------------*/
 import trainingServices from "../services/training";
@@ -304,33 +304,33 @@ const reducer = (state = initialState, action = {}) => {
         },
       };
 
-    case SHOW_EXO_IN_TRAINING_FORM:
-      // This shows ExoForm but all exercices have been shrunk
-      allRoundsExoShrunken[action.value.roundIndex].exercices[
-        action.value.exoIndex
-      ].isForm = true;
+    // case SHOW_EXO_IN_TRAINING_FORM:
+    //   // This shows ExoForm but all exercices have been shrunk
+    //   allRoundsExoShrunken[action.value.roundIndex].exercices[
+    //     action.value.exoIndex
+    //   ].isForm = true;
 
-      return {
-        ...state,
-        localTraining: {
-          ...state.localTraining,
-          rounds,
-        },
-      };
+    //   return {
+    //     ...state,
+    //     localTraining: {
+    //       ...state.localTraining,
+    //       rounds,
+    //     },
+    //   };
 
-    case SHOW_EXO_IN_LIST:
-      // This hides all ExoForm
-      rounds[action.value.roundIndex].exercices[
-        action.value.exoIndex
-      ].isForm = false;
+    // case SHOW_EXO_IN_LIST:
+    //   // This hides all ExoForm
+    //   rounds[action.value.roundIndex].exercices[
+    //     action.value.exoIndex
+    //   ].isForm = false;
 
-      return {
-        ...state,
-        localTraining: {
-          ...state.localTraining,
-          rounds,
-        },
-      };
+    //   return {
+    //     ...state,
+    //     localTraining: {
+    //       ...state.localTraining,
+    //       rounds,
+    //     },
+    //   };
 
     default:
       return state;

@@ -22,6 +22,8 @@ export default (store) => (next) => (action) => {
           .exercices[exoIndex];
 
       action.value.exoToShow = {
+        exoIndex,
+        roundIndex,
         name: exoToShow.name,
         desc: exoToShow.description,
         iteration: exoToShow.options[0].iteration,
@@ -41,6 +43,7 @@ export default (store) => (next) => (action) => {
         store.getState().localRound.localRound.exercices[action.value.exoIndex];
 
       action.value.exoToShow = {
+        exoIndex: action.value.exoIndex,
         name: exoRound.name,
         desc: exoRound.description,
         iteration: exoRound.options[0].iteration,

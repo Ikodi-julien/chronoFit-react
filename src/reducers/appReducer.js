@@ -11,12 +11,16 @@ import {
 } from "../actions/roundLocalActions";
 import {
   SHOW_EXO_IN_TRAINING_FORM,
+  SHOW_EXO_ROUND_FORM,
   SHOW_EXO_IN_LIST,
+  SHOW_ROUND_EXO_IN_LIST,
 } from "../actions/exoFormActions";
 import { GOT_ERROR } from "../actions/trainingAjaxActions";
 
 const initialState = {
   menuIsVisible: false,
+  roundExoFormIsVisible: false,
+  trainingExoFormIsVisible: false,
   isToRender: 0,
   messageToUser: "",
   commentIsOpen: false,
@@ -43,13 +47,31 @@ const reducer = (state = initialState, action = {}) => {
         commentIsOpen: action.value,
       };
 
+    case SHOW_EXO_IN_TRAINING_FORM:
+      return {
+        ...state,
+        trainingExoFormIsVisible: true,
+      };
+
+    case SHOW_EXO_ROUND_FORM:
+      return {
+        ...state,
+        roundExoFormIsVisible: true,
+      };
+
+    case SHOW_EXO_IN_LIST:
+    case SHOW_ROUND_EXO_IN_LIST:
+      return {
+        ...state,
+        trainingExoFormIsVisible: false,
+        roundExoFormIsVisible: false,
+      };
+
     case PUT_EXOFORM_IN_LOCAL_TRAINING:
     case MOVE_EXO_IN_STATE:
     case MOVE_EXO_IN_CUSTOM_ROUND:
     case ADD_EXERCICE_TO_LOCAL_TRAINING:
     case DELETE_EXO_FROM_CUSTOM_ROUND:
-    case SHOW_EXO_IN_TRAINING_FORM:
-    case SHOW_EXO_IN_LIST:
       return {
         ...state,
         isToRender: Math.random(),

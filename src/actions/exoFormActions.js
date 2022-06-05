@@ -10,8 +10,7 @@ export const setTimecap = (value) => ({ type: SET_TIMECAP, value });
 export const SET_TRAINING_TYPE = "SET_TRAINING_TYPE";
 export const setTrainingType = (value) => ({ type: SET_TRAINING_TYPE, value });
 
-export const SHOW_EXO_IN_TRAINING_FORM =
-  "SHOW_EXO_FSHOW_EXO_IN_TRAINING_FORMORM";
+export const SHOW_EXO_IN_TRAINING_FORM = "SHOW_EXO_IN_TRAINING_FORM";
 export const showExoInTrainingForm = (value) => ({
   type: SHOW_EXO_IN_TRAINING_FORM,
   value,

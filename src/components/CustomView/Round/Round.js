@@ -22,6 +22,8 @@ const Round = ({
   setRoundIteration,
   moveExoInState,
   menuIsVisible,
+  roundExoFormIsVisible,
+  trainingExoFormIsVisible,
   // Pour RoundMenu
   addExercice,
   setRoundMenuIsVisible,
@@ -75,89 +77,79 @@ const Round = ({
   });
 
   return (
-    <>
-      <section className="rounds__round__container">
-        <div className="rounds__round__header drag-handle">
-          {<RoundMenuContainer index={roundIndex} isVisible={menuIsVisible} />}
-          {type === "training" && (
-            <button
-              className="training__button --transparent --icone"
-              onClick={() => setRoundMenuIsVisible(roundIndex, true)}
-            >
-              <i className="fas fa-ellipsis-v trainingrounds__header__togglemenu"></i>
-            </button>
-          )}
-          {type !== "api" && (
-            <button
-              className="training__button --transparent --icone"
-              onClick={() => addExercice(roundIndex)}
-            >
-              <i className="fas fa-plus"></i>
-            </button>
-          )}
-          <div className="rounds__round__header__column">
-            <div className="rounds__round__header__title">
-              Round n°{roundIndex + 1}{" "}
-            </div>
-            <div className="rounds__round__header__subtitle">
-              Durée : {duration} - Répéter
-              <input
-                name="roundIteration"
-                type="number"
-                min={1}
-                value={iteration}
-                className="rounds__round__iteration"
-                onChange={handleChange}
-                placeholder="nb"
-              />{" "}
-              fois
-            </div>
-          </div>
-
+    <section className="rounds__round__container">
+      {trainingExoFormIsVisible && <ExoInTrainingForm />}
+      {roundExoFormIsVisible && <ExoInRoundForm />}
+      <div className="rounds__round__header drag-handle">
+        <RoundMenuContainer index={roundIndex} isVisible={menuIsVisible} />
+        {type === "training" && (
           <button
-            className={`training__button --transparent --icone --xl ${
-              shrunken ? "--shrunken" : "--rotate"
-            }`}
-            onClick={() => setShrunken(roundIndex, !shrunken)}
+            className="training__button --transparent --icone"
+            onClick={() => setRoundMenuIsVisible(roundIndex, true)}
           >
-            <i className="fas fa-caret-right"></i>
+            <i className="fas fa-ellipsis-v trainingrounds__header__togglemenu"></i>
           </button>
+        )}
+        {type !== "api" && (
+          <button
+            className="training__button --transparent --icone"
+            onClick={() => addExercice(roundIndex)}
+          >
+            <i className="fas fa-plus"></i>
+          </button>
+        )}
+        <div className="rounds__round__header__column">
+          <div className="rounds__round__header__title">
+            Round n°{roundIndex + 1}{" "}
+          </div>
+          <div className="rounds__round__header__subtitle">
+            Durée : {duration} - Répéter
+            <input
+              name="roundIteration"
+              type="number"
+              min={1}
+              value={iteration}
+              className="rounds__round__iteration"
+              onChange={handleChange}
+              placeholder="nb"
+            />{" "}
+            fois
+          </div>
         </div>
 
-        <ul
-          className={
-            shrunken
-              ? "rounds__round__exolist --shrunken"
-              : "rounds__round__exolist"
-          }
-          id={`exoList-${roundIndex}`}
+        <button
+          className={`training__button --transparent --icone --xl ${
+            shrunken ? "--shrunken" : "--rotate"
+          }`}
+          onClick={() => setShrunken(roundIndex, !shrunken)}
         >
-          {exercices.map((exo, index) =>
-            exo.isForm ? (
-              <li key={index} exo-id={index}>
-                {location.pathname === "/entrainement" ? (
-                  <ExoInTrainingForm roundIndex={roundIndex} index={index} />
-                ) : (
-                  <ExoInRoundForm index={index} />
-                )}
-              </li>
+          <i className="fas fa-caret-right"></i>
+        </button>
+      </div>
+
+      <ul
+        className={
+          shrunken
+            ? "rounds__round__exolist --shrunken"
+            : "rounds__round__exolist"
+        }
+        id={`exoList-${roundIndex}`}
+      >
+        {exercices.map((exo, index) => (
+          <li key={index} exo-id={index} className="draggable-item">
+            {location.pathname === "/entrainement" ? (
+              <ExoInTraining
+                type={type}
+                roundIndex={roundIndex}
+                index={index}
+              />
             ) : (
-              <li key={index} exo-id={index} className="draggable-item">
-                {location.pathname === "/entrainement" ? (
-                  <ExoInTraining
-                    type={type}
-                    roundIndex={roundIndex}
-                    index={index}
-                  />
-                ) : (
-                  <ExoInRound index={index} />
-                )}
-              </li>
-            )
-          )}
-        </ul>
-      </section>
-    </>
+              <ExoInRound index={index} />
+            )}
+          </li>
+        ))}
+      </ul>
+    </section>
   );
 };
 

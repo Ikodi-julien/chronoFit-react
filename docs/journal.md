@@ -2,11 +2,14 @@
 
 ### 05/06/2022
 
-Faire de roundMenu une modale ->
+Faire de roundMenu une modale -> ok
+Passer ExoForm en modale :
+
+- Dans vue Round -> ok
+- Dans vue Training -> ok
 
 Prochaines étapes :
 
-- Passer ExoForm en modale ->
 - Ajouter le bouton pour gérer son compte ->
 - Test complet round + training + CRUD ->
 - Deploy version ->

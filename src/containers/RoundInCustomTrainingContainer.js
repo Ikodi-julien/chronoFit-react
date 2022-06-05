@@ -16,6 +16,7 @@ import Round from "../components/CustomView/Round/Round";
 
 const mapStateToProps = ({ app }, { round, index }) => ({
   isToRender: app.isToRender,
+  trainingExoFormIsVisible: app.trainingExoFormIsVisible,
   roundIndex: index,
   iteration: round.iteration,
   shrunken: round.shrunken,
