@@ -24,6 +24,8 @@
     text-align: right;
   }
   &__connected {
+    display: flex;
+    justify-content: space-between;
     padding: 8px;
     background-color: v.$base-color;
     color: v.$color-very-light;

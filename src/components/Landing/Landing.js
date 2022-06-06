@@ -11,7 +11,12 @@ const Landing = ({ getMe, isUserLoggued, logout, nickname }) => {
     <section className="landing__container">
       <header className="landing__header">
         {isUserLoggued && (
-          <p className="landing__connected">Connecté : {nickname}</p>
+          <>
+            <div className="landing__connected">
+              <span>Connecté : {nickname}</span>
+              <a href={`${AUTH_URL}/?app=chronofit`}>Mon profil</a>
+            </div>
+          </>
         )}
         <div className="landing__row">
           <h1 className="landing__title">CHRONOFIT</h1>

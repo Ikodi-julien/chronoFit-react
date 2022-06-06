@@ -12,13 +12,15 @@ Passer ExoForm en modale :
 - Revoir le css de ExoForm -> ok
 - Revoir RoundMenu, faire wireframes -> ok
 - Revoir le css de RoundMenu-> ok
+- Ajouter le bouton pour gérer son compte -> ok
+- Test complet round + training + CRUD :
+  - Les girls -> ok CRUD
+  - FIX :
+    - Ajouter le "type" pour l'enregistrement d'une girl -> ok,
+    - L'ajout d'un exo affiche directement exoForm ->
 
 Prochaines étapes :
 
-- Ajouter le bouton pour gérer son compte ->
-- FIX :
-  - L'ajout d'un exo affiche exoForm ->
-- Test complet round + training + CRUD ->
 - Deploy version ->
 - Réaliser et relier les autres vues:
   - StatsView : Stats et graphs,
