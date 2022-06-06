@@ -10,6 +10,11 @@ Passer ExoForm en modale :
 
 Prochaines étapes :
 
+Revoir ExoForm, faire wireframes ->
+Revoir le css de ExoForm ->
+Revoir RoundMenu, faire wireframes ->
+Revoir le css de RoundMenu->
+
 - Ajouter le bouton pour gérer son compte ->
 - Test complet round + training + CRUD ->
 - Deploy version ->

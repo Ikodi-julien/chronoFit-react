@@ -9,7 +9,6 @@ import {
   DELETE_EXO_FROM_CUSTOM_ROUND,
   MOVE_EXO_IN_CUSTOM_ROUND,
 } from "../actions/roundLocalActions";
-import { SHOW_EXO_ROUND_FORM } from "../actions/exoFormActions";
 /*-----------------------------------*/
 const initialState = {
   isApi: false,
@@ -153,18 +152,6 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         localRound,
       };
-
-    // case SHOW_EXO_ROUND_FORM:
-    //   // console.log(exoShrunken);
-    //   exoShrunken[action.value.exoIndex].isForm = true;
-
-    //   return {
-    //     ...state,
-    //     localRound: {
-    //       ...state.localRound,
-    //       exercices: exoShrunken,
-    //     },
-    //   };
 
     case DELETE_LOCAL_ROUND:
       return {

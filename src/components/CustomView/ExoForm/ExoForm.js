@@ -52,21 +52,12 @@ const ExoForm = ({
         isOpen={isOpen}
         setIsOpen={setIsOpen}
       />
+
       <div className="exoform__container">
-        <form className="exoform__form" onSubmit={handleSubmit}>
-          <div className="exoform__input__row">
-            <label>Nom:</label>
-            <Field
-              index={index}
-              name="name"
-              type="text"
-              className="exoform__input exoform__input__name"
-              placeholder="Nom de l'exo"
-              value={name}
-              onChange={handleInputChange}
-            />
+        <div className="exoform__content">
+          <div className="exoform__input__row --jc-right">
             <button
-              className="training__button --transparent --icone --caretopen "
+              className="training__button --transparent --icone"
               type="button"
               onClick={() => {
                 putExo(roundIndex, index);
@@ -80,87 +71,105 @@ const ExoForm = ({
               <i className="fas fa-times"></i>
             </button>
           </div>
+          <form className="exoform__form" onSubmit={handleSubmit}>
+            <div className="exoform__input__row">
+              <label>Nom:</label>
+              <Field
+                index={index}
+                name="name"
+                type="text"
+                className="exoform__input --name"
+                placeholder="Nom de l'exo"
+                value={name}
+                onChange={handleInputChange}
+              />
+            </div>
 
-          <div className="exoform__input__row">
-            <label>Détails:</label>
-            <textarea
-              name="desc"
-              type="text"
-              className="exoform__input exoform__textarea"
-              placeholder="Description"
-              value={description}
-              onChange={handleInputChange}
-            ></textarea>
-          </div>
+            <div className="exoform__input__row">
+              <label>Détails:</label>
+              <textarea
+                name="desc"
+                type="text"
+                className="exoform__input --textarea"
+                placeholder="Description"
+                value={description}
+                onChange={handleInputChange}
+              ></textarea>
+            </div>
 
-          <div className="exoform__input__row">
-            <label>Nb de séries: </label>
-            <Field
-              name="iteration"
-              className="exoform__input exoform__input__number"
-              type="number"
-              min={1}
-              placeholder="séries"
-              value={iteration}
-              onChange={handleInputChange}
-            />
-          </div>
+            <hr className="exoform__input__separateur" />
+            <div className="exoform__input__row">
+              <Field
+                name="iteration"
+                className="exoform__input --number"
+                type="number"
+                min={1}
+                placeholder="séries"
+                value={iteration}
+                onChange={handleInputChange}
+              />
+              <label>séries</label>
+            </div>
 
-          <div className="exoform__input__row">
-            <label>Reps: </label>
-            <Field
-              name="reps"
-              className="exoform__input exoform__input__number"
-              type="number"
-              placeholder="Reps"
-              min={0}
-              value={reps}
-              onChange={handleInputChange}
-            />
-          </div>
+            <div className="exoform__input__row">
+              <Field
+                name="duration"
+                className="exoform__input --number"
+                type="number"
+                placeholder="durée"
+                min={0}
+                value={duration}
+                onChange={handleInputChange}
+              />
+              <label>secondes / série</label>
+            </div>
 
-          <div className="exoform__input__row">
-            <label>Tps (s): </label>
-            <Field
-              name="duration"
-              className="exoform__input exoform__input__number"
-              type="number"
-              placeholder="Durée"
-              min={0}
-              value={duration}
-              onChange={handleInputChange}
-            />
-          </div>
+            <div className="exoform__input__row">
+              <Field
+                name="reps"
+                className="exoform__input --number"
+                type="number"
+                placeholder="reps"
+                min={0}
+                value={reps}
+                onChange={handleInputChange}
+              />
+              <label>reps / série</label>
+            </div>
 
-          <div className="exoform__input__row">
-            <label>Pds (kg): </label>
-            <Field
-              name="weight"
-              className="exoform__input exoform__input__number"
-              type="number"
-              placeholder="Poids"
-              min={0}
-              onChange={handleInputChange}
-              value={weight}
-            />
-          </div>
+            <div className="exoform__input__row">
+              <label>Poids</label>
+              <Field
+                name="weight"
+                className="exoform__input --number"
+                type="number"
+                placeholder="kg"
+                min={0}
+                onChange={handleInputChange}
+                value={weight}
+              />
+              <label>kg</label>
+            </div>
 
-          <div className="exoform__controls">
-            <button
-              type="submit"
-              className="training__button  --transparent --icone"
-            >
-              <i className="fas fa-check"></i>
-            </button>
-            <button
-              type="button"
-              className="training__button  --transparent --icone"
-              onClick={handleDelete}
-            >
-              <i className="fas fa-trash-alt"></i>
-            </button>
-          </div>
-        </form>
+            <hr className="exoform__input__separateur" />
+
+            <div className="exoform__controls">
+              <button
+                type="submit"
+                className="training__button  --transparent --icone --border"
+              >
+                <i className="fas fa-check"></i>
+              </button>
+              <button
+                type="button"
+                className="training__button  --transparent --icone --border"
+                onClick={handleDelete}
+              >
+                <i className="fas fa-trash-alt"></i>
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
     </>
   );
