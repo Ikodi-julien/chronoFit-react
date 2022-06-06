@@ -60,6 +60,10 @@ const ExoForm = ({
               className="training__button --transparent --icone"
               type="button"
               onClick={() => {
+                if (name === "") {
+                  handleDelete();
+                  return;
+                }
                 showExoInList({
                   roundIndex,
                   exoIndex: index,
