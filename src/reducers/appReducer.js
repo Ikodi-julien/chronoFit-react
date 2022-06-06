@@ -4,6 +4,7 @@ import {
   PUT_EXOFORM_IN_LOCAL_TRAINING,
   MOVE_EXO_IN_STATE,
   ADD_EXERCICE_TO_LOCAL_TRAINING,
+  DELETE_EXO_FROM_ROUND,
 } from "../actions/trainingLocalActions";
 import {
   DELETE_EXO_FROM_CUSTOM_ROUND,
@@ -61,17 +62,18 @@ const reducer = (state = initialState, action = {}) => {
 
     case SHOW_EXO_IN_LIST:
     case SHOW_ROUND_EXO_IN_LIST:
+    case DELETE_EXO_FROM_CUSTOM_ROUND:
+    case DELETE_EXO_FROM_ROUND:
+    case PUT_EXOFORM_IN_LOCAL_TRAINING:
       return {
         ...state,
         trainingExoFormIsVisible: false,
         roundExoFormIsVisible: false,
       };
 
-    case PUT_EXOFORM_IN_LOCAL_TRAINING:
     case MOVE_EXO_IN_STATE:
     case MOVE_EXO_IN_CUSTOM_ROUND:
     case ADD_EXERCICE_TO_LOCAL_TRAINING:
-    case DELETE_EXO_FROM_CUSTOM_ROUND:
       return {
         ...state,
         isToRender: Math.random(),
