@@ -71,9 +71,13 @@ const reducer = (state = initialState, action = {}) => {
         roundExoFormIsVisible: false,
       };
 
+    case ADD_EXERCICE_TO_LOCAL_TRAINING:
+      return {
+        ...state,
+        trainingExoFormIsVisible: true,
+      };
     case MOVE_EXO_IN_STATE:
     case MOVE_EXO_IN_CUSTOM_ROUND:
-    case ADD_EXERCICE_TO_LOCAL_TRAINING:
       return {
         ...state,
         isToRender: Math.random(),

@@ -4,7 +4,10 @@ import {
   SHOW_EXO_ROUND_FORM,
 } from "../actions/exoFormActions";
 import { PUT_EXOFORM_IN_CUSTOM_ROUND } from "../actions/roundLocalActions";
-import { PUT_EXOFORM_IN_LOCAL_TRAINING } from "../actions/trainingLocalActions";
+import {
+  PUT_EXOFORM_IN_LOCAL_TRAINING,
+  ADD_EXERCICE_TO_LOCAL_TRAINING,
+} from "../actions/trainingLocalActions";
 
 const initialState = {
   roundIndex: 0,
@@ -40,6 +43,15 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...initialState,
       };
+
+    case ADD_EXERCICE_TO_LOCAL_TRAINING:
+      console.log(action);
+      return {
+        ...initialState,
+        roundIndex: action.value.roundIndex,
+        exoIndex: action.value.exoIndex,
+      };
+
     default:
       return state;
   }

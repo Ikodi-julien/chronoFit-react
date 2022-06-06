@@ -60,7 +60,6 @@ const ExoForm = ({
               className="training__button --transparent --icone"
               type="button"
               onClick={() => {
-                putExo(roundIndex, index);
                 showExoInList({
                   roundIndex,
                   exoIndex: index,

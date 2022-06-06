@@ -1,4 +1,7 @@
-import { PUT_EXOFORM_IN_LOCAL_TRAINING } from "../actions/trainingLocalActions";
+import {
+  PUT_EXOFORM_IN_LOCAL_TRAINING,
+  ADD_EXERCICE_TO_LOCAL_TRAINING,
+} from "../actions/trainingLocalActions";
 import { PUT_EXOFORM_IN_CUSTOM_ROUND } from "../actions/roundLocalActions";
 import {
   SHOW_EXO_IN_TRAINING_FORM,
@@ -9,6 +12,9 @@ import {
 // eslint-disable-next-line import/no-anonymous-default-export
 export default (store) => (next) => (action) => {
   switch (action.type) {
+    /*--------------------------------*/
+    /*----------- TRAINING------------*/
+    /*--------------------------------*/
     case PUT_EXOFORM_IN_LOCAL_TRAINING:
       action.exoForm = store.getState().exoForm;
       console.log("exoForm", action);
@@ -32,6 +38,14 @@ export default (store) => (next) => (action) => {
         weight: exoToShow.options[0].weight,
       };
       console.log(action);
+      next(action);
+      break;
+
+    case ADD_EXERCICE_TO_LOCAL_TRAINING:
+      action.value.exoIndex =
+        store.getState().localTraining.localTraining.rounds[
+          action.value.roundIndex
+        ].exercices.length;
       next(action);
       break;
 
