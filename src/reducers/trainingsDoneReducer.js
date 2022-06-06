@@ -165,6 +165,7 @@ const reducer = (state = initialState, action = {}) => {
       window.alert("Les modifications sont bien enregistrées");
       return {
         ...state,
+        isModif: false,
       };
     default:
       return state;
