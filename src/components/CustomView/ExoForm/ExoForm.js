@@ -24,8 +24,24 @@ const ExoForm = ({
 }) => {
   const location = useLocation();
 
+  const handleDelete = () => {
+    setIsOpen(true);
+    setAction(() => () => deleteExo(roundIndex, index));
+    setText(`Confirmer la suppression de cet exercice ?`);
+  };
+
+  const confirmNoName = () => {
+    setIsOpen(true);
+    setAction(() => () => deleteExo(roundIndex, index));
+    setText(`Le nom est vide, confirmer la suppression de cet exercice ?`);
+  };
+
   const handleSubmit = (evt) => {
     evt.preventDefault();
+    if (name === "") {
+      confirmNoName();
+      return;
+    }
     putExo(roundIndex, index);
   };
 
@@ -34,10 +50,16 @@ const ExoForm = ({
     setValue(evt.name, evt.value);
   };
 
-  const handleDelete = () => {
-    setIsOpen(true);
-    setAction(() => () => deleteExo(roundIndex, index));
-    setText(`Confirmer la suppression de cet exercice ?`);
+  const handleClose = () => {
+    if (name === "") {
+      confirmNoName();
+      return;
+    }
+    showExoInList({
+      roundIndex,
+      exoIndex: index,
+      location: location.pathname,
+    });
   };
 
   const [text, setText] = useState("");
@@ -59,17 +81,7 @@ const ExoForm = ({
             <button
               className="training__button --transparent --icone"
               type="button"
-              onClick={() => {
-                if (name === "") {
-                  handleDelete();
-                  return;
-                }
-                showExoInList({
-                  roundIndex,
-                  exoIndex: index,
-                  location: location.pathname,
-                });
-              }}
+              onClick={handleClose}
             >
               <i className="fas fa-times"></i>
             </button>
