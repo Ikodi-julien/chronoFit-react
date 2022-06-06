@@ -22,19 +22,19 @@ const initialState = {
     iteration: 1,
     duration: 0,
     exercices: [
-      {
-        isForm: false,
-        name: "",
-        description: "",
-        options: [
-          {
-            iteration: 1,
-            duration: 0,
-            weight: 0,
-            reps: 0,
-          },
-        ],
-      },
+      // {
+      //   isForm: false,
+      //   name: "",
+      //   description: "",
+      //   options: [
+      //     {
+      //       iteration: 1,
+      //       duration: 0,
+      //       weight: 0,
+      //       reps: 0,
+      //     },
+      //   ],
+      // },
     ],
   },
 };

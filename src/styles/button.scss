@@ -46,6 +46,10 @@
     transform: rotate(90deg);
   }
 
+  &.--m,
+  & .--m {
+    font-size: v.$fs-button-icone-m;
+  }
   &.--l,
   & .--l {
     font-size: v.$fs-button-icone-l;
@@ -66,6 +70,9 @@
 
   & .--padded {
     padding: 0 20px;
+  }
+  &.--flex1 {
+    flex: 1;
   }
 }
 
