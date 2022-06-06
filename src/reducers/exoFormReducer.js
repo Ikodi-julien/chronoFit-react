@@ -3,7 +3,10 @@ import {
   SHOW_EXO_IN_TRAINING_FORM,
   SHOW_EXO_ROUND_FORM,
 } from "../actions/exoFormActions";
-import { PUT_EXOFORM_IN_CUSTOM_ROUND } from "../actions/roundLocalActions";
+import {
+  PUT_EXOFORM_IN_CUSTOM_ROUND,
+  ADD_EXERCICE_TO_CUSTOM_ROUND,
+} from "../actions/roundLocalActions";
 import {
   PUT_EXOFORM_IN_LOCAL_TRAINING,
   ADD_EXERCICE_TO_LOCAL_TRAINING,
@@ -45,6 +48,7 @@ const reducer = (state = initialState, action = {}) => {
       };
 
     case ADD_EXERCICE_TO_LOCAL_TRAINING:
+    case ADD_EXERCICE_TO_CUSTOM_ROUND:
       console.log(action);
       return {
         ...initialState,
