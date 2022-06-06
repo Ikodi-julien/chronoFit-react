@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import TrainingTabLine from "../components/TrainingTab/TrainingTabLine/TrainingTabLine";
-import { displayTrainingDetails } from "../actions/recapTrainingsActions";
+import { displayTrainingDetails } from "../actions/trainingsDoneActions";
 
 const mapStateToProps = (state, { training }) => ({
   training,

@@ -18,7 +18,11 @@ import {
   setReadTraining,
   POST_NEW_TRAINING,
 } from "../actions/readTrainingActions";
-import { DELETE_TRAINING } from "../actions/recapTrainingsActions";
+import {
+  DELETE_TRAINING,
+  UPDATE_TRAINING_DONE,
+  updateTrainingSuccess,
+} from "../actions/trainingsDoneActions";
 
 export default (store) => (next) => (action) => {
   const errorMsg = (
@@ -29,6 +33,7 @@ export default (store) => (next) => (action) => {
     </div>
   );
   const readTrainingState = store.getState().readTraining;
+  const trainingsDoneState = store.getState().trainingsDone;
 
   switch (action.type) {
     case GET_TRAININGS_DONE:
@@ -107,6 +112,24 @@ export default (store) => (next) => (action) => {
       next(action);
       break;
 
+    case UPDATE_TRAINING_DONE:
+      next(action);
+      axios
+        .put(
+          `${AUTH_URL}/chronofit/trainings-done/${action.value}`,
+          { training: trainingsDoneState.currentTraining },
+          { withCredentials: true }
+        )
+        .then((res) => {
+          console.log(res.data);
+          res.data
+            ? store.dispatch(updateTrainingSuccess())
+            : store.dispatch(gotError(errorMsg));
+        })
+        .catch((error) => {
+          store.dispatch(gotError(errorMsg));
+        });
+      break;
     default:
       next(action);
   }

@@ -7,12 +7,6 @@ export const getLocalTrainingsSuccess = (data) => ({
   data,
 });
 
-export const SET_LOCAL_TRAINING = "SET_LOCAL_TRAINING";
-export const setLocalTraining = (trainingName) => ({
-  type: SET_LOCAL_TRAINING,
-  value: trainingName,
-});
-
 export const GET_CURRENT_LOCAL_TRAINING = "GET_CURRENT_LOCAL_TRAINING";
 export const getCurrentLocalTraining = (id) => ({
   type: GET_CURRENT_LOCAL_TRAINING,
@@ -25,16 +19,27 @@ export const getCurrentLocalTrainingSuccess = (data) => ({
   data,
 });
 
+export const SET_LOCAL_TRAINING = "SET_LOCAL_TRAINING";
+export const setLocalTraining = (trainingName) => ({
+  type: SET_LOCAL_TRAINING,
+  value: trainingName,
+});
+
 export const SET_LOCAL_TRAINING_NAME = "SET_LOCAL_TRAINING_NAME";
 export const setLocalTrainingName = (value) => ({
   type: SET_LOCAL_TRAINING_NAME,
   value,
 });
 
-export const SET_LOCAL_ROUND_TYPE = "SET_LOCAL_ROUND_TYPE";
-export const setLocalRoundType = (roundIndex, value) => ({
-  type: SET_LOCAL_ROUND_TYPE,
-  roundIndex,
+export const SET_LOCAL_TRAINING_TYPE = "SET_LOCAL_TRAINING_TYPE";
+export const setLocalTrainingType = (value) => ({
+  type: SET_LOCAL_TRAINING_TYPE,
+  value,
+});
+
+export const SET_LOCAL_TRAINING_TIMECAP = "SET_LOCAL_TRAINING_TIMECAP";
+export const setLocalTrainingTimecap = (value) => ({
+  type: SET_LOCAL_TRAINING_TIMECAP,
   value,
 });
 
@@ -49,6 +54,13 @@ export const addRoundToLocalTraining = () => ({
   type: ADD_ROUND_TO_LOCAL_TRAINING,
 });
 
+export const ADD_LOCAL_ROUND_TO_LOCAL_TRAINING =
+  "ADD_LOCAL_ROUND_TO_LOCAL_TRAINING";
+export const addLocalRoundToLocalTraining = (value) => ({
+  type: ADD_LOCAL_ROUND_TO_LOCAL_TRAINING,
+  value,
+});
+
 export const DELETE_ROUND_FROM_LOCAL_TRAINING =
   "DELETE_ROUND_FROM_LOCAL_TRAINING";
 export const deleteRoundFromLocalTraining = (index) => ({
@@ -57,9 +69,9 @@ export const deleteRoundFromLocalTraining = (index) => ({
 });
 
 export const ADD_EXERCICE_TO_LOCAL_TRAINING = "ADD_EXERCICE_TO_LOCAL_TRAINING";
-export const addExerciceToLocalTraining = (index) => ({
+export const addExerciceToLocalTraining = (roundIndex) => ({
   type: ADD_EXERCICE_TO_LOCAL_TRAINING,
-  value: { roundId: index },
+  roundIndex,
 });
 
 export const PUT_EXOFORM_IN_LOCAL_TRAINING = "PUT_EXOFORM_IN_LOCAL_TRAINING";
@@ -94,27 +106,3 @@ export const setRoundIteration = (index, value) => ({
   type: SET_ROUND_ITERATION,
   value: { index, value },
 });
-
-export const SHOW_EXO_FORM = "SHOW_EXO_FORM";
-export const showExoForm = (roundIndex, exoIndex) => ({
-  type: SHOW_EXO_FORM,
-  value: { roundIndex, exoIndex },
-});
-
-export const SHOW_EXO_IN_LIST = "SHOW_EXO_IN_LIST";
-export const showExoInList = (roundIndex, exoIndex) => ({
-  type: SHOW_EXO_IN_LIST,
-  value: { roundIndex, exoIndex },
-});
-
-// ExoForm input actions
-export const EXOFORM_INPUT_CHANGE = "EXOFORM_INPUT_CHANGE";
-export const setExoFormInputValue = (inputObject) => ({
-  type: EXOFORM_INPUT_CHANGE,
-  name: inputObject.name,
-  value: inputObject.value,
-});
-export const SET_TIMECAP = "SET_TIMECAP";
-export const setTimecap = (value) => ({ type: SET_TIMECAP, value });
-export const SET_TRAINING_TYPE = "SET_TRAINING_TYPE";
-export const setTrainingType = (value) => ({ type: SET_TRAINING_TYPE, value });

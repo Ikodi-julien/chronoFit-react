@@ -1,6 +1,6 @@
-import {connect} from 'react-redux';
+import { connect } from "react-redux";
 /*------------------------*/
-import CustomTrainingManager from '../components/CustomTrainingView/CustomTrainingManager/CustomTrainingManager';
+import CustomManager from "../components/CustomView/CustomManager/CustomManager";
 /*------------------------*/
 import {
   getLocalTrainings,
@@ -8,21 +8,21 @@ import {
   setLocalTrainingName,
   createLocalTraining,
   deleteLocalTraining,
-} from '../actions/trainingLocalActions';
+} from "../actions/trainingLocalActions";
 
-const mapStateToProps = ({localTraining}) => ({
-  trainingList: localTraining.allLocalTrainings,
-  training: localTraining.localTraining,
-  trainingName: localTraining.trainingManagerNameInput,
-  timecapValue: localTraining.timecap,
+const mapStateToProps = ({ localTraining }) => ({
+  itemList: localTraining.allLocalTrainings,
+  item: localTraining.localTraining,
+  itemName: localTraining.trainingManagerNameInput,
+  // timecapValue: localTraining.timecap,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  getLocalTrainings: () => dispatch(getLocalTrainings()),
-  setLocalTraining: (trainingName) => dispatch(setLocalTraining(trainingName)), 
-  setLocalTrainingName: (value) => dispatch(setLocalTrainingName(value)) ,
-  createLocalTraining: () => dispatch(createLocalTraining()),
-  deleteLocalTraining: () => dispatch(deleteLocalTraining()),
+  getItems: () => dispatch(getLocalTrainings()),
+  setItem: (trainingName) => dispatch(setLocalTraining(trainingName)),
+  setItemName: (value) => dispatch(setLocalTrainingName(value)),
+  createItem: () => dispatch(createLocalTraining()),
+  deleteItem: () => dispatch(deleteLocalTraining()),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(CustomTrainingManager);
+export default connect(mapStateToProps, mapDispatchToProps)(CustomManager);

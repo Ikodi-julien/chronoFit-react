@@ -1,16 +1,164 @@
 # JOURNAL CHRONOFIT-REACT
 
-### 10/05/2022
+### 05/06/2022
 
-Route api -> ok (delete /chronofit/training/:id)
-Deploy version ->
+Faire de roundMenu une modale -> ok
+Passer ExoForm en modale :
+
+- Dans vue Round -> ok
+- Dans vue Training -> ok
+- commit -> ok
+- Revoir ExoForm, faire wireframes -> ok
+- Revoir le css de ExoForm -> ok
+- Revoir RoundMenu, faire wireframes -> ok
+- Revoir le css de RoundMenu-> ok
+- Ajouter le bouton pour gérer son compte -> ok
+- Test complet round + training + CRUD :
+  - Les girls -> ok
+  - Entrainements -> ok
+  - Rounds ->
+  - FIX :
+    - Ajouter le "type" pour l'enregistrement d'une girl -> ok,
+    - Le CSS du menu de Navigation -> ok
+    - Ajout exo dans Training, pb d'index -> ok
+    - pb avec la modification d'un nouvel exo qui ecrase le premier -> ok, ajout du roundIndex et exoIndex dans exoFormReducer,
+    - L'ajout d'un exo affiche directement exoForm -> ok
+    - La fermeture d'un nouvel exo sans nom propose de le supprimer -> ok
+    - L'enregistrement des modifs d'un training done devrait réafficher le bouton "modifier" -> ok
+    - RoundMenu apparait sous les exercices (z-index?) -> oui c ça!
+    - Création d'un round, pouvoir revenir à un round vide -> ok
+    - Dans round l'ajout d'un exo devrait afficher exoForm -> ok
+    - La validation d'un nouvel exo sans nom devrait proposer de le supprimer -> ok
+    - La création d'un exo dans un round devrait l'ajouter à la liste -> ok
 
 Prochaines étapes :
 
+- Deploy version ->
 - Réaliser et relier les autres vues:
   - StatsView : Stats et graphs,
-  - (pas MVP) DiaryView : calendrier en lien avec le ou les entrainements réalisés.
-- Gérer les améliorations listées dans le repo github,
+  - (pas MVP) Diar---View : calendrier en lien avec le ou les entrainements réalisés.
+
+### 04/06/2022
+
+Ajout de la fonction "Création de rounds réutilisables":
+
+- vider exoForm reducer après création d'un exo -> ok
+- Ne pas afficher roundMenu si CustomRound -> ok
+- Fix timecap et type d'un training -> ok
+- commit -> ok
+- café ! -> ok
+- Possible de charger un CustomRound dans un training:
+  - Ajouter une entrée au RoundMenu -> ok
+  - Affiche un select des localRounds -> ok
+  - Le select dispatch ADD_LOCAL_ROUND_TO_LOCAL_TRAINING -> ok
+  - Ajoute le round dans le training -> ok
+- FIX: Position modale delete round dans TrainingView -> ok
+
+### 02/06/22
+
+Ajout de la fonction "Création de rounds réutilisables":
+
+Créer les actions liées aux rounds + reducer:
+
+- setCustomRoundIteration -> ok
+- deleteExoFromCustomRound -> ok
+- moveExoInCustomRound -> ok
+
+### 01/06/2022
+
+Ajout de la fonction "Création de rounds réutilisables":
+
+Créer les actions liées aux rounds + reducer:
+
+- getLocalRounds -> ok
+- setCustomRound -> ok
+- getCurrentCustomRound -> ?
+- setCustomRoundName -> ok
+- createLocalRound -> ok
+- deleteCustomRound -> ok
+- addExerciceToCustomRound -> ok
+- putExoFormInRound -> ok
+- showExoFormCustomRound -> ok
+- showExoInCustomRound -> ok
+
+### 31/05/2022
+
+Ajout de la fonction "Création de rounds réutilisables":
+Finir la mise en place des composants :
+
+- Enregistrement d'un round en local -> ok
+- Le select affiche les rounds récup en local -> ok
+- Modifier un exercice du round :
+  - Créer le container "ExoInRoundContainer" -> ok
+  - Renommer "ExoInListContainer" en "ExoInTrainingContainer" -> ok
+    - Ca fonctionne dans la vue Training -> ok
+  - Renommer shoExoForm() en showExoInTrainingForm() -> ok
+    - Ca fonctionne dans la vue Training -> ok
+  - Mettre en place "ExoInRoundContainer" -> ok
+    - Ca fonctionne dans CustomRoundView -> ok
+  - Créer showExoRoundForm() -> ok
+    - Ca fonctionne dans CustomRoundView -> ok
+
+### 29/05/2022
+
+Ajout de la fonction "Création de rounds réutilisables":
+Finir la mise en place des composants :
+
+- Adapter CMForm -> ok
+- Créer RoundCustomManagerContainer -> en cours
+- Créer les fonctions pour gérer les rounds en local storage -> ok
+- Ajout d'un exercice au round -> ok
+
+### 25/05/22
+
+Ajout de la fonction "Création de rounds réutilisables":
+Remplir ExoForm avec les bonnes données -> ok
+Finir la mise en place des composants -> en cours
+Créer les actions liées aux rounds + reducer -> en cours
+
+### 22/05/2022
+
+Ajout de la fonction "Création de rounds réutilisables":
+Faire un MW pour mettre le contenu d'exoForm dans l'action -> ok
+Finir la mise en place des composants -> en cours
+Créer les actions liées aux rounds + reducer -> en cours
+
+### 21/05/2022
+
+- Finir la mise en place des composants -> en cours
+- Créer les actions liées aux rounds + reducer -> en cours
+- Faire un reducer pour ExoForm -> ok
+
+### 19/05/2022
+
+Delete d'un exo dans un trainingDone -> ok
+Upload du training modifié à la validation -> ok
+Confirmation du succes de l'upload -> ok
+Demande si upload quand quitte avec modifs sans valider -> ok
+Ajout de la fonction "Création de rounds réutilisables":
+
+- Créer un route "rounds" -> ok
+- Afficher les composants de base :
+  - Refacto pour réutilisation de CTMForm, CTMOptions et CustomTrainingManager en CMForm, CMOptions et CustomManager -> ok
+
+### 16/05/2022
+
+- Faire un container EndTrainingExoTabContainer et un TrainingDoneExoTabContainer et passer les props au composant ExoLine -> ok
+- Action / reducer pour lier les valeurs des champs -> ok
+
+Aussi bien galéré pour trouver une méthode pour faire le render des exos, pour mémoire les props des objets à n+2 ne provoquent pas de render => j'utilise une prop render dans le state mise à jour et fournie au container quand render nécessaire.
+
+### 12/05/2022
+
+Faire update depuis recap trainings:
+
+- Ajout bouton -> ok
+- Action/reducer pour modifier les champs -> ok
+
+### 10/05/2022
+
+Route api -> ok (delete /chronofit/training/:id)
+Deploy version -> ok (FIX uRLs in setting.js)
 
 ### 08/05/2022
 

@@ -1,32 +1,25 @@
-const ExoTabLine = ({
-  index,
-  name,
-  description,
-  duration,
-  reps,
-  weight,
-  isModif,
-  setValue,
-  deleteExoFromEndTrainingRecap,
-}) => {
+import { useEffect } from "react";
+
+const ExoTabLine = ({ index, exo, isModif, setValue, deleteExo }) => {
   const handleInputChange = (evt) => {
     setValue(index, evt.target.name, evt.target.value);
   };
   const handleDeleteExo = (evt) => {
     evt.preventDefault();
-    deleteExoFromEndTrainingRecap(index);
+    deleteExo(index);
   };
+  useEffect(() => console.log("render"), [exo]);
 
   return (
     <tr>
-      <td>{name}</td>
-      <td>{description}</td>
+      <td>{exo.name}</td>
+      <td>{exo.description}</td>
       <td>
         <input
           type="number"
           name="duration"
           disabled={!isModif}
-          value={duration}
+          value={exo.duration}
           onChange={handleInputChange}
         />
       </td>
@@ -35,7 +28,7 @@ const ExoTabLine = ({
           type="number"
           name="reps"
           disabled={!isModif}
-          value={reps}
+          value={exo.reps}
           onChange={handleInputChange}
         />
       </td>
@@ -44,7 +37,7 @@ const ExoTabLine = ({
           type="number"
           name="weight"
           disabled={!isModif}
-          value={weight}
+          value={exo.weight}
           onChange={handleInputChange}
         />
       </td>

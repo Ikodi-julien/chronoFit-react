@@ -26,6 +26,13 @@ export default (store) => (next) => async (action) => {
   const { timeline, exoPlaying, trainingDetails, isSpeaking } =
     store.getState().readTraining;
 
+  const girlTypes = {
+    ft: "FOR TIME",
+    emom: "EMOM",
+    amrap: "AMRAP",
+    maxreps: "MAX REPS",
+  };
+
   switch (action.type) {
     case SET_READ_TRAINING:
       if (action.value === "girl") {
@@ -33,6 +40,7 @@ export default (store) => (next) => async (action) => {
           name: currentTraining.name,
           duration: trainingServices.getTrainingDuration(currentTraining),
           timecap: currentTraining.timecap * 60,
+          type: girlTypes[currentTraining.type],
         };
         action.viewOrigin = "/girls";
         action.timeline = trainingServices.getTimeLine(currentTraining);

@@ -5,22 +5,20 @@ import {
 import {
   SET_LOCAL_TRAINING,
   SET_LOCAL_TRAINING_NAME,
-  SET_LOCAL_ROUND_TYPE,
-  SET_TIMECAP,
-  SET_TRAINING_TYPE,
+  SET_LOCAL_TRAINING_TYPE,
   SET_ROUND_ITERATION,
   GET_LOCAL_TRAININGS_SUCCESS,
   ADD_ROUND_TO_LOCAL_TRAINING,
+  ADD_LOCAL_ROUND_TO_LOCAL_TRAINING,
   ADD_EXERCICE_TO_LOCAL_TRAINING,
   PUT_EXOFORM_IN_LOCAL_TRAINING,
   DELETE_ROUND_FROM_LOCAL_TRAINING,
   DELETE_EXO_FROM_ROUND,
-  EXOFORM_INPUT_CHANGE,
-  SHOW_EXO_FORM,
-  SHOW_EXO_IN_LIST,
   MOVE_ROUND_IN_STATE,
   MOVE_EXO_IN_STATE,
+  SET_LOCAL_TRAINING_TIMECAP,
 } from "../actions/trainingLocalActions";
+
 /*-----------------------------------*/
 import trainingServices from "../services/training";
 /*----------------------------------*/
@@ -31,14 +29,6 @@ const initialState = {
   // localTrainingReducer
   allLocalTrainings: [],
   trainingManagerNameInput: "",
-  exoForm: {
-    name: "",
-    iteration: 1,
-    desc: "",
-    reps: 0,
-    duration: 0,
-    weight: 0,
-  },
   localTraining: {
     name: "Work Of Day",
     timecap: "",
@@ -47,7 +37,6 @@ const initialState = {
       {
         shrunken: true,
         menuIsVisible: false,
-        type: "",
         iteration: 1,
         duration: 0,
         exercices: [
@@ -111,14 +100,21 @@ const reducer = (state = initialState, action = {}) => {
         trainingManagerNameInput: action.value,
       };
 
-    case SET_LOCAL_ROUND_TYPE:
-      rounds[action.roundIndex].type = action.value;
-
+    case SET_LOCAL_TRAINING_TYPE:
       return {
         ...state,
         localTraining: {
           ...state.localTraining,
-          rounds,
+          type: action.value,
+        },
+      };
+
+    case SET_LOCAL_TRAINING_TIMECAP:
+      return {
+        ...state,
+        localTraining: {
+          ...state.localTraining,
+          timecap: action.value,
         },
       };
 
@@ -129,16 +125,17 @@ const reducer = (state = initialState, action = {}) => {
       };
 
     case PUT_EXOFORM_IN_LOCAL_TRAINING:
-      allRoundsExoShrunken[action.roundIndex].exercices[action.exoIndex] = {
-        ...allRoundsExoShrunken[action.roundIndex].exercices[action.exoIndex],
-        name: state.exoForm.name,
-        description: state.exoForm.desc,
+      const { exoForm, roundIndex, exoIndex } = action;
+      allRoundsExoShrunken[roundIndex].exercices[exoIndex] = {
+        ...allRoundsExoShrunken[roundIndex].exercices[exoIndex],
+        name: exoForm.name,
+        description: exoForm.desc,
         options: [
           {
-            iteration: state.exoForm.iteration,
-            duration: state.exoForm.duration,
-            weight: state.exoForm.weight,
-            reps: state.exoForm.reps,
+            iteration: exoForm.iteration,
+            duration: exoForm.duration,
+            weight: exoForm.weight,
+            reps: exoForm.reps,
           },
         ],
       };
@@ -148,7 +145,6 @@ const reducer = (state = initialState, action = {}) => {
           ...state.localTraining,
           rounds: allRoundsExoShrunken,
         },
-        exoForm: initialState.exoForm,
       };
 
     case DELETE_EXO_FROM_ROUND:
@@ -222,6 +218,14 @@ const reducer = (state = initialState, action = {}) => {
         },
       };
 
+    case ADD_LOCAL_ROUND_TO_LOCAL_TRAINING:
+      return {
+        ...state,
+        localTraining: {
+          ...state.localTraining,
+          rounds: [...state.localTraining.rounds, action.roundToAdd],
+        },
+      };
     case DELETE_ROUND_FROM_LOCAL_TRAINING:
       const newRounds = rounds.filter(
         (round) => round !== rounds[action.value]
@@ -236,25 +240,24 @@ const reducer = (state = initialState, action = {}) => {
       };
 
     case ADD_EXERCICE_TO_LOCAL_TRAINING:
-      const round = allRoundMenuHidden[action.value.roundId];
+      const round = allRoundMenuHidden[action.roundIndex];
 
       round.exercices.push({
         isForm: true,
         name: "",
         description: "",
-        // isBenchmark: false,
         options: [
           {
             iteration: 1,
-            duration: 0,
-            weight: 0,
-            reps: 0,
+            duration: "",
+            weight: "",
+            reps: "",
           },
         ],
       });
       round.shrunken = false;
 
-      allRoundMenuHidden[action.value.roundId] = round;
+      allRoundMenuHidden[action.roundIndex] = round;
 
       return {
         ...state,
@@ -262,15 +265,6 @@ const reducer = (state = initialState, action = {}) => {
           ...state.localTraining,
           rounds: allRoundMenuHidden,
           exoForm: { ...initialState.exoForm },
-        },
-      };
-
-    case EXOFORM_INPUT_CHANGE:
-      return {
-        ...state,
-        exoForm: {
-          ...state.exoForm,
-          [action.name]: action.value,
         },
       };
 
@@ -297,65 +291,6 @@ const reducer = (state = initialState, action = {}) => {
 
     case SET_ROUND_ITERATION:
       rounds[action.value.index].iteration = action.value.value;
-      return {
-        ...state,
-        localTraining: {
-          ...state.localTraining,
-          rounds,
-        },
-      };
-
-    case SET_TIMECAP:
-      return {
-        ...state,
-        localTraining: {
-          ...state.localTraining,
-          timecap: action.value,
-        },
-      };
-
-    case SET_TRAINING_TYPE:
-      return {
-        ...state,
-        localTraining: {
-          ...state.localTraining,
-          type: action.value,
-        },
-      };
-
-    case SHOW_EXO_FORM:
-      // This shows ExoForm but all exercices have been shrunk
-      allRoundsExoShrunken[action.value.roundIndex].exercices[
-        action.value.exoIndex
-      ].isForm = true;
-
-      const exoToShow =
-        allRoundsExoShrunken[action.value.roundIndex].exercices[
-          action.value.exoIndex
-        ];
-
-      return {
-        ...state,
-        localTraining: {
-          ...state.localTraining,
-          rounds,
-        },
-        exoForm: {
-          name: exoToShow.name,
-          desc: exoToShow.description,
-          iteration: exoToShow.options[0].iteration,
-          reps: exoToShow.options[0].reps,
-          duration: exoToShow.options[0].duration,
-          weight: exoToShow.options[0].weight,
-        },
-      };
-
-    case SHOW_EXO_IN_LIST:
-      // This hides all ExoForm
-      rounds[action.value.roundIndex].exercices[
-        action.value.exoIndex
-      ].isForm = false;
-
       return {
         ...state,
         localTraining: {
