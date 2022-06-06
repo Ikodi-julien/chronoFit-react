@@ -11,15 +11,15 @@ import {
   showRoundExoInList,
 } from "../actions/exoFormActions";
 
-const mapStateToProps = ({ exoForm }, { roundIndex, index }) => ({
+const mapStateToProps = ({ exoForm }) => ({
   name: exoForm.name,
   description: exoForm.desc,
   iteration: exoForm.iteration,
   duration: exoForm.duration,
   reps: exoForm.reps,
   weight: exoForm.weight,
-  roundIndex,
-  index,
+  roundIndex: exoForm.roundIndex,
+  index: exoForm.exoIndex,
 });
 
 const mapDispatchToProps = (dispatch) => ({

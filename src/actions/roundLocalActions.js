@@ -44,9 +44,8 @@ export const DELETE_LOCAL_ROUND = "DELETE_LOCAL_ROUND";
 export const deleteLocalRound = () => ({ type: DELETE_LOCAL_ROUND });
 
 export const ADD_EXERCICE_TO_CUSTOM_ROUND = "ADD_EXERCICE_TO_CUSTOM_ROUND";
-export const addExerciceToCustomRound = (index) => ({
+export const addExerciceToCustomRound = () => ({
   type: ADD_EXERCICE_TO_CUSTOM_ROUND,
-  value: { roundId: index },
 });
 
 export const DELETE_EXO_FROM_CUSTOM_ROUND = "DELETE_EXO_FROM_CUSTOM_ROUND";

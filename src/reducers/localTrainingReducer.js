@@ -240,7 +240,7 @@ const reducer = (state = initialState, action = {}) => {
       };
 
     case ADD_EXERCICE_TO_LOCAL_TRAINING:
-      const round = allRoundMenuHidden[action.value.roundIndex];
+      const round = allRoundMenuHidden[action.roundIndex];
 
       round.exercices.push({
         isForm: true,
@@ -249,15 +249,15 @@ const reducer = (state = initialState, action = {}) => {
         options: [
           {
             iteration: 1,
-            duration: 0,
-            weight: 0,
-            reps: 0,
+            duration: "",
+            weight: "",
+            reps: "",
           },
         ],
       });
       round.shrunken = false;
 
-      allRoundMenuHidden[action.value.roundIndex] = round;
+      allRoundMenuHidden[action.roundIndex] = round;
 
       return {
         ...state,

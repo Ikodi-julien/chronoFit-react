@@ -42,6 +42,7 @@ const ExoForm = ({
       confirmNoName();
       return;
     }
+    console.log("roundIndex:", roundIndex, "exoIndex :", index);
     putExo(roundIndex, index);
   };
 

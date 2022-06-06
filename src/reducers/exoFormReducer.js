@@ -52,8 +52,8 @@ const reducer = (state = initialState, action = {}) => {
       console.log(action);
       return {
         ...initialState,
-        roundIndex: action.value.roundIndex,
-        exoIndex: action.value.exoIndex,
+        roundIndex: action.roundIndex,
+        exoIndex: action.exoIndex,
       };
 
     default:

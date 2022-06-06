@@ -136,7 +136,7 @@ const reducer = (state = initialState, action = {}) => {
             ...state.localRound.exercices,
             {
               isForm: false,
-              name: "Un nouvel exercice",
+              name: "",
               description: "",
               options: [
                 {
