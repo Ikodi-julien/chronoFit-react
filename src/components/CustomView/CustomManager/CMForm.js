@@ -61,7 +61,7 @@ export default ({
           className="custommanager__col__select"
         >
           <option key="Work Of Day" value="default">
-            Ceux qui existent
+            Nouveau
           </option>
           {itemList.map((training, index) => (
             <option key={index} value={training.name}>

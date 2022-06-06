@@ -15,7 +15,8 @@ Passer ExoForm en modale :
 - Ajouter le bouton pour gérer son compte -> ok
 - Test complet round + training + CRUD :
   - Les girls -> ok
-  - Entrainements ->
+  - Entrainements -> ok
+  - Rounds ->
   - FIX :
     - Ajouter le "type" pour l'enregistrement d'une girl -> ok,
     - Le CSS du menu de Navigation -> ok
@@ -24,6 +25,9 @@ Passer ExoForm en modale :
     - L'ajout d'un exo affiche directement exoForm -> ok
     - La fermeture d'un nouvel exo sans nom propose de le supprimer -> ok
     - L'enregistrement des modifs d'un training done devrait réafficher le bouton "modifier" -> ok
+    - RoundMenu apparait sous les exercices (z-index?) -> oui c ça!
+    - Création d'un rouind, pouvoir revenir à un round vide -> ok
+    - Dans round l'ajout d'un exo devrait afficher exoForm ->
 
 Prochaines étapes :
 

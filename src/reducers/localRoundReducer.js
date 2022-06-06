@@ -15,7 +15,7 @@ const initialState = {
   allLocalRounds: [],
   roundManagerNameInput: "",
   localRound: {
-    name: "Custom Round",
+    name: "",
     menuIsVisible: false,
     shrunken: true,
     type: "",
@@ -51,7 +51,12 @@ const reducer = (state = initialState, action = {}) => {
 
     case SET_CUSTOM_ROUND:
       if (action.value === "default") {
-        return state;
+        return {
+          ...state,
+          localRound: {
+            ...initialState.localRound,
+          },
+        };
       }
 
       return {
