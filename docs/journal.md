@@ -17,6 +17,7 @@ Passer ExoForm en modale :
   - Les girls -> ok CRUD
   - FIX :
     - Ajouter le "type" pour l'enregistrement d'une girl -> ok,
+    - Le CSS du menu de Navigation -> ok
     - L'ajout d'un exo affiche directement exoForm ->
 
 Prochaines étapes :

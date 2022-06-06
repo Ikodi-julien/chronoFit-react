@@ -39,42 +39,67 @@ const AppNav = () => {
             className="appnav__links__close"
             onClick={() => setNavMenuIsOpen(!navMenuIsOpen)}
           >
-            <i className="fas fa-times"></i>
+            Navigation <i className="fas fa-times"></i>
           </button>
           <NavLink
             to="/"
             className="appnav__links__link"
             onClick={() => setNavMenuIsOpen(false)}
           >
-            Accueil
+            <button
+              type="button"
+              className="training__button --m --flex1 --jc-left "
+            >
+              Accueil
+            </button>
           </NavLink>
           <NavLink
             to="/girls"
             className="appnav__links__link"
             onClick={() => setNavMenuIsOpen(false)}
           >
-            Les Girls
+            <button
+              type="button"
+              className="training__button --m --flex1 --jc-left "
+            >
+              Les Girls
+            </button>
           </NavLink>
           <NavLink
             to="/entrainement"
             className="appnav__links__link"
             onClick={() => setNavMenuIsOpen(false)}
           >
-            Entrainements
+            <button
+              type="button"
+              className="training__button --m --flex1 --jc-left "
+            >
+              Entrainements
+            </button>
           </NavLink>
           <NavLink
             to="/rounds"
             className="appnav__links__link"
             onClick={() => setNavMenuIsOpen(false)}
           >
-            Rounds
+            <button
+              type="button"
+              className="training__button --m --flex1 --jc-left "
+            >
+              Rounds
+            </button>
           </NavLink>
           <NavLink
             to="/recap_entrainements"
             className="appnav__links__link"
             onClick={() => setNavMenuIsOpen(false)}
           >
-            Récap entraînements
+            <button
+              type="button"
+              className="training__button --m --flex1 --jc-left "
+            >
+              Récap entraînements
+            </button>
           </NavLink>
           {/* <NavLink to="/connexion" className="appnav__links__link" onClick={() => toggleMenu()} >Connexion</NavLink> */}
         </nav>

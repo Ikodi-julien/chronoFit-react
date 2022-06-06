@@ -45,7 +45,8 @@
       height: 100vh;
       top: -200vh;
       left: 0px;
-      background-color: rgba(241, 245, 247, 0.8);
+      background-color: rgba(0, 15, 37, 0.6);
+      backdrop-filter: blur(2px);
       transition: top 200ms ease-out;
 
       &.--visible {
@@ -57,17 +58,20 @@
     }
 
     &__link {
+      display: flex;
       padding: 1rem;
+      width: 100%;
       // margin: 1rem;
     }
 
     &__close {
-      display: block;
+      display: flex;
       width: 100%;
       border: none;
       padding: 15px 20px;
       background-color: transparent;
-      text-align: right;
+      justify-content: space-between;
+      color: v.$base-color;
       font-size: 1em;
     }
   }

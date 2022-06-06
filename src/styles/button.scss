@@ -74,6 +74,9 @@
   &.--flex1 {
     flex: 1;
   }
+  &.--jc-left {
+    justify-content: flex-start;
+  }
 }
 
 .header__button {
