@@ -26,8 +26,10 @@ Passer ExoForm en modale :
     - La fermeture d'un nouvel exo sans nom propose de le supprimer -> ok
     - L'enregistrement des modifs d'un training done devrait réafficher le bouton "modifier" -> ok
     - RoundMenu apparait sous les exercices (z-index?) -> oui c ça!
-    - Création d'un rouind, pouvoir revenir à un round vide -> ok
-    - Dans round l'ajout d'un exo devrait afficher exoForm ->
+    - Création d'un round, pouvoir revenir à un round vide -> ok
+    - Dans round l'ajout d'un exo devrait afficher exoForm -> ok
+    - La validation d'un nouvel exo sans nom devrait proposer de le supprimer -> ok
+    - La création d'un exo dans un round devrait l'ajouter à la liste -> ok
 
 Prochaines étapes :
 

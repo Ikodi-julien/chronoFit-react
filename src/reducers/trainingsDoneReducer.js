@@ -110,7 +110,7 @@ const reducer = (state = initialState, action = {}) => {
       if (
         ["FOR TIME", "EMOM", "AMRAP", "MAX REPS", "none"].includes(action.value)
       ) {
-        console.log("value", action.value);
+        // console.log("value", action.value);
         if (action.value === "none") {
           return {
             ...state,

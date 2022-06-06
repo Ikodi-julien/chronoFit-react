@@ -80,7 +80,7 @@ const reducer = (state = initialState, action = {}) => {
       };
 
     case PUT_EXOFORM_IN_CUSTOM_ROUND:
-      console.log(action);
+      // console.log(action);
       exoShrunken[action.exoIndex] = {
         isForm: false,
         name: action.exoForm.name,
@@ -104,21 +104,21 @@ const reducer = (state = initialState, action = {}) => {
       };
 
     case DELETE_EXO_FROM_CUSTOM_ROUND:
-      console.log(action);
+      // console.log(action);
       localRound.exercices.forEach((exo) => (exo.isForm = false));
       localRound.exercices.splice(action.exoIndex, 1);
-      console.log(localRound);
+      // console.log(localRound);
       return {
         ...state,
         localRound,
       };
 
     case MOVE_EXO_IN_CUSTOM_ROUND:
-      console.log(action);
+      // console.log(action);
       const [exoToMove] = localRound.exercices.splice(action.value.oldIndex, 1);
       localRound.exercices.splice(action.value.newIndex, 0, exoToMove);
 
-      console.log(localRound.exercices);
+      // console.log(localRound.exercices);
       return {
         ...state,
         localRound: {

@@ -49,7 +49,7 @@ const reducer = (state = initialState, action = {}) => {
 
     case ADD_EXERCICE_TO_LOCAL_TRAINING:
     case ADD_EXERCICE_TO_CUSTOM_ROUND:
-      console.log(action);
+      // console.log(action);
       return {
         ...initialState,
         roundIndex: action.roundIndex,
