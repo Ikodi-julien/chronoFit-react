@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
 import Field from "../../Field/Field";
@@ -65,6 +65,10 @@ const ExoForm = ({
   const [text, setText] = useState("");
   const [action, setAction] = useState(undefined);
   const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <>

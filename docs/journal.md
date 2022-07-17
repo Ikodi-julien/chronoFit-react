@@ -1,5 +1,9 @@
 # JOURNAL CHRONOFIT-REACT
 
+### 17/07/2022
+
+CSS de Exoform revu et ajout de scrollTo.
+
 ### 05/06/2022
 
 Faire de roundMenu une modale -> ok
