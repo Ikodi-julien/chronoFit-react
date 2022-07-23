@@ -2,7 +2,15 @@
 
 ### 23/07/2022
 
-Petites modifs de css sur les modales avant déploiement ->
+Petites modifs de css sur les modales avant déploiement -> ok
+
+Prochaines étapes :
+
+- Pagination dans recap des entrainements,
+- Ajouter 1RM dans filtre de tri,
+- Réaliser et relier les autres vues:
+  - StatsView : Stats et graphs,
+  - (pas MVP) Diar---View : calendrier en lien avec le ou les entrainements réalisés.
 
 ### 17/07/2022
 
@@ -38,13 +46,6 @@ Passer ExoForm en modale :
     - Dans round l'ajout d'un exo devrait afficher exoForm -> ok
     - La validation d'un nouvel exo sans nom devrait proposer de le supprimer -> ok
     - La création d'un exo dans un round devrait l'ajouter à la liste -> ok
-
-Prochaines étapes :
-
-- Deploy version ->
-- Réaliser et relier les autres vues:
-  - StatsView : Stats et graphs,
-  - (pas MVP) Diar---View : calendrier en lien avec le ou les entrainements réalisés.
 
 ### 04/06/2022
 

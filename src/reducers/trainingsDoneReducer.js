@@ -14,6 +14,7 @@ const initialState = {
   recapTrainingModalIsOpen: false,
   trainings: [],
   shownTrainings: [],
+  trainingTypes: [],
   sortDateDesc: true,
   sortNameDesc: true,
   currentTraining: {
@@ -57,10 +58,16 @@ const reducer = (state = initialState, action = {}) => {
 
   switch (action.type) {
     case SET_TRAININGS_DONE:
+      const trainingTypes = action.value
+        .map((training) => training.type)
+        .filter((type) => type !== "")
+        .filter((value, index, self) => self.indexOf(value) === index)
+        .sort();
       return {
         ...state,
         trainings: action.value,
         shownTrainings: action.value,
+        trainingTypes,
       };
 
     case DISPLAY_TRAINING_DETAILS:
@@ -80,7 +87,8 @@ const reducer = (state = initialState, action = {}) => {
       };
 
     case SORT_TRAINING_TAB:
-      let shownTrainings = [];
+      console.log(action);
+      let shownTrainings = state.trainings;
       const sortByKey = (key) => (a, b) => a[key] > b[key] ? 1 : -1;
 
       // Utilise slice() pour faire une copie du state et ne pas le modifier directement
@@ -107,9 +115,7 @@ const reducer = (state = initialState, action = {}) => {
         sortNameDesc = !sortNameDesc;
       }
 
-      if (
-        ["FOR TIME", "EMOM", "AMRAP", "MAX REPS", "none"].includes(action.value)
-      ) {
+      if (state.trainingTypes.includes(action.value)) {
         // console.log("value", action.value);
         if (action.value === "none") {
           return {

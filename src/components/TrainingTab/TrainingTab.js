@@ -1,6 +1,6 @@
 import TrainingTabLineContainer from "../../containers/TrainingTabLineContainer";
 
-const TrainingTab = ({ trainings, sortTrainingTab, typeValue }) => {
+const TrainingTab = ({ trainings, sortTrainingTab, typeValue, typeList }) => {
   return (
     <table>
       <thead>
@@ -18,11 +18,9 @@ const TrainingTab = ({ trainings, sortTrainingTab, typeValue }) => {
               value={typeValue}
               style={{ width: "4rem" }}
             >
-              <option value="none">TOUS</option>
-              <option value="FOR TIME">FOR TIME</option>
-              <option value="EMOM">EMOM</option>
-              <option value="AMRAP">AMRAP</option>
-              <option value="MAX REPS">MAX REPS</option>
+              <option value="all">TOUS</option>
+              {typeList?.length &&
+                typeList.map((type) => <option value={type}>{type}</option>)}
             </select>
           </th>
           <th

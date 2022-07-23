@@ -28,7 +28,7 @@ export default ({
           <option value="EMOM">EMOM</option>
           <option value="AMRAP">AMRAP</option>
           <option value="MAX REPS">MAX REPS</option>
-          <option value="1RM">MAX 1 REP</option>
+          <option value="MAX 1 REP">MAX 1 REP</option>
         </select>
         <label>Time cap (mn):</label>
         <Field
