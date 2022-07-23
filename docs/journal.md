@@ -1,5 +1,9 @@
 # JOURNAL CHRONOFIT-REACT
 
+### 23/07/2022
+
+Petites modifs de css sur les modales avant déploiement ->
+
 ### 17/07/2022
 
 CSS de Exoform revu et ajout de scrollTo.

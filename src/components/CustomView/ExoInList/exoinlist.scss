@@ -1,7 +1,8 @@
-@use 'src/styles/vars'as v;
+@use "src/styles/vars" as v;
 
 .exoinlist {
   position: relative;
+  display: flex;
   width: 100%;
   border: 1px solid adjust-color(v.$base-color, $lightness: 50%);
   padding: 0 5px;
@@ -19,8 +20,13 @@
     }
   }
 
+  &__column {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
   &__name {
-    padding: 8px 0;
+    padding: 6px 0;
   }
 
   &__data {

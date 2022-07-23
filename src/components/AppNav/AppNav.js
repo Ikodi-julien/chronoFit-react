@@ -39,7 +39,7 @@ const AppNav = () => {
             className="appnav__links__close"
             onClick={() => setNavMenuIsOpen(!navMenuIsOpen)}
           >
-            Navigation <i className="fas fa-times"></i>
+            <i className="fas fa-times"></i>
           </button>
           <NavLink
             to="/"

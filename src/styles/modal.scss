@@ -4,11 +4,12 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: 100vw;
+  width: 100%;
   height: fit-content;
   min-height: 100vh;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
+  padding-top: 40px;
   justify-content: center;
   background-color: rgba(0, 15, 37, 0.6);
   backdrop-filter: blur(2px);
@@ -52,15 +53,14 @@
   }
 
   &__header {
-    padding: v.$gutter;
+    padding: 1rem;
   }
   & .--endtraining {
     width: 100%;
     max-width: v.$max-app-width;
     background-color: white;
     border-radius: v.$border-radius;
-    padding: 0.5rem;
-    padding-top: 50px;
+    padding: 50px 0.5rem;
   }
   &.--hidden {
     display: none;
