@@ -37,7 +37,7 @@ const initialState = {
       {
         shrunken: true,
         menuIsVisible: false,
-        iteration: 1,
+        iteration: 10,
         duration: 0,
         exercices: [
           // {

@@ -71,10 +71,7 @@ const RoundMenu = ({
                 Ajouter un nouveau round
               </button>
             </li>
-            <li
-              className="rounds__round__menu__action"
-              // onClick={() => addLocalRound()}
-            >
+            <li className="rounds__round__menu__action">
               <select
                 name="localRound"
                 className="rounds__round__menu__select"
