@@ -3,6 +3,7 @@
 ### 23/07/2022
 
 Petites modifs de css sur les modales avant déploiement -> ok
+Rendu le select des types de training dynamique -> ok
 
 Prochaines étapes :
 

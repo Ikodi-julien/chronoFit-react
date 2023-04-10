@@ -3,7 +3,6 @@ import { useHistory } from "react-router";
 import trainingServices from "../../../services/training";
 import EndTrainingExoTabContainer from "../../../containers/EndTrainingExoTabContainer";
 import EndTrainingControls from "./EndTrainingControls/EndTrainingControls";
-import { Modal } from "@material-ui/core";
 
 const EndTrainingModal = ({
   trainingDuration,
@@ -20,7 +19,7 @@ const EndTrainingModal = ({
   const history = useHistory();
 
   return (
-    <Modal open={isOpen} onClose={() => setIsOpen(false)}>
+    <section className={`modal ${!isOpen && "--hidden"}`}>
       <div className="modal__container --endtraining">
         <div className="modal__header">
           <button
@@ -53,7 +52,7 @@ const EndTrainingModal = ({
 
         <EndTrainingExoTabContainer exos={trainingRecord} isModif={isModif} />
       </div>
-    </Modal>
+    </section>
   );
 };
 
