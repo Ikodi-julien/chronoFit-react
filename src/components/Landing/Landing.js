@@ -34,10 +34,10 @@ const Landing = ({ getMe, isUserLoggued, logout, nickname }) => {
 
       <div className="landing__links">
         <Link className="landing__button" to="/girls">
-          Les Girls - WODs tout fait
+          Les Girls
         </Link>
         <Link className="landing__button" to="/entrainement">
-          WODs persos et création
+          WODs
         </Link>
         <Link className="landing__button" to="/rounds">
           Création de rounds
@@ -48,7 +48,7 @@ const Landing = ({ getMe, isUserLoggued, logout, nickname }) => {
           </Link>
         )}
       </div>
-      <div className="landing__video">
+      {/* <div className="landing__video">
         <iframe
           width="360"
           height="202"
@@ -58,7 +58,7 @@ const Landing = ({ getMe, isUserLoggued, logout, nickname }) => {
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
         ></iframe>
-      </div>
+      </div> */}
       <Footer />
     </section>
   );

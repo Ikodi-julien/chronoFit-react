@@ -1,5 +1,14 @@
 # JOURNAL CHRONOFIT-REACT
 
+## 01/05/2023:
+
+FIX: Affichage temps du training dans TrainingDone ->
+
+## 10/04/2023:
+
+Mis MUI V4 et Modal pour endtraining -> ok
+Mettre 10 rounds par défaut à la création d'un training -> ok
+
 ### 23/07/2022
 
 Petites modifs de css sur les modales avant déploiement -> ok

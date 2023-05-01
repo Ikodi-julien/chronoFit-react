@@ -71,8 +71,13 @@ export default (store) => (next) => (action) => {
       break;
 
     case POST_NEW_TRAINING:
-      const { trainingDetails, trainingRecord } = readTrainingState;
-      const training = { ...trainingDetails, exos: trainingRecord };
+      const { trainingDetails, trainingRecord, globalChrono } =
+        readTrainingState;
+      const training = {
+        ...trainingDetails,
+        exos: trainingRecord,
+        duration: Math.round(globalChrono.currentTime),
+      };
       console.log(training);
       axios
         .post(
