@@ -12,6 +12,7 @@ import EndTrainingModalContainer from "../../containers/EndTrainingModalContaine
 import VoiceManagerContainer from "../../containers/VoiceManagerContainer";
 
 import "./readtraining.scss";
+import WakeLock from "./WakeLock/WakeLock";
 
 const ReadTrainingView = ({
   // state
@@ -43,6 +44,8 @@ const ReadTrainingView = ({
 
   return (
     <section className="readtraining">
+      <WakeLock />
+
       <EndSound finished={isFinished} />
       {isFinished && (
         <EndTrainingModalContainer

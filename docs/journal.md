@@ -2,7 +2,7 @@
 
 ## 01/05/2023:
 
-FIX: Affichage temps du training dans TrainingDone ->
+FIX: Affichage temps du training dans TrainingDone -> ok
 
 ## 10/04/2023:
 
